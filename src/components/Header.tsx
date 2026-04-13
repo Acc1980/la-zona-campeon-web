@@ -21,9 +21,9 @@ export default function Header() {
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-[72px] md:h-[80px]">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo-icon.png" alt="La Zona Campeón" width={48} height={48} className="rounded-sm" />
+            <Image src="/logo-icon.png" alt="La Zona Campeón" width={60} height={60} />
             <span className="font-display font-black text-lg md:text-xl uppercase tracking-wider">
               <span className="text-gold-500">La Zona</span>
               <span className="text-white"> Campeón</span>
