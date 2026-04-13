@@ -3,55 +3,23 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Productos",
-  description: "Manuales y programas de entrenamiento mental por posición, deporte y problema mental. Psicología deportiva aplicada en español.",
+  description: "Manuales de entrenamiento mental por posición, deporte y perfil. Todo en español.",
 };
 
-const manualesIndividuales = [
-  { titulo: "La Mente del Lateral Derecho", deporte: "Fútbol", desc: "Expansión ofensiva, identidad completa, proyección. 52 páginas.", precio: "$9.99", disponible: true },
-  { titulo: "La Mente del Portero", deporte: "Fútbol", desc: "Concentración, liderazgo desde atrás, recuperación de goles.", precio: "$9.99", disponible: false },
-  { titulo: "La Mente del Delantero Centro", deporte: "Fútbol", desc: "Sequías de gol, presión, instinto anotador.", precio: "$9.99", disponible: false },
-  { titulo: "La Mente del Mediocampista", deporte: "Fútbol", desc: "Creatividad bajo presión, liderazgo técnico, decisión en 1 segundo.", precio: "$9.99", disponible: false },
-  { titulo: "La Mente del Base", deporte: "Básquetbol", desc: "Liderazgo en cancha, decisión bajo presión, visión de juego.", precio: "$9.99", disponible: false },
-  { titulo: "Domina la Ansiedad Pre-Partido", deporte: "Todos", desc: "Para cualquier deporte. Protocolo completo anti-ansiedad.", precio: "$9.99", disponible: false },
+const manualesGenerales = [
+  { titulo: "La Espiral Negativa", desc: "Cómo detener el ciclo de errores, frustración y más errores. El problema mental más común en deportistas.", precio: "$9.99", disponible: false },
+  { titulo: "Concentración Bajo Presión", desc: "Técnicas para mantener el foco cuando el partido está en juego y el ambiente se pone difícil.", precio: "$9.99", disponible: false },
+  { titulo: "Confianza y Autoestima Deportiva", desc: "Construye una confianza que no depende de los resultados. Para deportistas que dudan de sí mismos.", precio: "$9.99", disponible: false },
+  { titulo: "Manejo de Errores y Fracasos", desc: "Aprende a procesar los errores rápido y volver al juego sin que te destruyan por dentro.", precio: "$9.99", disponible: false },
+  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener el gafete de capitán.", precio: "$9.99", disponible: false },
 ];
 
-const packs = [
-  {
-    titulo: "Pack Completo Fútbol",
-    desc: "Los 5 manuales de posición del fútbol (lateral, portero, central, mediocampista y delantero) en un solo pack.",
-    precio: "$39.99",
-    ahorro: "Ahorras $10 vs individual",
-    disponible: false,
-  },
-  {
-    titulo: "Kit del Entrenador",
-    desc: "10+ manuales con licencia de uso para trabajar con tu equipo o academia. Incluye guía de implementación.",
-    precio: "$59.99",
-    ahorro: "Licencia de uso grupal",
-    disponible: false,
-  },
-  {
-    titulo: "Kit para Padres",
-    desc: "Manual padre/madre-hijo + guía de acompañamiento mental para apoyar a tu hijo sin presionarlo.",
-    precio: "$24.99",
-    ahorro: "Para la familia completa",
-    disponible: false,
-  },
-];
-
-const libros = [
-  {
-    titulo: "La Mente del Campeón — Libro Completo",
-    desc: "Los 10 capítulos + epílogo completos. Más de 100 páginas de entrenamiento mental aplicado, traducido y adaptado al español.",
-    precio: "$37",
-    disponible: false,
-  },
-  {
-    titulo: "Programa 21 Días de Entrenamiento Mental",
-    desc: "Un ejercicio diario durante 21 días para construir los hábitos mentales de un campeón. Ideal para empezar.",
-    precio: "$47",
-    disponible: false,
-  },
+const manualesPosicion = [
+  { titulo: "La Mente del Lateral Derecho", deporte: "Fútbol", desc: "Expansión ofensiva, identidad completa, proyección. 52 páginas de entrenamiento mental específico.", precio: "$19.99", disponible: true },
+  { titulo: "La Mente del Portero", deporte: "Fútbol", desc: "Concentración extrema, liderazgo desde atrás, recuperación mental tras goles.", precio: "$19.99", disponible: false },
+  { titulo: "La Mente del Delantero Centro", deporte: "Fútbol", desc: "Sequías de gol, presión del equipo, instinto anotador y mentalidad de definición.", precio: "$19.99", disponible: false },
+  { titulo: "La Mente del Mediocampista", deporte: "Fútbol", desc: "Creatividad bajo presión, liderazgo técnico y toma de decisiones en fracciones de segundo.", precio: "$19.99", disponible: false },
+  { titulo: "La Mente del Base", deporte: "Básquetbol", desc: "Liderazgo en cancha, decisión bajo presión y visión de juego en los momentos críticos.", precio: "$19.99", disponible: false },
 ];
 
 function Badge({ text, color }: { text: string; color: string }) {
@@ -62,45 +30,115 @@ function Badge({ text, color }: { text: string; color: string }) {
   );
 }
 
+function NivelHeader({ nivel, rango, titulo, desc }: { nivel: string; rango: string; titulo: string; desc: string }) {
+  return (
+    <div className="mb-10">
+      <div className="flex items-center gap-3 mb-2">
+        <span className="font-display font-black text-xs uppercase tracking-widest text-gold-500 border border-gold-500/40 px-3 py-1 rounded-full">
+          {nivel}
+        </span>
+        <span className="text-dark-300 text-sm font-display">{rango}</span>
+      </div>
+      <h2 className="heading-2">{titulo}</h2>
+      <p className="text-dark-300 mt-3 max-w-xl">{desc}</p>
+    </div>
+  );
+}
+
 export default function ProductosPage() {
   return (
     <div className="pt-20">
       {/* Header */}
       <section className="py-16 bg-dark-900 text-center">
         <div className="section-container">
-          <p className="heading-3 mb-3">Catálogo completo</p>
+          <p className="heading-3 mb-3">Escalera de valor</p>
           <div className="gold-line mx-auto mb-6" />
-          <h1 className="heading-1 max-w-3xl mx-auto mb-4">Todos Nuestros Productos</h1>
+          <h1 className="heading-1 max-w-3xl mx-auto mb-4">Empieza Gratis. Avanza a tu Ritmo.</h1>
           <p className="text-dark-300 text-lg max-w-xl mx-auto">
-            Herramientas de entrenamiento mental por posición, deporte y problema mental. Todo en español.
+            Cuatro niveles de entrenamiento mental. Desde recursos gratuitos hasta tu manual 100% personalizado.
           </p>
         </div>
       </section>
 
-      {/* Manuales Individuales */}
+      {/* NIVEL 1 - GRATIS */}
       <section className="section-padding bg-dark-800">
         <div className="section-container">
-          <div className="mb-10">
-            <p className="heading-3 mb-2">Nivel 2 · $5 – $20</p>
-            <h2 className="heading-2">Manuales Individuales</h2>
-            <p className="text-dark-300 mt-3">Un manual específico para tu posición y deporte. Ideal para tu primera compra.</p>
+          <NivelHeader
+            nivel="Nivel 1"
+            rango="Gratis"
+            titulo="Recursos Gratuitos"
+            desc="El mejor punto de partida. Sin costo, sin excusas. Empieza a entrenar tu mente hoy."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            <div className="card-dark flex flex-col border border-gold-500/30">
+              <Badge text="Disponible ahora" color="bg-gold-500/20 text-gold-400" />
+              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">
+                Los 5 Hábitos Mentales del Campeón
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
+                La guía de entrada. Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
+                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5">Descargar</Link>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* NIVEL 2 - MANUALES GENERALES */}
+      <section className="section-padding bg-dark-900">
+        <div className="section-container">
+          <NivelHeader
+            nivel="Nivel 2"
+            rango="$9.99"
+            titulo="Manuales de Temas Generales"
+            desc="Problemas mentales que afectan a todos los deportistas sin importar el deporte o la posición."
+          />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {manualesIndividuales.map((m) => (
-              <div key={m.titulo} className={`card-dark flex flex-col ${!m.disponible ? "opacity-70" : ""}`}>
+            {manualesGenerales.map((m) => (
+              <div key={m.titulo} className="card-dark flex flex-col opacity-70">
+                <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
+                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">{m.titulo}</h3>
+                <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">{m.desc}</p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="font-display font-black text-gold-500 text-xl">{m.precio}</span>
+                  <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NIVEL 3 - MANUALES POR POSICIÓN */}
+      <section className="section-padding bg-dark-800">
+        <div className="section-container">
+          <NivelHeader
+            nivel="Nivel 3"
+            rango="$19.99"
+            titulo="Manuales por Posición y Deporte"
+            desc="Entrenamiento mental específico para tu posición. Lo que un delantero necesita no es lo mismo que un portero."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {manualesPosicion.map((m) => (
+              <div key={m.titulo} className={`card-dark flex flex-col ${!m.disponible ? "opacity-70" : "border border-gold-500/30"}`}>
                 <div className="flex items-center gap-2 mb-3">
                   <Badge text={m.deporte} color="bg-dark-600 text-dark-200" />
-                  {!m.disponible && <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />}
+                  {m.disponible
+                    ? <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
+                    : <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
+                  }
                 </div>
                 <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">{m.titulo}</h3>
                 <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">{m.desc}</p>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="font-display font-black text-gold-500 text-xl">{m.precio}</span>
-                  {m.disponible ? (
-                    <a href="#" className="btn-primary text-xs px-5 py-2.5">Comprar</a>
-                  ) : (
-                    <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
-                  )}
+                  {m.disponible
+                    ? <a href="#" className="btn-primary text-xs px-5 py-2.5">Comprar</a>
+                    : <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
+                  }
                 </div>
               </div>
             ))}
@@ -108,51 +146,34 @@ export default function ProductosPage() {
         </div>
       </section>
 
-      {/* Packs */}
+      {/* NIVEL 4 - MANUAL PERSONALIZADO */}
       <section className="section-padding bg-dark-900">
         <div className="section-container">
-          <div className="mb-10">
-            <p className="heading-3 mb-2">Nivel 2-3 · $25 – $60</p>
-            <h2 className="heading-2">Packs y Kits</h2>
-            <p className="text-dark-300 mt-3">Más valor por tu inversión. Bundles pensados para distintos perfiles.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packs.map((p) => (
-              <div key={p.titulo} className="card-dark flex flex-col opacity-70">
-                <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">{p.titulo}</h3>
-                <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-3">{p.desc}</p>
-                <p className="text-gold-500/70 text-xs mb-4">{p.ahorro}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="font-display font-black text-gold-500 text-xl">{p.precio}</span>
-                  <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
-                </div>
+          <NivelHeader
+            nivel="Nivel 4"
+            rango="$67 – $97"
+            titulo="Tu Manual 100% Personalizado"
+            desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
+          />
+          <div className="max-w-2xl">
+            <div className="card-dark border border-gold-500/30 opacity-70">
+              <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
+              <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
+                Manual Personalizado con IA
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed mb-6">
+                Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibas un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.
+              </p>
+              <ul className="space-y-2 text-sm text-dark-300 mb-6">
+                {["Manual generado según tu perfil exacto", "Acceso web con progreso guardado", "Ejercicios adaptados a tu posición y deporte", "Puedes retomar donde lo dejaste"].map(item => (
+                  <li key={item} className="flex gap-2"><span className="text-gold-500">→</span>{item}</li>
+                ))}
+              </ul>
+              <div className="flex items-center justify-between">
+                <span className="font-display font-black text-gold-500 text-2xl">$67</span>
+                <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Libros y Programas */}
-      <section className="section-padding bg-dark-800">
-        <div className="section-container">
-          <div className="mb-10">
-            <p className="heading-3 mb-2">Nivel 3 · $20 – $97</p>
-            <h2 className="heading-2">Libro Completo y Programas</h2>
-            <p className="text-dark-300 mt-3">Transformación profunda. El sistema completo de entrenamiento mental.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-            {libros.map((l) => (
-              <div key={l.titulo} className="card-dark flex flex-col opacity-70">
-                <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">{l.titulo}</h3>
-                <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">{l.desc}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="font-display font-black text-gold-500 text-xl">{l.precio}</span>
-                  <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
-                </div>
-              </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
