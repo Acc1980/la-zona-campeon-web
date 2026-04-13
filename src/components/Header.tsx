@@ -21,9 +21,9 @@ export default function Header() {
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-24">
           <Link href="/" className="flex items-center">
-            <Image src="/logo.png" alt="La Zona Campeón" width={72} height={72} className="rounded-sm" />
+            <Image src="/logo.png" alt="La Zona Campeón" width={96} height={96} className="rounded-sm" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
