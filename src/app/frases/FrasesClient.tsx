@@ -129,6 +129,7 @@ export default function FrasesClient() {
   const [idx, setIdx] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [revealed, setRevealed] = useState(false);
   const [particles, setParticles] = useState<{ x: number; y: number; size: number; opacity: number }[]>([]);
 
   useEffect(() => {
@@ -216,65 +217,90 @@ export default function FrasesClient() {
           Una frase para encender tu mente antes del partido
         </p>
 
-        {/* Tarjeta de frase */}
-        <div className="relative bg-dark-800 border border-dark-600 rounded-2xl px-8 py-10 mb-8 shadow-2xl">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-gold-500 rounded-full" />
-          <p className="font-display font-bold text-xl md:text-2xl text-white leading-relaxed mb-6">
-            &ldquo;{frase}&rdquo;
-          </p>
-          <p className="text-gold-500 text-xs font-display font-bold uppercase tracking-widest">
-            — La Zona Campeón
-          </p>
-        </div>
+        {!revealed ? (
+          /* BOTÓN REVELAR */
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative bg-dark-800 border border-dark-600 rounded-2xl px-8 py-10 w-full shadow-2xl">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-gold-500 rounded-full" />
+              <div className="flex flex-col items-center gap-4 py-2">
+                <div className="w-14 h-14 rounded-full border-2 border-gold-500/40 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7 text-gold-500">
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 4v6l4 2"/>
+                  </svg>
+                </div>
+                <p className="text-dark-400 text-sm">Tu frase de hoy te está esperando</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setRevealed(true)}
+              className="btn-primary text-base px-10 py-4 font-display font-black uppercase tracking-wider"
+            >
+              Quiero mi frase de hoy
+            </button>
+          </div>
+        ) : (
+          /* FRASE REVELADA */
+          <>
+            <div className="relative bg-dark-800 border border-dark-600 rounded-2xl px-8 py-10 mb-8 shadow-2xl">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-1 bg-gold-500 rounded-full" />
+              <p className="font-display font-bold text-xl md:text-2xl text-white leading-relaxed mb-6">
+                &ldquo;{frase}&rdquo;
+              </p>
+              <p className="text-gold-500 text-xs font-display font-bold uppercase tracking-widest">
+                — La Zona Campeón
+              </p>
+            </div>
 
-        {/* Botones */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
-          <button
-            onClick={handleShare}
-            className="btn-primary flex items-center justify-center gap-2 text-sm px-6 py-3"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-              <polyline points="16 6 12 2 8 6"/>
-              <line x1="12" y1="2" x2="12" y2="15"/>
-            </svg>
-            Compartir en Instagram
-          </button>
-          <button
-            onClick={handleCopy}
-            className="btn-secondary flex items-center justify-center gap-2 text-sm px-6 py-3"
-          >
-            {copied ? (
-              <>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 text-gold-500">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                ¡Copiada!
-              </>
-            ) : (
-              <>
+            {/* Botones */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+              <button
+                onClick={handleShare}
+                className="btn-primary flex items-center justify-center gap-2 text-sm px-6 py-3"
+              >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                  <polyline points="16 6 12 2 8 6"/>
+                  <line x1="12" y1="2" x2="12" y2="15"/>
                 </svg>
-                Copiar frase
-              </>
-            )}
-          </button>
-        </div>
+                Compartir en Instagram
+              </button>
+              <button
+                onClick={handleCopy}
+                className="btn-secondary flex items-center justify-center gap-2 text-sm px-6 py-3"
+              >
+                {copied ? (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 text-gold-500">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    ¡Copiada!
+                  </>
+                ) : (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                    Copiar frase
+                  </>
+                )}
+              </button>
+            </div>
 
-        {/* Contador */}
-        <div className="text-center">
-          <p className="text-dark-400 text-xs uppercase tracking-widest font-display mb-2">
-            Tu próxima frase estará disponible en
-          </p>
-          <p className="font-display font-black text-3xl text-gold-500 tracking-widest">
-            {formatTime(timeLeft)}
-          </p>
-          <p className="text-dark-500 text-xs mt-3 italic">
-            Guarda esta frase contigo durante el día
-          </p>
-        </div>
+            {/* Contador */}
+            <div className="text-center">
+              <p className="text-dark-400 text-xs uppercase tracking-widest font-display mb-2">
+                Tu próxima frase estará disponible en
+              </p>
+              <p className="font-display font-black text-3xl text-gold-500 tracking-widest">
+                {formatTime(timeLeft)}
+              </p>
+              <p className="text-dark-500 text-xs mt-3 italic">
+                Guarda esta frase contigo durante el día
+              </p>
+            </div>
+          </>
+        )}
 
       </div>
     </div>
