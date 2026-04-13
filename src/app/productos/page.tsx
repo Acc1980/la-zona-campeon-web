@@ -135,7 +135,7 @@ export default function ProductosPage() {
                 Manual Personalizado con IA
               </h3>
               <p className="text-dark-300 text-sm leading-relaxed mb-6">
-                Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibas un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.
+                Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibes un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.
               </p>
               <ul className="space-y-2 text-sm text-dark-300 mb-6">
                 {["Manual generado según tu perfil exacto", "Acceso web con progreso guardado", "Ejercicios adaptados a tu posición y deporte", "Puedes retomar donde lo dejaste"].map(item => (
