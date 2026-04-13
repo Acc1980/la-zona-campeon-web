@@ -138,11 +138,11 @@ export default function FrasesClient() {
 
     // Generar partículas solo en cliente
     setParticles(
-      Array.from({ length: 60 }, () => ({
+      Array.from({ length: 150 }, () => ({
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.1,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.6 + 0.2,
       }))
     );
 
