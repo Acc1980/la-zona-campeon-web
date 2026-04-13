@@ -3,22 +3,38 @@ import LeadMagnetForm from "@/components/LeadMagnetForm";
 
 const avatares = [
   {
-    icon: "⚽",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 text-gold-500 mx-auto">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    ),
     titulo: "Deportistas",
     desc: "Amateur o semiprofesional. Quieres mejorar tu mentalidad, rendir bajo presión y superar tus límites.",
   },
   {
-    icon: "🏋️",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 text-gold-500 mx-auto">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
     titulo: "Entrenadores",
     desc: "Buscas herramientas para transmitirle a tu equipo y diferenciarte con una metodología mental sólida.",
   },
   {
-    icon: "👨‍👩‍👦",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 text-gold-500 mx-auto">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
     titulo: "Padres",
     desc: "Quieres apoyar a tu hijo deportista en el aspecto mental sin presionarlo ni ser invasivo.",
   },
   {
-    icon: "🏫",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 text-gold-500 mx-auto">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    ),
     titulo: "Academias y Clubes",
     desc: "Necesitan programas estructurados de formación mental para implementar con sus equipos.",
   },
@@ -137,7 +153,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {avatares.map((a) => (
               <div key={a.titulo} className="card-dark text-center group">
-                <div className="text-5xl mb-4">{a.icon}</div>
+                <div className="mb-4">{a.icon}</div>
                 <h3 className="font-display font-bold text-lg text-white uppercase tracking-wide mb-3">
                   {a.titulo}
                 </h3>
