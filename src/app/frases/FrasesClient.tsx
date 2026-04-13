@@ -35,7 +35,7 @@ const frases = [
   "Aquí. Ahora. Esto es lo único que existe.",
   "No compito contra ellos. Compito contra mi límite de ayer.",
   "La confianza no se espera. Se construye acción a acción.",
-  "Respira. Ya estuviste en situaciones difíciles antes. Saliste.",
+  "Respira. Ya estuviste en situaciones difíciles antes. Y saliste.",
   "Mi posición requiere un tipo de mente. Tengo esa mente.",
   "El partido más importante es el que estoy jugando ahora.",
   "No me distraigo. Vuelvo al presente en cada jugada.",
