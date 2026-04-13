@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ManualesPosicion from "@/components/ManualesPosicion";
 
 export const metadata: Metadata = {
   title: "Productos",
@@ -14,13 +15,6 @@ const manualesGenerales = [
   { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener el gafete de capitán.", precio: "$9.99", disponible: false },
 ];
 
-const manualesPosicion = [
-  { titulo: "La Mente del Lateral Derecho", deporte: "Fútbol", desc: "Expansión ofensiva, identidad completa, proyección. 52 páginas de entrenamiento mental específico.", precio: "$19.99", disponible: true },
-  { titulo: "La Mente del Portero", deporte: "Fútbol", desc: "Concentración extrema, liderazgo desde atrás, recuperación mental tras goles.", precio: "$19.99", disponible: false },
-  { titulo: "La Mente del Delantero Centro", deporte: "Fútbol", desc: "Sequías de gol, presión del equipo, instinto anotador y mentalidad de definición.", precio: "$19.99", disponible: false },
-  { titulo: "La Mente del Mediocampista", deporte: "Fútbol", desc: "Creatividad bajo presión, liderazgo técnico y toma de decisiones en fracciones de segundo.", precio: "$19.99", disponible: false },
-  { titulo: "La Mente del Base", deporte: "Básquetbol", desc: "Liderazgo en cancha, decisión bajo presión y visión de juego en los momentos críticos.", precio: "$19.99", disponible: false },
-];
 
 function Badge({ text, color }: { text: string; color: string }) {
   return (
@@ -121,28 +115,7 @@ export default function ProductosPage() {
             titulo="Manuales por Posición y Deporte"
             desc="Entrenamiento mental específico para tu posición. Lo que un delantero necesita no es lo mismo que un portero."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {manualesPosicion.map((m) => (
-              <div key={m.titulo} className={`card-dark flex flex-col ${!m.disponible ? "opacity-70" : "border border-gold-500/30"}`}>
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge text={m.deporte} color="bg-dark-600 text-dark-200" />
-                  {m.disponible
-                    ? <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-                    : <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
-                  }
-                </div>
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">{m.titulo}</h3>
-                <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">{m.desc}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="font-display font-black text-gold-500 text-xl">{m.precio}</span>
-                  {m.disponible
-                    ? <a href="#" className="btn-primary text-xs px-5 py-2.5">Comprar</a>
-                    : <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
-                  }
-                </div>
-              </div>
-            ))}
-          </div>
+          <ManualesPosicion />
         </div>
       </section>
 
