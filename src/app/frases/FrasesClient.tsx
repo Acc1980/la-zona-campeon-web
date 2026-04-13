@@ -130,10 +130,11 @@ export default function FrasesClient() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const [particles, setParticles] = useState<{ x: number; y: number; size: number; opacity: number }[]>([]);
 
   useEffect(() => {
-    setIdx(getIndexOfDay());
+    setIdx(Math.floor(Math.random() * frases.length));
     setTimeLeft(getSecondsUntilMidnight());
 
     // Generar partículas solo en cliente
@@ -287,10 +288,20 @@ export default function FrasesClient() {
               </button>
             </div>
 
+            {/* Otra frase */}
+            <div className="text-center mb-10">
+              <button
+                onClick={() => setIdx(Math.floor(Math.random() * frases.length))}
+                className="text-dark-300 hover:text-gold-500 text-sm font-display font-semibold uppercase tracking-wider transition-colors"
+              >
+                → Ver otra frase
+              </button>
+            </div>
+
             {/* Contador */}
-            <div className="text-center">
+            <div className="text-center mb-10">
               <p className="text-dark-400 text-xs uppercase tracking-widest font-display mb-2">
-                Tu próxima frase estará disponible en
+                Nueva frase aleatoria disponible siempre
               </p>
               <p className="font-display font-black text-3xl text-gold-500 tracking-widest">
                 {formatTime(timeLeft)}
@@ -298,6 +309,30 @@ export default function FrasesClient() {
               <p className="text-dark-500 text-xs mt-3 italic">
                 Guarda esta frase contigo durante el día
               </p>
+            </div>
+
+            {/* Ver todas */}
+            <div className="text-center">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="text-dark-400 hover:text-gold-500 text-xs font-display uppercase tracking-widest transition-colors"
+              >
+                {showAll ? "▲ Ocultar todas las frases" : "▼ Ver las 100 frases activadoras"}
+              </button>
+              {showAll && (
+                <div className="mt-8 text-left space-y-3">
+                  {frases.map((f, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setIdx(i); setShowAll(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                      className="w-full text-left bg-dark-800 hover:bg-dark-700 border border-dark-600 hover:border-gold-500/40 rounded-xl px-5 py-4 transition-all group"
+                    >
+                      <span className="text-gold-500/40 font-display font-black text-xs mr-3 group-hover:text-gold-500">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="text-dark-200 text-sm group-hover:text-white">{f}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </>
         )}
