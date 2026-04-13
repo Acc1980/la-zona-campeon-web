@@ -77,6 +77,19 @@ export default function ProductosPage() {
                 <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5">Descargar</Link>
               </div>
             </div>
+            <div className="card-dark flex flex-col border border-gold-500/30">
+              <Badge text="Disponible ahora" color="bg-gold-500/20 text-gold-400" />
+              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">
+                Tu Frase Activadora del Día
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
+                100 frases para encender tu mente antes de competir. Una aleatoria cada vez que entras. Compártela en Instagram.
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
+                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5">Ver frases</Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

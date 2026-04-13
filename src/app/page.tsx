@@ -47,7 +47,7 @@ const productos = [
     tag: "GRATIS",
     tagColor: "bg-green-600",
     titulo: "Recursos Gratuitos",
-    desc: "La guía '5 Hábitos Mentales del Campeón'. Tu primer paso para entrenar la mente. PDF descargable al instante.",
+    desc: "La guía '5 Hábitos Mentales del Campeón' + Tu Frase Activadora del día. Dos herramientas gratuitas para empezar a entrenar tu mente hoy.",
     precio: "GRATIS",
     cta: "Descargar Gratis",
     href: "/gratis",
