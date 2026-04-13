@@ -101,6 +101,8 @@ const frases = [
   "No pienso en el marcador. Pienso en la siguiente jugada.",
   "La zona mental del campeón no es un lugar al que se llega. Es uno que se elige.",
   "Hoy elijo estar en La Zona Campeón.",
+  "Cada pensamiento positivo me acerca un poco más al jugador que quiero ser.",
+  "Este partido no cambiará mi vida, pero mi mente en este partido sí.",
 ];
 
 function getIndexOfDay(): number {
