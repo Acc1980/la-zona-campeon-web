@@ -58,7 +58,7 @@ export default function GratisPage() {
               {[
                 "PDF descargable al instante",
                 "Aplicable a cualquier deporte",
-                "Basado en psicología deportiva real",
+                "Basado en entrenamiento mental real",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-dark-300 text-sm">
                   <span className="text-gold-500 font-bold">✓</span>

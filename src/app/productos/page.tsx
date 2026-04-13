@@ -42,7 +42,7 @@ const packs = [
 const libros = [
   {
     titulo: "La Mente del Campeón — Libro Completo",
-    desc: "Los 10 capítulos + epílogo completos. Más de 100 páginas de psicología deportiva aplicada, traducida y adaptada al español.",
+    desc: "Los 10 capítulos + epílogo completos. Más de 100 páginas de entrenamiento mental aplicado, traducido y adaptado al español.",
     precio: "$37",
     disponible: false,
   },
@@ -72,7 +72,7 @@ export default function ProductosPage() {
           <div className="gold-line mx-auto mb-6" />
           <h1 className="heading-1 max-w-3xl mx-auto mb-4">Todos Nuestros Productos</h1>
           <p className="text-dark-300 text-lg max-w-xl mx-auto">
-            Herramientas de psicología deportiva por posición, deporte y problema mental. Todo en español.
+            Herramientas de entrenamiento mental por posición, deporte y problema mental. Todo en español.
           </p>
         </div>
       </section>

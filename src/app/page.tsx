@@ -99,7 +99,7 @@ export default function HomePage() {
             <span className="text-gold-500">tu mente cambia</span>
           </h1>
           <p className="text-dark-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Manuales y programas de psicología deportiva en español. Herramientas prácticas para deportistas, entrenadores y padres que quieren resultados reales.
+            Manuales y programas de entrenamiento mental en español. Herramientas prácticas para deportistas, entrenadores y padres que quieren resultados reales.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/gratis" className="btn-primary text-base">

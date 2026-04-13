@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     template: "%s | La Zona Campeón",
   },
   description:
-    "Manuales, guías y programas de entrenamiento mental para deportistas, entrenadores y padres. Desbloquea tu máximo potencial con psicología deportiva aplicada.",
+    "Manuales, guías y programas de entrenamiento mental para deportistas, entrenadores y padres. Desbloquea tu máximo potencial con entrenamiento mental aplicado.",
   keywords: [
     "entrenamiento mental deportivo",
-    "psicología deportiva",
+    "entrenamiento mental",
     "manuales deportivos",
     "mentalidad ganadora",
     "rendimiento deportivo",
-    "psicología para futbolistas",
+    "control mental para futbolistas",
     "entrenamiento mental futbol",
   ],
   alternates: {
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     siteName: "La Zona Campeón",
     title: "La Zona Campeón — Entrenamiento Mental para Deportistas",
     description:
-      "Manuales y programas de psicología deportiva. Herramientas prácticas para deportistas, entrenadores y padres.",
+      "Manuales y programas de entrenamiento mental. Herramientas prácticas para deportistas, entrenadores y padres.",
   },
   twitter: {
     card: "summary_large_image",
     title: "La Zona Campeón — Entrenamiento Mental para Deportistas",
-    description: "Manuales y programas de psicología deportiva aplicada.",
+    description: "Manuales y programas de entrenamiento mental aplicado.",
   },
   robots: { index: true, follow: true },
 };
