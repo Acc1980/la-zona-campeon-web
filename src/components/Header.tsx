@@ -34,6 +34,9 @@ export default function Header() {
             <Link href="/productos" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Productos
             </Link>
+            <Link href="/frases" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              Frase del Día
+            </Link>
             <Link href="/#para-quien" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Para quién
             </Link>
