@@ -1,0 +1,74 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-dark-800/95 backdrop-blur-md shadow-lg shadow-black/30" : "bg-transparent"
+      }`}
+    >
+      <div className="section-container">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-display font-black text-lg md:text-xl uppercase tracking-wider">
+              <span className="text-gold-500">La Zona</span>
+              <span className="text-white"> Campeón</span>
+            </span>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/productos" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              Productos
+            </Link>
+            <Link href="/#para-quien" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              Para quién
+            </Link>
+            <Link href="/gratis" className="btn-primary text-sm px-6 py-2.5">
+              Guía Gratis
+            </Link>
+          </nav>
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 text-white"
+            aria-label="Menú"
+          >
+            <div className="w-6 flex flex-col gap-1.5">
+              <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-0.5 bg-current transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </div>
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="md:hidden bg-dark-800 border-t border-dark-600 py-4 flex flex-col gap-4">
+            <Link href="/productos" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              Productos
+            </Link>
+            <Link href="/#para-quien" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              Para quién
+            </Link>
+            <div className="px-4">
+              <Link href="/gratis" onClick={() => setMenuOpen(false)} className="btn-primary text-sm w-full justify-center">
+                Guía Gratis
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
