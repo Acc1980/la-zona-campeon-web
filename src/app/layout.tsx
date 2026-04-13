@@ -48,6 +48,10 @@ export const metadata: Metadata = {
     title: "La Zona Campeón — Entrenamiento Mental para Deportistas",
     description: "Manuales y programas de entrenamiento mental aplicado.",
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   robots: { index: true, follow: true },
 };
 
