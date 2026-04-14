@@ -41,16 +41,30 @@ const avatares = [
   },
 ];
 
-const productos = [
+type Producto = {
+  nivel: string;
+  tag: string;
+  tagColor: string;
+  titulo: string;
+  desc: string;
+  items?: string[];
+  precio: string;
+  cta: string;
+  href: string;
+  highlight: boolean;
+};
+
+const productos: Producto[] = [
   {
     nivel: "Nivel 1",
     tag: "GRATIS",
     tagColor: "bg-green-600",
     titulo: "Recursos Gratuitos",
-    desc: "La guía '5 Hábitos Mentales del Campeón' + Tu Frase Activadora del día. Dos herramientas gratuitas para empezar a entrenar tu mente hoy.",
+    desc: "",
+    items: ["Guía — Los 5 Hábitos Mentales del Campeón", "Calendario — 21 Días de Implementación", "Frases Activadoras del Día"],
     precio: "GRATIS",
-    cta: "Descargar Gratis",
-    href: "/gratis",
+    cta: "Ver recursos",
+    href: "/productos#nivel-1",
     highlight: false,
   },
   {
@@ -219,10 +233,21 @@ export default function HomePage() {
                   </span>
                   <p className="text-dark-400 text-xs uppercase tracking-wider mt-2">{p.nivel}</p>
                 </div>
-                <h3 className="font-display font-bold text-white text-base uppercase tracking-wide mb-3 flex-1">
+                <h3 className="font-display font-bold text-white text-base uppercase tracking-wide mb-3">
                   {p.titulo}
                 </h3>
-                <p className="text-dark-300 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
+                {p.items ? (
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {p.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-dark-300 text-sm">
+                        <span className="text-gold-500 font-bold shrink-0">{i + 1}.</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-dark-300 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
+                )}
                 <div className="mt-auto">
                   <p className="font-display font-black text-gold-500 text-xl mb-4">{p.precio}</p>
                   <Link href={p.href} className={p.highlight ? "btn-primary w-full justify-center text-sm" : "btn-secondary w-full justify-center text-sm"}>

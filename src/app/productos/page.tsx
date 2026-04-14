@@ -62,64 +62,58 @@ export default function ProductosPage() {
             titulo="Recursos Gratuitos"
             desc="El mejor punto de partida. Sin costo, sin excusas. Empieza a entrenar tu mente hoy."
           />
-          <div className="flex flex-col gap-4 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* 1. Guía */}
-            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">01</span>
-                  <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-                </div>
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
-                  Guía — Los 5 Hábitos Mentales del Campeón
-                </h3>
-                <p className="text-dark-300 text-sm leading-relaxed">
-                  Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
-                </p>
+            <div className="card-dark flex flex-col border border-gold-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">01</span>
+                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
               </div>
-              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
-                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
-                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5 whitespace-nowrap">Descargar</Link>
+              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
+                Guía — Los 5 Hábitos Mentales del Campeón
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
+                Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
+                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5">Descargar</Link>
               </div>
             </div>
 
             {/* 2. Calendario 21 días */}
-            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">02</span>
-                  <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
-                </div>
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
-                  Calendario — 21 Días de Implementación
-                </h3>
-                <p className="text-dark-300 text-sm leading-relaxed">
-                  Un reto mental de 3 semanas. Una acción diaria concreta para construir el hábito de entrenar tu mente.
-                </p>
+            <div className="card-dark flex flex-col border border-gold-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">02</span>
+                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
               </div>
-              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
-                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
-                <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5 whitespace-nowrap opacity-60 pointer-events-none">Próximo</Link>
+              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
+                Calendario — 21 Días de Implementación
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
+                Un reto mental de 3 semanas. Una acción diaria concreta para construir el hábito de entrenar tu mente.
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
+                <a href="/calendario-21-dias.html" target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-5 py-2.5">Ver calendario</a>
               </div>
             </div>
 
             {/* 3. Frases activadoras */}
-            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">03</span>
-                  <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-                </div>
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
-                  Frases Activadoras del Día
-                </h3>
-                <p className="text-dark-300 text-sm leading-relaxed">
-                  Una frase nueva cada día para encender tu mente antes de competir. Compártela en redes.
-                </p>
+            <div className="card-dark flex flex-col border border-gold-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">03</span>
+                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
               </div>
-              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
-                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
-                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5 whitespace-nowrap">Ver frases</Link>
+              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
+                Frases Activadoras del Día
+              </h3>
+              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
+                Una frase nueva cada día para encender tu mente antes de competir. Compártela en redes.
+              </p>
+              <div className="flex items-center justify-between mt-auto">
+                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
+                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5">Ver frases</Link>
               </div>
             </div>
           </div>
