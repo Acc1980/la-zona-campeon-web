@@ -26,24 +26,40 @@ export default function GraciasPage() {
           Tu guía está<br /><span className="text-gold-500">lista para descargar</span>
         </h1>
         <p className="text-dark-300 text-base mb-10 leading-relaxed">
-          Haz clic en el botón para abrir los 5 Hábitos Mentales del Campeón. Léela antes de tu próximo entrenamiento.
+          Descarga tu guía y el calendario de seguimiento. Tienes todo lo que necesitas para empezar hoy.
         </p>
 
-        <a
-          href="/guia-5-habitos.html"
-          target="_blank"
-          className="btn-primary text-base px-10 py-4 font-display font-black uppercase tracking-wider inline-flex items-center gap-3 mb-6"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          Abrir Guía Gratis
-        </a>
+        <div className="flex flex-col gap-4 w-full mb-10">
+          <a
+            href="/guia-5-habitos.html"
+            download="Guia-5-Habitos-Mentales-del-Campeon.html"
+            className="btn-primary text-base px-8 py-4 font-display font-black uppercase tracking-wider inline-flex items-center justify-center gap-3"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Descargar Guía 5 Hábitos
+          </a>
 
-        <div className="mt-10 pt-8 border-t border-dark-700">
-          <p className="text-dark-400 text-sm mb-4">Mientras tanto, activa tu mente:</p>
+          <a
+            href="/calendario-21-dias.html"
+            download="Calendario-21-Dias-La-Zona-Campeon.html"
+            className="btn-secondary text-base px-8 py-4 font-display font-black uppercase tracking-wider inline-flex items-center justify-center gap-3"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Descargar Calendario 21 Días
+          </a>
+        </div>
+
+        <div className="pt-8 border-t border-dark-700">
+          <p className="text-dark-400 text-sm mb-4">Activa tu mente antes del partido:</p>
           <Link
             href="/frases"
             className="text-gold-500 font-display font-bold text-sm uppercase tracking-wider hover:text-gold-400 transition-colors"
