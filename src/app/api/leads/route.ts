@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "@/lib/mongodb";
-import Lead from "@/models/Lead";
+
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbxMv2y8qNMPZDxWs2rbhZCYLDWUh6B3UpW13kHpqU9w1HPx6SL_Mggiy-aKLHjt9W7m/exec";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,21 +19,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email inválido" }, { status: 400 });
     }
 
-    await connectDB();
-
-    const existing = await Lead.findOne({ email: email.toLowerCase().trim() });
-    if (existing) {
-      return NextResponse.json(
-        { message: "Ya estás registrado", alreadyExists: true },
-        { status: 200 }
-      );
-    }
-
-    await Lead.create({
-      nombre: nombre.trim(),
-      email: email.toLowerCase().trim(),
-      deporte: deporte?.trim() || "",
-      fuente: fuente || "lead-magnet",
+    await fetch(SHEETS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: nombre.trim(),
+        email: email.toLowerCase().trim(),
+        deporte: deporte?.trim() || "",
+        fuente: fuente || "lead-magnet",
+      }),
     });
 
     return NextResponse.json({ success: true }, { status: 201 });

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los 5 Hábitos Mentales del Campeón</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #16171e;
+      color: #e8e8f0;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #16171e;
+    }
+
+    /* PORTADA */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #16171e 0%, #2c2f3a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      border-bottom: 3px solid #e2bc8e;
+    }
+
+    .cover-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e2bc8e;
+      margin-bottom: 60px;
+      opacity: 0.8;
+    }
+
+    .cover-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e2bc8e;
+      background: rgba(226, 188, 142, 0.1);
+      border: 1px solid rgba(226, 188, 142, 0.3);
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
+    }
+
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 span { color: #e2bc8e; }
+
+    .cover-sub {
+      font-size: 16px;
+      color: #9090b0;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: #e2bc8e;
+      margin: 0 auto 40px;
+    }
+
+    .cover-promise {
+      background: rgba(226, 188, 142, 0.08);
+      border: 1px solid rgba(226, 188, 142, 0.2);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 480px;
+      font-size: 14px;
+      color: #b0b0d0;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .cover-promise strong { color: #e2bc8e; font-style: normal; }
+
+    /* SECCIONES */
+    .section {
+      padding: 70px 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .section-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e2bc8e;
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #9090b0;
+      margin-bottom: 16px;
+    }
+
+    /* HÁBITO */
+    .habit {
+      padding: 60px 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .habit-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .habit-number {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      line-height: 1;
+      color: rgba(226, 188, 142, 0.15);
+      min-width: 80px;
+    }
+
+    .habit-title-block {}
+
+    .habit-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e2bc8e;
+      margin-bottom: 8px;
+    }
+
+    .habit-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .habit-body p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #9090b0;
+      margin-bottom: 16px;
+    }
+
+    .habit-box {
+      background: rgba(226, 188, 142, 0.07);
+      border-left: 3px solid #e2bc8e;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .habit-box-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e2bc8e;
+      margin-bottom: 12px;
+    }
+
+    .habit-box p {
+      font-size: 14px;
+      color: #b0b0d0;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .habit-steps {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .habit-steps li {
+      display: flex;
+      gap: 14px;
+      font-size: 14px;
+      color: #9090b0;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .habit-steps li span {
+      color: #e2bc8e;
+      font-weight: 700;
+      min-width: 20px;
+    }
+
+    .habit-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #ffffff;
+      font-style: italic;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(226,188,142,0.15);
+      border-bottom: 1px solid rgba(226,188,142,0.15);
+      margin: 32px 0;
+    }
+
+    .habit-quote::before { content: '"'; color: #e2bc8e; font-size: 40px; line-height: 0; vertical-align: -14px; margin-right: 6px; }
+    .habit-quote::after { content: '"'; color: #e2bc8e; font-size: 40px; line-height: 0; vertical-align: -14px; margin-left: 6px; }
+
+    /* CIERRE */
+    .close {
+      padding: 70px 50px;
+      text-align: center;
+      background: linear-gradient(160deg, #2c2f3a 0%, #16171e 100%);
+    }
+
+    .close h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .close p {
+      font-size: 15px;
+      color: #9090b0;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #e2bc8e;
+      color: #16171e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(226,188,142,0.4);
+      text-align: center;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <div class="cover-logo">La Zona Campeón</div>
+    <div class="cover-tag">Guía Gratuita</div>
+    <h1>Los 5 Hábitos Mentales<br><span>del Campeón</span></h1>
+    <div class="gold-line"></div>
+    <p class="cover-sub">Lo que separa a los deportistas que rinden cuando más importa de los que se bloquean bajo presión.</p>
+    <div class="cover-promise">
+      <strong>Lo que encontrarás aquí:</strong><br>
+      5 hábitos mentales concretos, con ejercicios prácticos que puedes aplicar desde tu próximo entrenamiento. Sin teoría innecesaria. Sin promesas vacías.
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="section-tag">Antes de empezar</div>
+    <h2>La mente también se entrena</h2>
+    <p>La mayoría de los deportistas dedican horas a entrenar el cuerpo — velocidad, fuerza, técnica — pero dejan la mente al azar. Confían en que "el día del partido se va a dar", que los nervios "se irán solos" o que la confianza llega después de ganar.</p>
+    <p>Los campeones piensan diferente. Saben que la mente no mejora sola: se entrena, se disciplina y se construye hábito a hábito.</p>
+    <p>Esta guía contiene los 5 hábitos mentales más importantes que puedes desarrollar como deportista. No son conceptos abstractos — son prácticas concretas con ejercicios que puedes empezar hoy.</p>
+    <p><strong style="color:#e2bc8e;">Tu juego cambia cuando tu mente cambia.</strong></p>
+  </div>
+
+  <!-- HÁBITO 1 -->
+  <div class="habit">
+    <div class="habit-header">
+      <div class="habit-number">01</div>
+      <div class="habit-title-block">
+        <div class="habit-label">Hábito 1</div>
+        <div class="habit-title">Construye una rutina mental pre-competencia</div>
+      </div>
+    </div>
+    <div class="habit-body">
+      <p>Los nervios antes de competir no son el problema. El problema es no saber qué hacer con ellos. Una rutina mental pre-competencia te da el control: en lugar de llegar al partido a ver qué pasa, llegas con la mente ya encendida y enfocada.</p>
+      <p>Los deportistas que rinden de forma consistente no confían en el estado de ánimo del día. Tienen una secuencia fija que los pone en modo competencia, sin importar cómo se sientan.</p>
+      <div class="habit-quote">No esperes sentirte listo. Prepárate para estarlo.</div>
+      <div class="habit-box">
+        <div class="habit-box-title">Ejercicio: Tu rutina de 10 minutos</div>
+        <p>Diseña una secuencia fija para antes de cada partido o entrenamiento importante. Puede incluir:</p>
+      </div>
+      <ul class="habit-steps">
+        <li><span>→</span> <strong style="color:#e8e8f0;">3 min:</strong> Respiración controlada (inhala 4 seg, sostén 2, exhala 6). Baja la activación y centra tu atención.</li>
+        <li><span>→</span> <strong style="color:#e8e8f0;">3 min:</strong> Visualización. Cierra los ojos e imagina cómo quieres jugar hoy. Una jugada específica. Una situación donde rindes bien.</li>
+        <li><span>→</span> <strong style="color:#e8e8f0;">2 min:</strong> Tus palabras clave. 2 o 3 frases cortas que te activan: "sigo el plan", "uno a la vez", "respiro y ejecuto".</li>
+        <li><span>→</span> <strong style="color:#e8e8f0;">2 min:</strong> Tu intención. Define UNA cosa en la que quieres enfocarte durante el partido de hoy.</li>
+      </ul>
+      <p>Repite esta rutina exactamente igual antes de cada partido. Con el tiempo, tu mente la reconocerá como la señal de que es hora de competir.</p>
+    </div>
+  </div>
+
+  <!-- HÁBITO 2 -->
+  <div class="habit">
+    <div class="habit-header">
+      <div class="habit-number">02</div>
+      <div class="habit-title-block">
+        <div class="habit-label">Hábito 2</div>
+        <div class="habit-title">Entrena tu autodiálogo</div>
+      </div>
+    </div>
+    <div class="habit-body">
+      <p>Lo que te dices a ti mismo durante el partido es tan importante como lo que haces físicamente. El autodiálogo negativo — "soy malísimo", "siempre me pasa lo mismo", "no puedo con esto" — no solo te hace sentir mal. Literalmente deteriora tu rendimiento.</p>
+      <p>Los deportistas de alto nivel no tienen una voz interior perfecta, pero sí han entrenado qué hacer cuando esa voz se pone negativa. No la ignoran — la redirigen.</p>
+      <div class="habit-quote">No puedes controlar lo que piensas, pero sí lo que haces con ese pensamiento.</div>
+      <div class="habit-box">
+        <div class="habit-box-title">Ejercicio: El interruptor mental</div>
+        <p>Elige una palabra o gesto físico para cortar el pensamiento negativo. Puede ser decirte "para", darte un golpe suave en el muslo o tomar una respiración profunda. Luego reemplaza el pensamiento con una frase de proceso: <em style="color:#e2bc8e;">"siguiente jugada", "enfócate en el balón", "lo que puedo controlar ahora".</em></p>
+      </div>
+      <ul class="habit-steps">
+        <li><span>1.</span> Esta semana, anota después de cada entrenamiento 3 cosas que te dijiste cuando algo salió mal.</li>
+        <li><span>2.</span> Escribe la versión útil de esas frases. No el extremo opuesto — solo una versión más neutra y orientada a la acción.</li>
+        <li><span>3.</span> Practica el interruptor mental en entrenamientos antes de usarlo en partidos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HÁBITO 3 -->
+  <div class="habit">
+    <div class="habit-header">
+      <div class="habit-number">03</div>
+      <div class="habit-title-block">
+        <div class="habit-label">Hábito 3</div>
+        <div class="habit-title">Aprende a procesar los errores rápido</div>
+      </div>
+    </div>
+    <div class="habit-body">
+      <p>El error en sí casi nunca destruye el rendimiento. Lo que lo destruye es quedarse mentalmente pegado en él mientras el partido sigue. Un fallo que ocupa 3 segundos de juego puede ocupar 10 minutos de tu cabeza — y en esos 10 minutos, el partido se pierde.</p>
+      <p>Procesar un error rápido no significa ignorarlo. Significa darle el espacio exacto que merece: reconócelo, aprende lo que puedas en el momento y vuelve al presente.</p>
+      <div class="habit-quote">Un error es información, no tu identidad.</div>
+      <div class="habit-box">
+        <div class="habit-box-title">Ejercicio: La regla de los 5 segundos</div>
+        <p>Después de cometer un error durante el juego, date exactamente 5 segundos para reaccionar emocionalmente. Luego, una respiración profunda y una sola pregunta: <em style="color:#e2bc8e;">"¿Qué hago ahora?"</em> Solo eso. Nada de análisis en medio del partido.</p>
+      </div>
+      <ul class="habit-steps">
+        <li><span>→</span> Después del partido o entrenamiento sí puedes analizar. En el juego, solo: "¿qué hago ahora?"</li>
+        <li><span>→</span> Practica esto conscientemente en entrenamientos. Cada vez que falles, aplica la regla de los 5 segundos.</li>
+        <li><span>→</span> Con el tiempo se vuelve automático y tu tiempo de recuperación mental se reduce semana a semana.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HÁBITO 4 -->
+  <div class="habit">
+    <div class="habit-header">
+      <div class="habit-number">04</div>
+      <div class="habit-title-block">
+        <div class="habit-label">Hábito 4</div>
+        <div class="habit-title">Visualiza tu mejor versión</div>
+      </div>
+    </div>
+    <div class="habit-body">
+      <p>La visualización no es fantasear con ganar trofeos. Es ensayar mentalmente situaciones específicas de tu deporte con el nivel de detalle suficiente para que tu cerebro las registre como experiencia real. Tu mente no distingue perfectamente entre una acción visualizada vívidamente y una vivida — y eso es una ventaja enorme.</p>
+      <p>Los deportistas que visualizan con regularidad llegan a situaciones de alta presión con una sensación de "ya estuve aquí antes". Eso reduce la ansiedad y acelera la toma de decisiones.</p>
+      <div class="habit-quote">Si ya lo viviste en tu mente, no es la primera vez que lo enfrentas.</div>
+      <div class="habit-box">
+        <div class="habit-box-title">Ejercicio: Visualización de 5 minutos</div>
+        <p>Antes de dormir o antes de un entrenamiento, cierra los ojos y reproduce en tu mente una situación específica de tu deporte. Incluye: <em style="color:#e2bc8e;">lo que ves, lo que escuchas, cómo se siente tu cuerpo, cómo ejecutas bien.</em> No el resultado — la ejecución.</p>
+      </div>
+      <ul class="habit-steps">
+        <li><span>1.</span> Elige UNA situación concreta: un penalti, una jugada defensiva, un momento de presión específico.</li>
+        <li><span>2.</span> Visualízala en primera persona — como si estuvieras dentro, no viéndote desde afuera.</li>
+        <li><span>3.</span> Repite 3 a 5 veces en cada sesión. La constancia importa más que la duración.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HÁBITO 5 -->
+  <div class="habit">
+    <div class="habit-header">
+      <div class="habit-number">05</div>
+      <div class="habit-title-block">
+        <div class="habit-label">Hábito 5</div>
+        <div class="habit-title">Lleva un diario mental</div>
+      </div>
+    </div>
+    <div class="habit-body">
+      <p>La mayoría de los deportistas entrenan el cuerpo y olvidan registrar lo que pasa en la mente. Sin registro no hay mejora sistemática — solo esperanza de que las cosas cambien solas. El diario mental es tu herramienta de aprendizaje más poderosa porque te muestra patrones que de otra forma son invisibles.</p>
+      <p>No tiene que ser largo. Cinco minutos después de cada entrenamiento o partido son suficientes para construir una base de autoconocimiento que pocos deportistas tienen.</p>
+      <div class="habit-quote">No mejoras lo que no mides. No mides lo que no registras.</div>
+      <div class="habit-box">
+        <div class="habit-box-title">Ejercicio: Las 3 preguntas del diario mental</div>
+        <p>Después de cada entrenamiento o partido, responde estas tres preguntas en un cuaderno o en tu celular:</p>
+      </div>
+      <ul class="habit-steps">
+        <li><span>1.</span> <strong style="color:#e8e8f0;">¿Qué salió bien mentalmente hoy?</strong> (concentración, reacción ante errores, manejo de presión)</li>
+        <li><span>2.</span> <strong style="color:#e8e8f0;">¿En qué momento perdí el foco o me bloqué?</strong> ¿Qué lo desencadenó?</li>
+        <li><span>3.</span> <strong style="color:#e8e8f0;">¿Qué voy a hacer diferente la próxima vez?</strong> Una sola acción concreta.</li>
+      </ul>
+      <p>Revisa tu diario cada 2 semanas. Vas a encontrar patrones que no sabías que tenías — y eso es exactamente lo que necesitas para mejorar.</p>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="close">
+    <div class="gold-line"></div>
+    <h2>El siguiente paso</h2>
+    <p>Estos 5 hábitos son el punto de partida. Si los practicas con constancia durante 21 días, vas a notar una diferencia real en cómo compites bajo presión.</p>
+    <p>Cuando estés listo para ir más profundo — entrenamiento mental específico para tu posición y tu deporte — en La Zona Campeón tenemos los manuales para llevarte al siguiente nivel.</p>
+    <a class="cta-btn" href="https://lazonacampeon.com/productos">Ver Manuales →</a>
+    <br><br>
+    <p style="font-size:13px; color:#606080;">lazonacampeon.com · info@lazonacampeon.com</p>
+  </div>
+
+  <div class="footer-brand">© La Zona Campeón · Tu juego cambia cuando tu mente cambia.</div>
+
+</div>
+</body>
+</html>
