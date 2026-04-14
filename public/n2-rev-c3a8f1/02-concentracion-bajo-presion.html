@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concentración Bajo Presión — La Zona Campeón</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f0e8;
+      color: #1a1a2e;
+    }
+
+    .page { max-width: 800px; margin: 0 auto; background: #f5f0e8; }
+
+    /* BOTÓN IMPRIMIR */
+    .print-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #C8AA32;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(200,170,50,0.35);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .print-btn:hover { background: #b89a28; }
+
+    /* PORTADA */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a1a2e 0%, #2c2f3a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      border-bottom: 4px solid #C8AA32;
+    }
+
+    .cover-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 60px;
+      opacity: 0.9;
+    }
+
+    .cover-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      background: rgba(200,170,50,0.12);
+      border: 1px solid rgba(200,170,50,0.35);
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
+    }
+
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 span { color: #C8AA32; }
+
+    .cover-sub {
+      font-size: 16px;
+      color: #9090b0;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+
+    .gold-line { width: 60px; height: 3px; background: #C8AA32; margin: 0 auto 40px; }
+
+    .cover-promise {
+      background: rgba(200,170,50,0.1);
+      border: 1px solid rgba(200,170,50,0.25);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 480px;
+      font-size: 14px;
+      color: #b0b0cc;
+      line-height: 1.8;
+      font-style: italic;
+    }
+    .cover-promise strong { color: #C8AA32; font-style: normal; }
+
+    /* ÍNDICE */
+    .index { padding: 60px 50px; border-bottom: 2px solid #e8e0d0; background: #fff; }
+    .index-tag { font-family: 'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32; margin-bottom:24px; }
+    .index h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:26px; text-transform:uppercase; color:#1a1a2e; margin-bottom:32px; }
+    .index-list { list-style:none; }
+    .index-list li { display:flex; align-items:baseline; gap:16px; padding:14px 0; border-bottom:1px solid #ece8e0; }
+    .index-list li:last-child { border-bottom:none; }
+    .index-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; letter-spacing:2px; color:#C8AA32; min-width:30px; }
+    .index-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#1a1a2e; text-transform:uppercase; letter-spacing:1px; }
+    .index-desc { font-size:12px; color:#8888a0; margin-top:3px; }
+
+    /* SECCIONES */
+    .section { padding: 60px 50px; border-bottom: 2px solid #e8e0d0; background: #faf7f2; }
+    .section-tag { font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32; margin-bottom:14px; }
+    .section h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:30px; text-transform:uppercase; color:#1a1a2e; line-height:1.2; margin-bottom:20px; }
+    .section p { font-size:15px; line-height:1.9; color:#3a3a5a; margin-bottom:16px; }
+    .section p strong { color:#1a1a2e; }
+    .section em { color:#8a6a20; }
+
+    /* CAPÍTULOS */
+    .chapter { padding: 60px 50px; border-bottom: 2px solid #e8e0d0; background: #fff; }
+    .chapter:nth-child(even) { background: #faf7f2; }
+
+    .chapter-header { display:flex; align-items:flex-start; gap:24px; margin-bottom:36px; }
+    .chapter-number { font-family:'Montserrat',sans-serif; font-weight:900; font-size:80px; line-height:1; color:rgba(200,170,50,0.18); min-width:90px; }
+    .chapter-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32; margin-bottom:8px; }
+    .chapter-title { font-family:'Montserrat',sans-serif; font-weight:900; font-size:24px; text-transform:uppercase; color:#1a1a2e; line-height:1.2; }
+
+    .chapter-body p { font-size:15px; line-height:1.9; color:#3a3a5a; margin-bottom:16px; }
+    .chapter-body p strong { color:#1a1a2e; }
+    .chapter-body em { color:#8a6a20; }
+
+    .chapter-box { background:rgba(200,170,50,0.08); border-left:4px solid #C8AA32; border-radius:0 8px 8px 0; padding:20px 24px; margin:28px 0; }
+    .chapter-box-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#C8AA32; margin-bottom:12px; }
+    .chapter-box p { font-size:14px; color:#3a3a5a; line-height:1.8; margin:0 0 8px 0; }
+    .chapter-box p:last-child { margin-bottom:0; }
+    .chapter-box strong { color:#1a1a2e; }
+
+    .chapter-steps { list-style:none; margin:20px 0; }
+    .chapter-steps li { display:flex; gap:14px; font-size:14px; color:#3a3a5a; line-height:1.7; margin-bottom:14px; }
+    .chapter-steps li span { color:#C8AA32; font-weight:700; min-width:24px; }
+
+    .chapter-quote {
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:17px; color:#1a1a2e;
+      font-style:italic; text-align:center; padding:28px 20px;
+      border-top:1px solid rgba(200,170,50,0.3); border-bottom:1px solid rgba(200,170,50,0.3);
+      margin:32px 0; background:rgba(200,170,50,0.05); border-radius:4px;
+    }
+    .chapter-quote::before { content:'"'; color:#C8AA32; font-size:40px; line-height:0; vertical-align:-14px; margin-right:6px; }
+    .chapter-quote::after  { content:'"'; color:#C8AA32; font-size:40px; line-height:0; vertical-align:-14px; margin-left:6px; }
+
+    /* REFLEXIÓN */
+    .reflection { background:#1a1a2e; border-radius:10px; padding:24px 28px; margin-top:36px; }
+    .reflection-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32; margin-bottom:16px; }
+    .reflection ul { list-style:none; }
+    .reflection ul li { font-size:14px; color:#c0c0d8; line-height:1.7; margin-bottom:10px; padding-left:20px; position:relative; }
+    .reflection ul li::before { content:'→'; position:absolute; left:0; color:#C8AA32; font-weight:700; }
+    .reflection ul li:last-child { margin-bottom:0; }
+
+    /* FIGURA EMBUDO DE ATENCIÓN */
+    .funnel { display:flex; flex-direction:column; align-items:center; gap:0; margin:32px 0; }
+    .funnel-level {
+      display:flex; align-items:center; justify-content:center;
+      text-align:center;
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;
+      text-transform:uppercase; letter-spacing:1px;
+      border-radius:6px; padding:14px 20px;
+    }
+    .funnel-level.wide  { width:100%; background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.25); color:#922b21; }
+    .funnel-level.mid   { width:75%; background:rgba(200,170,50,0.12); border:1px solid rgba(200,170,50,0.3); color:#7a6010; }
+    .funnel-level.narrow{ width:50%; background:rgba(40,140,60,0.12); border:1px solid rgba(40,140,60,0.3); color:#1a6a30; }
+    .funnel-label { font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#8888a0; margin:6px 0; }
+
+    /* SEMÁFORO DISTRACTORES */
+    .distractor-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0; }
+    .distractor-card { background:#fff; border:1px solid #ddd8cc; border-radius:10px; padding:20px 18px; }
+    .distractor-card-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+    .distractor-card.internal .distractor-card-title { color:#C0392B; }
+    .distractor-card.external .distractor-card-title { color:#2980b9; }
+    .distractor-list { list-style:none; }
+    .distractor-list li { font-size:13px; color:#5050a0; line-height:1.6; margin-bottom:6px; padding-left:14px; position:relative; }
+    .distractor-list li::before { content:'–'; position:absolute; left:0; color:#C8AA32; }
+
+    /* ZONA ÓPTIMA */
+    .zone-diagram { display:flex; gap:0; margin:28px 0; border-radius:10px; overflow:hidden; }
+    .zone-block { flex:1; padding:24px 16px; text-align:center; }
+    .zone-block.low  { background:rgba(41,128,185,0.12); border:1px solid rgba(41,128,185,0.2); }
+    .zone-block.optimal { background:rgba(200,170,50,0.15); border:1px solid rgba(200,170,50,0.35); }
+    .zone-block.high { background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.2); }
+    .zone-label { font-family:'Montserrat',sans-serif; font-weight:900; font-size:12px; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+    .zone-block.low .zone-label  { color:#2980b9; }
+    .zone-block.optimal .zone-label { color:#8a6010; }
+    .zone-block.high .zone-label { color:#C0392B; }
+    .zone-desc { font-size:12px; color:#6060a0; line-height:1.5; }
+
+    /* TÉCNICAS VISUALES */
+    .technique-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0; }
+    .technique-card { background:#fff; border:1px solid #ddd8cc; border-radius:10px; padding:20px 18px; }
+    .technique-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:rgba(200,170,50,0.4); margin-bottom:8px; }
+    .technique-name { font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; text-transform:uppercase; color:#1a1a2e; margin-bottom:8px; letter-spacing:1px; }
+    .technique-desc { font-size:13px; color:#5050a0; line-height:1.6; }
+
+    /* HISTORIA */
+    .story { background:#1a1a2e; border-radius:12px; padding:36px 40px; margin:40px 0 0; }
+    .story-tag { font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32; margin-bottom:16px; }
+    .story h3 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; text-transform:uppercase; color:#ffffff; margin-bottom:20px; line-height:1.2; }
+    .story p { font-size:14px; color:#b0b0cc; line-height:1.9; margin-bottom:14px; }
+    .story p strong { color:#C8AA32; }
+    .story p:last-child { margin-bottom:0; }
+    .story-quote { font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px; color:#ffffff; font-style:italic; border-left:3px solid #C8AA32; padding:12px 20px; margin:20px 0; }
+
+    /* CIERRE */
+    .close { padding:70px 50px; text-align:center; background:linear-gradient(160deg,#2c2f3a 0%,#1a1a2e 100%); }
+    .close h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:30px; text-transform:uppercase; color:#ffffff; margin-bottom:16px; }
+    .close p { font-size:15px; color:#9090b0; line-height:1.8; max-width:500px; margin:0 auto 20px; }
+    .close p strong { color:#C8AA32; }
+    .cta-btn { display:inline-block; background:#C8AA32; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:900; font-size:13px; letter-spacing:3px; text-transform:uppercase; padding:16px 40px; border-radius:8px; text-decoration:none; }
+    .footer-brand { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(200,170,50,0.5); text-align:center; padding:30px; background:#1a1a2e; }
+
+    /* PRINT */
+    @media print {
+      .print-btn { display:none !important; }
+      .cover { min-height:auto; padding:40px; page-break-after:always; }
+      .chapter, .section, .index { page-break-inside:avoid; }
+      body { background:#fff; }
+      .story, .reflection { background:#1a1a2e !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Imprimir
+</button>
+
+<div class="page">
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <div class="cover-logo">La Zona Campeón</div>
+    <div class="cover-tag">Manual de Entrenamiento Mental — Nivel 2</div>
+    <h1>Concentración<br><span>Bajo Presión</span></h1>
+    <div class="gold-line"></div>
+    <p class="cover-sub">Técnicas para mantener el foco cuando el partido está en juego, el ambiente se pone difícil y tu mente quiere irse a otro lado.</p>
+    <div class="cover-promise">
+      <strong>Lo que encontrarás aquí:</strong><br>
+      Qué es la <strong>concentración real</strong> y por qué se pierde bajo presión, las técnicas que usan los deportistas de élite para recuperarla en segundos, y cómo construir un foco que no depende del ambiente.
+    </div>
+  </div>
+
+  <!-- ÍNDICE -->
+  <div class="index">
+    <div class="index-tag">Contenido</div>
+    <h2>Índice</h2>
+    <ul class="index-list">
+      <li><span class="index-num">01</span><div><div class="index-title">Qué es concentrarse de verdad</div><div class="index-desc">Por qué concentrarse no es lo mismo que esforzarse por concentrarse</div></div></li>
+      <li><span class="index-num">02</span><div><div class="index-title">Los ladrones de concentración</div><div class="index-desc">Qué te roba el foco — y por qué los internos son más peligrosos que los externos</div></div></li>
+      <li><span class="index-num">03</span><div><div class="index-title">La zona de activación óptima</div><div class="index-desc">Por qué demasiada presión destruye el foco igual que demasiada calma</div></div></li>
+      <li><span class="index-num">04</span><div><div class="index-title">Técnicas de foco en tiempo real</div><div class="index-desc">Herramientas concretas para recuperar la concentración durante la competencia</div></div></li>
+      <li><span class="index-num">05</span><div><div class="index-title">La rutina de concentración pre-competencia</div><div class="index-desc">Cómo llegar al partido con el foco ya encendido, no esperando que llegue solo</div></div></li>
+      <li><span class="index-num">06</span><div><div class="index-title">Construir concentración duradera</div><div class="index-desc">Entrenamiento para que el foco sea un hábito, no un golpe de suerte</div></div></li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="section-tag">Antes de empezar</div>
+    <h2>El foco no llega solo</h2>
+    <p>La mayoría de los deportistas cree que la <strong>concentración</strong> es algo que aparece cuando el partido es importante. Que si de verdad te importa, te vas a concentrar. Que si llevas mucho tiempo entrenando algo, lo harás bien automáticamente bajo presión.</p>
+    <p>No funciona así. La concentración bajo presión es una <strong>habilidad entrenada</strong>, no un estado que aparece por sí solo. Los deportistas que rinden cuando más importa no se concentran más que los demás — han aprendido cómo redirigir su atención de forma consciente cuando algo intenta robarla.</p>
+    <p>El ambiente, el marcador, el rival, las gradas, los errores propios, las expectativas del entrenador — todo compite por tu atención durante la competencia. Tu trabajo no es eliminar esas distracciones. Es aprender a <strong>volver al foco</strong> cada vez que tu mente se va.</p>
+    <p><strong>Un consejo antes de empezar:</strong> la concentración se construye antes del partido, no durante. Visita <strong>lazonacampeon.com/frases</strong> antes de cada competencia — una frase activadora encenderá tu mente y te pondrá en modo foco antes de que empiece el primer minuto.</p>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">01</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 1</div>
+        <div class="chapter-title">Qué es concentrarse de verdad</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La <strong>concentración</strong> no es pensar mucho. No es esforzarse más. No es gritar "¡enfócate!" en tu cabeza. De hecho, cuanto más te ordenas concentrarte, más difícil se vuelve.</p>
+      <p>Concentrarse es <strong>dirigir la atención al estímulo correcto, en el momento correcto</strong>. No es un estado permanente — es un acto repetido. Te concentras, algo te distrae, vuelves a concentrarte. Una y otra vez, durante todo el partido.</p>
+
+      <div class="funnel">
+        <div class="funnel-label">Lo que ocupa tu mente normalmente</div>
+        <div class="funnel-level wide">Todo lo que pasa alrededor — gradas, marcador, rival, errores pasados</div>
+        <div class="funnel-label">↓ La concentración filtra</div>
+        <div class="funnel-level mid">Solo lo que importa para esta jugada</div>
+        <div class="funnel-label">↓ El foco real</div>
+        <div class="funnel-level narrow">Una sola cosa — el balón, el movimiento, la decisión</div>
+      </div>
+
+      <p>Los deportistas que parecen "en otro mundo" durante la competencia no han bloqueado todo — han <strong>entrenado su filtro</strong>. Saben qué merece su atención y qué no. Y cuando algo los distrae, saben volver.</p>
+
+      <div class="chapter-quote">Concentrarse no es no distraerse nunca. Es saber volver más rápido cada vez.</div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Los dos tipos de concentración</div>
+        <p><strong>Concentración amplia:</strong> leer el juego, ver a los compañeros, anticipar el movimiento del rival. Necesaria para tomar decisiones tácticas.</p>
+        <p><strong>Concentración estrecha:</strong> enfocarse en un solo estímulo específico — el balón que viene, el punto de contacto, la dirección del disparo. Necesaria para ejecutar con precisión.</p>
+        <p>Los deportistas de alto rendimiento cambian entre ambos tipos de forma fluida. El entrenamiento mental desarrolla esa flexibilidad.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 1</div>
+        <ul>
+          <li>¿Cuándo sientes que estás realmente concentrado en la competencia? ¿Cómo describe ese estado físicamente?</li>
+          <li>¿Usas más la concentración amplia o la estrecha en tu deporte? ¿Cuándo necesitas cambiar entre una y otra?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">02</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 2</div>
+        <div class="chapter-title">Los ladrones de concentración</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>No puedes defender tu concentración si no sabes qué la ataca. Los <strong>ladrones de concentración</strong> son estímulos que compiten con la jugada presente por tu atención. Hay dos tipos — y el más peligroso no es el que parece.</p>
+
+      <div class="distractor-grid">
+        <div class="distractor-card external">
+          <div class="distractor-card-title">Distractores externos</div>
+          <ul class="distractor-list">
+            <li>El público y las gradas</li>
+            <li>Las instrucciones del banco</li>
+            <li>Las provocaciones del rival</li>
+            <li>El marcador electrónico</li>
+            <li>El árbitro y sus decisiones</li>
+            <li>El clima o las condiciones</li>
+            <li>El teléfono antes del partido</li>
+          </ul>
+        </div>
+        <div class="distractor-card internal">
+          <div class="distractor-card-title">Distractores internos</div>
+          <ul class="distractor-list">
+            <li>Revivir errores anteriores</li>
+            <li>Pensar en el resultado final</li>
+            <li>Miedo a fallar en el siguiente intento</li>
+            <li>Compararte con el rival</li>
+            <li>Preocuparte por la opinión del técnico</li>
+            <li>Pensar en lo que pasa después del partido</li>
+            <li>La duda sobre si estás rindiendo bien</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Los <strong>distractores internos</strong> son más peligrosos porque están contigo todo el tiempo y son más difíciles de identificar. Puedes alejarte de las gradas, pero no puedes alejarte de tu propia cabeza.</p>
+      <p>La clave no es eliminar los distractores — es reconocerlos cuando aparecen y <strong>redirigir la atención</strong> antes de que tomen el control.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Ejercicio: Tu lista de ladrones personales</div>
+        <p>Después del próximo partido o entrenamiento, anota los 3 distractores que más te afectaron. Para cada uno, escribe: ¿en qué momento apareció? ¿cuánto tiempo le diste? ¿cómo recuperaste el foco?</p>
+        <p>Conocer tus distractores habituales es el primer paso para anticiparlos y preparar una respuesta.</p>
+      </div>
+
+      <div class="chapter-quote">No puedes controlar lo que aparece en tu mente. Sí puedes controlar cuánto tiempo le das.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 2</div>
+        <ul>
+          <li>¿Cuál es tu ladrón de concentración más frecuente — externo o interno? ¿Por qué crees que ese tiene tanto poder sobre ti?</li>
+          <li>¿Hay algún tipo de partido o situación específica donde los distractores son más intensos para ti?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">03</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 3</div>
+        <div class="chapter-title">La zona de activación óptima</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>Existe un nivel de activación — de energía y alerta — en el que tu concentración funciona mejor. Demasiado baja y estás disperso, sin foco, sin intensidad. Demasiado alta y estás sobrecargado, ansioso, incapaz de procesar con claridad. En el punto justo: <strong>rendimiento máximo</strong>.</p>
+
+      <div class="zone-diagram">
+        <div class="zone-block low">
+          <div class="zone-label">Baja activación</div>
+          <div class="zone-desc">Disperso · Lento · Sin foco · Sin energía competitiva</div>
+        </div>
+        <div class="zone-block optimal">
+          <div class="zone-label">Zona óptima ★</div>
+          <div class="zone-desc">Alerta · Presente · Decisiones rápidas · Concentración sostenida</div>
+        </div>
+        <div class="zone-block high">
+          <div class="zone-label">Alta activación</div>
+          <div class="zone-desc">Ansioso · Tenso · Atención fragmentada · Errores por precipitación</div>
+        </div>
+      </div>
+
+      <p>El problema bajo presión es que la <strong>activación sube de forma automática</strong>. El partido importante, el rival difícil, el momento decisivo — todo eleva la activación por encima de la zona óptima. El resultado: te precipitas, te tensas, pierdes el hilo del juego.</p>
+      <p>La solución no es eliminar la presión. Es aprender a <strong>regular tu activación</strong> para mantenerte en la zona óptima aunque el contexto sea extremo.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">¿Cómo saber en qué zona estás?</div>
+        <p><strong>Baja activación:</strong> bostezas, te cuesta arrancar, no tienes ganas de competir, el tiempo pasa lento.</p>
+        <p><strong>Zona óptima:</strong> estás alerta pero relajado, las decisiones fluyen, sientes que puedes reaccionar rápido, el tiempo parece ir al ritmo correcto.</p>
+        <p><strong>Alta activación:</strong> el corazón late muy rápido, respiras corto, los pensamientos van demasiado rápido, cometes errores por apresurarte, sientes que "no puedes parar".</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Herramienta: La respiración reguladora</div>
+        <p>Para <strong>bajar la activación:</strong> inhala 4 segundos, sostén 2, exhala 6–8 segundos. La exhalación larga activa el sistema de calma. Úsala en los tiempos muertos, antes de saques o en cualquier pausa del juego.</p>
+        <p>Para <strong>subir la activación:</strong> respiración corta y rítmica por la nariz (3–4 respiraciones rápidas), acompañada de un gesto físico intenso — golpe en el pecho, pisada fuerte, frase de activación en voz baja.</p>
+      </div>
+
+      <div class="chapter-quote">La presión no destruye la concentración. Te saca de tu zona. Tu trabajo es volver.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 3</div>
+        <ul>
+          <li>¿Tiendes a sobre-activarte (ansiedad, precipitación) o a sub-activarte (dispersión, desgana) en competencias importantes?</li>
+          <li>¿Puedes recordar un partido en el que estuviste en tu zona óptima? ¿Qué era diferente ese día?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">04</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 4</div>
+        <div class="chapter-title">Técnicas de foco en tiempo real</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>Estas son las herramientas que puedes usar <em>durante</em> la competencia para recuperar el foco cuando lo pierdes. No son técnicas de entrenamiento — son intervenciones rápidas para el momento exacto en que la concentración se va.</p>
+
+      <div class="technique-grid">
+        <div class="technique-card">
+          <div class="technique-num">01</div>
+          <div class="technique-name">La palabra de anclaje</div>
+          <div class="technique-desc">Elige una sola palabra que signifique "vuelve al presente" para ti. Puede ser <em>"ahora"</em>, <em>"foco"</em>, <em>"aquí"</em> o cualquiera que resuene. Dítela internamente cuando notes que tu atención se va. El cerebro la reconoce como señal de retorno.</div>
+        </div>
+        <div class="technique-card">
+          <div class="technique-num">02</div>
+          <div class="technique-name">El punto de atención</div>
+          <div class="technique-desc">Define un estímulo físico concreto donde posar la atención cuando te dispersas: la costura del balón, los pies del rival, un punto del campo. Algo visual y específico. El foco necesita un destino — dáselo.</div>
+        </div>
+        <div class="technique-card">
+          <div class="technique-num">03</div>
+          <div class="technique-name">El ritual de pausa</div>
+          <div class="technique-desc">En cada tiempo muerto — saque de banda, falta, cambio de posesión — haz el mismo gesto físico siempre: ajustar el equipo, mirar un punto fijo, respirar una vez. La repetición entrena al cerebro a resetear el foco en ese momento.</div>
+        </div>
+        <div class="technique-card">
+          <div class="technique-num">04</div>
+          <div class="technique-name">La instrucción de proceso</div>
+          <div class="technique-desc">Reemplaza el pensamiento de resultado (<em>"tengo que marcar"</em>) por una instrucción de proceso (<em>"baja el centro de gravedad"</em>, <em>"busca el espacio"</em>). El cerebro concentrado necesita saber qué hacer, no qué conseguir.</div>
+        </div>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Cuándo usar cada técnica</div>
+        <p><strong>Palabra de anclaje:</strong> cuando notes que tu mente se va al pasado o al futuro. Es el interruptor más rápido.</p>
+        <p><strong>Punto de atención:</strong> cuando el ambiente está muy cargado (gradas, rival provocador). Estrechar el foco ayuda a filtrar el ruido externo.</p>
+        <p><strong>Ritual de pausa:</strong> entre jugadas o puntos. Es preventivo — mantiene el foco antes de que se pierda.</p>
+        <p><strong>Instrucción de proceso:</strong> cuando el miedo al resultado te paraliza. Sustituye la presión del "qué" por la acción del "cómo".</p>
+      </div>
+
+      <div class="chapter-quote">El foco no se sostiene. Se redirige. Esa es la diferencia entre quien rinde y quien se bloquea.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 4</div>
+        <ul>
+          <li>¿Cuál de las 4 técnicas crees que sería más útil para ti? ¿Por qué esa en particular encaja con tu forma de perder el foco?</li>
+          <li>¿Cuál podría ser tu "palabra de anclaje"? Escribe 3 opciones y quédate con la que más resuene.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">05</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 5</div>
+        <div class="chapter-title">La rutina de concentración pre-competencia</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La <strong>concentración bajo presión</strong> no empieza en el primer minuto del partido. Empieza en los 30–60 minutos previos. Lo que haces antes de competir determina en qué estado mental llegas al inicio.</p>
+      <p>Sin una rutina pre-competencia, la mente llega al partido en el estado en que estaba — distraída por el día, por el teléfono, por las conversaciones del vestuario. Con una rutina, llegas ya en modo competencia.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Estructura de la rutina de concentración</div>
+        <p><strong>Cierre del mundo exterior (5–10 min):</strong> Guarda el teléfono. Sal de conversaciones innecesarias. Este es el momento de entrar en tu espacio mental. No es antisocial — es profesional.</p>
+        <p><strong>Activación física (10–15 min):</strong> El movimiento físico activa el sistema nervioso y sube la activación hasta la zona óptima. Calentamiento con intención, no mecánico.</p>
+        <p><strong>Frase activadora (2 min):</strong> Una frase que encienda tu mentalidad competitiva. Puede ser de <strong>lazonacampeon.com/frases</strong> o una propia. Repítela en voz baja mientras terminas el calentamiento.</p>
+        <p><strong>Instrucción de foco (1 min):</strong> Define UNA cosa en la que vas a enfocarte durante el partido. No un objetivo de resultado — una intención de proceso. <em>"Voy a hacer presión alta en cada pérdida"</em>. <em>"Voy a comunicar en cada jugada defensiva"</em>.</p>
+      </div>
+
+      <div class="chapter-quote">No esperes a que llegue el foco. Construye las condiciones para que aparezca.</div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">El error más común antes de competir</div>
+        <p>Muchos deportistas llegan al partido mentalmente dispersos porque usaron los minutos previos en el teléfono, discutiendo con alguien o preocupándose por el resultado. La mente no tiene tiempo de hacer la transición al modo competencia.</p>
+        <p>La rutina pre-competencia no es un lujo. Es la diferencia entre empezar el partido en tu zona óptima o tardar 20 minutos en encontrarla — si es que la encuentras.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 5</div>
+        <ul>
+          <li>¿Qué haces normalmente en los 30 minutos antes de competir? ¿Cómo llega tu mente al primer minuto del partido?</li>
+          <li>¿Qué elemento de la rutina pre-competencia podrías empezar a implementar desde el próximo partido?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">06</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 6</div>
+        <div class="chapter-title">Construir concentración duradera</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La <strong>concentración sostenida</strong> no se improvisa el día del partido. Es el resultado de entrenarla de forma deliberada durante semanas y meses. Igual que la resistencia física: si no la trabajas, no está disponible cuando más la necesitas.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 1 — Entrenamiento con intención única</div>
+        <p>En al menos un entrenamiento por semana, elige <strong>un solo aspecto técnico o táctico</strong> en el que vas a concentrarte durante toda la sesión. No "entrenar bien" — una cosa específica. Al terminar, evalúa cuántas veces lograste mantener el foco en eso y cuántas te fuiste a otro lado.</p>
+        <p>Esta práctica desarrolla la capacidad de sostener la atención en un estímulo durante tiempo prolongado — exactamente lo que necesitas bajo presión.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 2 — Simulación de distractores</div>
+        <p>Pide a tu entrenador o compañeros que introduzcan <strong>distractores deliberados</strong> durante los entrenamientos: comentarios, presión vocal, situaciones adversas. El objetivo no es molestarte — es que tu sistema nervioso aprenda a mantener el foco con ruido.</p>
+        <p>La concentración bajo presión real se construye entrenando bajo presión simulada.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 3 — Mindfulness de 5 minutos diarios</div>
+        <p>Dedica 5 minutos al día a sentarte en silencio y mantener la atención en tu respiración. Cuando la mente se va — y se irá — vuelve sin juzgarte. No es meditación espiritual: es entrenamiento del músculo de la atención.</p>
+        <p>Estudios en psicología del deporte muestran que 4–6 semanas de esta práctica mejoran significativamente la capacidad de recuperar el foco en competencia.</p>
+      </div>
+
+      <ul class="chapter-steps">
+        <li><span>S 1–2</span> Identifica tus 3 principales ladrones de concentración. Observa sin juzgar.</li>
+        <li><span>S 3–4</span> Prueba una técnica de foco en cada entrenamiento. Una a la vez, no todas juntas.</li>
+        <li><span>S 5–6</span> Empieza la rutina pre-competencia. Aunque sea con 2 elementos solamente.</li>
+        <li><span>S 7–8</span> Incorpora mindfulness de 5 min diarios. Evalúa si tu tiempo de recuperación del foco ha mejorado.</li>
+      </ul>
+
+      <div class="chapter-quote">La concentración no es un talento. Es un músculo. Y los músculos se entrenan.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 6</div>
+        <ul>
+          <li>¿Estás dispuesto a dedicar 5 minutos diarios durante 30 días a entrenar tu concentración fuera del deporte? ¿Qué esperas notar al final?</li>
+          <li>¿Qué práctica de las tres te parece más accesible para empezar esta semana?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORIA REAL -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number" style="color:rgba(200,170,50,0.12);">★</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Historia real</div>
+        <div class="chapter-title">Rafa Nadal:<br>el foco como arma</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>El 6 de julio de 2008, Rafael Nadal y Roger Federer jugaron lo que muchos consideran el mejor partido de tenis de la historia. La final de Wimbledon duró 4 horas y 48 minutos. Fue interrumpida dos veces por la lluvia. Nadal ganó 9–7 en el quinto set.</p>
+      <p>Lo que no se ve en los números es lo que pasó dentro de la cabeza de Nadal durante esas casi 5 horas.</p>
+
+      <div class="story">
+        <div class="story-tag">Lo que hace diferente a Nadal</div>
+        <h3>Punto a punto, sin excepción</h3>
+        <p>Rafa Nadal es conocido por sus rituales antes de cada punto: siempre la misma secuencia al sacar, la misma forma de recibir la toalla, los mismos pasos al fondo de la pista. Para muchos espectadores parecen manías. Para Nadal, son herramientas de <strong>concentración</strong>.</p>
+        <div class="story-quote">"Mis rituales me ayudan a concentrarme en el siguiente punto. Solo en el siguiente punto. No en el marcador, no en lo que acaba de pasar. Solo en lo que viene."</div>
+        <p>En la final de 2008, Nadal perdía el tercer set 2–5 contra Federer — el mejor tenista de todos los tiempos en su superficie, en su estadio. En cualquier otro deportista, ese momento hubiera desencadenado la espiral. La mente se hubiera ido al resultado, al "ya está perdido", a la presión acumulada de 5 años intentando ganar Wimbledon.</p>
+        <p>Nadal no fue al resultado. Fue al siguiente punto.</p>
+        <p>Ganó ese set 7–6. Empató el partido. Y en el quinto set, con la oscuridad cayendo sobre el All England Club y la lluvia amenazando de nuevo, cerró 9–7 con un passing shot que hizo caer de rodillas al hombre más concentrado del tenis.</p>
+        <div class="story-quote">"Cuando las cosas se ponen difíciles, no pienso en ganar. Pienso en hacer bien la siguiente jugada. Solo esa."</div>
+        <p>Su entrenador Tony Nadal y el psicólogo deportivo Joan Forcades trabajaron durante años para construir ese sistema de concentración. No es un don natural — es el resultado de <strong>entrenar el foco</strong> exactamente igual que se entrena el revés o el saque.</p>
+        <p>La diferencia entre Nadal y la mayoría de los deportistas no es la concentración que tiene. Es la que ha construido, punto a punto, durante décadas.</p>
+        <p>Tú también puedes construir la tuya.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIARIO DE CONCENTRACIÓN -->
+  <div style="max-width:760px; margin:0 auto 0; padding:0 40px 60px;">
+    <div style="border-top:1px solid #d4c99a; padding-top:48px;">
+      <div style="text-align:center; margin-bottom:28px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#C8AA32;">Herramienta de seguimiento</span>
+        <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario de Concentración</h2>
+        <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+          Llena esta tabla después de cada entrenamiento o partido. Registrar tus patrones es la forma más rápida de mejorarlos.
+        </p>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+          <thead>
+            <tr style="background:#1a1a2e;">
+              <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#C8AA32; border-bottom:2px solid #C8AA32; min-width:90px;">Fecha / Sesión</th>
+              <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#C8AA32; border-bottom:2px solid #C8AA32; min-width:160px;">Error o distracción</th>
+              <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#C8AA32; border-bottom:2px solid #C8AA32; min-width:140px;">Reset usado</th>
+              <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#C8AA32; border-bottom:2px solid #C8AA32; min-width:120px;">Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fff;">
+              <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: Martes / Entrenamiento</td>
+              <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Pensé en el error del partido anterior</td>
+              <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Respiración 4-4-4 + palabra clave</td>
+              <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Volví al foco en 30 seg</td>
+            </tr>
+            <tr style="background:#f5f0e8;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+            <tr style="background:#fff;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+            <tr style="background:#f5f0e8;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+            <tr style="background:#fff;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+            <tr style="background:#f5f0e8;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+            <tr style="background:#fff;">
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+              <td style="padding:14px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+        Resets disponibles: respiración 4-4-4 · palabra clave · enfoque en el próximo punto · ancla corporal · "¿qué está en mi control?"
+      </p>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="close">
+    <div class="gold-line"></div>
+    <h2>El foco es<br>una decisión</h2>
+    <p>La <strong>concentración bajo presión</strong> no depende del ambiente. Depende de lo que has entrenado antes de que llegue la presión.</p>
+    <p>Conoce tus distractores. Mantente en tu <strong>zona de activación óptima</strong>. Usa las técnicas de foco en tiempo real. Construye tu rutina pre-competencia. Entrena el músculo de la atención.</p>
+    <p>Y antes de cada partido, enciende tu mente con la <strong>Frase Activadora del Día:</strong></p>
+    <a href="https://lazonacampeon.com/frases" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <br><br>
+    <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
+    <br>
+    <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
+    <br><br>
+    <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
+  </div>
+
+  <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
+
+</div>
+</body>
+</html>

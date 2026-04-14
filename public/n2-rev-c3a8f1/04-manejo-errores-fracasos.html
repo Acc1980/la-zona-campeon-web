@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manejo de Errores y Fracasos — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── HEADER ── */
+    .brand {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .brand-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .level-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 20px;
+    }
+
+    /* ── PORTADA ── */
+    .cover {
+      text-align: center;
+      padding: 40px 0 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 38px;
+      line-height: 1.15;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #555;
+      letter-spacing: 0.05em;
+      margin-top: 12px;
+      margin-bottom: 32px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #fff;
+      border-left: 4px solid #c8aa32;
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #333;
+    }
+    .intro strong { color: #111; }
+
+    /* ── CAPÍTULOS ── */
+    .chapter { margin-bottom: 56px; }
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .chapter-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #c8aa32;
+      line-height: 1;
+      opacity: 0.25;
+      flex-shrink: 0;
+    }
+    .chapter-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      padding-top: 8px;
+    }
+    .chapter-body p { margin-bottom: 16px; color: #333; font-size: 15px; }
+    .chapter-body strong { color: #111; }
+
+    /* ── FIGURAS ── */
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Tipos de error — grid 3 */
+    .error-types {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: left;
+    }
+    .error-card {
+      border-radius: 10px;
+      padding: 16px 14px;
+      border: 1px solid;
+    }
+    .error-card.tecnico { background: #fff8f0; border-color: #f0a060; }
+    .error-card.decision { background: #f0f4ff; border-color: #6080c8; }
+    .error-card.mental { background: #fff0f0; border-color: #c85050; }
+    .error-card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+    .error-card.tecnico .error-card-label { color: #c87030; }
+    .error-card.decision .error-card-label { color: #4060b0; }
+    .error-card.mental .error-card-label { color: #b03030; }
+    .error-card p { font-size: 12px; color: #555; line-height: 1.5; margin: 0; }
+
+    /* Protocolo 10 segundos — 3 círculos */
+    .protocol-circles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 8px 0;
+    }
+    .pcircle {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+    }
+    .pcircle-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #c8aa32;
+      line-height: 1;
+    }
+    .pcircle-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+    .pcircle-sub {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 3px;
+    }
+    .parrow {
+      font-size: 22px;
+      color: #c8aa32;
+      margin: 0 8px;
+    }
+
+    /* Tabla reacción */
+    .reaction-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .reaction-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border-bottom: 2px solid #c8aa32;
+      text-align: left;
+    }
+    .reaction-table th.bad { color: #c0392b; }
+    .reaction-table th.good { color: #2e7d32; }
+    .reaction-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      vertical-align: top;
+    }
+    .reaction-table tr:last-child td { border-bottom: none; }
+    .reaction-table td.bad-val { color: #c0392b; }
+    .reaction-table td.good-val { color: #2e7d32; font-weight: 600; }
+
+    /* ── PROTOCOLO DESTACADO ── */
+    .protocol-box {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 28px;
+      margin: 24px 0;
+    }
+    .protocol-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c8aa32;
+      margin-bottom: 16px;
+    }
+    .protocol-box ol { padding-left: 20px; }
+    .protocol-box ol li {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+    .protocol-box ol li strong { color: #fff; }
+
+    /* ── HISTORIA DEL ATLETA ── */
+    .athlete-story {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #d4c99a;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .story-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .story-body p { font-size: 14px; color: #444; margin-bottom: 14px; line-height: 1.8; }
+    .story-body strong { color: #111; }
+    .story-quote {
+      border-left: 3px solid #c8aa32;
+      padding: 10px 18px;
+      margin: 16px 0;
+      font-style: italic;
+      font-size: 15px;
+      color: #333;
+    }
+
+    /* ── REFLEXIONES ── */
+    .reflection {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-top: 24px;
+    }
+    .reflection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 12px;
+    }
+    .reflection ol { padding-left: 20px; }
+    .reflection ol li { font-size: 14px; color: #ccc; margin-bottom: 8px; line-height: 1.6; }
+
+    /* ── EJEMPLO EN ACCIÓN ── */
+    .ejemplo {
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+    }
+    .ejemplo-header {
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ejemplo-header.tecnico { background: #fff3e8; border-bottom: 2px solid #f0a060; }
+    .ejemplo-header.mental  { background: #f0f0ff; border-bottom: 2px solid #7070d0; }
+    .ejemplo-header.emocional { background: #fff0f0; border-bottom: 2px solid #c85050; }
+    .ejemplo-tipo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .ejemplo-header.tecnico .ejemplo-tipo { color: #c87030; }
+    .ejemplo-header.mental .ejemplo-tipo  { color: #4040b0; }
+    .ejemplo-header.emocional .ejemplo-tipo { color: #b03030; }
+    .ejemplo-titulo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #111;
+    }
+    .ejemplo-body {
+      background: #fff;
+      padding: 18px 18px 20px;
+    }
+    .ejemplo-situacion {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .ejemplo-steps {
+      list-style: none;
+      padding: 0;
+    }
+    .ejemplo-steps li {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: #333;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0ece4;
+      line-height: 1.55;
+    }
+    .ejemplo-steps li:last-child { border-bottom: none; }
+    .ejemplo-step-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 72px;
+    }
+    .tag-suelta   { color: #c87030; }
+    .tag-ancla    { color: #4040b0; }
+    .tag-regresa  { color: #2e7d32; }
+    .tag-resultado { color: #c8aa32; }
+    .tag-reactivo { color: #c0392b; }
+
+    /* ── EJERCICIO ── */
+    .exercise {
+      background: #fffdf5;
+      border: 1px solid #c8aa32;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 24px 0;
+    }
+    .exercise-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 8px;
+    }
+    .exercise h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #111; margin-bottom: 10px; }
+    .exercise p, .exercise li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 6px; }
+    .exercise ul, .exercise ol { padding-left: 20px; }
+
+    /* ── SEPARADOR ── */
+    .divider { border: none; border-top: 1px solid #d4c99a; margin: 48px 0; }
+
+    /* ── CIERRE ── */
+    .closing {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 2px solid #c8aa32;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
+    .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,170,50,0.35);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #b89928; }
+
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      .container { padding: 24px 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 26px; }
+      .error-types { grid-template-columns: 1fr; }
+      .protocol-circles { flex-direction: column; gap: 4px; }
+      .parrow { transform: rotate(90deg); margin: 2px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="container">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">La Zona Campeón</div>
+    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
+    <div><span class="level-badge">Nivel 2 — Manuales de Temas Generales</span></div>
+  </div>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <p class="manual-num">Manual 04 de 05</p>
+    <h1>Manejo de<br /><span>Errores</span><br />y Fracasos</h1>
+    <p class="cover-sub">Procesa rápido, aprende y vuelve al juego</p>
+    <p class="cover-desc">
+      El error no te destruye. Lo que te destruye es cómo reaccionas a él.
+      Este manual te enseña a procesar los errores en tiempo real y a usar el fracaso
+      como combustible, no como condena.
+    </p>
+    <div class="cover-stats">
+      <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+      <div class="cover-stat"><span>12</span><small>Ejercicios</small></div>
+      <div class="cover-stat"><span>1</span><small>Historia real</small></div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      Todos los deportistas cometen errores. Los mejores del mundo también. La diferencia no está en cuántos errores cometes
+      sino en <strong>cuánto tiempo tardas en recuperarte de ellos</strong>. Un deportista que tarda 30 segundos en volver
+      al juego después de un error tiene una ventaja enorme sobre uno que se queda rumiando durante 10 minutos.
+    </p>
+    <p style="margin-top:12px; margin-bottom:0;">
+      Antes de entrenar, visita <strong>lazonacampeon.com/frases</strong> para activar tu mente. El entrenamiento mental empieza
+      antes de saltar a la cancha.
+    </p>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 1 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">Por qué los errores nos afectan más de lo que deberían</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El cerebro humano tiene un sesgo natural hacia lo negativo. Desde la evolución, recordar las amenazas y los errores
+        era más importante para sobrevivir que recordar los éxitos. Pero en el deporte, ese mecanismo juega en tu contra.
+      </p>
+      <p>
+        Cuando cometes un error, tu cerebro lo registra con más intensidad que un acierto equivalente.
+        Un gol fallado pesa más que un gol marcado. Una crítica del entrenador queda más tiempo en la mente
+        que diez palabras de aliento. <strong>Esto no es debilidad mental — es biología.</strong>
+        Pero se puede entrenar.
+      </p>
+      <p>
+        El problema aparece cuando ese registro natural se convierte en un diálogo interno destructivo que persiste durante el partido.
+        El error ya ocurrió. Ya no puedes cambiarlo. Cada segundo que le dedicas mientras el juego sigue
+        es un segundo de atención robado a lo que sí puedes controlar: <strong>la próxima jugada</strong>.
+      </p>
+      <p>
+        Este manual no te enseña a ignorar los errores. Te enseña a procesarlos rápido, aprender de ellos
+        y volver al juego sin cargarte con su peso.
+      </p>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 01</div>
+        <ol>
+          <li>¿Cuánto tiempo calculas que tardas en recuperarte mentalmente de un error en medio de un partido? ¿5 segundos, 2 minutos, todo el partido?</li>
+          <li>¿Hay algún tipo de error específico que te afecte más que otros? ¿Por qué crees que ese en particular te pesa tanto?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 2 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">El error no es el problema — la reacción es el problema</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Dos deportistas cometen el mismo error. El primero baja la cabeza, saca al cuerpo del juego, empieza a evitar
+        el balón y termina el partido con la cabeza en otro lado. El segundo sacude los brazos, respira, se dice
+        algo en voz baja y en diez segundos está corriendo a la siguiente posición.
+      </p>
+      <p>
+        El error fue idéntico. <strong>La diferencia fue la reacción</strong>. Y la reacción es lo que determina
+        si ese error queda aislado o desencadena una espiral.
+      </p>
+      <p>
+        Hay dos tipos de reacción ante el error: la reactiva y la regulada. La reactiva ocurre en automático:
+        rabia, lamento, autocastigo, evasión. La regulada es entrenada: reconocimiento, reset, enfoque en el siguiente punto.
+        <strong>Nadie nace con la reacción regulada. Se construye con práctica deliberada.</strong>
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Reacción reactiva vs. Reacción regulada</div>
+        <table class="reaction-table">
+          <thead>
+            <tr>
+              <th class="bad">Reacción Reactiva</th>
+              <th class="good">Reacción Regulada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bad-val">Cabeza agachada, cuerpo cerrado</td>
+              <td class="good-val">Cuerpo erguido, mirada al frente</td>
+            </tr>
+            <tr>
+              <td class="bad-val">"Soy un desastre, ¿cómo lo pude fallar?"</td>
+              <td class="good-val">"Ya pasó. ¿Qué hago ahora?"</td>
+            </tr>
+            <tr>
+              <td class="bad-val">Evitar el balón o la responsabilidad</td>
+              <td class="good-val">Pedir el balón de nuevo</td>
+            </tr>
+            <tr>
+              <td class="bad-val">Rumiar el error durante jugadas siguientes</td>
+              <td class="good-val">Reset en 10 segundos, foco en el presente</td>
+            </tr>
+            <tr>
+              <td class="bad-val">Culpar al compañero, al árbitro, al piso</td>
+              <td class="good-val">Asumir, aprender, soltar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 02</div>
+        <ol>
+          <li>¿Cuál es tu reacción más frecuente cuando cometes un error importante? Descríbela con honestidad, sin juicio.</li>
+          <li>¿Alguna vez has visto a un compañero manejar un error de forma admirable? ¿Qué hizo exactamente?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 3 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">Los 3 tipos de errores y cómo tratar cada uno</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        No todos los errores se procesan igual. Tratarlos a todos de la misma manera es uno de los errores
+        más comunes en el manejo mental. <strong>Identificar qué tipo de error cometiste cambia completamente
+        cómo debes responder a él.</strong>
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Los 3 tipos de errores deportivos</div>
+        <div class="error-types">
+          <div class="error-card tecnico">
+            <div class="error-card-label">Error Técnico</div>
+            <p>Fallo de ejecución. El cuerpo no hizo lo que el entrenamiento indica. Ejemplo: el tiro no salió bien, el pase quedó corto.</p>
+          </div>
+          <div class="error-card decision">
+            <div class="error-card-label">Error de Decisión</div>
+            <p>Elegiste la opción equivocada en el momento. Ejemplo: pasaste cuando debías tirar, o atacaste cuando debías defender.</p>
+          </div>
+          <div class="error-card mental">
+            <div class="error-card-label">Error Mental</div>
+            <p>Pérdida de foco, duda, miedo o distracción. Ejemplo: fallaste porque dudaste, o porque no estabas presente en la jugada.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <strong>Error técnico:</strong> el cuerpo sabe cómo hacerlo — lo has entrenado. El mensaje que te das es:
+        <em>"Ya lo tengo. La próxima sale."</em> No hay mucho que analizar en el partido. El análisis va después, en el entrenamiento.
+      </p>
+      <p>
+        <strong>Error de decisión:</strong> la lectura del juego falló. El mensaje es: <em>"¿Qué vi? ¿Qué debí ver?"</em>
+        Un segundo de reconocimiento — no de castigo — y a la siguiente jugada. El análisis más profundo va en el video o con el entrenador.
+      </p>
+      <p>
+        <strong>Error mental:</strong> este es el que más requiere trabajo inmediato, porque su causa sigue presente durante el partido.
+        Si fallaste por miedo o por duda, esa duda sigue ahí. Necesitas el protocolo de reset del capítulo 4 ahora mismo.
+      </p>
+
+      <!-- EJEMPLOS EN ACCIÓN -->
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplos en acción — recuperación paso a paso</p>
+
+      <!-- Ejemplo 1: Error Técnico -->
+      <div class="ejemplo">
+        <div class="ejemplo-header tecnico">
+          <div>
+            <div class="ejemplo-tipo">Error Técnico</div>
+            <div class="ejemplo-titulo">El pase filtrado que se fue al rival</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 68. Partido igualado. Un mediocampista intenta un pase entre líneas que lleva todo el entrenamiento trabajando.
+            El balón le queda corto al delantero, lo intercepta el rival y arma un contragolpe peligroso.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-reactivo">Sin protocolo</span>
+              <span>Se lleva las manos a la cabeza. Empieza a pedir disculpas al delantero. Sigue pensando en el pase mientras el rival organiza el ataque. Llega tarde a cubrir.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">1–3s · Suelta</span>
+              <span>Da una palmada al muslo. Exhala fuerte. El gesto físico cierra el capítulo antes de que la mente lo abra de nuevo.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">4–6s · Ancla</span>
+              <span>Se dice en voz baja: <em>"Técnico. La próxima sale."</em> Reconoce el tipo de error sin castigo. Ya sabe qué fue — ejecución, no decisión.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">7–10s · Regresa</span>
+              <span>Busca su posición de recuperación. Ojos en el balón, no en el error. Llega a tiempo para cortar el contragolpe.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>El error quedó aislado. El análisis del pase va al entrenamiento del martes, no al minuto 69.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo 2: Error Mental -->
+      <div class="ejemplo">
+        <div class="ejemplo-header mental">
+          <div>
+            <div class="ejemplo-tipo">Error Mental</div>
+            <div class="ejemplo-titulo">El uno contra uno que se perdió por duda</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Un extremo recibe en velocidad, cara a cara con el defensa. Lleva semanas trabajando el desmarque. Pero en el momento de decidir,
+            duda medio segundo: ¿por la derecha o por la izquierda? El defensa lee la indecisión y recupera el balón.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-reactivo">Sin protocolo</span>
+              <span>Se queda parado, frustrado. Empieza a pensar: <em>"Siempre igual, nunca me atrevo."</em> La duda que causó el error se alimenta con el diálogo interno. La próxima vez que reciba en velocidad, dudará más.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">1–3s · Suelta</span>
+              <span>Sacude los brazos dos veces, como quitándose algo de encima. Respira. El cuerpo necesita soltar antes que la mente pueda procesar.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">4–6s · Ancla</span>
+              <span>Se dice: <em>"Mental. La duda ya pasó. Decisión en la próxima."</em> Identifica el origen del error sin juzgarse. La duda es una señal, no una condena.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">7–10s · Regresa</span>
+              <span>Vuelve al trote a su posición. Se da una instrucción concreta para la siguiente: <em>"Si recibo así de nuevo, derecha directa, sin pensar."</em> La decisión ya está tomada de antemano.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>Diez minutos después recibe en condiciones similares y ejecuta sin dudar. El reset cortó el ciclo antes de que se instalara.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo 3: Error Emocional -->
+      <div class="ejemplo">
+        <div class="ejemplo-header emocional">
+          <div>
+            <div class="ejemplo-tipo">Error Emocional</div>
+            <div class="ejemplo-titulo">La reacción al árbitro que costó más que la jugada</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 55. El árbitro pita una falta inexistente en contra. El defensa central siente una rabia intensa,
+            le reclama, el árbitro lo amonesta. Ese amarillo lo obliga a jugar los siguientes 35 minutos frenado,
+            con miedo a la segunda tarjeta, lejos de ser el lider defensivo que el equipo necesita.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-reactivo">Sin protocolo</span>
+              <span>Sigue reclamando en voz alta. El árbitro lo vigila. Sus compañeros le piden que se calme pero él no puede salir del estado emocional. Pierde dos duelos consecutivos porque no está presente.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">1–3s · Suelta</span>
+              <span>Da media vuelta, no le da más tiempo de vista al árbitro. Exhala por la nariz contando hasta tres. El giro físico es la señal de que ese capítulo cierra.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">4–6s · Ancla</span>
+              <span>Se dice: <em>"Emocional. Eso no puedo controlarlo. Lo próximo sí."</em> Separa lo que está en su control (su juego) de lo que no (la decisión del árbitro).</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">7–10s · Regresa</span>
+              <span>Busca a su marcador, se ubica en el área. Vuelve al rol: liderar la defensa. La rabia que no pudo evitar sentir ya no dicta sus decisiones.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>Termina el partido limpio, con dos recuperaciones clave en los últimos minutos. La rabia pasó — el liderazgo se mantuvo.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 03</div>
+        <ol>
+          <li>¿Cuál de los tres tipos de errores cometes con más frecuencia? ¿Es siempre el mismo o varía según el tipo de partido?</li>
+          <li>¿Tratas todos tus errores igual o ya diferencias cómo responder a cada uno? ¿Qué cambiaría si empezaras a diferenciarlos?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 4 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title">El protocolo de los 10 segundos: reset inmediato</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Diez segundos. Eso es todo el tiempo que el juego te da para procesar un error antes de que llegue la siguiente jugada.
+        Si no tienes un protocolo entrenado para esos 10 segundos, tu cerebro llenará ese vacío con lo primero que encuentre:
+        rabia, vergüenza o parálisis.
+      </p>
+      <p>
+        <strong>El protocolo de los 10 segundos es un ritual de tres pasos</strong> que le dice a tu cerebro:
+        ese capítulo cerró, este es el nuevo. Con la práctica, se vuelve automático y puede ejecutarse en menos tiempo.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">El protocolo de los 10 segundos</div>
+        <div class="protocol-circles">
+          <div class="pcircle">
+            <div class="pcircle-num">1–3s</div>
+            <div class="pcircle-label">SUELTA</div>
+            <div class="pcircle-sub">gesto físico + exhala</div>
+          </div>
+          <div class="parrow">→</div>
+          <div class="pcircle">
+            <div class="pcircle-num">4–6s</div>
+            <div class="pcircle-label">ANCLA</div>
+            <div class="pcircle-sub">frase o palabra clave</div>
+          </div>
+          <div class="parrow">→</div>
+          <div class="pcircle">
+            <div class="pcircle-num">7–10s</div>
+            <div class="pcircle-label">REGRESA</div>
+            <div class="pcircle-sub">foco en la próxima jugada</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <strong>Paso 1 — Suelta (1 a 3 segundos):</strong> un gesto físico concreto que marca el cierre del error.
+        Puede ser sacudir los brazos, dar una palmada, tocar el pasto. Lo importante es que sea <em>siempre el mismo</em>.
+        Acompáñalo de una exhalación larga. El cuerpo necesita la señal antes que la mente.
+      </p>
+      <p>
+        <strong>Paso 2 — Ancla (4 a 6 segundos):</strong> una frase o palabra clave que interrumpe el diálogo negativo.
+        Ejemplos: "Siguiente", "Ya está", "Punto nuevo", "Ahora". Breve, en positivo, en primera persona.
+        Pronúnciala en voz baja o en silencio — lo que funcione para ti.
+      </p>
+      <p>
+        <strong>Paso 3 — Regresa (7 a 10 segundos):</strong> pon los ojos y la atención en lo que ocurre ahora.
+        ¿Dónde está el balón? ¿Cuál es tu posición? ¿Qué necesita el equipo ahora mismo?
+        <strong>La próxima jugada es lo único real en este momento.</strong>
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Diseña tu protocolo personal</h4>
+        <p>Define ahora mismo los tres elementos de tu protocolo:</p>
+        <ol>
+          <li><strong>Mi gesto físico de soltar:</strong> _______________________</li>
+          <li><strong>Mi palabra o frase de ancla:</strong> _______________________</li>
+          <li><strong>Mi señal de regreso al presente:</strong> (qué miro, en qué me enfoco) _______________________</li>
+        </ol>
+        <p style="margin-top:10px;">Practica este protocolo en el siguiente entrenamiento, incluso si el error es pequeño. Cuanto más lo entrenes sin presión, más automático será bajo presión.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 04</div>
+        <ol>
+          <li>¿Tienes ya algún ritual de reset aunque no lo hayas llamado así? ¿Qué haces ahora mismo en esos primeros segundos después de un error?</li>
+          <li>¿Qué parte del protocolo te parece más difícil de ejecutar en un partido real — soltar, anclar o regresar?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- HISTORIA DEL ATLETA -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="athlete-story">
+    <div class="story-label">Historia Real</div>
+    <div class="story-name">Lionel Messi — Los fracasos que no lo rompieron</div>
+    <div class="story-body">
+      <p>
+        El 26 de junio de 2016, en el estadio MetLife de Nueva Jersey, Lionel Messi falló un penal en la tanda
+        definitiva de la final de la Copa América contra Chile. Argentina perdió el título por tercera vez consecutiva
+        en final — también habían caído en Brasil 2014 y en Chile 2015.
+      </p>
+      <p>
+        Esa noche, Messi anunció su retiro de la selección argentina en conferencia de prensa.
+        Era el fracaso más visible de su carrera. Cuatro finales perdidas con Argentina. El peso de un país entero.
+        La comparación constante con Maradona. <strong>Un penal fallado que el mundo entero vio.</strong>
+      </p>
+      <p>
+        Dos meses después revirtió la decisión y volvió. No hubo grandes declaraciones.
+        Volvió a entrenar, volvió a competir, siguió acumulando fracasos y victorias en paralelo.
+      </p>
+      <p>
+        En julio de 2021, Argentina ganó la Copa América en el Maracaná — el primer título mayor de Messi con la selección.
+        Y en diciembre de 2022, <strong>levantó la Copa del Mundo en Qatar</strong>, cerrando una historia
+        que durante años pareció estar condenada a terminar sin ese capítulo.
+      </p>
+      <div class="story-quote">
+        Messi llegó durante años cargando finales perdidas y críticas constantes. La Copa América 2021 no borró su historia,
+        pero sí mostró que había aprendido a sostener la presión sin romperse.
+      </div>
+      <p>
+        Lo que su trayectoria muestra — sin necesidad de adivinar lo que pensaba — es que el fracaso no lo detuvo.
+        Cada final perdida fue seguida de más trabajo, más competencias, más intentos.
+        <strong>La acumulación de fracasos no construyó un límite. Construyó una base.</strong>
+      </p>
+      <p>
+        No sabemos exactamente cómo procesó Messi cada una de esas derrotas. Lo que sí sabemos es
+        que siguió compitiendo. Y eso, en sí mismo, ya es una respuesta al fracaso.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 5 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title">Procesar el error después del partido</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El protocolo de los 10 segundos es para el partido. Pero los errores que más pesan no siempre son los de
+        un partido individual — son los que sigues cargando días después. El fracaso de una temporada, la lesión
+        que te sacó de la competencia, la decisión que te costó el puesto.
+      </p>
+      <p>
+        <strong>Procesar no es lo mismo que rumiar.</strong> Rumiar es girar en torno al error sin avanzar:
+        "¿por qué pasó?, ¿soy lo suficientemente bueno?, ¿qué pensarán de mí?". Procesar es extraer la lección
+        y cerrar el capítulo con intención.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Las 3 preguntas post-partido</h4>
+        <ol>
+          <li><strong>¿Qué ocurrió exactamente?</strong> Describe el error con frialdad, como si lo estuvieras viendo en video. Sin adjetivos emocionales.</li>
+          <li><strong>¿Qué puedo aprender de esto?</strong> Una sola lección concreta y accionable. Si no hay lección, no hay razón para seguir pensando en ello.</li>
+          <li><strong>¿Qué haré diferente en el siguiente entrenamiento?</strong> Un paso específico. No "voy a ser mejor" — "voy a trabajar X con el entrenador el martes".</li>
+        </ol>
+      </div>
+
+      <p>
+        Una vez respondidas las tres preguntas, el error ya cumplió su función: enseñarte. <strong>Seguir dándole vueltas
+        después de extraer la lección no es análisis — es autocastigo.</strong> Y el autocastigo no mejora el rendimiento.
+        Solo gasta energía que necesitas para el siguiente partido.
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Carta al error</h4>
+        <p>Piensa en un error o fracaso reciente que todavía te pese. Escríbele una carta breve con este formato:</p>
+        <ol>
+          <li>"Lo que pasó fue: _______________"</li>
+          <li>"Lo que aprendí de ti fue: _______________"</li>
+          <li>"Lo que voy a hacer diferente es: _______________"</li>
+          <li>"A partir de ahora, ya no te debo nada más."</li>
+        </ol>
+        <p style="margin-top:10px; font-size:13px; color:#888; font-style:italic;">Este ejercicio parece simple. No lo es. Hazlo a mano, en papel.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 05</div>
+        <ol>
+          <li>¿Hay algún error o fracaso del pasado que todavía cargues? ¿Has extraído la lección o solo has cargado el peso?</li>
+          <li>¿Qué tan distinto es tu análisis de errores en el entrenamiento versus en la competencia? ¿Eres más duro contigo cuando hay público?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 6 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title">Convertir el fracaso en combustible</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Hay una diferencia entre tolerar el fracaso y usarlo. Los deportistas que solo toleran el fracaso
+        sobreviven a los golpes pero no crecen con ellos. Los que lo usan como combustible se vuelven
+        más difíciles de vencer con cada derrota.
+      </p>
+      <p>
+        <strong>El fracaso tiene información que el éxito no da.</strong> Una victoria puede ocultar problemas.
+        Una derrota los expone todos. El deportista que aprende a leer sus fracasos tiene acceso a un nivel
+        de autoconocimiento que los que solo ganan nunca alcanzan.
+      </p>
+      <p>
+        Esto no significa buscar el fracaso ni romantizarlo. Significa que cuando llega — y llega siempre — tienes
+        una mentalidad que lo convierte en datos, en motivación, en claridad sobre lo que necesitas mejorar.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Las 3 preguntas que convierten el fracaso en combustible</h4>
+        <ol>
+          <li><strong>¿Qué me dice esto sobre dónde estoy?</strong> No sobre quién soy — sobre dónde estás en este momento de tu desarrollo.</li>
+          <li><strong>¿Qué tendría que ser verdad para que esto no vuelva a pasar?</strong> Busca la causa raíz, no el síntoma.</li>
+          <li><strong>¿Cómo va a usar este fracaso mi mejor versión futura?</strong> Proyéctate 6 meses. ¿Qué habrá hecho esa versión con lo que pasó hoy?</li>
+        </ol>
+      </div>
+
+      <p>
+        La trayectoria de Messi con la selección es un ejemplo visible de lo que puede pasar cuando un deportista
+        sigue compitiendo después del fracaso en lugar de retirarse de él.
+        No podemos saber exactamente qué ajustó ni cómo lo procesó. Pero sí sabemos que cada final perdida fue
+        seguida de una nueva temporada, una nueva Copa, un nuevo intento.
+        <strong>El fracaso no fue el final de la historia. Fue parte del camino.</strong>
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio final</div>
+        <h4>Tu mapa de fracasos</h4>
+        <p>Escribe los 3 fracasos más importantes de tu carrera deportiva hasta ahora. Para cada uno, anota:</p>
+        <ul>
+          <li>¿Qué aprendiste de él que no habrías aprendido de otra forma?</li>
+          <li>¿Cómo cambió tu forma de entrenar o competir después?</li>
+        </ul>
+        <p style="margin-top:10px;">Si no encuentras nada para alguno, ahí está el trabajo: vuelve a ese fracaso y esta vez busca la lección.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 06</div>
+        <ol>
+          <li>¿Cuál es el fracaso del que más has crecido en tu carrera? ¿Qué lo hizo diferente a los otros?</li>
+          <li>Si pudieras hablarle a un deportista más joven sobre cómo manejar el fracaso, ¿qué le dirías con lo que sabes ahora?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────── -->
+  <!-- DIARIO DE ERRORES -->
+  <!-- ─────────────────────── -->
+  <div style="margin-bottom: 56px;">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Herramienta de seguimiento</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario de Errores</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        El deportista que registra sus errores aprende el doble de rápido. Llena esta tabla después de cada partido o entrenamiento importante.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:90px;">Fecha</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:130px;">Error cometido</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Reacción inicial</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Reset usado</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:120px;">Lección aprendida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: 15/04</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Perdí el balón por nervios al final</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Me enojé, bajé la cabeza</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Sacudí los brazos + "siguiente"</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Bajo presión simplificar el juego</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+      Tipos de error: Técnico (ejecución) · Decisión (lectura del juego) · Mental (foco, duda, miedo)
+    </p>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="closing">
+    <h2>El error no es el final. Es el material.</h2>
+    <p>
+      Los mejores deportistas del mundo no son los que menos fallan.
+      Son los que más rápido procesan el error y vuelven al juego.
+      Ese tiempo de recuperación se entrena. Empieza hoy.
+    </p>
+    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
+    <p class="url">lazonacampeon.com</p>
+    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
+    <p style="margin-top: 16px; font-size: 13px; color: #888;">Manual 04 de 05 — Nivel 2 — La Zona Campeón © 2025</p>
+  </div>
+
+</div>
+</body>
+</html>

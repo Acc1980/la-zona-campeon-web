@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confianza y Autoestima Deportiva — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── HEADER ── */
+    .brand {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .brand-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .level-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 20px;
+    }
+
+    /* ── PORTADA ── */
+    .cover {
+      text-align: center;
+      padding: 40px 0 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 38px;
+      line-height: 1.15;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #555;
+      letter-spacing: 0.05em;
+      margin-top: 12px;
+      margin-bottom: 32px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #fff;
+      border-left: 4px solid #c8aa32;
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #333;
+    }
+    .intro strong { color: #111; }
+
+    /* ── CAPITULOS ── */
+    .chapter {
+      margin-bottom: 56px;
+    }
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .chapter-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #c8aa32;
+      line-height: 1;
+      opacity: 0.25;
+      flex-shrink: 0;
+    }
+    .chapter-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      padding-top: 8px;
+    }
+    .chapter-body p {
+      margin-bottom: 16px;
+      color: #333;
+      font-size: 15px;
+    }
+    .chapter-body strong { color: #111; }
+
+    /* ── FIGURAS ── */
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Ciclo de la duda */
+    .cycle-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 8px 0;
+    }
+    .cycle-node {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .cycle-arrow {
+      font-size: 18px;
+      color: #c8aa32;
+      margin: 0 6px;
+    }
+
+    /* Tabla comparativa confianza */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .compare-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .compare-table th:first-child { color: #c0392b; }
+    .compare-table th:last-child { color: #2e7d32; }
+    .compare-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      vertical-align: top;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: #c0392b; }
+    .compare-table td:last-child { color: #2e7d32; font-weight: 600; }
+
+    /* Pilares de la confianza */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0;
+    }
+    .pillar-card {
+      background: #f5f0e8;
+      border: 1px solid #d4c99a;
+      border-radius: 10px;
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .pillar-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .pillar-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #c8aa32;
+      margin-bottom: 6px;
+    }
+    .pillar-desc {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Diálogo interno */
+    .self-talk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 8px 0;
+      text-align: left;
+    }
+    .self-talk-col h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid;
+    }
+    .self-talk-col.bad h4 { color: #c0392b; border-color: #c0392b; }
+    .self-talk-col.good h4 { color: #2e7d32; border-color: #2e7d32; }
+    .self-talk-col ul { list-style: none; }
+    .self-talk-col ul li {
+      font-size: 13px;
+      color: #333;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .self-talk-col ul li::before { margin-right: 6px; }
+    .self-talk-col.bad ul li::before { content: "✗"; color: #c0392b; }
+    .self-talk-col.good ul li::before { content: "✓"; color: #2e7d32; }
+
+    /* ── PROTOCOLO DESTACADO ── */
+    .protocol-box {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 28px;
+      margin: 24px 0;
+    }
+    .protocol-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c8aa32;
+      margin-bottom: 16px;
+    }
+    .protocol-box ol {
+      padding-left: 20px;
+    }
+    .protocol-box ol li {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+    .protocol-box ol li strong { color: #fff; }
+
+    /* ── HISTORIA DEL ATLETA ── */
+    .athlete-story {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #d4c99a;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .story-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .story-body p {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 14px;
+      line-height: 1.8;
+    }
+    .story-body strong { color: #111; }
+    .story-quote {
+      border-left: 3px solid #c8aa32;
+      padding: 10px 18px;
+      margin: 16px 0;
+      font-style: italic;
+      font-size: 15px;
+      color: #333;
+    }
+
+    /* ── REFLEXIONES ── */
+    .reflection {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-top: 24px;
+    }
+    .reflection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 12px;
+    }
+    .reflection ol {
+      padding-left: 20px;
+    }
+    .reflection ol li {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    /* ── EJERCICIO ── */
+    .exercise {
+      background: #fffdf5;
+      border: 1px solid #c8aa32;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 24px 0;
+    }
+    .exercise-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 8px;
+    }
+    .exercise h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .exercise p, .exercise li {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .exercise ul, .exercise ol { padding-left: 20px; }
+
+    /* ── SEPARADOR ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #d4c99a;
+      margin: 48px 0;
+    }
+
+    /* ── CIERRE ── */
+    .closing {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 2px solid #c8aa32;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .closing p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .closing .url {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #c8aa32;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,170,50,0.35);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #b89928; }
+
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      .container { padding: 24px 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 26px; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .self-talk-grid { grid-template-columns: 1fr; }
+      .cycle-diagram { flex-direction: column; gap: 4px; }
+      .cycle-arrow { transform: rotate(90deg); margin: 2px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="container">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">La Zona Campeón</div>
+    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
+    <div><span class="level-badge">Nivel 2 — Manuales de Temas Generales</span></div>
+  </div>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <p class="manual-num">Manual 03 de 05</p>
+    <h1>Confianza y<br /><span>Autoestima</span><br />Deportiva</h1>
+    <p class="cover-sub">Construye una confianza que no depende de los resultados</p>
+    <p class="cover-desc">
+      La duda puede destruir a un deportista antes de que el rival haga nada. Este manual te enseña
+      a construir una confianza sólida, que no se desmorona con una racha mala o una crítica.
+    </p>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <span>6</span>
+        <small>Capítulos</small>
+      </div>
+      <div class="cover-stat">
+        <span>12</span>
+        <small>Ejercicios</small>
+      </div>
+      <div class="cover-stat">
+        <span>1</span>
+        <small>Historia real</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      La confianza no es un regalo. No viene con el talento ni con los años de práctica.
+      <strong>La confianza se construye, se entrena y se mantiene</strong> con herramientas concretas.
+      Muchos deportistas esperan resultados para sentirse seguros. Este manual te enseña a hacer exactamente lo contrario:
+      construir seguridad desde adentro para que los resultados lleguen después.
+    </p>
+    <p style="margin-top:12px; margin-bottom:0;">
+      Antes de entrenar, visita <strong>lazonacampeon.com/frases</strong> para activar tu mente
+      con una frase del día. El entrenamiento mental empieza antes de saltar a la cancha.
+    </p>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 1 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">¿Qué es realmente la confianza deportiva?</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Cuando un deportista dice que "no tiene confianza", suele querer decir una de dos cosas:
+        o tiene miedo a equivocarse, o está esperando que alguien le diga que es bueno.
+        Ninguna de las dos es confianza real.
+      </p>
+      <p>
+        <strong>La confianza deportiva es la creencia en tu capacidad de ejecutar lo que has entrenado</strong>,
+        incluso cuando el resultado es incierto. No es certeza de ganar. Es certeza de que puedes competir.
+      </p>
+      <p>
+        Existe una diferencia clave que muchos deportistas no conocen: la diferencia entre
+        <strong>confianza situacional</strong> y <strong>confianza de base</strong>.
+        La confianza situacional depende de cómo te sientes ese día, del marcador, del rival, del clima.
+        Sube y baja constantemente. La confianza de base es más profunda: surge de quién eres como deportista,
+        de tus valores, tu historia de trabajo y tu identidad. Esta es la que no se rompe con una mala racha.
+      </p>
+      <p>
+        El objetivo de este manual es ayudarte a construir esa confianza de base, para que no dependas
+        del entorno para sentirte capaz.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Confianza frágil vs. Confianza sólida</div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Confianza Frágil</th>
+              <th>Confianza Sólida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Depende de los resultados</td>
+              <td>Depende del proceso</td>
+            </tr>
+            <tr>
+              <td>Necesita aprobación externa</td>
+              <td>Nace desde adentro</td>
+            </tr>
+            <tr>
+              <td>Se derrumba con un error</td>
+              <td>Sobrevive a las rachas malas</td>
+            </tr>
+            <tr>
+              <td>Aumenta solo cuando ganas</td>
+              <td>Aumenta cuando trabajas</td>
+            </tr>
+            <tr>
+              <td>Evita situaciones difíciles</td>
+              <td>Busca el desafío</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 01</div>
+        <ol>
+          <li>¿Tu confianza ahora mismo es situacional (depende del día) o de base (estable)? ¿Cómo lo notas?</li>
+          <li>¿Cuándo fue la última vez que competiste con plena confianza? ¿Qué tenías diferente ese día?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 2 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">El ciclo de la duda: cómo empieza y cómo se rompe</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        La duda no aparece de la nada. Sigue un patrón casi siempre igual, y entenderlo es el primer paso para interrumpirlo.
+      </p>
+      <p>
+        Todo empieza con un <strong>detonador</strong>: un error, una crítica, una comparación con otro deportista
+        o una racha de malos resultados. El detonador activa el <strong>diálogo interno negativo</strong>:
+        "soy un desastre", "no sirvo para esto", "el entrenador me va a sacar".
+        Ese diálogo genera <strong>tensión corporal</strong> — se tensa el cuerpo, la respiración se agita,
+        los movimientos se vuelven rígidos — y esa tensión produce exactamente lo que temías:
+        <strong>más errores</strong>. Y el ciclo vuelve a empezar.
+      </p>
+      <p>
+        Lo importante aquí es que <strong>el ciclo se puede cortar en cualquier punto</strong>.
+        Puedes intervenir en el diálogo interno, en la respuesta corporal, o incluso en cómo interpretas el detonador.
+        Los capítulos siguientes te dan herramientas para cada punto de intervención.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">El ciclo de la duda</div>
+        <div class="cycle-diagram">
+          <div class="cycle-node">Detonador<br />(error, crítica)</div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-node">Diálogo<br />negativo</div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-node">Tensión<br />corporal</div>
+          <div class="cycle-arrow">→</div>
+          <div class="cycle-node">Más<br />errores</div>
+        </div>
+        <p style="font-size:12px; color:#888; margin-top:14px;">↑ Puedes interrumpir el ciclo en cualquiera de estos cuatro puntos</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 02</div>
+        <ol>
+          <li>¿Cuál es el detonador más frecuente que activa tu ciclo de duda? ¿Un error técnico, una comparación, una crítica del entrenador?</li>
+          <li>¿En qué punto del ciclo crees que es más fácil para ti intervenir? ¿En el pensamiento, en el cuerpo o en el reencuadre del detonador?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 3 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">Los 3 pilares de la confianza sólida</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        La confianza que resiste presiones, críticas y rachas malas se construye sobre tres pilares.
+        Si solo tienes uno o dos, tu confianza seguirá siendo frágil. Con los tres, se vuelve estructural.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Los 3 pilares de la confianza deportiva</div>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">🔨</div>
+            <div class="pillar-name">Evidencia de trabajo</div>
+            <div class="pillar-desc">La confianza que da el entrenamiento. "Sé que estoy preparado porque lo he trabajado."</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🧭</div>
+            <div class="pillar-name">Identidad deportiva</div>
+            <div class="pillar-desc">Saber quién eres como deportista más allá de los resultados. Tu carácter en cancha.</div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🔁</div>
+            <div class="pillar-name">Diálogo interno positivo</div>
+            <div class="pillar-desc">El lenguaje que usas contigo mismo. La voz interior que te impulsa o que te limita.</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        <strong>Pilar 1: La evidencia del trabajo.</strong> Cada vez que entrenas bien, aprendes una técnica nueva
+        o superas un reto difícil, depositas en tu "banco de confianza". Cuando llegue la presión, podrás
+        retirar de ese banco. Un deportista que sabe que ha trabajado duro entra a competir diferente.
+        <strong>El trabajo honesto es la fuente más confiable de autoconfianza</strong>.
+      </p>
+      <p>
+        <strong>Pilar 2: La identidad deportiva.</strong> La mayoría de los deportistas definen su valía
+        según el último resultado. Si ganaron, son buenos. Si perdieron, son malos. Esa identidad es
+        inestable. <strong>La identidad sólida se basa en valores y actitudes</strong>: "soy un deportista
+        que da todo en cada entrenamiento", "soy alguien que se levanta cuando cae".
+        Eso no desaparece con una derrota.
+      </p>
+      <p>
+        <strong>Pilar 3: El diálogo interno.</strong> El capítulo 5 lo aborda en profundidad, pero empieza
+        aquí: cada pensamiento que tienes sobre ti mismo refuerza o erosiona tu confianza. No es positivismo
+        vacío — es entrenar conscientemente el lenguaje que usas contigo mismo.
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Tu banco de confianza</h4>
+        <p>Escribe 10 cosas que hayas logrado en el deporte en los últimos 12 meses. No tienen que ser victorias. Pueden ser pequeños logros: mejorar una técnica, aguantar un entrenamiento difícil, ejecutar bien en un partido importante. Guarda esa lista y léela antes de competir.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 03</div>
+        <ol>
+          <li>¿En cuál de los tres pilares eres más débil ahora mismo? ¿Qué podrías hacer esta semana para fortalecerlo?</li>
+          <li>Si tuvieras que describir tu identidad deportiva en dos frases — no tus resultados, sino quién eres en cancha — ¿qué dirías?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- HISTORIA DEL ATLETA -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="athlete-story">
+    <div class="story-label">Historia Real</div>
+    <div class="story-name">Cristiano Ronaldo — La confianza que se construyó desde adentro</div>
+    <div class="story-body">
+      <p>
+        En el año 2001, un chico de 16 años llegó desde la isla de Madeira a Lisboa para unirse al Sporting CP.
+        Era delgado, con un acento marcado del que otros se burlaban, y con un estilo de juego tan llamativo
+        que generaba tanto admiración como crítica. Sus compañeros de academia lo apodaban "el bicho raro".
+        <strong>Ese chico era Cristiano Ronaldo</strong>.
+      </p>
+      <p>
+        Lo que muchos no saben es que el Ronaldo de hoy no llegó al mundo con su confianza. La construyó.
+        En sus propias palabras: <em>"Fui criticado por muchas cosas cuando era joven. Decían que era demasiado
+        individualista, demasiado egocéntrico. Pero yo sabía lo que quería ser y trabajé para ello."</em>
+      </p>
+      <div class="story-quote">
+        "Tenía una imagen en mi cabeza de lo que quería llegar a ser. Y cada día que entrenaba, me acercaba a esa imagen."
+        <br /><em>— Cristiano Ronaldo</em>
+      </div>
+      <p>
+        Cuando llegó al Manchester United en 2003, el entrenador Alex Ferguson lo describió como el joven más
+        aplicado que había visto en su carrera. Ronaldo llegaba al entrenamiento antes que todos y se quedaba
+        después. Practicaba penales hasta que la oscuridad obligaba a apagar las luces.
+        <strong>Su confianza no venía de los elogios. Venía de saber, en su interior, que nadie había trabajado más que él</strong>.
+      </p>
+      <p>
+        En 2006, en el Mundial de Alemania, Ronaldo tuvo una de las rachas más difíciles de su carrera.
+        Fue señalado por la expulsión de Wayne Rooney contra Portugal, abucheado a su regreso a la Premier League,
+        y presionado por toda la prensa inglesa. La confianza frágil se habría roto ahí. La de Ronaldo no.
+        Esa temporada terminó siendo una de las mejores de su carrera hasta ese momento.
+      </p>
+      <p>
+        <strong>¿Qué lo sostuvo?</strong> Tres cosas exactas: la evidencia de su trabajo (nadie le podía quitar
+        lo que había entrenado), su identidad como deportista (ser el mejor, trabajar más que nadie, nunca rendirse)
+        y el control de su diálogo interno. En entrevistas posteriores lo explicó con claridad: en los momentos
+        más difíciles se repetía a sí mismo que era el mejor preparado para superar esa situación.
+        No como arrogancia. Como convicción construida.
+      </p>
+      <div class="story-quote">
+        "Cuando las cosas se ponen difíciles, me acuerdo de cuánto he trabajado. Y eso me da todo lo que necesito."
+        <br /><em>— Cristiano Ronaldo</em>
+      </div>
+      <p>
+        Hoy, con cinco Balones de Oro y récords mundiales, Ronaldo sigue describiendo su mentalidad en los mismos términos:
+        trabajo, preparación y certeza interna. <strong>La confianza como consecuencia del proceso, no como requisito previo</strong>.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 4 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title">Construir confianza desde el entrenamiento</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El error más común de los deportistas con baja confianza es esperar resultados para creer en sí mismos.
+        La lógica es: "cuando gane, me sentiré seguro". Pero funciona al revés: cuando te sientas seguro,
+        competirás de una forma que hace más probable que ganes.
+      </p>
+      <p>
+        <strong>La confianza se construye en el entrenamiento, no en la competencia.</strong>
+        Si en los entrenamientos eres descuidado, llegas tarde, entrenas al 70%, tu mente registra eso.
+        Y en el partido, cuando necesitas confianza, tu mente te dice: "pero si ni entrenas bien, ¿cómo vas a rendir aquí?"
+      </p>
+      <p>
+        Por eso los grandes deportistas son obsesivos con su preparación. No para agradarle al entrenador.
+        Para tener algo sólido sobre qué apoyarse cuando llegue la presión.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Cómo entrenar para construir confianza</h4>
+        <ol>
+          <li><strong>Llega preparado:</strong> antes de cada entrenamiento, define mentalmente qué quieres mejorar ese día.</li>
+          <li><strong>Compite contra ti mismo:</strong> mide tu progreso frente a tu versión anterior, no frente a otros.</li>
+          <li><strong>Celebra lo que salió bien:</strong> al terminar, identifica 2 cosas que ejecutaste bien. El cerebro aprende más de los éxitos que de los errores cuando los conscientizas.</li>
+          <li><strong>Registra tu banco de confianza:</strong> anota semanalmente un logro concreto, por pequeño que sea.</li>
+          <li><strong>Haz algo difícil cada día:</strong> salir un poco de tu zona de confort en el entrenamiento construye la certeza de que puedes manejar la dificultad.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 04</div>
+        <ol>
+          <li>¿Cómo es la calidad de tu actitud en los entrenamientos? ¿Estás construyendo confianza cada día o llegando a cumplir?</li>
+          <li>¿Cuál es el hábito de entrenamiento que más te costaría cambiar para mejorar? ¿Por qué no lo has cambiado?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 5 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title">El lenguaje del campeón: diálogo interno</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Tu mente escucha todo lo que te dices a ti mismo. Y reacciona como si fuera verdad.
+        Si te dices "soy un desastre", tu cuerpo se contrae, tu mirada baja, tu rendimiento cae.
+        Si te dices "ya me ha pasado esto y lo he superado", tu cuerpo se abre y tu mente busca soluciones.
+      </p>
+      <p>
+        <strong>El diálogo interno es el entrenamiento más constante que tienes</strong>.
+        Ocurre todo el tiempo: en el calentamiento, en el banquillo, en el vestuario, en casa la noche antes del partido.
+        Y nadie te enseñó a controlarlo.
+      </p>
+      <p>
+        No se trata de decirte cosas que no crees. Se trata de dejar de repetirte mentiras destructivas
+        y reemplazarlas con mensajes que construyen.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Reemplaza el diálogo destructivo</div>
+        <div class="self-talk-grid">
+          <div class="self-talk-col bad">
+            <h4>Diálogo limitante</h4>
+            <ul>
+              <li>Soy un desastre</li>
+              <li>Nunca me sale bien</li>
+              <li>Van a pensar que soy malo</li>
+              <li>No estoy listo para esto</li>
+              <li>Siempre la cago en los momentos importantes</li>
+            </ul>
+          </div>
+          <div class="self-talk-col good">
+            <h4>Diálogo que construye</h4>
+            <ul>
+              <li>Esto lo he trabajado</li>
+              <li>La próxima la hago bien</li>
+              <li>Estoy aquí para jugar, no para gustar</li>
+              <li>Estoy preparado porque he entrenado</li>
+              <li>Bajo presión es cuando más rindo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        La clave no es negarlos cuando aparezcan. Es <strong>reconocerlos y sustituirlos de forma deliberada</strong>.
+        Cuando notes que tu mente dice "soy un desastre", no intentes convencerte de que no lo eres.
+        En su lugar, responde: <em>"Eso es un pensamiento, no un hecho. Lo que sé es que estoy entrenado para esto."</em>
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Tu frase de ancla</h4>
+        <p>Escribe una frase corta (3 a 6 palabras) que resuma lo que necesitas recordarte en los momentos difíciles. Debe ser específica para ti, no genérica.</p>
+        <ul>
+          <li>Ejemplos: "Yo estoy preparado", "Punto a punto", "Este es mi momento", "Más fuerte que la duda"</li>
+        </ul>
+        <p style="margin-top:10px;">Úsala en los entrenamientos. Repítela cuando la duda aparezca. Hazla tuya antes del partido.</p>
+        <p style="margin-top:8px; font-style: italic; color: #888; font-size:13px;">Encuentra más frases activadoras en lazonacampeon.com/frases</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 05</div>
+        <ol>
+          <li>¿Cuál es el pensamiento negativo que más se repite en tu cabeza durante la competencia? Escríbelo y luego escribe la respuesta racional que lo desmonta.</li>
+          <li>¿Cómo te hablarías a ti mismo si fueras tu mejor entrenador? ¿Esas palabras se parecen a lo que realmente te dices?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 6 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title">Mantener la confianza en las rachas malas</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Todo deportista pasa por rachas malas. Partidos donde nada sale. Semanas donde el cuerpo no responde.
+        Meses donde los resultados no llegan. La diferencia no está en si pasan o no — pasan siempre — sino en
+        <strong>qué haces mentalmente durante esa racha</strong>.
+      </p>
+      <p>
+        Hay tres errores que convierten una racha mala en una crisis de confianza profunda:
+      </p>
+      <p>
+        <strong>Error 1: Cambiar todo.</strong> Cuando nada sale, la reacción instintiva es cambiarlo todo:
+        la forma de entrenar, el rol, la posición, hasta el deporte. Pero en una racha mala, el problema rara vez
+        es técnico. Es mental. Y cambiar la técnica constantemente solo añade incertidumbre.
+      </p>
+      <p>
+        <strong>Error 2: Evitar la competencia.</strong> Pedir no jugar, fingir lesiones, evadir los momentos de presión.
+        Cada vez que evitas la situación que te da miedo, tu cerebro registra: "eso es peligroso".
+        Y la próxima vez será más difícil aún.
+      </p>
+      <p>
+        <strong>Error 3: Compararte con tu mejor versión.</strong> En una racha mala, compararte con cómo jugabas cuando
+        estabas al 100% es un ejercicio de destrucción mental. El objetivo en las rachas malas no es rendir al máximo.
+        Es <strong>mantenerte en el proceso</strong>.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Cómo sobrevivir una racha mala</h4>
+        <ol>
+          <li><strong>Reduce el horizonte:</strong> no pienses en la temporada. Piensa en el próximo entrenamiento.</li>
+          <li><strong>Vuelve a los fundamentos:</strong> haz lo básico bien. La racha mala no es el momento para experimentar.</li>
+          <li><strong>Registra una cosa buena por día:</strong> por pequeña que sea. Tu cerebro necesita evidencia de que no todo va mal.</li>
+          <li><strong>Habla con alguien de confianza:</strong> entrenador, compañero, familiar. La racha mala en silencio es más larga.</li>
+          <li><strong>Revisa tu banco de confianza:</strong> lee los logros que anotaste en el capítulo 3. Son reales. La racha no los borra.</li>
+        </ol>
+      </div>
+
+      <p>
+        Los mejores deportistas del mundo no tienen rachas malas más cortas. Tienen mejores herramientas para atravesarlas
+        sin destruir lo que han construido. <strong>La racha mala siempre termina. Lo que construiste mentalmente, queda.</strong>
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio final</div>
+        <h4>Tu plan de confianza</h4>
+        <p>Escribe en un párrafo (no más de 5 líneas) cómo vas a construir tu confianza en los próximos 30 días. Incluye:</p>
+        <ol>
+          <li>Un hábito de entrenamiento que vas a mejorar</li>
+          <li>Tu frase de ancla</li>
+          <li>Una acción concreta para la próxima racha mala</li>
+        </ol>
+        <p style="margin-top:10px; font-style: italic; color: #888; font-size:13px;">No tiene que ser perfecto. Tiene que ser tuyo.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 06</div>
+        <ol>
+          <li>¿Cómo han sido tus últimas rachas malas? ¿Qué hiciste que las hizo durar más? ¿Qué podrías hacer diferente con lo que sabes ahora?</li>
+          <li>¿Qué parte de este manual fue la más difícil de leer? Eso generalmente indica dónde más lo necesitas.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- DIARIO DE VICTORIAS -->
+  <div style="margin-bottom: 56px;">
+    <hr style="border:none; border-top:1px solid #d4c99a; margin-bottom:48px;" />
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Herramienta de seguimiento</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario de Victorias</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Una victoria pequeña no es un gol ni un trofeo. Es cualquier momento en que elegiste seguir, mejorar o actuar con valentía.
+        Regístralos. Son el material con el que se construye la confianza.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Fecha</th>
+            <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:260px;">Victoria pequeña</th>
+            <th style="padding:12px 14px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:160px;">Sensación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: 14/04</td>
+            <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Terminé el entrenamiento aunque quería irme a la mitad</td>
+            <td style="padding:11px 14px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Orgullo, más seguro de mí</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:16px 14px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+      Victorias que cuentan: terminar un entrenamiento difícil · usar tu frase de ancla · no rendirte después de un error · pedir ayuda · intentar algo nuevo
+    </p>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="closing">
+    <h2>La confianza es una decisión diaria</h2>
+    <p>
+      No la decide el marcador. No la decide el entrenador. No la decide el rival.
+      La construyes tú, en cada entrenamiento, en cada pensamiento, en cada momento en que eliges
+      seguir trabajando cuando nadie te está mirando.
+    </p>
+    <p style="margin-top: 16px;">
+      Continúa tu entrenamiento mental en:
+    </p>
+    <p class="url">lazonacampeon.com</p>
+    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
+    <p style="margin-top: 16px; font-size: 13px; color: #888;">
+      Manual 03 de 05 — Nivel 2 — La Zona Campeón © 2025
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

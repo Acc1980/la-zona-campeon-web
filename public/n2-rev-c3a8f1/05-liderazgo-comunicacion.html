@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liderazgo y Comunicación en Equipo — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── HEADER ── */
+    .brand {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .brand-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .level-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 20px;
+    }
+
+    /* ── PORTADA ── */
+    .cover {
+      text-align: center;
+      padding: 40px 0 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 38px;
+      line-height: 1.15;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #555;
+      letter-spacing: 0.05em;
+      margin-top: 12px;
+      margin-bottom: 32px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #fff;
+      border-left: 4px solid #c8aa32;
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #333;
+    }
+    .intro strong { color: #111; }
+
+    /* ── CAPÍTULOS ── */
+    .chapter { margin-bottom: 56px; }
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .chapter-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #c8aa32;
+      line-height: 1;
+      opacity: 0.25;
+      flex-shrink: 0;
+    }
+    .chapter-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      padding-top: 8px;
+    }
+    .chapter-body p { margin-bottom: 16px; color: #333; font-size: 15px; }
+    .chapter-body strong { color: #111; }
+
+    /* ── FIGURAS ── */
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Estilos de liderazgo — 3 cards */
+    .styles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: left;
+    }
+    .style-card {
+      border-radius: 10px;
+      padding: 16px 14px;
+      border: 1px solid;
+    }
+    .style-card.ejemplo   { background: #fff8e8; border-color: #c8aa32; }
+    .style-card.vocal     { background: #f0f8ff; border-color: #4080c0; }
+    .style-card.silencioso { background: #f8f8f8; border-color: #888; }
+    .style-card-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+    .style-card.ejemplo .style-card-label    { color: #b89020; }
+    .style-card.vocal .style-card-label      { color: #2060a0; }
+    .style-card.silencioso .style-card-label { color: #555; }
+    .style-card p { font-size: 12px; color: #555; line-height: 1.5; margin: 0; }
+    .style-card .style-risk {
+      font-size: 11px;
+      color: #c0392b;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Tabla comunicación */
+    .comm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    .comm-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .comm-table th.bad  { color: #c0392b; }
+    .comm-table th.good { color: #2e7d32; }
+    .comm-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+      vertical-align: top;
+    }
+    .comm-table tr:last-child td { border-bottom: none; }
+    .comm-table td.bad-v  { color: #c0392b; }
+    .comm-table td.good-v { color: #2e7d32; font-weight: 600; }
+
+    /* Ciclo del liderazgo */
+    .cycle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 8px 0;
+    }
+    .cnode {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 16px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 110px;
+      line-height: 1.4;
+    }
+    .cnode small { display: block; font-size: 10px; color: #aaa; font-weight: 400; margin-top: 3px; text-transform: none; letter-spacing: 0; }
+    .carrow { font-size: 22px; color: #c8aa32; margin: 0 8px; }
+
+    /* ── EJEMPLO EN ACCIÓN ── */
+    .ejemplo {
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+    }
+    .ejemplo-header {
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ejemplo-header.vocal     { background: #f0f8ff; border-bottom: 2px solid #4080c0; }
+    .ejemplo-header.silencio  { background: #f8f8f8; border-bottom: 2px solid #888; }
+    .ejemplo-header.critica   { background: #fff8e8; border-bottom: 2px solid #c8aa32; }
+    .ejemplo-tipo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .ejemplo-header.vocal    .ejemplo-tipo { color: #2060a0; }
+    .ejemplo-header.silencio .ejemplo-tipo { color: #555; }
+    .ejemplo-header.critica  .ejemplo-tipo { color: #b89020; }
+    .ejemplo-titulo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #111;
+    }
+    .ejemplo-body {
+      background: #fff;
+      padding: 18px 18px 20px;
+    }
+    .ejemplo-situacion {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .ejemplo-steps { list-style: none; padding: 0; }
+    .ejemplo-steps li {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: #333;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0ece4;
+      line-height: 1.55;
+    }
+    .ejemplo-steps li:last-child { border-bottom: none; }
+    .ejemplo-step-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 72px;
+    }
+    .tag-sin      { color: #c0392b; }
+    .tag-lee      { color: #2060a0; }
+    .tag-elige    { color: #b89020; }
+    .tag-actua    { color: #2e7d32; }
+    .tag-resultado{ color: #c8aa32; }
+
+    /* ── PROTOCOLO DESTACADO ── */
+    .protocol-box {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 28px;
+      margin: 24px 0;
+    }
+    .protocol-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c8aa32;
+      margin-bottom: 16px;
+    }
+    .protocol-box ol { padding-left: 20px; }
+    .protocol-box ol li { font-size: 14px; line-height: 1.7; margin-bottom: 8px; color: #ddd; }
+    .protocol-box ol li strong { color: #fff; }
+
+    /* ── HISTORIA DEL ATLETA ── */
+    .athlete-story {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #d4c99a;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .story-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .story-body p { font-size: 14px; color: #444; margin-bottom: 14px; line-height: 1.8; }
+    .story-body strong { color: #111; }
+    .story-quote {
+      border-left: 3px solid #c8aa32;
+      padding: 10px 18px;
+      margin: 16px 0;
+      font-style: italic;
+      font-size: 15px;
+      color: #333;
+    }
+
+    /* ── REFLEXIONES ── */
+    .reflection {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-top: 24px;
+    }
+    .reflection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 12px;
+    }
+    .reflection ol { padding-left: 20px; }
+    .reflection ol li { font-size: 14px; color: #ccc; margin-bottom: 8px; line-height: 1.6; }
+
+    /* ── EJERCICIO ── */
+    .exercise {
+      background: #fffdf5;
+      border: 1px solid #c8aa32;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 24px 0;
+    }
+    .exercise-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 8px;
+    }
+    .exercise h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #111; margin-bottom: 10px; }
+    .exercise p, .exercise li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 6px; }
+    .exercise ul, .exercise ol { padding-left: 20px; }
+
+    /* ── CAPA DE LIDERAZGO ── */
+    .layer-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+    .layer-header.calma    { background: #f0f8ee; border: 1px solid #7ab870; }
+    .layer-header.presion  { background: #fff8e8; border: 1px solid #c8aa32; }
+    .layer-header.conflicto{ background: #fff0f0; border: 1px solid #c85050; }
+    .layer-icon {
+      font-size: 32px;
+      flex-shrink: 0;
+    }
+    .layer-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .layer-header.calma    .layer-label { color: #4a8a46; }
+    .layer-header.presion  .layer-label { color: #9a7a1a; }
+    .layer-header.conflicto .layer-label { color: #a03030; }
+    .layer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .layer-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .layer-caps {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 6px;
+    }
+
+    /* ── SEPARADOR ── */
+    .divider { border: none; border-top: 1px solid #d4c99a; margin: 48px 0; }
+
+    /* ── CIERRE ── */
+    .closing {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 2px solid #c8aa32;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 10px;
+    }
+    .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
+    .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,170,50,0.35);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #b89928; }
+
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      .container { padding: 24px 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 26px; }
+      .styles-grid { grid-template-columns: 1fr; }
+      .cycle { flex-direction: column; gap: 4px; }
+      .carrow { transform: rotate(90deg); margin: 2px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="container">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">La Zona Campeón</div>
+    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
+    <div><span class="level-badge">Nivel 2 — Manuales de Temas Generales</span></div>
+  </div>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <p class="manual-num">Manual 05 de 05</p>
+    <h1>Liderazgo y<br /><span>Comunicación</span><br />en Equipo</h1>
+    <p class="cover-sub">Influye positivamente sin necesitar la banda de campeón</p>
+    <p class="cover-desc">
+      El liderazgo no lo da el puesto ni los años en el equipo. Lo da la forma en que te comportas
+      cuando el partido se complica, cuando un compañero falla, cuando el equipo necesita energía
+      y no hay nadie más mirando.
+    </p>
+    <div class="cover-stats">
+      <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+      <div class="cover-stat"><span>12</span><small>Ejercicios</small></div>
+      <div class="cover-stat"><span>1</span><small>Historia real</small></div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      La mayoría de los deportistas esperan que alguien les dé un rol de liderazgo para empezar a liderar.
+      Funciona al revés: <strong>los que lideran antes de tener el rol son los que terminan recibiéndolo</strong>.
+      Este manual no es para capitanes únicamente. Es para cualquier deportista que quiera influir positivamente
+      en su equipo desde donde está.
+    </p>
+    <p style="margin-top:12px; margin-bottom:0;">
+      Antes de cada entrenamiento o partido, activa tu mente en <strong>lazonacampeon.com/frases</strong>.
+      La energía que llevas al equipo empieza en cómo llegas tú.
+    </p>
+  </div>
+
+  <!-- CAPA 1 -->
+  <div class="layer-header calma">
+    <div class="layer-icon">🟢</div>
+    <div>
+      <div class="layer-label">Capa 1 de 3</div>
+      <div class="layer-title">Liderazgo en calma</div>
+      <div class="layer-desc">Cuando todo va bien. Cómo construir tu influencia antes de que el partido exija algo de ti.</div>
+      <div class="layer-caps">Capítulos 01 y 02</div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 1 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">¿Qué es el liderazgo deportivo y quién puede ejercerlo?</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El liderazgo deportivo no es hablar más que nadie ni ser el más veterano del equipo.
+        Es la capacidad de <strong>influir en el comportamiento y el estado mental de tus compañeros</strong>
+        de una forma que los acerque al rendimiento colectivo.
+      </p>
+      <p>
+        Esta influencia no requiere un título. Un jugador de 18 años puede liderar a uno de 28 si tiene
+        la actitud correcta en el momento correcto. Un suplente puede ser el líder emocional del vestuario
+        más que el titular con más minutos. <strong>El liderazgo lo otorga la conducta, no el rol</strong>.
+      </p>
+      <p>
+        Hay tres formas básicas en que un deportista puede influir en su equipo desde el liderazgo:
+        a través de su <strong>ejemplo</strong> (cómo entrena, cómo maneja los errores, cómo trata al árbitro),
+        a través de su <strong>comunicación</strong> (qué dice, cuándo lo dice, cómo lo dice) y a través
+        de su <strong>energía</strong> (el estado emocional que contagia al grupo antes, durante y después del partido).
+        Los tres funcionan en paralelo y los tres se pueden entrenar.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">El ciclo del liderazgo en equipo</div>
+        <div class="cycle">
+          <div class="cnode">Conducta<br />propia<small>cómo actúas tú</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Influencia<br />en el grupo<small>cómo afecta a otros</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Cultura<br />de equipo<small>lo que el grupo normaliza</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Resultado<br />colectivo<small>rendimiento conjunto</small></div>
+        </div>
+        <p style="font-size:12px; color:#888; margin-top:14px;">Tu conducta individual es el primer eslabón del rendimiento colectivo.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 01</div>
+        <ol>
+          <li>¿Hay alguien en tu equipo que lidere sin tener el título de capitán? ¿Qué hace exactamente que lo convierte en referencia para los demás?</li>
+          <li>¿Qué tipo de influencia tienes tú ahora mismo en tu equipo — positiva, neutral o negativa? ¿Cómo lo sabes?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 2 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">Los 3 estilos de liderazgo deportivo</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        No existe un solo modelo de liderazgo válido en el deporte. Hay deportistas que lideran hablando
+        constantemente, organizando al equipo, señalando posiciones. Otros lideran desde el silencio:
+        son los primeros en llegar, los últimos en salir, los que nunca bajan el ritmo.
+        Y otros lideran a través del ejemplo en los momentos de presión.
+      </p>
+      <p>
+        <strong>El error más común es intentar imitar el estilo de liderazgo de otra persona.</strong>
+        Si tu naturaleza es tranquila y empiezas a gritar porque eso hace el capitán, el equipo lo nota como falso.
+        La clave es identificar tu estilo natural y desarrollarlo conscientemente.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Los 3 estilos de liderazgo deportivo</div>
+        <div class="styles-grid">
+          <div class="style-card ejemplo">
+            <div class="style-card-label">Por Ejemplo</div>
+            <p>Lidera a través de su conducta. El primero en los sprints, el último en quejarse, el que nunca pide lo que no se da a sí mismo.</p>
+            <p class="style-risk">Riesgo: puede volverse invisible si no lo acompaña ninguna comunicación.</p>
+          </div>
+          <div class="style-card vocal">
+            <div class="style-card-label">Vocal</div>
+            <p>Lidera hablando: organiza, motiva, señala, corrige en tiempo real. Su voz orienta al equipo en los momentos confusos.</p>
+            <p class="style-risk">Riesgo: si habla más de lo que rinde, pierde credibilidad rápidamente.</p>
+          </div>
+          <div class="style-card silencioso">
+            <div class="style-card-label">Emocional</div>
+            <p>Lidera a través del estado que genera en los demás. Su energía contagia. Celebra los logros del equipo, sostiene en las caídas.</p>
+            <p class="style-risk">Riesgo: puede convertirse en inestabilidad si sus emociones no están reguladas.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        La mayoría de los líderes efectivos combinan los tres estilos según el momento.
+        Pero todos parten de uno dominante. <strong>El primer paso es conocer el tuyo.</strong>
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Identifica tu estilo dominante</h4>
+        <p>Responde estas tres preguntas con honestidad:</p>
+        <ol>
+          <li>¿Cuándo sientes que influyes más en tu equipo: cuando actúas, cuando hablas o cuando gestionas la energía del grupo?</li>
+          <li>¿Qué es lo que tus compañeros más valoran de ti? ¿Tu comportamiento en el campo, tus palabras o tu actitud emocional?</li>
+          <li>¿Cuál de los tres riesgos descritos se parece más a algo que te hayan dicho o que hayas notado en ti mismo?</li>
+        </ol>
+        <p style="margin-top:10px;">Tu estilo es el que más se repite en tus respuestas. No hay uno mejor que otro — hay uno que es más tuyo.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 02</div>
+        <ol>
+          <li>¿Cuál de los tres estilos describe mejor cómo lideras ahora? ¿Es el estilo que quieres tener o el que simplemente salió por defecto?</li>
+          <li>¿Hay algún contexto específico (partido importante, racha mala, vestuario tenso) donde tu liderazgo desaparece o cambia para peor?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAPA 2 -->
+  <div class="layer-header presion">
+    <div class="layer-icon">🟡</div>
+    <div>
+      <div class="layer-label">Capa 2 de 3</div>
+      <div class="layer-title">Liderazgo bajo presión</div>
+      <div class="layer-desc">Cuando el partido se complica. Qué comunicar, cómo comunicarlo y cómo sostener al equipo cuando el ambiente se pone difícil.</div>
+      <div class="layer-caps">Capítulos 03, 04 y 05</div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 3 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">Comunicación que construye y comunicación que destruye</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        En el deporte de equipo, lo que dices durante el partido importa menos que cómo lo dices y cuándo lo dices.
+        Un deportista puede decir la frase correcta en el momento equivocado y destruir la concentración de un compañero.
+        O puede decir algo muy simple en el momento justo y cambiar el partido.
+      </p>
+      <p>
+        <strong>La comunicación que destruye no siempre es agresiva.</strong> A veces es una mirada de reproche,
+        un suspiro cuando el compañero falla, un gesto de desaprobación que el equipo entero ve.
+        El cuerpo comunica constantemente, incluso cuando la boca está cerrada.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Comunicación que construye vs. comunicación que destruye</div>
+        <table class="comm-table">
+          <thead>
+            <tr>
+              <th class="bad">Destruye al equipo</th>
+              <th class="good">Construye al equipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bad-v">"¿Cómo pudiste fallar eso?"</td>
+              <td class="good-v">"La próxima sale. Sigue."</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Suspirar o levantar los brazos ante un error ajeno</td>
+              <td class="good-v">Gesto neutro o de aliento inmediato</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Criticar decisiones tácticas en medio del partido</td>
+              <td class="good-v">Guardar el análisis para el vestuario</td>
+            </tr>
+            <tr>
+              <td class="bad-v">"Siempre igual" / "Nunca aprendes"</td>
+              <td class="good-v">"¿Qué viste? Intenta por acá la próxima."</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Ignorar a un compañero que cometió un error</td>
+              <td class="good-v">Acercarte, contacto físico breve, continuar</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Celebrar los propios logros sin incluir al equipo</td>
+              <td class="good-v">Celebrar mencionando al que te habilitó</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        El principio detrás de la comunicación que construye es simple: <strong>habla hacia adelante, no hacia atrás</strong>.
+        Lo que ya pasó no cambia con lo que digas ahora. Lo que viene sí puede cambiar.
+        Cuando hables a un compañero durante el partido, hazte esta pregunta antes:
+        <em>"¿Esto que voy a decir lo acerca al siguiente punto o lo aleja de él?"</em>
+      </p>
+
+      <!-- EJEMPLOS EN ACCIÓN -->
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplos en acción</p>
+
+      <!-- Ejemplo 1: Liderazgo vocal -->
+      <div class="ejemplo">
+        <div class="ejemplo-header vocal">
+          <div>
+            <div class="ejemplo-tipo">Liderazgo Vocal</div>
+            <div class="ejemplo-titulo">El compañero que acaba de fallar un gol claro</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 38. El delantero falla un gol cantado solo frente al portero. La tribuna reacciona.
+            El jugador baja la cabeza visiblemente. Quedan 52 minutos de partido.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+              <span>Nadie le dice nada. Algunos compañeros se miran entre sí. El delantero siente el silencio como reproche. En los siguientes 20 minutos evita pedir el balón.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Lee</span>
+              <span>El compañero más cercano nota el lenguaje corporal: cabeza baja, hombros caídos, se aleja del área. Hay tiempo de actuar antes de que la duda se instale.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Elige</span>
+              <span>No es el momento de análisis. Es el momento de anclarlo al presente. Breve, directo, sin paternalismos.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Actúa</span>
+              <span>Se acerca, palmada en el hombro: <em>"Bien buscada. Quédate en el área, la próxima llega."</em> Dos segundos. Sigue corriendo.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>El delantero levanta la cabeza. En el minuto 61 marca el 1-0 con un remate al que llegó porque no dejó de buscar el área.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo 2: Liderazgo silencioso -->
+      <div class="ejemplo">
+        <div class="ejemplo-header silencio">
+          <div>
+            <div class="ejemplo-tipo">Liderazgo por Ejemplo</div>
+            <div class="ejemplo-titulo">El equipo que baja el ritmo en el entrenamiento</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Entrenamiento del jueves. El equipo lleva una semana sin ganar. El ambiente está pesado.
+            El ejercicio de presión empieza pero nadie corre a tope. La intensidad es del 60%.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+              <span>Nadie sube el ritmo. El entrenador tiene que gritar para que el grupo reaccione. La sesión termina sin energía real y el ambiente sigue igual.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Lee</span>
+              <span>Un jugador nota que el grupo espera que alguien marque el tono. El primer sprint de verdad va a arrastrar al resto. Nadie quiere ser el único que no corra.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Elige</span>
+              <span>No hace falta un discurso. Hace falta una acción visible. El primer sprint al 100% es la comunicación.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Actúa</span>
+              <span>Sale al primer balón como si fuera la final. No dice nada. Su cuerpo dice todo. Dos compañeros responden en la siguiente repetición.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>En cinco minutos el entrenamiento cambió de ritmo. El liderazgo por ejemplo no necesitó palabras — necesitó que alguien fuera primero.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Ejemplo 3: Comunicación en la crítica -->
+      <div class="ejemplo">
+        <div class="ejemplo-header critica">
+          <div>
+            <div class="ejemplo-tipo">Comunicación en la Crítica</div>
+            <div class="ejemplo-titulo">Decirle a un compañero que está cometiendo el mismo error</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            En el descanso. El lateral derecho ha dejado espacio en la espalda tres veces en el primer tiempo
+            y el rival lo ha aprovechado dos. Hay que decírselo. Pero cómo se dice determina si reacciona o se cierra.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+              <span><em>"¡Tres veces te han agarrado por detrás, siempre igual!"</em> El compañero se pone a la defensiva, discute, llega tenso al segundo tiempo y comete el cuarto error.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Lee</span>
+              <span>El contexto importa: está al inicio del descanso, tiene tiempo para procesar. No está en medio de una jugada. Es el momento correcto para la conversación táctica.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Elige</span>
+              <span>Primero reconocer, luego señalar, siempre con solución. La crítica sin alternativa solo genera frustración.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Actúa</span>
+              <span><em>"Están buscando tu espalda porque ven que avanzas mucho. Segunda parte, cuando centres tu atención al fondo antes de subir. Yo te cubro si necesitas."</em></span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>El lateral entiende el problema y tiene una solución concreta. En el segundo tiempo ajusta el timing. El rival deja de buscar ese espacio.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 03</div>
+        <ol>
+          <li>¿Qué tipo de comunicación no verbal usas cuando un compañero falla? ¿Eres consciente de lo que tu cuerpo comunica en ese momento?</li>
+          <li>¿Hay alguna forma de comunicarte con el equipo que sabes que no funciona pero sigues usando? ¿Por qué crees que la repites?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 4 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title">Cómo dar y recibir crítica en el equipo</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        La crítica mal dada destruye la confianza de un compañero. La crítica mal recibida cierra la posibilidad
+        de aprender. En un equipo, ambas habilidades son igual de importantes y ninguna se enseña formalmente.
+      </p>
+      <p>
+        <strong>Dar crítica constructiva</strong> no es suavizar todo ni evitar el conflicto.
+        Es elegir el momento, el tono y la estructura correctos para que el mensaje llegue y genere cambio.
+        La fórmula más efectiva en el deporte de equipo es simple: <strong>observación + impacto + alternativa</strong>.
+        No opinión, no juicio, no historial de errores pasados.
+      </p>
+      <p>
+        <strong>Recibir crítica</strong> es una habilidad distinta y más difícil.
+        El ego deportivo — que en dosis adecuadas es útil — se convierte en obstáculo cuando nos impide escuchar
+        lo que un compañero o entrenador nos dice. <strong>La crítica que más te incomoda suele ser la que más necesitas.</strong>
+      </p>
+
+      <div class="protocol-box">
+        <h4>Cómo dar crítica que genera cambio</h4>
+        <ol>
+          <li><strong>Elige el momento:</strong> nunca en medio del partido. El vestuario o el entrenamiento son los momentos correctos. La crítica en caliente raramente construye.</li>
+          <li><strong>Observación concreta:</strong> describe lo que viste, no lo que interpretaste. "Vi que subiste cuando el rival estaba en transición" en lugar de "siempre atacas mal".</li>
+          <li><strong>Impacto en el equipo:</strong> conecta la acción con la consecuencia colectiva, no con la culpa personal. "Eso nos dejó el espacio que aprovecharon."</li>
+          <li><strong>Alternativa accionable:</strong> da una solución específica para la próxima vez. Sin alternativa, la crítica es solo reproche.</li>
+          <li><strong>Cierra con confianza:</strong> termina el intercambio dejando al compañero en modo solución, no en modo defensa. "Sé que lo puedes ajustar."</li>
+        </ol>
+      </div>
+
+      <div class="protocol-box" style="margin-top:16px;">
+        <h4>Cómo recibir crítica sin cerrarte</h4>
+        <ol>
+          <li><strong>Escucha hasta el final:</strong> no prepares tu respuesta mientras el otro habla. Eso no es escuchar — es esperar tu turno.</li>
+          <li><strong>Separa el mensaje del tono:</strong> si el tono fue agresivo, decide conscientemente no responder al tono. Evalúa el contenido.</li>
+          <li><strong>Haz una pregunta:</strong> en lugar de defenderte, pregunta algo concreto. Esto muestra apertura y te da más información.</li>
+          <li><strong>Cierra con algo accionable:</strong> "Entendido, voy a trabajar eso el martes." No necesitas estar de acuerdo con todo — solo necesitas saber qué hacer con la información.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 04</div>
+        <ol>
+          <li>¿Cuándo fue la última vez que le diste una crítica a un compañero? ¿Usaste observación + impacto + alternativa, o fue más bien un reproche?</li>
+          <li>¿Cómo reaccionas físicamente cuando alguien te critica en el partido? ¿Tu cuerpo cierra o se abre? ¿Qué dice eso de cómo recibes el feedback?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- HISTORIA DEL ATLETA -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="athlete-story">
+    <div class="story-label">Historia Real</div>
+    <div class="story-name">Xavi Hernández — El líder que hablaba antes de recibir el balón</div>
+    <div class="story-body">
+      <p>
+        Durante más de una década, Xavi Hernández fue el punto de referencia comunicativo del FC Barcelona
+        y de la selección española. Sus compañeros, entrenadores y rivales describieron repetidamente
+        lo mismo: <strong>Xavi hablaba constantemente durante el partido</strong>. No para dar órdenes —
+        para organizar el espacio antes de que el balón llegara.
+      </p>
+      <p>
+        En documentales y entrevistas del periodo 2008–2014, sus compañeros en la selección y en el Barcelona
+        describieron que Xavi pedía el balón señalando hacia dónde lo iba a mover antes de recibirlo.
+        Llamaba a los jugadores por su nombre para orientarlos. Sus instrucciones en el campo eran específicas
+        y constantes: no gritos, sino información.
+      </p>
+      <div class="story-quote">
+        Lo que sus compañeros describieron no era un líder que motivaba con discursos. Era un líder
+        que organizaba el juego colectivo en tiempo real, palabra por palabra, jugada por jugada.
+      </div>
+      <p>
+        Su liderazgo era predominantemente <strong>vocal y táctico</strong>, pero estaba sostenido por
+        una credibilidad ganada desde el primer día: nadie podía acusarle de hablar más de lo que rendía.
+        Sus estadísticas de pases, su presencia en campo y su nivel de exigencia en los entrenamientos
+        —documentados por compañeros como Piqué y Puyol en múltiples entrevistas— hacían que su comunicación
+        fuera recibida como autoridad, no como ruido.
+      </p>
+      <p>
+        Cuando el Barcelona ganó tres ligas consecutivas entre 2009 y 2011, y cuando España ganó el Mundial
+        de 2010 y las Eurocopas de 2008 y 2012, los análisis posteriores de aquellos equipos coincidían
+        en algo: <strong>la comunicación en campo era uno de sus principales activos colectivos</strong>.
+        Y Xavi era el nodo central de esa comunicación.
+      </p>
+      <p>
+        No lideró siendo el más rápido ni el más fuerte. Lideró siendo el más conectado con lo que el equipo
+        necesitaba en cada segundo. <strong>Esa es una habilidad que se entrena, no un don.</strong>
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 5 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title">Liderazgo en los momentos difíciles</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Cualquiera puede liderar cuando el equipo va ganando 3-0. El liderazgo real se mide cuando el equipo
+        va perdiendo, cuando hay una expulsión, cuando el ambiente está tenso y nadie sabe qué hacer.
+        <strong>En los momentos difíciles, el grupo busca una referencia de comportamiento.</strong>
+        Si tú eres esa referencia, el equipo se orienta. Si nadie lo es, el grupo se fragmenta.
+      </p>
+      <p>
+        Los momentos difíciles en el deporte de equipo son predecibles: un gol en contra, una racha de errores,
+        una decisión del entrenador que no gusta, un conflicto en el vestuario. Puedes prepararte para ellos
+        antes de que lleguen.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Cómo liderar cuando el partido se tuerce</h4>
+        <ol>
+          <li><strong>Regula lo tuyo primero:</strong> no puedes estabilizar al equipo si tú mismo estás en espiral. Los 10 segundos del manual anterior aplican aquí también. El equipo te mira antes de reaccionar.</li>
+          <li><strong>Sé el primero en moverse:</strong> después de un gol en contra, alguien tiene que recoger el balón y llevarlo al centro. Sé ese alguien. La acción física rompe el parálisis colectivo.</li>
+          <li><strong>Una sola frase, al equipo:</strong> corta, hacia adelante, sin reproches. "Queda tiempo", "Siguiente jugada", "Todos juntos ahora". No un discurso — una señal.</li>
+          <li><strong>Mantén el lenguaje corporal:</strong> la espalda erguida, el paso firme y la mirada alta son señales que el equipo lee constantemente. Tu cuerpo lidera antes que tu voz.</li>
+          <li><strong>No abandones al que más sufre:</strong> hay siempre un compañero que lo está pasando peor. Un gesto de apoyo en ese momento tiene un peso que ningún discurso del vestuario tendrá.</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Tu frase de equipo</h4>
+        <p>Escribe una frase corta (máximo 5 palabras) que usarás cuando el equipo necesite una señal para resetear. Tiene que ser:</p>
+        <ul>
+          <li>En positivo, hacia adelante</li>
+          <li>Tuya — que suene natural en tu boca</li>
+          <li>Aplicable en cualquier momento difícil del partido</li>
+        </ul>
+        <p style="margin-top:10px;">Ejemplos: "Siguiente jugada", "Todos juntos", "Queda partido", "Arriba, vamos". Ensáyala en voz alta antes del próximo entrenamiento para que no suene forzada cuando la necesites de verdad.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 05</div>
+        <ol>
+          <li>¿Cómo reaccionas tú cuando el equipo va perdiendo? ¿Eres parte de la solución o parte del problema emocional?</li>
+          <li>¿Recuerdas algún partido en el que alguien del equipo cambió el ambiente con una sola acción o una sola frase? ¿Qué hizo exactamente?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAPA 3 -->
+  <div class="layer-header conflicto">
+    <div class="layer-icon">🔴</div>
+    <div>
+      <div class="layer-label">Capa 3 de 3</div>
+      <div class="layer-title">Liderazgo en conflicto</div>
+      <div class="layer-desc">Cuando hay errores, reclamos o tensión. Cómo gestionar el conflicto sin romper lo que el equipo ha construido.</div>
+      <div class="layer-caps">Capítulo 06 · Guía de consulta · Casos en acción</div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 6 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title">Construir una identidad de equipo desde adentro</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Los mejores equipos no son los que tienen más talento individual. Son los que saben quiénes son
+        cuando las cosas se complican. Tienen una <strong>identidad colectiva</strong>: un conjunto de valores
+        y comportamientos que el grupo ha normalizado y que aparecen de forma casi automática bajo presión.
+      </p>
+      <p>
+        Esa identidad no la construye el entrenador solo con un discurso. La construyen los jugadores
+        con sus acciones diarias. <strong>Lo que se tolera en el equipo se convierte en norma.
+        Lo que se celebra se convierte en cultura.</strong>
+        Si un jugador llega tarde y nadie dice nada, el equipo aprende que llegar tarde está bien.
+        Si un jugador hace un sprint al 100% en el último minuto de entrenamiento y sus compañeros lo reconocen,
+        el equipo aprende que eso es lo que se espera.
+      </p>
+      <p>
+        Como líder —con o sin banda— tienes influencia directa sobre qué se tolera y qué se celebra
+        en tu entorno inmediato. No necesitas cambiar al equipo entero. Necesitas ser consistente
+        con los dos o tres compañeros más cercanos y dejar que la conducta se expanda.
+      </p>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Las 3 normas no escritas de tu equipo</h4>
+        <p>Escribe las tres normas no escritas que actualmente rigen el comportamiento de tu equipo. No las que están en el reglamento — las que realmente se siguen en el día a día:</p>
+        <ol>
+          <li>¿Qué se tolera aunque no debería?</li>
+          <li>¿Qué se celebra aunque sea implícitamente?</li>
+          <li>¿Qué comportamiento tuyo podría cambiar una de esas normas en los próximos 30 días?</li>
+        </ol>
+      </div>
+
+      <div class="protocol-box">
+        <h4>Las 4 conductas que construyen identidad de equipo</h4>
+        <ol>
+          <li><strong>Celebra los esfuerzos, no solo los resultados.</strong> El jugador que corrió todo el partido sin marcar necesita reconocimiento tanto como el que marcó.</li>
+          <li><strong>Nombra las victorias pequeñas.</strong> Un buen bloque defensivo, una presión colectiva bien ejecutada, un segundo tiempo más intenso. Lo que se nombra, se repite.</li>
+          <li><strong>Sé consistente cuando nadie mira.</strong> La identidad se construye en los entrenamientos de martes sin cámaras, no en los partidos del domingo.</li>
+          <li><strong>Incluye al que está en el margen.</strong> El último del banquillo, el que viene de lesión, el que está en racha mala. Un equipo que incluye en los buenos momentos tiene más fuerza en los difíciles.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 06</div>
+        <ol>
+          <li>Si pudieras cambiar una sola dinámica de tu equipo con tu conducta, ¿cuál sería y qué harías exactamente diferente desde mañana?</li>
+          <li>¿Qué tipo de líder quieres ser en cinco años? ¿Qué tiene que construir la versión actual de ti para que eso sea posible?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- GUÍA DE CONSULTA RÁPIDA -->
+  <div style="margin-bottom:56px;">
+    <div style="text-align:center; margin-bottom:32px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Referencia práctica</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">¿Qué hago en este momento?</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Tres situaciones, tres protocolos. Consúltala antes del partido, en el vestuario o cuando el momento no espera.
+      </p>
+    </div>
+
+    <!-- Antes del partido -->
+    <div style="background:#fff; border-radius:12px; border:1px solid #d4c99a; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#1a1a1a; padding:12px 20px; display:flex; align-items:center; gap:12px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:18px; color:#c8aa32; line-height:1;">→</span>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#c8aa32;">Situación 1</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; color:#fff; margin-top:2px;">Qué hacer antes del partido</div>
+        </div>
+      </div>
+      <div style="padding:20px 20px 22px;">
+        <ol style="padding-left:20px; list-style:none; counter-reset:item;">
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">1.</span>
+            <span><strong>Llega con intención.</strong> Decide antes de entrar qué tipo de líder vas a ser hoy. No es un estado que aparece solo — es una decisión consciente.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">2.</span>
+            <span><strong>Saluda a tus compañeros uno a uno.</strong> Especialmente al que sabes que está nervioso o en racha mala. Ese contacto breve antes del partido vale más que cualquier discurso.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">3.</span>
+            <span><strong>Prepara tu frase de equipo.</strong> Esa frase corta del capítulo 5. Tenla lista para el momento en que el partido la necesite.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">4.</span>
+            <span><strong>Regula tu propio estado primero.</strong> No puedes subir la energía del equipo si la tuya está baja. Tu estado emocional al salir al campo es el punto de partida de tu influencia.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">5.</span>
+            <span><strong>Define un compañero al que vas a apoyar especialmente hoy.</strong> No todos los días — uno. Esa atención focalizada es más efectiva que una actitud difusa de "apoyo a todos".</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Tras un error del equipo -->
+    <div style="background:#fff; border-radius:12px; border:1px solid #d4c99a; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#1a1a1a; padding:12px 20px; display:flex; align-items:center; gap:12px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:18px; color:#c8aa32; line-height:1;">→</span>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#c8aa32;">Situación 2</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; color:#fff; margin-top:2px;">Qué hacer tras un error del equipo</div>
+        </div>
+      </div>
+      <div style="padding:20px 20px 22px;">
+        <ol style="padding-left:20px; list-style:none;">
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">1.</span>
+            <span><strong>Regúlate antes de hablar.</strong> Si tu primera reacción es de frustración, espera. Cinco segundos. Lo que digas en ese estado raramente construye.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">2.</span>
+            <span><strong>Sé el primero en moverse.</strong> Recoge el balón, reposiciónate, da la señal de que hay partido por delante. La acción física rompe el parálisis antes que cualquier palabra.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">3.</span>
+            <span><strong>Una frase, hacia adelante.</strong> No análisis, no reproches. "Siguiente jugada." "Todos juntos." "Queda tiempo." Una sola señal que oriente al grupo.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">4.</span>
+            <span><strong>Busca al que peor lo está pasando.</strong> Siempre hay uno. Un gesto de apoyo específico hacia esa persona estabiliza al resto del equipo por contagio.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">5.</span>
+            <span><strong>El análisis va después.</strong> En el vestuario, en frío, con tiempo. Durante el partido, el único objetivo es mantener al equipo en modo competencia.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- En un conflicto -->
+    <div style="background:#fff; border-radius:12px; border:1px solid #d4c99a; overflow:hidden;">
+      <div style="background:#1a1a1a; padding:12px 20px; display:flex; align-items:center; gap:12px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:18px; color:#c8aa32; line-height:1;">→</span>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#c8aa32;">Situación 3</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; color:#fff; margin-top:2px;">Qué hacer en un conflicto dentro del equipo</div>
+        </div>
+      </div>
+      <div style="padding:20px 20px 22px;">
+        <ol style="padding-left:20px; list-style:none;">
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">1.</span>
+            <span><strong>No tomes partido en caliente.</strong> Si el conflicto acaba de explotar, tu función es reducir la temperatura, no aumentarla apoyando un bando.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">2.</span>
+            <span><strong>Escucha a ambos lados por separado.</strong> No en grupo, no en público. La mayoría de los conflictos de equipo tienen dos versiones válidas y un malentendido en el medio.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">3.</span>
+            <span><strong>Enfoca la conversación en el equipo, no en los individuos.</strong> "¿Qué necesita el equipo de nosotros dos en este momento?" es una pregunta que desactiva el ego mejor que cualquier argumento.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid #f0ece4; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">4.</span>
+            <span><strong>Cierra con un acuerdo concreto, no con un "ya está."</strong> Los conflictos que se tapan sin resolverse vuelven más fuertes. Define qué cambia a partir de ahora y quién hace qué.</span>
+          </li>
+          <li style="display:flex; gap:12px; padding:8px 0; font-size:14px; color:#333; line-height:1.6;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:900; color:#c8aa32; font-size:16px; flex-shrink:0; line-height:1.4;">5.</span>
+            <span><strong>Haz seguimiento.</strong> El día siguiente al conflicto importa más que la conversación misma. Un gesto de normalidad — un saludo, una jugada compartida — consolida la resolución.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SITUACIONES REALES DE EQUIPO -->
+  <div style="margin-bottom:56px;">
+    <div style="text-align:center; margin-bottom:32px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Casos en acción</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Tres situaciones reales de equipo</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        El liderazgo no ocurre en discursos. Ocurre en momentos concretos. Aquí están tres de los más comunes.
+      </p>
+    </div>
+
+    <!-- Caso 1: Defensor que da órdenes -->
+    <div class="ejemplo" style="margin-bottom:20px;">
+      <div class="ejemplo-header vocal">
+        <div>
+          <div class="ejemplo-tipo">Liderazgo vocal</div>
+          <div class="ejemplo-titulo">El defensor central que organiza desde atrás</div>
+        </div>
+      </div>
+      <div class="ejemplo-body">
+        <p class="ejemplo-situacion">
+          Minuto 55, el equipo está ganando 1-0 y el rival empieza a presionar. Los mediocampistas están desordenados,
+          los espacios se abren. El defensor central tiene visión de todo el campo desde su posición. Nadie está hablando.
+        </p>
+        <ul class="ejemplo-steps">
+          <li>
+            <span class="ejemplo-step-tag tag-sin">Error común</span>
+            <span>El defensor calla porque piensa que organizar es "cosa del capitán" o del mediocampista. El desorden persiste. El rival encuentra el espacio en el minuto 62 y empata.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-lee">Lee la situación</span>
+            <span>Tiene visión panorámica del campo. Ve el espacio que nadie más está viendo. No necesita permiso para comunicarlo — tiene la información y la posición para hacerlo.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-elige">Elige cómo</span>
+            <span>Instrucciones breves, por nombre, sin gritar. La comunicación táctica no necesita volumen — necesita claridad y momento.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-actua">Actúa</span>
+            <span><em>"Carlos, cierra el centro. Miguel, línea. Todos arriba."</em> Tres instrucciones, cuatro palabras cada una. El equipo tiene una referencia y se reorganiza en una jugada.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+            <span>El rival ya no encuentra los espacios. El defensor no marcó ni asistió — lideró. Eso también gana partidos.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Caso 2: Suplente que entra y cambia la energía -->
+    <div class="ejemplo" style="margin-bottom:20px;">
+      <div class="ejemplo-header silencio">
+        <div>
+          <div class="ejemplo-tipo">Liderazgo por energía</div>
+          <div class="ejemplo-titulo">El suplente que entra en el minuto 70 y cambia el partido</div>
+        </div>
+      </div>
+      <div class="ejemplo-body">
+        <p class="ejemplo-situacion">
+          El equipo va empatando 0-0. El ambiente está pesado. Los titulares llevan 70 minutos y el cansancio
+          se nota en el ritmo. El suplente lleva 40 minutos calentando en la banda, mirando el partido, preparándose.
+        </p>
+        <ul class="ejemplo-steps">
+          <li>
+            <span class="ejemplo-step-tag tag-sin">Error común</span>
+            <span>El suplente entra con la cabeza baja porque siente que "lleva poco tiempo de titular". Su lenguaje corporal comunica inseguridad. El equipo no recibe ninguna energía nueva — recibe más de lo mismo.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-lee">Lee la situación</span>
+            <span>El equipo no necesita más técnica — necesita ritmo. Lo que puede aportar un suplente fresco que los titulares cansados no pueden: intensidad inmediata en cada disputa.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-elige">Elige cómo</span>
+            <span>La primera jugada es la declaración de intenciones. No hay que esperarse al segundo tiempo para demostrar presencia — es ahora, con el primer balón.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-actua">Actúa</span>
+            <span>Entra al campo con paso firme, busca a sus compañeros más cercanos con contacto visual, y en su primer balón va al 100% aunque lo pierda. Ese sprint lo ve el equipo entero.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+            <span>Dos compañeros titulares suben el ritmo por contagio. En el minuto 78, el equipo marca en una jugada de presión alta que no habría existido sin ese cambio de energía.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Caso 3: Capitán que corrige sin humillar -->
+    <div class="ejemplo">
+      <div class="ejemplo-header critica">
+        <div>
+          <div class="ejemplo-tipo">Comunicación + liderazgo</div>
+          <div class="ejemplo-titulo">El capitán que corrige a un joven sin destruirlo</div>
+        </div>
+      </div>
+      <div class="ejemplo-body">
+        <p class="ejemplo-situacion">
+          Un jugador joven de 18 años lleva dos partidos tomando decisiones individualistas que perjudican al equipo.
+          Sus compañeros ya están frustrados. El capitán sabe que tiene que decirlo — pero si lo hace mal,
+          pierde al jugador o pierde al equipo.
+        </p>
+        <ul class="ejemplo-steps">
+          <li>
+            <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+            <span>Lo corrige en público, delante del grupo o del entrenador, con tono de reproche. El joven se cierra, se pone a la defensiva y el problema de individualismo se convierte también en un problema de confianza.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-lee">Lee la situación</span>
+            <span>El joven no actúa así por mala intención — actúa así porque nadie le ha explicado el impacto colectivo, o porque tiene miedo a cometer errores y el individualismo es una forma de control. La corrección necesita entender el origen.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-elige">Elige el cuándo y el cómo</span>
+            <span>Conversación privada, fuera del entrenamiento. Sin público. Sin historial de errores acumulados. Observación concreta + impacto + alternativa + confianza.</span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-actua">Actúa</span>
+            <span><em>"Vi que en los dos últimos partidos buscaste el uno contra uno cuando teníamos opciones de pase. Eso nos costó transiciones. Sé que puedes hacer ambas cosas. Esta semana trabajemos cuándo es el momento de cada una."</em></span>
+          </li>
+          <li>
+            <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+            <span>El joven no se sintió atacado — se sintió visto. En los siguientes partidos empieza a combinar el desborde individual con la circulación colectiva. El capitán ganó un aliado, no un enemigo.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- DIARIO DE LIDERAZGO -->
+  <div style="margin-bottom: 56px;">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Herramienta de seguimiento</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario de Liderazgo</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        El liderazgo se entrena con repetición consciente. Registra las situaciones donde intentaste influir positivamente en tu equipo — funcionó o no.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:90px;">Fecha</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:140px;">Situación de equipo</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:130px;">Cómo respondí</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:120px;">Impacto en el equipo</th>
+            <th style="padding:12px 12px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Qué haría diferente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: 20/04</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Compañero cabizbajo tras fallo</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Me acerqué, palmada, "la próxima sale"</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Levantó la cabeza, siguió jugando</td>
+            <td style="padding:10px 12px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Hacerlo antes, no esperar</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 12px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+      Situaciones clave: compañero tras un error · equipo bajo en energía · conflicto en vestuario · partido adverso · crítica que dar o recibir
+    </p>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="closing">
+    <h2>El liderazgo no espera el momento perfecto</h2>
+    <p>
+      No esperes la banda, el título ni los años de experiencia.
+      Empieza hoy con la conducta, la comunicación y la energía que tienes.
+      El equipo que construyas desde adentro es el equipo que te va a sostener
+      cuando más lo necesites.
+    </p>
+    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
+    <p class="url">lazonacampeon.com</p>
+    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
+    <p style="margin-top: 16px; font-size: 13px; color: #888;">Manual 05 de 05 — Nivel 2 — La Zona Campeón © 2025</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Espiral Negativa — La Zona Campeón</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f0e8;
+      color: #1a1a2e;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f5f0e8;
+    }
+
+    /* BOTÓN IMPRIMIR */
+    .print-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #C8AA32;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(200,170,50,0.35);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .print-btn:hover { background: #b89a28; }
+
+    /* PORTADA */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a1a2e 0%, #2c2f3a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      border-bottom: 4px solid #C8AA32;
+    }
+
+    .cover-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 60px;
+      opacity: 0.9;
+    }
+
+    .cover-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      background: rgba(200, 170, 50, 0.12);
+      border: 1px solid rgba(200, 170, 50, 0.35);
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
+    }
+
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .cover h1 span { color: #C8AA32; }
+
+    .cover-sub {
+      font-size: 16px;
+      color: #9090b0;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: #C8AA32;
+      margin: 0 auto 40px;
+    }
+
+    .cover-promise {
+      background: rgba(200, 170, 50, 0.1);
+      border: 1px solid rgba(200, 170, 50, 0.25);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 480px;
+      font-size: 14px;
+      color: #b0b0cc;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .cover-promise strong { color: #C8AA32; font-style: normal; }
+
+    /* ÍNDICE */
+    .index {
+      padding: 60px 50px;
+      border-bottom: 2px solid #e8e0d0;
+      background: #fff;
+    }
+
+    .index-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 24px;
+    }
+
+    .index h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      text-transform: uppercase;
+      color: #1a1a2e;
+      margin-bottom: 32px;
+    }
+
+    .index-list { list-style: none; }
+
+    .index-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #ece8e0;
+    }
+
+    .index-list li:last-child { border-bottom: none; }
+
+    .index-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #C8AA32;
+      min-width: 30px;
+    }
+
+    .index-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #1a1a2e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .index-desc {
+      font-size: 12px;
+      color: #8888a0;
+      margin-top: 3px;
+    }
+
+    /* SECCIONES */
+    .section {
+      padding: 60px 50px;
+      border-bottom: 2px solid #e8e0d0;
+      background: #faf7f2;
+    }
+
+    .section-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 14px;
+    }
+
+    .section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #1a1a2e;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #3a3a5a;
+      margin-bottom: 16px;
+    }
+
+    .section p strong { color: #1a1a2e; }
+    .section em { color: #8a6a20; font-style: italic; }
+
+    /* CAPÍTULOS */
+    .chapter {
+      padding: 60px 50px;
+      border-bottom: 2px solid #e8e0d0;
+      background: #fff;
+    }
+
+    .chapter:nth-child(even) { background: #faf7f2; }
+
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .chapter-number {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 80px;
+      line-height: 1;
+      color: rgba(200, 170, 50, 0.18);
+      min-width: 90px;
+    }
+
+    .chapter-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 8px;
+    }
+
+    .chapter-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #1a1a2e;
+      line-height: 1.2;
+    }
+
+    .chapter-body p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #3a3a5a;
+      margin-bottom: 16px;
+    }
+
+    .chapter-body p strong { color: #1a1a2e; font-weight: 700; }
+    .chapter-body em { color: #8a6a20; }
+
+    .chapter-box {
+      background: rgba(200, 170, 50, 0.08);
+      border-left: 4px solid #C8AA32;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .chapter-box-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 12px;
+    }
+
+    .chapter-box p {
+      font-size: 14px;
+      color: #3a3a5a;
+      line-height: 1.8;
+      margin: 0 0 8px 0;
+    }
+
+    .chapter-box p:last-child { margin-bottom: 0; }
+    .chapter-box strong { color: #1a1a2e; }
+
+    .chapter-steps {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .chapter-steps li {
+      display: flex;
+      gap: 14px;
+      font-size: 14px;
+      color: #3a3a5a;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .chapter-steps li span {
+      color: #C8AA32;
+      font-weight: 700;
+      min-width: 24px;
+    }
+
+    .chapter-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #1a1a2e;
+      font-style: italic;
+      text-align: center;
+      padding: 28px 20px;
+      border-top: 1px solid rgba(200,170,50,0.3);
+      border-bottom: 1px solid rgba(200,170,50,0.3);
+      margin: 32px 0;
+      background: rgba(200,170,50,0.05);
+      border-radius: 4px;
+    }
+
+    .chapter-quote::before { content: '"'; color: #C8AA32; font-size: 40px; line-height: 0; vertical-align: -14px; margin-right: 6px; }
+    .chapter-quote::after { content: '"'; color: #C8AA32; font-size: 40px; line-height: 0; vertical-align: -14px; margin-left: 6px; }
+
+    /* REFLEXIÓN */
+    .reflection {
+      background: #1a1a2e;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 36px;
+    }
+
+    .reflection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 16px;
+    }
+
+    .reflection ul {
+      list-style: none;
+    }
+
+    .reflection ul li {
+      font-size: 14px;
+      color: #c0c0d8;
+      line-height: 1.7;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .reflection ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #C8AA32;
+      font-weight: 700;
+    }
+
+    .reflection ul li:last-child { margin-bottom: 0; }
+
+    /* DIAGRAMA ESPIRAL */
+    .spiral-diagram {
+      background: #fff;
+      border: 1px solid #ddd8cc;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .spiral-diagram-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8888a0;
+      margin-bottom: 28px;
+    }
+
+    .spiral-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .spiral-step {
+      background: rgba(200,170,50,0.1);
+      border: 1px solid rgba(200,170,50,0.3);
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: #1a1a2e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      min-width: 260px;
+    }
+
+    .spiral-step.red {
+      background: rgba(192,57,43,0.08);
+      border-color: rgba(192,57,43,0.25);
+      color: #922b21;
+    }
+
+    .spiral-arrow {
+      font-size: 18px;
+      color: #C8AA32;
+      margin: 6px 0;
+      opacity: 0.6;
+    }
+
+    /* SEÑALES */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .signal-card {
+      background: #fff;
+      border: 1px solid #ddd8cc;
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .signal-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+    }
+
+    .signal-dot.physical { background: #C0392B; }
+    .signal-dot.mental { background: #C8AA32; }
+    .signal-dot.behavioral { background: #2980b9; }
+
+    .signal-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+    }
+
+    .signal-list { list-style: none; text-align: left; }
+
+    .signal-list li {
+      font-size: 12px;
+      color: #6060a0;
+      line-height: 1.6;
+      margin-bottom: 6px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .signal-list li::before { content: '–'; position: absolute; left: 0; color: #C8AA32; }
+
+    /* PROTOCOLO FIGURA */
+    .protocol-figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 36px 0;
+      flex-wrap: wrap;
+    }
+
+    .protocol-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      text-align: center;
+      padding: 16px;
+      position: relative;
+    }
+
+    .protocol-circle.step1 { background: #1a1a2e; border: 3px solid #C8AA32; }
+    .protocol-circle.step2 { background: #C8AA32; border: 3px solid #C8AA32; }
+    .protocol-circle.step3 { background: #1a1a2e; border: 3px solid #C8AA32; }
+
+    .protocol-circle-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .step1 .protocol-circle-num,
+    .step3 .protocol-circle-num { color: #C8AA32; }
+    .step2 .protocol-circle-num { color: #1a1a2e; }
+
+    .protocol-circle-word {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .step1 .protocol-circle-word,
+    .step3 .protocol-circle-word { color: #ffffff; }
+    .step2 .protocol-circle-word { color: #1a1a2e; }
+
+    .protocol-circle-desc {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .step1 .protocol-circle-desc,
+    .step3 .protocol-circle-desc { color: #8080a0; }
+    .step2 .protocol-circle-desc { color: rgba(26,26,46,0.7); }
+
+    .protocol-connector {
+      font-size: 28px;
+      color: #C8AA32;
+      font-weight: 900;
+      padding: 0 8px;
+      margin-top: -10px;
+    }
+
+    /* PROTOCOLO PASOS */
+    .protocol {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .protocol-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #fff;
+      border: 1px solid #e8e0d0;
+      border-radius: 10px;
+      padding: 20px 24px;
+    }
+
+    .protocol-icon {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      color: #C8AA32;
+      min-width: 44px;
+      text-align: center;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .protocol-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .protocol-desc {
+      font-size: 13px;
+      color: #5050a0;
+      line-height: 1.7;
+    }
+
+    /* TABLA */
+    .diary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 13px;
+    }
+
+    .diary-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid #C8AA32;
+      background: #1a1a2e;
+    }
+
+    .diary-table td {
+      padding: 14px 16px;
+      color: #5050a0;
+      border-bottom: 1px solid #e8e0d0;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .diary-table tr:last-child td { border-bottom: none; }
+    .diary-table tr:nth-child(even) td { background: #faf7f2; }
+
+    /* HISTORIA */
+    .story {
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 36px 40px;
+      margin: 40px 0 0;
+    }
+
+    .story-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      margin-bottom: 16px;
+    }
+
+    .story h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .story p {
+      font-size: 14px;
+      color: #b0b0cc;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+
+    .story p strong { color: #C8AA32; }
+    .story p:last-child { margin-bottom: 0; }
+
+    .story-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #ffffff;
+      font-style: italic;
+      border-left: 3px solid #C8AA32;
+      padding: 12px 20px;
+      margin: 20px 0;
+    }
+
+    /* CIERRE */
+    .close {
+      padding: 70px 50px;
+      text-align: center;
+      background: linear-gradient(160deg, #2c2f3a 0%, #1a1a2e 100%);
+    }
+
+    .close h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .close p {
+      font-size: 15px;
+      color: #9090b0;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+
+    .close p strong { color: #C8AA32; }
+
+    .cta-btn {
+      display: inline-block;
+      background: #C8AA32;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(200,170,50,0.5);
+      text-align: center;
+      padding: 30px;
+      background: #1a1a2e;
+    }
+
+    /* PRINT */
+    @media print {
+      .print-btn { display: none !important; }
+      .cover { min-height: auto; padding: 40px; page-break-after: always; }
+      .chapter, .section, .index { page-break-inside: avoid; }
+      body { background: #fff; }
+      .story { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .reflection { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .protocol-circle.step1, .protocol-circle.step3 { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .protocol-circle.step2 { background: #C8AA32 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BOTÓN IMPRIMIR -->
+<button class="print-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Imprimir
+</button>
+
+<div class="page">
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <div class="cover-logo">La Zona Campeón</div>
+    <div class="cover-tag">Manual de Entrenamiento Mental — Nivel 2</div>
+    <h1>La Espiral<br><span>Negativa</span></h1>
+    <div class="gold-line"></div>
+    <p class="cover-sub">Cómo detener el ciclo de errores, frustración y más errores. El problema mental más común en deportistas de todos los niveles.</p>
+    <div class="cover-promise">
+      <strong>Lo que encontrarás aquí:</strong><br>
+      Cómo reconocer la <strong>espiral negativa</strong> antes de que te consuma, un <strong>protocolo de 3 pasos</strong> para interrumpirla en plena competencia y ejercicios para construir resistencia mental a largo plazo.
+    </div>
+  </div>
+
+  <!-- ÍNDICE -->
+  <div class="index">
+    <div class="index-tag">Contenido</div>
+    <h2>Índice</h2>
+    <ul class="index-list">
+      <li>
+        <span class="index-num">01</span>
+        <div>
+          <div class="index-title">Qué es la espiral negativa</div>
+          <div class="index-desc">El ciclo que destruye el rendimiento y por qué le pasa a todos</div>
+        </div>
+      </li>
+      <li>
+        <span class="index-num">02</span>
+        <div>
+          <div class="index-title">Reconocer las señales</div>
+          <div class="index-desc">Cómo saber que estás entrando en espiral antes de que sea tarde</div>
+        </div>
+      </li>
+      <li>
+        <span class="index-num">03</span>
+        <div>
+          <div class="index-title">Los 3 detonadores</div>
+          <div class="index-desc">Qué enciende la espiral y cómo quitarle poder</div>
+        </div>
+      </li>
+      <li>
+        <span class="index-num">04</span>
+        <div>
+          <div class="index-title">El protocolo de pausa</div>
+          <div class="index-desc">3 pasos para interrumpir la espiral en tiempo real durante la competencia</div>
+        </div>
+      </li>
+      <li>
+        <span class="index-num">05</span>
+        <div>
+          <div class="index-title">El reset entre jugadas</div>
+          <div class="index-desc">Técnicas para soltar el error y volver al presente en segundos</div>
+        </div>
+      </li>
+      <li>
+        <span class="index-num">06</span>
+        <div>
+          <div class="index-title">Construir resistencia a la espiral</div>
+          <div class="index-desc">Entrenamiento mental para que la espiral pierda fuerza con el tiempo</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <div class="section-tag">Antes de empezar</div>
+    <h2>El problema que nadie nombra</h2>
+    <p>Cometes un error. Puede ser cualquier cosa: un pase mal dado, una falta innecesaria, una oportunidad desperdiciada. En ese momento, algo cambia dentro de ti. Empieza una voz: <em>"¿Cómo pude fallar eso?"</em> Luego: <em>"Estoy jugando horrible."</em> Y mientras esa voz sigue, el siguiente balón también sale mal. Y el siguiente.</p>
+    <p>Eso es la <strong>espiral negativa</strong>. No es mala suerte. No es falta de talento. Es un patrón mental que se retroalimenta solo — y que puede destruir una actuación entera si no sabes cómo interrumpirlo.</p>
+    <p>Lo que hace tan peligrosa a la <strong>espiral</strong> es que se siente inevitable. Cuando estás dentro, parece que no hay salida. La mente se convence de que seguirá fallando, el cuerpo se tensa, la atención se va al error anterior en lugar de a la siguiente jugada. Y así, el ciclo continúa.</p>
+    <p><strong>La buena noticia:</strong> la espiral no es inevitable. Tiene puntos de interrupción. Y cuando aprendes a usarlos, puedes salir de ella en segundos — no en minutos, no al final del partido.</p>
+    <p>Este manual te enseña exactamente cómo hacerlo.</p>
+    <p><strong>Un consejo antes de empezar:</strong> la espiral suele aparecer cuando la mente llega a la competencia sin estar encendida. Si aún no lo haces, visita <strong>lazonacampeon.com/frases</strong> antes de cada partido o entrenamiento — una frase activadora es el primer paso para llegar con la mente ya enfocada, no esperando que se enfoque sola.</p>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">01</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 1</div>
+        <div class="chapter-title">Qué es la espiral negativa</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La <strong>espiral negativa</strong> es un ciclo de retroalimentación donde un error dispara una reacción emocional que aumenta la probabilidad de cometer más errores, lo que dispara más reacciones emocionales, y así sucesivamente.</p>
+
+      <div class="spiral-diagram">
+        <div class="spiral-diagram-title">El ciclo de la espiral negativa</div>
+        <div class="spiral-steps">
+          <div class="spiral-step">Error o resultado no deseado</div>
+          <div class="spiral-arrow">↓</div>
+          <div class="spiral-step red">Pensamiento negativo · autocrítica intensa</div>
+          <div class="spiral-arrow">↓</div>
+          <div class="spiral-step red">Tensión muscular · pérdida de confianza</div>
+          <div class="spiral-arrow">↓</div>
+          <div class="spiral-step red">Atención en el pasado, no en la jugada actual</div>
+          <div class="spiral-arrow">↓</div>
+          <div class="spiral-step red">Más errores · espiral más profunda</div>
+        </div>
+      </div>
+
+      <p>El error inicial <strong>no es el problema</strong>. El error en sí mismo es neutral — forma parte del juego. Lo que convierte un error en espiral es <strong>el significado que le damos</strong> y la <strong>reacción mental que desencadena</strong>.</p>
+
+      <div class="chapter-quote">El error no te destruye. Lo que te dices después del error es lo que puede hacerlo.</div>
+
+      <p>Lo más importante que debes entender sobre la espiral: <strong>no es una señal de que eres mal deportista</strong>. Es una respuesta automática del sistema nervioso. El cerebro detecta una amenaza — el error, la crítica, el marcador en contra — y activa el modo de alerta. La mente se estrecha, el cuerpo se tensa, la atención se fragmenta.</p>
+      <p>Todos los deportistas, en todos los niveles, experimentan la espiral. La diferencia entre quien la supera y quien se hunde en ella no es el talento — es el <strong>entrenamiento mental</strong>.</p>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 1</div>
+        <ul>
+          <li>¿Has experimentado alguna vez una espiral negativa durante un partido o entrenamiento? ¿Cómo te sentías físicamente y mentalmente en ese momento?</li>
+          <li>¿Recuerdas alguna actuación en la que un error inicial desencadenó más errores? ¿Qué crees que lo disparó?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">02</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 2</div>
+        <div class="chapter-title">Reconocer las señales</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La espiral tiene un <strong>punto de entrada</strong>. Si la detectas temprano, interrumpirla es fácil. Si la detectas tarde — cuando ya llevas 10 minutos dentro — recuperarte cuesta mucho más.</p>
+      <p>Tu primer objetivo es aprender a reconocer tus <strong>señales personales de entrada</strong> a la espiral. Hay tres tipos:</p>
+
+      <div class="signal-grid">
+        <div class="signal-card">
+          <div class="signal-dot physical"></div>
+          <div class="signal-card-title">Físicas</div>
+          <ul class="signal-list">
+            <li>Mandíbula apretada</li>
+            <li>Hombros subidos</li>
+            <li>Respiración corta</li>
+            <li>Manos tensas</li>
+            <li>Movimientos rígidos</li>
+            <li>Cabeza agachada</li>
+          </ul>
+        </div>
+        <div class="signal-card">
+          <div class="signal-dot mental"></div>
+          <div class="signal-card-title">Mentales</div>
+          <ul class="signal-list">
+            <li>"Sigo fallando lo mismo"</li>
+            <li>"No puedo con esto"</li>
+            <li>Revivir el error</li>
+            <li>Compararte con otros</li>
+            <li>Pensar en el resultado</li>
+            <li>Catastrofizar</li>
+          </ul>
+        </div>
+        <div class="signal-card">
+          <div class="signal-dot behavioral"></div>
+          <div class="signal-card-title">En el juego</div>
+          <ul class="signal-list">
+            <li>Evitar el balón</li>
+            <li>Decisiones apresuradas</li>
+            <li>Falta de comunicación</li>
+            <li>Bajar la intensidad</li>
+            <li>Buscar excusas</li>
+            <li>Perder posición</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Ejercicio: Tu mapa personal de señales</div>
+        <p>Después de tu próximo entrenamiento o partido, responde estas tres preguntas:</p>
+        <p><strong>1.</strong> ¿Qué siento físicamente cuando empiezo a entrar en espiral?</p>
+        <p><strong>2.</strong> ¿Qué me digo a mí mismo en ese momento?</p>
+        <p><strong>3.</strong> ¿Cómo cambia mi juego cuando estoy en esos momentos?</p>
+        <p>Escribe las respuestas. Cuanto más específicas sean, más fácil será reconocer la señal en tiempo real.</p>
+      </div>
+
+      <p>La clave está en la <strong>velocidad de detección</strong>. Un deportista entrenado puede reconocer que está entrando en espiral en los primeros 5 a 10 segundos. Eso es suficiente para interrumpirla antes de que tome fuerza.</p>
+
+      <div class="chapter-quote">No puedes controlar el error. Sí puedes controlar cuánto tardas en detectar que estás en espiral.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 2</div>
+        <ul>
+          <li>¿Cuál de las tres señales — física, mental o en el juego — es la que aparece primero en ti? ¿Por qué crees que es esa?</li>
+          <li>Si tuvieras que elegir UNA señal de alarma temprana que te avise de que estás entrando en espiral, ¿cuál sería?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">03</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 3</div>
+        <div class="chapter-title">Los 3 detonadores</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>La espiral no se activa por cualquier error. Se activa cuando ese error presiona alguno de estos <strong>tres detonadores</strong>. Entender cuál es el tuyo cambia completamente cómo reaccionas.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Detonador 1 — La expectativa rota</div>
+        <p>Esperabas hacer algo bien y no salió. Cuanto mayor era la expectativa, más intensa la reacción. Este es el detonador más común en deportistas técnicamente buenos: cuanto más talento tienes, más te exiges, y más te golpea cada error.</p>
+        <p><strong>La trampa:</strong> confundir el estándar que tienes con una garantía de resultado. El estándar te dice a qué nivel puedes llegar. No garantiza que cada jugada sea perfecta.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Detonador 2 — El significado del error</div>
+        <p>No es el error lo que duele — es lo que ese error <em>dice de ti</em>. "Fallé ese pase" se convierte en "soy lento", "no sirvo para esto", "me van a sacar". El error se convierte en evidencia de algo más grande y más permanente.</p>
+        <p><strong>La trampa:</strong> un error es un dato. Un dato de un momento, en unas condiciones específicas. No es un veredicto sobre quién eres.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Detonador 3 — La presión acumulada</div>
+        <p>El error en sí no es grave, pero llega en un momento de alta presión: el marcador en contra, el técnico mirando, el rival que celebra, la familia en las gradas. La carga emocional del contexto amplifica la reacción al error.</p>
+        <p><strong>La trampa:</strong> dejar que el contexto decida cuánto te afecta cada jugada. El contexto no puede cambiarse. Tu interpretación del contexto sí.</p>
+      </div>
+
+      <p>Identificar tu <strong>detonador principal</strong> te da poder sobre él. No lo elimina — pero lo hace predecible. Y lo predecible se puede preparar.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Ejercicio: Identifica tu detonador</div>
+        <p>Piensa en las últimas 3 veces que entraste en espiral durante una competencia. ¿Cuál de los tres detonadores estaba presente en cada caso? ¿Uno de ellos aparece siempre?</p>
+        <p>Cuando sepas cuál es el tuyo, puedes crear una respuesta específica para él — no genérica, sino tuya, para tu patrón exacto.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 3</div>
+        <ul>
+          <li>¿Cuál de los 3 detonadores es el que más te afecta? ¿Por qué crees que ese en particular tiene tanto poder sobre ti?</li>
+          <li>¿Hay situaciones específicas (tipo de partido, tipo de error, presencia de ciertas personas) donde ese detonador se activa más fácilmente?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">04</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 4</div>
+        <div class="chapter-title">El protocolo de pausa</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>Este es el núcleo de este manual. El <strong>protocolo de pausa</strong> es una secuencia de 3 pasos que puedes usar en plena competencia — en segundos — para interrumpir la espiral antes de que tome el control.</p>
+      <p>No es magia. Es un proceso que debes entrenar hasta que sea automático. La primera vez que lo uses en competencia no saldrá perfecto. Con práctica, se vuelve instintivo.</p>
+
+      <!-- FIGURA PROTOCOLO -->
+      <div class="protocol-figure">
+        <div class="protocol-circle step1">
+          <div class="protocol-circle-num">1</div>
+          <div class="protocol-circle-word">Para</div>
+          <div class="protocol-circle-desc">Ancla al cuerpo con un gesto físico</div>
+        </div>
+        <div class="protocol-connector">→</div>
+        <div class="protocol-circle step2">
+          <div class="protocol-circle-num">2</div>
+          <div class="protocol-circle-word">Respira</div>
+          <div class="protocol-circle-desc">Una respiración controlada: 4 seg · 2 · 6</div>
+        </div>
+        <div class="protocol-connector">→</div>
+        <div class="protocol-circle step3">
+          <div class="protocol-circle-num">3</div>
+          <div class="protocol-circle-word">Regresa</div>
+          <div class="protocol-circle-desc">Una sola instrucción concreta para ahora</div>
+        </div>
+      </div>
+
+      <div class="protocol">
+        <div class="protocol-step">
+          <div class="protocol-icon">1</div>
+          <div>
+            <div class="protocol-name">Para — Ancla al cuerpo</div>
+            <div class="protocol-desc">En el momento en que detectas la señal de espiral, haz un <strong>gesto físico deliberado</strong>: presionar los dedos en el muslo, soltar los hombros conscientemente, abrir y cerrar la mano. El gesto físico interrumpe el ciclo de pensamiento automático. No es simbólico — es neurológico: cambia el foco de atención del pensamiento al cuerpo.</div>
+          </div>
+        </div>
+        <div class="protocol-step">
+          <div class="protocol-icon">2</div>
+          <div>
+            <div class="protocol-name">Respira — Regula el sistema nervioso</div>
+            <div class="protocol-desc">Una sola <strong>respiración controlada</strong>: inhala 4 segundos por la nariz, sostén 2, exhala 6 segundos por la boca. Esta proporción activa el sistema nervioso parasimpático — el freno del estado de alerta. No necesitas 10 respiraciones. Una, bien hecha, basta para reducir la intensidad emocional lo suficiente para pensar con claridad.</div>
+          </div>
+        </div>
+        <div class="protocol-step">
+          <div class="protocol-icon">3</div>
+          <div>
+            <div class="protocol-name">Regresa — Enfócate en la siguiente acción</div>
+            <div class="protocol-desc">Define <strong>una sola cosa concreta</strong> en la que enfocarte ahora. No "juega bien" — eso es demasiado vago. Una instrucción específica: "el siguiente balón", "mi posición defensiva", "buscar el espacio". El cerebro no puede estar en dos lugares a la vez. Una instrucción presente saca la atención del error pasado.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter-quote">Para. Respira. Regresa. Tres pasos. Diez segundos. El partido sigue.</div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Cómo entrenar el protocolo</div>
+        <p>No esperes a una competencia para usarlo por primera vez. Practica en <strong>cada entrenamiento</strong>:</p>
+        <p>→ Cada vez que algo no salga como querías, aplica los 3 pasos completos — no solo la respiración.</p>
+        <p>→ Practica el gesto físico hasta que sea totalmente automático. Debe sentirse natural antes de usarlo bajo presión.</p>
+        <p>→ Con el tiempo, el protocolo se acorta: llega a 2 o 3 segundos. Una respiración y una palabra clave.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 4</div>
+        <ul>
+          <li>¿Qué gesto físico funciona mejor para ti como señal de "stop" cuando entras en espiral?</li>
+          <li>¿Cuál sería tu instrucción de regreso? La palabra o frase corta que te ancla al presente en tu deporte.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">05</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 5</div>
+        <div class="chapter-title">El reset entre jugadas</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>El protocolo de pausa funciona en el momento del error. Pero hay otro momento igual de importante: el espacio entre jugadas. Ese tiempo muerto — unos segundos entre una acción y la siguiente — es donde la espiral se consolida o se disuelve.</p>
+      <p>La mayoría de los deportistas usa ese tiempo para seguir pensando en el error que acaban de cometer. Los deportistas entrenados lo usan para preparar la siguiente acción.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Técnica: El punto de reset</div>
+        <p>Elige un <strong>"punto de reset"</strong> — un momento físico entre jugadas que señale a tu mente que el error quedó atrás. Puede ser:</p>
+        <p>→ El momento en que tocas el suelo con el pie antes de reanudar</p>
+        <p>→ Cuando te ajustas el equipo (guante, camiseta, rodillera)</p>
+        <p>→ Cuando cruzas una línea del campo</p>
+        <p>→ Cuando das un paso deliberado hacia tu posición</p>
+        <p>En ese punto, di internamente tu <strong>palabra de reset</strong> — una sola palabra que signifique "nueva jugada". Puede ser <em>"ahora"</em>, <em>"siguiente"</em>, <em>"presente"</em> o cualquier que resuene contigo. Lo importante es que sea siempre la misma.</p>
+      </div>
+
+      <div class="chapter-quote">El partido no se gana en la jugada que falló. Se gana en la que viene después.</div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">La regla de los 3 segundos</div>
+        <p>Date <strong>3 segundos — y solo 3 —</strong> para reaccionar al error. Puedes molestarte, puedes hacer un gesto, puedes soltar la tensión. Pero a los 3 segundos, el interruptor cambia: puño cerrado y abierto, respiración, y a la siguiente jugada.</p>
+        <p>Esta regla tiene un propósito doble: te permite <strong>liberar la emoción</strong> (suprimirla empeora la espiral) y pone un límite claro para no quedarte en ella. Sientes — y sigues.</p>
+      </div>
+
+      <p>Los deportistas que mejor manejan la espiral no son los que nunca se equivocan. Son los que tienen el <strong>tiempo de recuperación más corto</strong>.</p>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 5</div>
+        <ul>
+          <li>¿Cuál podría ser tu "punto de reset" específico en tu deporte? Un momento físico concreto entre jugadas.</li>
+          <li>¿Qué palabra de reset resuena más contigo? ¿Por qué esa y no otra?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">06</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Capítulo 6</div>
+        <div class="chapter-title">Construir resistencia a la espiral</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>Los capítulos anteriores te dan herramientas para usar <em>durante</em> la competencia. Este capítulo trata sobre lo que construyes <em>fuera</em> de la competencia para que la espiral sea cada vez menos frecuente y menos intensa.</p>
+      <p>La <strong>resistencia mental</strong> no se construye en el partido. Se construye en el entrenamiento, en el análisis y en la práctica deliberada.</p>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 1 — El diario de errores</div>
+        <p>Durante dos semanas, lleva un registro simple después de cada entrenamiento o partido. No para autoflagelarte — para entender tus <strong>patrones de espiral</strong>.</p>
+      </div>
+
+      <table class="diary-table">
+        <tr>
+          <th>Error cometido</th>
+          <th>Mi reacción</th>
+          <th>Lo que funcionó para salir</th>
+          <th>Qué haría diferente</th>
+        </tr>
+        <tr>
+          <td>Ej: pasé mal bajo presión</td>
+          <td>Me tensé, perdí posición en las jugadas siguientes</td>
+          <td>Respiré y busqué el balón activamente</td>
+          <td>Usar el protocolo antes de tensarme</td>
+        </tr>
+        <tr><td>&nbsp;<br>&nbsp;</td><td></td><td></td><td></td></tr>
+        <tr><td>&nbsp;<br>&nbsp;</td><td></td><td></td><td></td></tr>
+        <tr><td>&nbsp;<br>&nbsp;</td><td></td><td></td><td></td></tr>
+      </table>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 2 — El reencuadre del error</div>
+        <p>Cuando anotes un error, practica reformularlo como información neutral, no como veredicto. Cambia:</p>
+        <p style="color:#922b21; font-style:italic;">"Soy lento, siempre llego tarde"</p>
+        <p>Por:</p>
+        <p style="color:#6a8a20; font-style:italic;">"En esa jugada llegué tarde. Puedo trabajar en leer antes el movimiento del rival."</p>
+        <p>La primera frase <strong>cierra la puerta</strong>. La segunda la <strong>mantiene abierta</strong>. El cerebro responde de manera completamente diferente a cada una.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Práctica 3 — Entrenar bajo presión deliberada</div>
+        <p>La espiral se alimenta de la novedad de la presión. Cuando estás acostumbrado a competir con presión, pierde poder.</p>
+        <p>Pide a tu entrenador que incluya situaciones de alta presión en los entrenamientos: marcador en contra, tiempo límite, consecuencias simbólicas para los errores. No para castigarte — para que tu sistema nervioso aprenda que la presión <strong>no es una amenaza</strong>. Es simplemente el contexto donde juegas.</p>
+      </div>
+
+      <div class="chapter-box">
+        <div class="chapter-box-title">Plan de 8 semanas</div>
+        <ul class="chapter-steps" style="margin:0;">
+          <li><span>S 1–2</span> Lleva el diario de errores. Solo observa tus patrones sin juzgarlos.</li>
+          <li><span>S 3–4</span> Practica el protocolo de pausa en cada entrenamiento. Los 3 pasos, en orden.</li>
+          <li><span>S 5–6</span> Incorpora el punto de reset. Empieza con el gesto, luego añade la palabra clave.</li>
+          <li><span>S 7–8</span> Evalúa tu tiempo de recuperación. ¿Tardas menos en salir de la espiral que al principio?</li>
+        </ul>
+      </div>
+
+      <div class="chapter-quote">La espiral no desaparece. Aprende a perder fuerza cada vez que intenta volverte a atrapar.</div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 6</div>
+        <ul>
+          <li>¿Estás dispuesto a llevar el diario de errores durante 2 semanas? ¿Qué crees que podrías descubrir sobre tus propios patrones?</li>
+          <li>¿Cómo describirías tu "tiempo de recuperación" actual después de un error? ¿Minutos, jugadas, medio tiempo?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORIA REAL -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number" style="color:rgba(200,170,50,0.12);">★</div>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Historia real</div>
+        <div class="chapter-title">Andrés Iniesta:<br>del abismo a la cima</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+      <p>En 2009, Andrés Iniesta era uno de los mejores centrocampistas del mundo. Había ganado la Champions League con el Barcelona. Había ganado la Eurocopa con España. Todo desde afuera parecía perfecto.</p>
+      <p>Pero por dentro, Iniesta estaba roto.</p>
+
+      <div class="story">
+        <div class="story-tag">Lo que muy pocos sabían</div>
+        <h3>La espiral que nadie veía</h3>
+        <p>El 8 de agosto de 2009, murió Dani Jarque, capitán del Espanyol y amigo cercano de Iniesta, a los 26 años. La pérdida lo golpeó de una manera que él mismo describió en su libro autobiográfico como devastadora: <em>"Me sentía vacío. Sin ganas. Sin poder hacer nada."</em></p>
+        <p>Iniesta entró en una <strong>depresión profunda</strong>. Llegaba a los entrenamientos, pero no estaba. Jugaba partidos, pero no rendía. Su mente no podía salir del duelo, de la presión, de la espiral interna que lo consumía. El problema no era externo — era una guerra dentro de su cabeza que no sabía cómo detener.</p>
+        <div class="story-quote">"Llegó un momento en que no quería salir de casa. No veía salida."</div>
+        <p>Iniesta buscó ayuda profesional. Trabajó durante meses con una psicóloga deportiva para aprender a gestionar sus emociones, a separar lo que podía controlar de lo que no, a volver al presente jugada a jugada.</p>
+        <p>No fue rápido. No fue fácil. Pero fue sistemático: exactamente el tipo de trabajo que describes en este manual — reconocer las señales, interrumpir el ciclo, construir resistencia.</p>
+        <p>El 11 de julio de 2010, en el minuto 116 de la final del Mundial en Sudáfrica, España empataba 0-0 con Holanda. La tanda de penaltis se acercaba. Entonces llegó el balón a Iniesta dentro del área. Controló. Disparó. Gol.</p>
+        <p>España campeona del mundo por primera vez en su historia.</p>
+        <p>Iniesta levantó la camiseta. Debajo llevaba otra: <strong>"Dani Jarque siempre con nosotros"</strong></p>
+        <div class="story-quote">"Ese momento fue el regalo más grande que pude darle a alguien que ya no estaba. Y pude vivirlo porque aprendí a no rendirme cuando todo estaba oscuro."</div>
+        <p>La espiral negativa intentó destruir a uno de los mejores futbolistas de todos los tiempos. No pudo. No porque Iniesta fuera invencible — sino porque aprendió las herramientas para salir de ella.</p>
+        <p>Tú también puedes aprenderlas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="close">
+    <div class="gold-line"></div>
+    <h2>El partido empieza<br>después del error</h2>
+    <p>La <strong>espiral negativa</strong> no es tu enemiga. Es una señal de que te importa lo que haces, de que tienes estándares y de que la presión te afecta porque compites de verdad.</p>
+    <p>Lo que aprendiste en este manual no te va a eliminar los errores. Te va a dar las herramientas para que un error sea solo eso: un error. No el comienzo del fin.</p>
+    <p>Reconoce las señales. Usa el <strong>protocolo de pausa</strong>. Practica el <strong>reset entre jugadas</strong>. Construye la resistencia.</p>
+    <p>El tiempo de recuperación más corto es tu ventaja competitiva más poderosa.</p>
+    <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
+    <br>
+    <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
+    <br><br>
+    <p style="font-size:13px; color:#9090b0; max-width:420px; margin:0 auto 8px;">Antes de tu próximo partido, enciende tu mente con la <strong style="color:#C8AA32;">Frase Activadora del Día</strong>:</p>
+    <a href="https://lazonacampeon.com/frases" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <br><br>
+    <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
+  </div>
+
+  <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
+
+</div>
+</body>
+</html>
