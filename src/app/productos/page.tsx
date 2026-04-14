@@ -12,7 +12,7 @@ const manualesGenerales = [
   { titulo: "Concentración Bajo Presión", desc: "Técnicas para mantener el foco cuando el partido está en juego y el ambiente se pone difícil.", precio: "$9.99", disponible: false },
   { titulo: "Confianza y Autoestima Deportiva", desc: "Construye una confianza que no depende de los resultados. Para deportistas que dudan de sí mismos.", precio: "$9.99", disponible: false },
   { titulo: "Manejo de Errores y Fracasos", desc: "Aprende a procesar los errores rápido y volver al juego sin que te destruyan por dentro.", precio: "$9.99", disponible: false },
-  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener el gafete de capitán.", precio: "$9.99", disponible: false },
+  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener la banda de campeón.", precio: "$9.99", disponible: false },
 ];
 
 
@@ -45,7 +45,6 @@ export default function ProductosPage() {
       {/* Header */}
       <section className="py-16 bg-dark-900 text-center">
         <div className="section-container">
-          <p className="heading-3 mb-3">Escalera de valor</p>
           <div className="gold-line mx-auto mb-6" />
           <h1 className="heading-1 max-w-3xl mx-auto mb-4">Empieza Gratis. Avanza a tu Ritmo.</h1>
           <p className="text-dark-300 text-lg max-w-xl mx-auto">
@@ -55,7 +54,7 @@ export default function ProductosPage() {
       </section>
 
       {/* NIVEL 1 - GRATIS */}
-      <section className="section-padding bg-dark-800">
+      <section id="nivel-1" className="section-padding bg-dark-800">
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 1"
@@ -63,31 +62,64 @@ export default function ProductosPage() {
             titulo="Recursos Gratuitos"
             desc="El mejor punto de partida. Sin costo, sin excusas. Empieza a entrenar tu mente hoy."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-            <div className="card-dark flex flex-col border border-gold-500/30">
-              <Badge text="Disponible ahora" color="bg-gold-500/20 text-gold-400" />
-              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">
-                Los 5 Hábitos Mentales del Campeón
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
-                La guía de entrada. Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
-                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5">Descargar</Link>
+          <div className="flex flex-col gap-4 max-w-2xl">
+            {/* 1. Guía */}
+            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">01</span>
+                  <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
+                  Guía — Los 5 Hábitos Mentales del Campeón
+                </h3>
+                <p className="text-dark-300 text-sm leading-relaxed">
+                  Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
+                </p>
+              </div>
+              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
+                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
+                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5 whitespace-nowrap">Descargar</Link>
               </div>
             </div>
-            <div className="card-dark flex flex-col border border-gold-500/30">
-              <Badge text="Disponible ahora" color="bg-gold-500/20 text-gold-400" />
-              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">
-                Tu Frase Activadora del Día
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
-                100 frases para encender tu mente antes de competir. Una aleatoria cada vez que entras. Compártela en Instagram.
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
-                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5">Ver frases</Link>
+
+            {/* 2. Calendario 21 días */}
+            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">02</span>
+                  <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
+                </div>
+                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
+                  Calendario — 21 Días de Implementación
+                </h3>
+                <p className="text-dark-300 text-sm leading-relaxed">
+                  Un reto mental de 3 semanas. Una acción diaria concreta para construir el hábito de entrenar tu mente.
+                </p>
+              </div>
+              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
+                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
+                <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5 whitespace-nowrap opacity-60 pointer-events-none">Próximo</Link>
+              </div>
+            </div>
+
+            {/* 3. Frases activadoras */}
+            <div className="card-dark flex flex-col sm:flex-row sm:items-center gap-4 border border-gold-500/30">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">03</span>
+                  <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
+                </div>
+                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-1">
+                  Frases Activadoras del Día
+                </h3>
+                <p className="text-dark-300 text-sm leading-relaxed">
+                  Una frase nueva cada día para encender tu mente antes de competir. Compártela en redes.
+                </p>
+              </div>
+              <div className="flex sm:flex-col items-center gap-3 sm:gap-2 shrink-0">
+                <span className="font-display font-black text-gold-500 text-lg">Gratis</span>
+                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5 whitespace-nowrap">Ver frases</Link>
               </div>
             </div>
           </div>
@@ -95,7 +127,7 @@ export default function ProductosPage() {
       </section>
 
       {/* NIVEL 2 - MANUALES GENERALES */}
-      <section className="section-padding bg-dark-900">
+      <section id="nivel-2" className="section-padding bg-dark-900">
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 2"
@@ -120,7 +152,7 @@ export default function ProductosPage() {
       </section>
 
       {/* NIVEL 3 - MANUALES POR POSICIÓN */}
-      <section className="section-padding bg-dark-800">
+      <section id="nivel-3" className="section-padding bg-dark-800">
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 3"
@@ -133,7 +165,7 @@ export default function ProductosPage() {
       </section>
 
       {/* NIVEL 4 - MANUAL PERSONALIZADO */}
-      <section className="section-padding bg-dark-900">
+      <section id="nivel-4" className="section-padding bg-dark-900">
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 4"
@@ -145,7 +177,7 @@ export default function ProductosPage() {
             <div className="card-dark border border-gold-500/30 opacity-70">
               <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
               <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
-                Manual Personalizado con IA
+                Manual 100% Personalizado
               </h3>
               <p className="text-dark-300 text-sm leading-relaxed mb-6">
                 Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibes un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.

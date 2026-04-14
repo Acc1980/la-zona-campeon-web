@@ -132,6 +132,7 @@ export default function FrasesClient() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [copied, setCopied] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [sharing, setSharing] = useState(false);
 const [particles, setParticles] = useState<{ x: number; y: number; size: number; opacity: number }[]>([]);
 
   useEffect(() => {
@@ -163,6 +164,23 @@ const [particles, setParticles] = useState<{ x: number; y: number; size: number;
 
   const frase = frases[idx];
 
+  const roundRect = (
+    ctx: CanvasRenderingContext2D,
+    x: number, y: number, w: number, h: number, r: number
+  ) => {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  };
+
   const handleCopy = () => {
     const texto = `"${frase}"\n\n— La Zona Campeón\nlazonacampeon.com`;
     navigator.clipboard.writeText(texto).then(() => {
@@ -171,15 +189,126 @@ const [particles, setParticles] = useState<{ x: number; y: number; size: number;
     });
   };
 
-  const handleShare = () => {
-    const texto = `"${frase}"\n\n— La Zona Campeón\nlazonacampeon.com/frases`;
-    if (navigator.share) {
-      navigator.share({ text: texto });
-    } else {
-      navigator.clipboard.writeText(texto).then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2500);
-      });
+  const handleShare = async () => {
+    setSharing(true);
+    try {
+      await document.fonts.ready;
+
+      const size = 1080;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d")!;
+
+      // Fondo
+      ctx.fillStyle = "#1E1E2D";
+      ctx.fillRect(0, 0, size, size);
+
+      // Puntos dorados de fondo (decorativos)
+      let seed = 42;
+      const rand = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+      };
+      for (let i = 0; i < 80; i++) {
+        ctx.beginPath();
+        ctx.arc(rand() * size, rand() * size, rand() * 2 + 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 170, 50, ${rand() * 0.35 + 0.1})`;
+        ctx.fill();
+      }
+
+      // Barra dorada superior
+      ctx.fillStyle = "#C8AA32";
+      ctx.fillRect(size / 2 - 55, 108, 110, 6);
+
+      // "ANTES DE COMPETIR"
+      ctx.fillStyle = "#C8AA32";
+      ctx.textAlign = "center";
+      ctx.font = "bold 28px Montserrat, sans-serif";
+      ctx.fillText("ANTES DE COMPETIR", size / 2, 168);
+
+      // Caja de la frase
+      const boxX = 80;
+      const boxY = 220;
+      const boxW = size - 160;
+      const boxH = 620;
+      ctx.fillStyle = "rgba(255,255,255,0.04)";
+      ctx.strokeStyle = "rgba(200,170,50,0.25)";
+      ctx.lineWidth = 2;
+      roundRect(ctx, boxX, boxY, boxW, boxH, 24);
+      ctx.fill();
+      ctx.stroke();
+
+      // Acento línea dorada arriba de la caja
+      ctx.fillStyle = "#C8AA32";
+      ctx.fillRect(size / 2 - 55, boxY, 110, 4);
+
+      // Texto de la frase (word-wrap)
+      ctx.fillStyle = "#FFFFFF";
+      ctx.font = "bold 50px Montserrat, sans-serif";
+      const maxWidth = boxW - 100;
+      const lineHeight = 68;
+      const words = `"${frase}"`.split(" ");
+      const lines: string[] = [];
+      let current = "";
+      for (const word of words) {
+        const test = current + (current ? " " : "") + word;
+        if (ctx.measureText(test).width > maxWidth && current) {
+          lines.push(current);
+          current = word;
+        } else {
+          current = test;
+        }
+      }
+      if (current) lines.push(current);
+
+      const totalH = lines.length * lineHeight;
+      let textY = boxY + (boxH - totalH - 80) / 2 + lineHeight;
+
+      for (const line of lines) {
+        ctx.fillText(line, size / 2, textY);
+        textY += lineHeight;
+      }
+
+      // Firma
+      textY += 20;
+      ctx.fillStyle = "#C8AA32";
+      ctx.font = "bold 28px Montserrat, sans-serif";
+      ctx.fillText("— LA ZONA CAMPEÓN", size / 2, textY);
+
+      // Línea divisoria inferior
+      ctx.fillStyle = "rgba(200,170,50,0.35)";
+      ctx.fillRect(80, size - 145, size - 160, 1);
+
+      // Branding: web y redes
+      ctx.fillStyle = "#AAAAAA";
+      ctx.font = "500 26px Montserrat, sans-serif";
+      ctx.fillText("lazonacampeon.com  •  @lazonacampeon", size / 2, size - 100);
+
+      // Compartir o descargar
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "frase-campeon.jpg", { type: "image/jpeg" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({ files: [file] });
+          } catch {
+            // usuario canceló
+          }
+        } else {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "frase-campeon.jpg";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        }
+        setSharing(false);
+      }, "image/jpeg", 0.95);
+    } catch {
+      setSharing(false);
     }
   };
 
@@ -257,14 +386,26 @@ const [particles, setParticles] = useState<{ x: number; y: number; size: number;
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
               <button
                 onClick={handleShare}
-                className="btn-primary flex items-center justify-center gap-2 text-sm px-6 py-3"
+                disabled={sharing}
+                className="btn-primary flex items-center justify-center gap-2 text-sm px-6 py-3 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                  <polyline points="16 6 12 2 8 6"/>
-                  <line x1="12" y1="2" x2="12" y2="15"/>
-                </svg>
-                Compartir en Instagram
+                {sharing ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                    </svg>
+                    Generando imagen...
+                  </>
+                ) : (
+                  <>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                      <polyline points="16 6 12 2 8 6"/>
+                      <line x1="12" y1="2" x2="12" y2="15"/>
+                    </svg>
+                    Compartir imagen
+                  </>
+                )}
               </button>
               <button
                 onClick={handleCopy}
