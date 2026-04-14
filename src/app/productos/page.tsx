@@ -53,6 +53,28 @@ export default function ProductosPage() {
         </div>
       </section>
 
+      {/* QUIZ CTA */}
+      <section className="py-10 bg-dark-700 border-y border-gold-500/20">
+        <div className="section-container">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="font-display font-black text-xs text-gold-500 uppercase tracking-widest mb-1">
+                ¿No sabes por dónde empezar?
+              </p>
+              <h2 className="font-display font-black text-xl text-white uppercase tracking-wide">
+                Encuentra tu manual en 3 preguntas
+              </h2>
+              <p className="text-dark-300 text-sm mt-1">
+                Deporte · Posición · Desafíos mentales → recomendación exacta para ti.
+              </p>
+            </div>
+            <Link href="/quiz" className="btn-primary text-sm px-8 py-3 shrink-0">
+              Hacer el test →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* NIVEL 1 - GRATIS */}
       <section id="nivel-1" className="section-padding bg-dark-800">
         <div className="section-container">
@@ -168,8 +190,8 @@ export default function ProductosPage() {
             desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
           />
           <div className="max-w-2xl">
-            <div className="card-dark border border-gold-500/30 opacity-70">
-              <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
+            <div className="card-dark border border-gold-500/30">
+              <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
               <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
                 Manual 100% Personalizado
               </h3>
@@ -177,13 +199,13 @@ export default function ProductosPage() {
                 Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibes un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.
               </p>
               <ul className="space-y-2 text-sm text-dark-300 mb-6">
-                {["Manual generado según tu perfil exacto", "Acceso web con progreso guardado", "Ejercicios adaptados a tu posición y deporte", "Puedes retomar donde lo dejaste"].map(item => (
+                {["Tu nombre, deporte, posición y categoría", "Tu autoevaluación mental (fortalezas + desafíos)", "La perspectiva de tu técnico (opcional)", "La perspectiva de tus padres (opcional)", "Análisis cruzado + plan de 4 semanas"].map(item => (
                   <li key={item} className="flex gap-2"><span className="text-gold-500">→</span>{item}</li>
                 ))}
               </ul>
               <div className="flex items-center justify-between">
                 <span className="font-display font-black text-gold-500 text-2xl">$67</span>
-                <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
+                <Link href="/personalizado" className="btn-primary text-xs px-5 py-2.5">Generar mi perfil</Link>
               </div>
             </div>
           </div>

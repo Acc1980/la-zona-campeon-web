@@ -34,8 +34,8 @@ export default function Header() {
             <Link href="/productos" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Productos
             </Link>
-            <Link href="/#para-quien" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
-              Para quién
+            <Link href="/quiz" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              ¿Qué manual necesito?
             </Link>
             <Link href="/frases" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Frase del Día
@@ -62,6 +62,9 @@ export default function Header() {
           <div className="md:hidden bg-dark-800 border-t border-dark-600 py-4 flex flex-col gap-4">
             <Link href="/productos" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Productos
+            </Link>
+            <Link href="/quiz" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              ¿Qué manual necesito?
             </Link>
             <Link href="/#para-quien" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Para quién
