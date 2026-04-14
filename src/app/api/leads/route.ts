@@ -19,15 +19,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email inválido" }, { status: 400 });
     }
 
-    await fetch(SHEETS_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        nombre: nombre.trim(),
-        email: email.toLowerCase().trim(),
-        deporte: deporte?.trim() || "",
-        fuente: fuente || "lead-magnet",
-      }),
+    const params = new URLSearchParams({
+      nombre: nombre.trim(),
+      email: email.toLowerCase().trim(),
+      deporte: deporte?.trim() || "",
+      fuente: fuente || "lead-magnet",
+    });
+
+    await fetch(`${SHEETS_URL}?${params.toString()}`, {
+      method: "GET",
+      redirect: "follow",
     });
 
     return NextResponse.json({ success: true }, { status: 201 });
