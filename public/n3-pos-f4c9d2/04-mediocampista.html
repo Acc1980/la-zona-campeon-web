@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-height=1.0" />
+  <title>La Mente del Mediocampista — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f0e8;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    .brand-header {
+      background: #1a1a2e;
+      color: #e8c84a;
+      text-align: center;
+      padding: 14px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cover {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #f5f0e8;
+      text-align: center;
+      padding: 70px 30px 60px;
+    }
+    .level-badge {
+      display: inline-block;
+      background: #e8c84a;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .cover .position-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e8c84a;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .cover .subtitle {
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.82);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 50px 28px 80px;
+    }
+
+    .intro {
+      background: #fff;
+      border-left: 5px solid #e8c84a;
+      border-radius: 6px;
+      padding: 28px 30px;
+      margin-bottom: 50px;
+      font-size: 1.02rem;
+    }
+    .intro h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .chapter { margin-bottom: 56px; }
+    .chapter-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 6px;
+    }
+    .chapter h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e8c84a;
+      padding-bottom: 10px;
+    }
+    .chapter p { margin-bottom: 16px; }
+    .chapter ul { padding-left: 22px; margin-bottom: 16px; }
+    .chapter ul li { margin-bottom: 8px; }
+
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .pillar-card {
+      background: #f5f0e8;
+      border-radius: 8px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .pillar-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .pillar-card .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .pillar-card .desc { font-size: 0.8rem; color: #555; }
+
+    /* decision flow */
+    .flow-horizontal {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .flow-node {
+      background: #1a1a2e;
+      color: #f5f0e8;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .flow-node .fn-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #e8c84a;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .flow-node .fn-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .flow-node .fn-desc { font-size: 0.75rem; color: rgba(245,240,232,0.75); margin-top: 4px; }
+    .flow-arrow { font-size: 1.4rem; color: #bbb; align-self: center; }
+
+    /* compare table */
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .compare-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #e8e0d0;
+      font-size: 0.9rem;
+    }
+    .compare-table tr:nth-child(even) td { background: #f9f5ee; }
+    .compare-table td:first-child { color: #c85050; font-weight: 600; }
+    .compare-table td:last-child  { color: #2e7d32; font-weight: 600; }
+
+    .reflection {
+      background: #1a1a2e;
+      color: #f5f0e8;
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-top: 24px;
+    }
+    .reflection p { margin: 0; font-style: italic; font-size: 0.97rem; }
+    .reflection strong { color: #e8c84a; font-style: normal; }
+
+    /* examples */
+    .ejemplo {
+      border-radius: 8px;
+      padding: 24px 26px;
+      margin: 24px 0;
+      border-left: 5px solid #ccc;
+      background: #fff;
+    }
+    .ejemplo.tecnico   { border-color: #e07b30; }
+    .ejemplo.mental    { border-color: #3a7bd5; }
+    .ejemplo.emocional { border-color: #c85050; }
+
+    .ejemplo .ej-header {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ejemplo.tecnico  .ej-header { color: #e07b30; }
+    .ejemplo.mental   .ej-header { color: #3a7bd5; }
+    .ejemplo.emocional .ej-header { color: #c85050; }
+
+    .ejemplo .situacion {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 14px;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .ejemplo .sin-protocolo {
+      font-size: 0.88rem;
+      color: #c85050;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .ejemplo .steps { list-style: none; padding: 0; margin-bottom: 12px; }
+    .ejemplo .steps li {
+      padding: 7px 12px;
+      margin-bottom: 6px;
+      background: #f5f0e8;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    .ejemplo .steps li strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      display: block;
+      color: #1a1a2e;
+      margin-bottom: 2px;
+    }
+    .ejemplo .resultado {
+      background: #fffbe6;
+      border: 1px solid #e8c84a;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #5a4a00;
+    }
+
+    /* athlete story */
+    .athlete-story {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #f5f0e8;
+      border-radius: 10px;
+      padding: 40px 36px;
+      margin: 50px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 16px;
+    }
+    .athlete-story h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .athlete-story p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: rgba(245,240,232,0.9);
+    }
+    .story-quote {
+      border-left: 3px solid #e8c84a;
+      padding-left: 18px;
+      margin: 22px 0;
+      font-style: italic;
+      color: rgba(245,240,232,0.85);
+      font-size: 0.97rem;
+    }
+
+    /* tracking */
+    .tracking-section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 30px;
+      margin: 50px 0;
+      border: 2px solid #e8c84a;
+    }
+    .tracking-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .tracking-section .track-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 22px;
+    }
+    .tracking-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    .tracking-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 12px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .tracking-table td {
+      padding: 12px 12px;
+      border-bottom: 1px solid #ede7d8;
+      vertical-align: top;
+    }
+    .tracking-table tr:nth-child(even) td { background: #faf6ee; }
+    .tracking-table td.example { font-style: italic; color: #888; font-size: 0.82rem; }
+    .tracking-table td.blank { color: transparent; user-select: none; }
+    .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
+
+    .closing {
+      text-align: center;
+      padding: 50px 20px 30px;
+      border-top: 2px solid #e8c84a;
+      margin-top: 20px;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+    }
+    .closing p { max-width: 520px; margin: 0 auto 10px; color: #444; }
+
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #e8c84a;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 26px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #d4b53c; }
+
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .flow-horizontal { flex-direction: column; align-items: center; }
+      .flow-arrow { transform: rotate(90deg); }
+      .content { padding: 30px 18px 60px; }
+      .athlete-story { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
+  <div class="position-label">Fútbol · Mediocampista</div>
+  <h1>La Mente del<br>Mediocampista</h1>
+  <p class="subtitle">Decisiones bajo presión, errores de pase, fatiga mental y la concentración que el partido exige durante noventa minutos.</p>
+</div>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>Para quien toma las decisiones del equipo</h2>
+    <p>El mediocampista es el jugador al que más veces le llega el balón. Cada vez que lo recibe, tiene que procesar en décimas de segundo: quién está marcado, quién está libre, si avanzar o retener, si cambiar de orientación o jugar en corto. Y después de esa decisión, viene la siguiente. Y la siguiente.</p>
+    <p>La carga cognitiva de esa posición no tiene comparación directa en el campo. Este manual trabaja exactamente eso: cómo sostener la claridad mental durante noventa minutos, cómo recuperarse cuando la decisión sale mal, y cómo seguir siendo el motor del equipo cuando el partido se complica.</p>
+    <p><strong>Temas:</strong> identidad del mediocampista · decisión bajo presión · error de pase · fatiga mental · liderazgo desde el centro · consistencia de partido.</p>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 1</p>
+    <h2>La identidad del mediocampista: decidir bajo presión</h2>
+
+    <p>Ser mediocampista es vivir en el nudo del partido. Recibes el balón cuando el rival ya viene encima, cuando el espacio que tenías hace un segundo ya no existe, cuando tu compañero acaba de moverse en la dirección contraria a la que esperabas.</p>
+
+    <p>En esas condiciones, la calidad de tu decisión depende directamente de tu estado mental. Un mediocampista ansioso apresura los pases. Uno que carga el error anterior tarda demasiado. Uno con claridad mental lee el momento correcto y actúa.</p>
+
+    <p>Los mediocampistas de alto impacto comparten tres pilares que les permiten sostener esa claridad en los momentos más exigentes:</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 1.1 — Los tres pilares del mediocampista</div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="icon">🧠</div>
+          <div class="label">Decisión bajo presión</div>
+          <div class="desc">Leer el campo antes de recibir. Actuar con claridad cuando el espacio es mínimo.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">🔗</div>
+          <div class="label">Conexión del equipo</div>
+          <div class="desc">Ser el puente entre defensa y ataque. Mantener el flujo del juego en momentos de caos.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">🏃</div>
+          <div class="label">Resistencia mental</div>
+          <div class="desc">Sostener la concentración y la calidad de decisión en los minutos 75–90 igual que en el 15.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Estos tres pilares no son talentos innatos —son habilidades que se entrenan. Y el entrenamiento mental específico de cada uno es tan importante como el trabajo técnico y físico.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuál de estos tres pilares es tu mayor debilidad ahora mismo? ¿La velocidad de decisión, la conexión con compañeros o sostener el nivel en la segunda mitad?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 2</p>
+    <h2>Decisión en tiempo real: leer el campo antes de recibir</h2>
+
+    <p>La diferencia entre un mediocampista lento y uno rápido no siempre está en las piernas —muchas veces está en los ojos. El mediocampista que ya sabe qué va a hacer cuando el balón llega a sus pies actúa antes de que el rival pueda reaccionar. El que decide después de recibir siempre llega tarde.</p>
+
+    <p>Esa capacidad —leer el campo antes de tocar el balón— se puede entrenar con un ciclo de cinco pasos que se repite en cada posesión:</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 2.1 — El ciclo de la decisión en tiempo real</div>
+      <div class="flow-horizontal">
+        <div class="flow-node">
+          <span class="fn-num">1</span>
+          <div class="fn-label">Escanea</div>
+          <div class="fn-desc">Antes de recibir: ¿quién está dónde?</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <span class="fn-num">2</span>
+          <div class="fn-label">Decide</div>
+          <div class="fn-desc">Elige la opción mientras el balón viene hacia ti</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <span class="fn-num">3</span>
+          <div class="fn-label">Actúa</div>
+          <div class="fn-desc">Primer toque al servicio de esa decisión</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <span class="fn-num">4</span>
+          <div class="fn-label">Muévete</div>
+          <div class="fn-desc">Ya pasaste el balón: busca la siguiente posición</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <span class="fn-num">5</span>
+          <div class="fn-label">Reset</div>
+          <div class="fn-desc">Salió bien o mal: el siguiente ciclo empieza limpio</div>
+        </div>
+      </div>
+    </div>
+
+    <p>El paso más crítico es el 1 —el escaneo previo. Un mediocampista que recibe el balón mirando el suelo ya está dos pasos atrás. El hábito de mirar el campo constantemente, incluso sin el balón, es lo que convierte el paso 2 en algo automático.</p>
+
+    <p>El paso más descuidado es el 5 —el reset. Sin él, un pase mal dado contamina el ciclo siguiente. Con él, cada posesión empieza desde cero.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Con qué frecuencia escaneas el campo antes de recibir el balón? ¿Hay momentos del partido donde ese hábito desaparece?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 3</p>
+    <h2>El error de pase: recuperar cuando la pelota se pierde en zona peligrosa</h2>
+
+    <p>No hay mediocampista que no cometa errores de pase. La diferencia no está en cuántos comete —está en cuánto tarda en recuperarse de cada uno.</p>
+
+    <p>Un error de pase en zona peligrosa tiene un efecto inmediato en el marcador potencial y un efecto diferido en el rendimiento. El primero es visible. El segundo —lo que pasa en la cabeza del mediocampista durante los siguientes minutos— es el que más cuesta.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 3.1 — Mediocampista reactivo vs. mediocampista con presencia mental</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Reacción sin protocolo</th>
+            <th>Reacción con protocolo mental</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Se detiene a procesar el error mientras el partido sigue</td>
+            <td>Corre la presión defensiva primero, procesa después</td>
+          </tr>
+          <tr>
+            <td>Evita recibir el balón en los minutos siguientes</td>
+            <td>Vuelve a pedirlo en la próxima posesión</td>
+          </tr>
+          <tr>
+            <td>Juega el pase seguro por miedo a equivocarse de nuevo</td>
+            <td>Juega la mejor opción disponible, no la más cómoda</td>
+          </tr>
+          <tr>
+            <td>El error previo está presente en cada decisión</td>
+            <td>Cada ciclo empieza sin historia anterior</td>
+          </tr>
+          <tr>
+            <td>La calidad del juego baja hasta recibir validación externa</td>
+            <td>La calidad se sostiene desde adentro, no desde el resultado</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>El protocolo de recuperación tras un error de pase en zona peligrosa tiene que ser breve y físico —porque el partido no espera:</p>
+
+    <ul>
+      <li><strong>Acción inmediata:</strong> Corres la presión defensiva. No es castigo —es el reset más efectivo que existe.</li>
+      <li><strong>Frase interna (3 palabras máximo):</strong> "Ya fue. Siguiente." Nada más elaborado que eso.</li>
+      <li><strong>Primer contacto siguiente:</strong> Lo juegas con la misma intención que si el error no hubiera ocurrido.</li>
+    </ul>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuánto tiempo suele pasarte entre cometer un error de pase y volver a pedir el balón con convicción?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 4</p>
+    <h2>Fatiga mental: sostener la concentración en los minutos 70–90</h2>
+
+    <p>El mediocampista recibe más balones que ningún otro jugador. Eso tiene un costo físico —y un costo cognitivo que muchas veces se subestima. Al minuto 70, el cuerpo ya empieza a acusar el desgaste. La cabeza también.</p>
+
+    <p>La fatiga mental no se siente igual que la física. No es un dolor ni una falta de aire. Es una lentitud sutil en el escaneo previo, una tendencia a jugar el pase más fácil en lugar del más correcto, una pérdida de atención a los movimientos del compañero que lleva cinco minutos señalando el espacio.</p>
+
+    <p>Tres estrategias específicas para sostener la concentración en los minutos finales:</p>
+
+    <ul>
+      <li><strong>Anclajes de atención:</strong> Una palabra o gesto que uses deliberadamente para volver al presente cuando notes que tu mente se ha ido. "Lee el campo" dicho en voz baja funciona para muchos mediocampistas.</li>
+      <li><strong>Reinicio en balón muerto:</strong> Cada falta, cada saque de banda, cada corner es una pausa real. Úsala conscientemente: respira, mira el campo, actualiza la información. No la desperdiciones.</li>
+      <li><strong>Reducir el rango de decisión:</strong> En los minutos de más fatiga, limitar las opciones en cada posesión no es un error —es una estrategia. "Si hay presión, juego atrás. Si hay espacio, arriesgo." Una regla simple mantiene la claridad cuando el procesamiento empieza a costar más.</li>
+    </ul>
+
+    <p>La resistencia mental no se construye durante el partido —se construye en los entrenamientos donde deliberadamente llevas tu concentración hasta el límite y aprendes a sostenerla ahí.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿A partir de qué minuto empiezas a notar la fatiga mental? ¿Se manifiesta en la velocidad de decisión, en la comunicación con compañeros o en el escaneo previo?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 5</p>
+    <h2>Liderazgo desde el centro: conectar, organizar y sostener</h2>
+
+    <p>El mediocampista no lidera desde el grito o el gesto dramático. Lidera desde la claridad. Cuando el partido se desordena, el equipo mira al centro del campo para ver si hay alguien que todavía sabe qué está pasando.</p>
+
+    <p>Ese liderazgo silencioso tiene tres dimensiones prácticas:</p>
+
+    <ul>
+      <li><strong>Conectar:</strong> El mediocampista que busca activamente al compañero en el momento correcto —no cuando es fácil, sino cuando el equipo lo necesita— es el que sostiene el juego en los momentos de transición caótica.</li>
+      <li><strong>Organizar:</strong> Una señal clara de posición, un cambio de orientación comunicado antes de que el balón llegue, una cobertura pedida al lateral. No es gritar más —es comunicar mejor.</li>
+      <li><strong>Sostener:</strong> Cuando el equipo encaja un gol o pierde el hilo del partido, el mediocampista que mantiene su propio ritmo de juego estabiliza al conjunto. La desorganización se contagia, pero también la calma.</li>
+    </ul>
+
+    <p>El mayor error del liderazgo desde el mediocampo es intentar resolver el partido con una sola jugada brillante cuando el equipo está bajo. Lo que el equipo necesita en esos momentos no es una acción extraordinaria —necesita que el balón circule con fluidez, que alguien esté en su sitio y que el juego recupere su forma.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cómo cambia tu juego cuando el equipo va perdiendo? ¿Tomas más riesgos, te vuelves más conservador o mantienes tu juego habitual?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 6</p>
+    <h2>Consistencia: el mediocampista de partido a partido</h2>
+
+    <p>La consistencia del mediocampista no se mide en partidos brillantes —se mide en la ausencia de partidos desastrosos. Un mediocampista que tiene tres partidos extraordinarios y cuatro muy malos es menos valioso para el equipo que uno que tiene siete partidos sólidos seguidos.</p>
+
+    <p>Esa consistencia tiene raíces mentales claras:</p>
+
+    <ul>
+      <li><strong>No llevar el partido anterior al siguiente:</strong> Ni la euforia de un buen partido ni la carga de uno malo. Cada partido empieza desde el mismo punto de partida mental.</li>
+      <li><strong>Gestión de la carga cognitiva semanal:</strong> El mediocampista necesita más recuperación mental que otras posiciones. Entrenamientos de alta intensidad táctica acumulan fatiga cognitiva igual que los físicos. Reconocerlo permite gestionarlo.</li>
+      <li><strong>Indicadores propios de rendimiento:</strong> No solo los goles o asistencias —también el número de balones bien jugados bajo presión, la calidad del escaneo previo, la comunicación con compañeros. Construir una imagen completa del propio rendimiento protege de las evaluaciones externas que solo miran el resultado.</li>
+    </ul>
+
+    <p>La consistencia no es monotonía —es fiabilidad. El equipo que sabe que su mediocampista va a estar en su sitio, a su nivel, partido tras partido, tiene una base sobre la que construir.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cómo describes tu consistencia durante esta temporada? ¿Hay factores externos (rival, localía, importancia del partido) que afectan significativamente tu nivel?</p>
+    </div>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="chapter">
+    <p class="chapter-number">Ejemplos de aplicación</p>
+    <h2>Tres situaciones del mediocampista, tres recuperaciones</h2>
+
+    <div class="ejemplo tecnico">
+      <div class="ej-header">Error técnico — Pase interceptado en campo propio que genera contraataque</div>
+      <div class="situacion">Minuto 42. Recibes el balón en el centro del campo y decides jugar un pase entre líneas hacia el delantero. El defensa central lo anticipa y el rival sale en tres contra dos. Tu equipo concede el gol.</div>
+      <div class="sin-protocolo">Sin protocolo: Te quedas parado procesando lo que acaba de ocurrir mientras el partido sigue. En el resto de la primera mitad juegas todo hacia atrás, evitando cualquier pase con riesgo. Tu equipo pierde la profundidad.</div>
+      <ul class="steps">
+        <li><strong>Acción inmediata — Corre</strong>Spríntas hacia atrás durante la transición. El movimiento físico interrumpe el bucle mental. No hay tiempo para procesar mientras corres.</li>
+        <li><strong>Al reinicio del juego — Nombra y cierra</strong>"Mal pase. El defensa estaba cubriendo esa línea. Siguiente." Una sola conclusión. Sin más análisis hasta el descanso.</li>
+        <li><strong>Primer balón después del saque de centro</strong>Lo juegas con la misma intención que antes: buscas la mejor opción disponible, no la más segura. Volver a ese estándar es la señal de que estás de vuelta.</li>
+      </ul>
+      <div class="resultado">Resultado: Al minuto 47 recibes el balón en la misma zona. Escaneas antes de recibirlo. Esta vez el pase al delantero llega limpio. Tu equipo llega al descanso con opciones.</div>
+    </div>
+
+    <div class="ejemplo mental">
+      <div class="ej-header">Error mental — Fatiga cognitiva en el minuto 72, decisiones lentas</div>
+      <div class="situacion">El partido es intenso, el rival presiona alto. Al minuto 72 llevas veintidós posesiones en el partido. Empiezas a notar que recibes el balón sin haber escaneado antes. Dos veces seguidas juegas el pase más fácil cuando había una opción mejor disponible. El técnico hace señas desde la banda.</div>
+      <div class="sin-protocolo">Sin protocolo: No identificas la fatiga como el problema. Atribuyes las malas decisiones a que "el partido está difícil". El nivel sigue bajando hasta que te sustituyen.</div>
+      <ul class="steps">
+        <li><strong>Identificar la señal</strong>"Estoy jugando sin escanear. Eso es fatiga cognitiva. Puedo corregirlo ahora." Nombrar la causa es el primer paso para intervenir.</li>
+        <li><strong>Usar el siguiente balón muerto</strong>En la próxima falta o saque, respiras deliberadamente, miras todo el campo una vez y actualizas la información. Diez segundos de pausa consciente.</li>
+        <li><strong>Regla simple para los minutos finales</strong>"Si hay presión encima, juego atrás. Si tengo espacio, busco profundidad." Una sola regla reduce la carga cognitiva y mantiene la claridad.</li>
+      </ul>
+      <div class="resultado">Resultado: Las dos posesiones siguientes son limpias. El escaneo previo vuelve. Al minuto 81 das el pase al hueco que crea la ocasión más clara del partido.</div>
+    </div>
+
+    <div class="ejemplo emocional">
+      <div class="ej-header">Error emocional — Tensión con el lateral tras un malentendido táctico</div>
+      <div class="situacion">Minuto 55. Pides el balón al lateral para jugar en profundidad, pero él decide retener y jugar hacia atrás. La jugada se pierde. Le haces un gesto de desaprobación visible. Él responde con otro gesto. La comunicación entre los dos se corta durante los siguientes diez minutos.</div>
+      <div class="sin-protocolo">Sin protocolo: Dejas de buscarle en las posesiones siguientes. Él tampoco te busca a ti. El equipo pierde fluidez por la banda izquierda en el momento más importante del partido.</div>
+      <ul class="steps">
+        <li><strong>Cortar el ciclo de silencio</strong>En el siguiente balón muerto, te acercas al lateral. No para discutir —para redirigir: "Cuando estés atrapado, dame rápido. Yo te devuelvo." Una instrucción clara, no un reproche.</li>
+        <li><strong>Restablecer la comunicación con una acción</strong>En la siguiente posesión le buscas activamente aunque no sea la opción más fácil. Eso le dice que el canal sigue abierto.</li>
+        <li><strong>El vestuario es para hablar, el campo es para jugar</strong>Si hay algo que resolver, lo dejas para después. Durante el partido, la prioridad es que el equipo funcione.</li>
+      </ul>
+      <div class="resultado">Resultado: La banda izquierda se reactiva. Al minuto 68 la combinación con el lateral genera el córner del que sale el gol del empate.</div>
+    </div>
+  </div>
+
+  <!-- ATHLETE STORY -->
+  <div class="athlete-story">
+    <div class="story-label">Historia de referencia</div>
+    <h2>Andrés Iniesta: jugar desde adentro cuando adentro duele</h2>
+
+    <p>En el verano de 2009, Andrés Iniesta atravesó uno de los períodos más difíciles de su vida. En julio de ese año murió Dani Jarque, capitán del Espanyol y amigo cercano suyo, de una parada cardíaca durante un entrenamiento en Italia. Iniesta tenía veinticinco años. En los meses siguientes pasó por una etapa de depresión que lo alejó temporalmente de su rendimiento habitual. Buscó ayuda psicológica y así lo reconoció públicamente, en diversas entrevistas y en su autobiografía.</p>
+
+    <div class="story-quote">
+      Lo que siguió a ese período fue una de las temporadas más decisivas de su carrera: 2009-10, con el Barcelona de Guardiola y la selección española en el Mundial de Sudáfrica.
+    </div>
+
+    <p>En la final del Mundial, el 11 de julio de 2010, España y Países Bajos llegaron al tiempo extra sin goles. En el minuto 116, Iniesta recibió un balón dentro del área y marcó el gol que le dio a España su primera Copa del Mundo. Levantó la camiseta y mostró un mensaje dedicado a Dani Jarque. La imagen dio la vuelta al mundo.</p>
+
+    <p>Lo que documentan quienes trabajaron con él en ese período es que el proceso de búsqueda de ayuda psicológica no lo sacó del fútbol —lo reintegró a él de otra manera. Aprendió a hablar de lo que sentía, a separar lo que pasaba fuera del campo de lo que ocurría dentro, y a seguir jugando mientras procesaba algo que iba mucho más allá de un partido.</p>
+
+    <div class="story-quote">
+      Para un mediocampista que vive tomando decisiones bajo presión, esa historia muestra algo que va más allá de la táctica: la cabeza que sostiene el partido no es la que no siente nada —es la que ha aprendido a gestionar lo que siente.
+    </div>
+
+    <p>Iniesta continuó su carrera en el Barcelona hasta 2018, con múltiples Ligas y dos Champions más. Lo que queda de su trayectoria no es solo el gol en Sudáfrica —es la coherencia de quien durante años eligió resolver las cosas difíciles en lugar de ignorarlas, dentro y fuera del campo.</p>
+  </div>
+
+  <!-- TRACKING TABLE -->
+  <div class="tracking-section">
+    <h2>Diario del Mediocampista</h2>
+    <p class="track-desc">Registra tus partidos con foco en la calidad de decisión, no solo en el resultado. El mediocampista se evalúa en el proceso —cuántas veces tomó la mejor opción disponible— más que en estadísticas visibles.</p>
+    <table class="tracking-table">
+      <thead>
+        <tr>
+          <th>Partido / Fecha</th>
+          <th>Decisión más difícil</th>
+          <th>Calidad de escaneo (1–10)</th>
+          <th>Recuperación tras error</th>
+          <th>Lección concreta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="example">Ej: vs. Nacional — 11/04</td>
+          <td class="example">Pase entre líneas min. 38</td>
+          <td class="example">7 — bajó a 5 en el 2.º tiempo</td>
+          <td class="example">Tardé 8 min en volver a pedir el balón</td>
+          <td class="example">Usar balones muertos para resetear en la 2.ª parte</td>
+        </tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+      </tbody>
+    </table>
+    <p class="tracking-note">Revisa semanalmente. Busca el patrón en la columna de escaneo: ¿baja sistemáticamente en la segunda mitad? ¿En ciertos tipos de partido? Ese es el punto de trabajo.</p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>La claridad que el equipo necesita empieza en tu cabeza</h2>
+    <p>Cuando el partido se desordena, el equipo mira al mediocampo. Lo que encuentre ahí —calma o caos— va a contagiarse.</p>
+    <p>Ese es el trabajo invisible del mediocampista: sostener la claridad por dentro para que el equipo pueda apoyarse en ella por fuera.</p>
+    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+  </div>
+
+</div><!-- /content -->
+
+<button class="print-btn" onclick="window.print()">Imprimir / PDF</button>
+
+</body>
+</html>

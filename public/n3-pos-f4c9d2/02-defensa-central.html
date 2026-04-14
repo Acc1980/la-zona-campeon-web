@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mente del Defensa Central — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container { max-width: 780px; margin: 0 auto; padding: 48px 32px 80px; }
+
+    .brand { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid #c8aa32; }
+    .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: #c8aa32; margin-bottom: 4px; }
+    .brand-tagline { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; }
+    .level-badge { display: inline-block; margin-top: 16px; padding: 4px 14px; background: #c8aa32; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; border-radius: 20px; }
+
+    .cover { text-align: center; padding: 40px 0 48px; border-bottom: 1px solid #d4c99a; margin-bottom: 48px; }
+    .manual-num { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+    .cover h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 42px; line-height: 1.1; color: #111; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 8px; }
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub { font-family: 'Montserrat', sans-serif; font-size: 14px; color: #555; letter-spacing: 0.05em; margin-top: 12px; margin-bottom: 32px; }
+    .cover-desc { font-size: 15px; color: #444; max-width: 560px; margin: 0 auto 32px; line-height: 1.8; }
+    .cover-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .cover-stat span { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 26px; color: #c8aa32; }
+    .cover-stat small { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #888; }
+
+    .intro { background: #fff; border-left: 4px solid #c8aa32; border-radius: 0 8px 8px 0; padding: 24px 28px; margin-bottom: 48px; font-size: 15px; color: #333; }
+    .intro strong { color: #111; }
+
+    .chapter { margin-bottom: 56px; }
+    .chapter-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .chapter-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 48px; color: #c8aa32; line-height: 1; opacity: 0.25; flex-shrink: 0; }
+    .chapter-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #111; text-transform: uppercase; letter-spacing: 0.02em; padding-top: 8px; }
+    .chapter-body p { margin-bottom: 16px; color: #333; font-size: 15px; }
+    .chapter-body strong { color: #111; }
+
+    .figure { background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 28px 24px; margin: 28px 0; text-align: center; }
+    .figure-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+
+    /* 3 pilares */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; text-align: left; }
+    .pillar { background: #f5f0e8; border: 1px solid #d4c99a; border-radius: 10px; padding: 16px 14px; }
+    .pillar-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px; color: #c8aa32; opacity: 0.4; line-height: 1; margin-bottom: 6px; }
+    .pillar-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #c8aa32; margin-bottom: 6px; }
+    .pillar-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+    /* Protocolo anticipación */
+    .ant-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; margin: 8px 0; }
+    .ant-node { background: #1a1a1a; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 14px 16px; border-radius: 8px; text-align: center; min-width: 120px; line-height: 1.4; }
+    .ant-node small { display: block; font-size: 10px; color: #aaa; font-weight: 400; margin-top: 3px; text-transform: none; letter-spacing: 0; }
+    .ant-arrow { font-size: 20px; color: #c8aa32; margin: 0 6px; }
+
+    /* Tabla duelo */
+    .duel-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+    .duel-table th { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; padding: 10px 14px; border-bottom: 2px solid #c8aa32; }
+    .duel-table th.bad { color: #c0392b; }
+    .duel-table th.good { color: #2e7d32; }
+    .duel-table td { padding: 9px 14px; border-bottom: 1px solid #eee; color: #333; vertical-align: top; }
+    .duel-table tr:last-child td { border-bottom: none; }
+    .duel-table td.bad-v { color: #c0392b; }
+    .duel-table td.good-v { color: #2e7d32; font-weight: 600; }
+
+    /* Ejemplos */
+    .ejemplo { border-radius: 12px; overflow: hidden; margin: 20px 0; border: 1px solid #ddd; }
+    .ejemplo-header { padding: 10px 18px; display: flex; align-items: center; gap: 10px; }
+    .ejemplo-header.duelo    { background: #fff0f0; border-bottom: 2px solid #c85050; }
+    .ejemplo-header.linea    { background: #fff8e8; border-bottom: 2px solid #c8aa32; }
+    .ejemplo-header.final    { background: #f0f8ff; border-bottom: 2px solid #4080c0; }
+    .ejemplo-tipo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+    .ejemplo-header.duelo  .ejemplo-tipo { color: #a03030; }
+    .ejemplo-header.linea  .ejemplo-tipo { color: #9a7a1a; }
+    .ejemplo-header.final  .ejemplo-tipo { color: #2060a0; }
+    .ejemplo-titulo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: #111; }
+    .ejemplo-body { background: #fff; padding: 18px 18px 20px; }
+    .ejemplo-situacion { font-size: 13px; color: #555; font-style: italic; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #eee; }
+    .ejemplo-steps { list-style: none; padding: 0; }
+    .ejemplo-steps li { display: flex; gap: 10px; font-size: 13px; color: #333; padding: 7px 0; border-bottom: 1px solid #f0ece4; line-height: 1.55; }
+    .ejemplo-steps li:last-child { border-bottom: none; }
+    .ejemplo-step-tag { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; min-width: 72px; }
+    .tag-sin      { color: #c0392b; }
+    .tag-lee      { color: #2060a0; }
+    .tag-elige    { color: #9a7a1a; }
+    .tag-actua    { color: #2e7d32; }
+    .tag-resultado{ color: #c8aa32; }
+
+    .protocol-box { background: #1a1a1a; color: #fff; border-radius: 12px; padding: 28px 28px; margin: 24px 0; }
+    .protocol-box h4 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em; color: #c8aa32; margin-bottom: 16px; }
+    .protocol-box ol { padding-left: 20px; }
+    .protocol-box ol li { font-size: 14px; line-height: 1.7; margin-bottom: 8px; color: #ddd; }
+    .protocol-box ol li strong { color: #fff; }
+
+    .athlete-story { background: #fff; border-radius: 12px; border: 1px solid #d4c99a; padding: 32px 28px; margin: 32px 0; }
+    .story-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8aa32; margin-bottom: 4px; }
+    .story-name { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #111; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 16px; }
+    .story-body p { font-size: 14px; color: #444; margin-bottom: 14px; line-height: 1.8; }
+    .story-body strong { color: #111; }
+    .story-quote { border-left: 3px solid #c8aa32; padding: 10px 18px; margin: 16px 0; font-style: italic; font-size: 15px; color: #333; line-height: 1.7; }
+
+    .reflection { background: #1a1a1a; border-radius: 10px; padding: 22px 24px; margin-top: 24px; }
+    .reflection-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8aa32; margin-bottom: 12px; }
+    .reflection ol { padding-left: 20px; }
+    .reflection ol li { font-size: 14px; color: #ccc; margin-bottom: 8px; line-height: 1.6; }
+
+    .exercise { background: #fffdf5; border: 1px solid #c8aa32; border-radius: 10px; padding: 22px 24px; margin: 24px 0; }
+    .exercise-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8aa32; margin-bottom: 8px; }
+    .exercise h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #111; margin-bottom: 10px; }
+    .exercise p, .exercise li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 6px; }
+    .exercise ul, .exercise ol { padding-left: 20px; }
+
+    .divider { border: none; border-top: 1px solid #d4c99a; margin: 48px 0; }
+
+    .closing { text-align: center; padding: 32px 0; border-top: 2px solid #c8aa32; }
+    .closing h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; text-transform: uppercase; color: #111; margin-bottom: 10px; }
+    .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
+    .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
+
+    .print-btn { position: fixed; bottom: 28px; right: 28px; background: #c8aa32; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 22px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 16px rgba(200,170,50,0.35); z-index: 999; }
+    .print-btn:hover { background: #b89928; }
+
+    @media print { body { background: #fff; } .print-btn { display: none; } .container { padding: 24px 24px 40px; } }
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 30px; }
+      .pillars { grid-template-columns: 1fr; }
+      .ant-steps { flex-direction: column; gap: 4px; }
+      .ant-arrow { transform: rotate(90deg); margin: 2px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="container">
+
+  <div class="brand">
+    <div class="brand-name">La Zona Campeón</div>
+    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
+    <div><span class="level-badge">Nivel 3 — Manuales por Posición</span></div>
+  </div>
+
+  <div class="cover">
+    <p class="manual-num">Fútbol — Defensa Central</p>
+    <h1>La Mente del<br /><span>Defensa Central</span></h1>
+    <p class="cover-sub">Liderazgo defensivo, anticipación y calma en los momentos decisivos</p>
+    <p class="cover-desc">
+      El defensa central no puede darse el lujo de perder la concentración en el minuto 89.
+      Un error suyo, a diferencia de casi cualquier otra posición, se convierte directamente en gol.
+      Este manual está construido para esa exigencia específica.
+    </p>
+    <div class="cover-stats">
+      <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+      <div class="cover-stat"><span>52</span><small>Páginas</small></div>
+      <div class="cover-stat"><span>1</span><small>Posición</small></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <p>
+      El defensa central carga con una presión silenciosa que pocas posiciones tienen:
+      <strong>cada error puede costar un gol, cada duelo puede definir un partido y cada decisión se toma en fracciones de segundo
+      con consecuencias que el marcador registra de forma inmediata</strong>.
+      Este manual trabaja la mentalidad específica que esa posición exige.
+    </p>
+    <p style="margin-top:12px; margin-bottom:0;">
+      Antes de cada entrenamiento o partido, activa tu mente en <strong>lazonacampeon.com/frases</strong>.
+      La preparación mental empieza antes de saltar al campo.
+    </p>
+  </div>
+
+  <!-- CAP 1 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">La identidad del defensa central: el que ordena cuando todo se desordena</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El defensa central tiene un rol que va más allá de ganar duelos. Es el jugador que da estructura
+        a la defensa, que lee el juego antes de que ocurra y que mantiene la calma cuando el equipo
+        está bajo presión. <strong>No es solo el que para al delantero — es el que impide que el delantero llegue.</strong>
+      </p>
+      <p>
+        La identidad mental de un buen defensa central se construye sobre tres pilares que no dependen
+        del resultado del último partido: la capacidad de anticipar, la solidez en el duelo individual
+        y el liderazgo vocal que organiza a quienes están alrededor.
+        Cuando uno de los tres falla, los otros dos lo sostienen.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Los 3 pilares del defensa central</div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <div class="pillar-name">Anticipación</div>
+            <div class="pillar-desc">Leer el juego antes de que el balón llegue. El mejor defensa no corre detrás del problema — lo previene.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <div class="pillar-name">Duelo mental</div>
+            <div class="pillar-desc">La fortaleza en el 1v1. No solo física — la certeza de que puedes ganar ese duelo específico en ese momento.</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <div class="pillar-name">Liderazgo vocal</div>
+            <div class="pillar-desc">Organizar la línea, avisar del rival, sostener al compañero que falla. La defensa es tan fuerte como su comunicación.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 01</div>
+        <ol>
+          <li>¿Cuál de los tres pilares describes como tu punto más fuerte ahora mismo? ¿Cuál es el que más te cuesta?</li>
+          <li>¿Cómo describirías tu identidad como defensa central cuando el equipo está bajo presión máxima? ¿Es la identidad que quieres tener?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAP 2 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">Anticipación: ganar el duelo antes de que empiece</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        La anticipación no es instinto — es lectura. Un defensa central que llega a los duelos
+        en el último momento está defendiendo en desventaja. El que lee la jugada medio segundo
+        antes puede llegar primero sin necesitar velocidad extra ni esfuerzo físico adicional.
+        <strong>Anticipar es la forma más eficiente de defender.</strong>
+      </p>
+      <p>
+        Esa lectura se entrena observando patrones: las tendencias del delantero rival, las señales
+        del mediocampista que distribuye, la posición del cuerpo del pasador antes de que toque el balón.
+        El defensa que entrena su atención en estas señales toma mejores decisiones más rápido.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">El protocolo de anticipación</div>
+        <div class="ant-steps">
+          <div class="ant-node">Lee<small>¿dónde está mirando el pasador?</small></div>
+          <div class="ant-arrow">→</div>
+          <div class="ant-node">Posiciónate<small>ajusta antes de que salga el pase</small></div>
+          <div class="ant-arrow">→</div>
+          <div class="ant-node">Decide<small>interceptar, presionar o esperar</small></div>
+          <div class="ant-arrow">→</div>
+          <div class="ant-node">Ejecuta<small>con convicción, sin dudar</small></div>
+        </div>
+        <p style="font-size:12px; color:#888; margin-top:14px;">El que duda en el paso 3 llega tarde al paso 4. La decisión debe estar tomada antes del contacto.</p>
+      </div>
+
+      <div class="protocol-box">
+        <h4>Cómo entrenar la anticipación mental</h4>
+        <ol>
+          <li><strong>Estudia al delantero rival antes del partido:</strong> su tendencia a ir por el lado dominante, si prefiere la profundidad o el giro, si pide el balón al pie o en carrera. Esa información reduce la incertidumbre en el duelo.</li>
+          <li><strong>Lee el cuerpo del pasador, no el balón:</strong> los ojos del pasador, la apertura de su cadera y la orientación de su pie de apoyo anuncian hacia dónde va el pase antes de que salga.</li>
+          <li><strong>Practica la decisión en entrenamiento:</strong> en los ejercicios de posicionamiento, toma tu decisión antes de que el balón llegue. Entrena el hábito de decidir anticipado, no reactivo.</li>
+          <li><strong>Acepta el margen de error:</strong> no toda anticipación resulta en intercepción. A veces el rival cambia la jugada. Anticipar bien pero fallar es mejor que reaccionar siempre tarde.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 02</div>
+        <ol>
+          <li>¿Cuándo llegan la mayoría de tus duelos — porque anticipaste o porque reaccionaste en el último momento? ¿Qué diferencia notas en tu cuerpo entre ambas situaciones?</li>
+          <li>¿Estudias al delantero rival antes del partido o esperas ver sus movimientos durante el juego? ¿Qué cambiaría si llegaras con esa información preparada?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAP 3 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">El duelo individual: la mentalidad del 1 contra 1</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El duelo individual es el momento más puro de la posición. No hay compañeros que ayuden,
+        no hay tácticas colectivas que intervengan. Es el defensa contra el delantero, y
+        el que tiene la mentalidad más sólida en ese segundo tiene ventaja.
+      </p>
+      <p>
+        <strong>El error más común del defensa en el 1v1 no es técnico — es mental: entrar al duelo
+        ya sintiéndose en desventaja.</strong> Si llegas al duelo pensando "este tío es muy rápido",
+        tu cuerpo ya cedió medio metro antes de que el rival se mueva. La mentalidad del duelo
+        empieza antes del contacto.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Mentalidad reactiva vs mentalidad de duelo</div>
+        <table class="duel-table">
+          <thead>
+            <tr>
+              <th class="bad">Mentalidad reactiva</th>
+              <th class="good">Mentalidad de duelo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bad-v">"Es muy rápido, me va a dejar atrás"</td>
+              <td class="good-v">"Yo elijo cuándo y dónde es el duelo"</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Espera a que el rival decida</td>
+              <td class="good-v">Condiciona al rival con el posicionamiento</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Entra al duelo con prisa por cerrarlo</td>
+              <td class="good-v">Controla el tempo, espera el momento de entrar</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Después de perder un duelo: cabeza baja, evita el siguiente</td>
+              <td class="good-v">Después de perder: reset, busca el siguiente duelo</td>
+            </tr>
+            <tr>
+              <td class="bad-v">El duelo lo gana quien tiene más calidad</td>
+              <td class="good-v">El duelo lo gana quien está más presente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplo en acción</p>
+
+      <div class="ejemplo">
+        <div class="ejemplo-header duelo">
+          <div>
+            <div class="ejemplo-tipo">Duelo individual</div>
+            <div class="ejemplo-titulo">El defensa que pierde el duelo y el rival marca</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 58. El delantero recibe de espaldas al arco, gira rápido y deja al defensa central detrás. Remata y marca. El defensa fue superado en velocidad de reacción.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin protocolo</span>
+              <span>El defensa reclama al árbitro, mira al compañero que debía cubrir el espacio. Baja la intensidad en los siguientes minutos porque siente que ya la cagó. El rival lo busca de nuevo porque nota que está caído.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Suelta</span>
+              <span>Palmada a la pierna, exhala. El gol ya ocurrió. Lo que sigue está completamente abierto. Cero segundos adicionales al error.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Ancla</span>
+              <span><em>"Técnico. La próxima lo leo antes."</em> Identifica el tipo de error sin castigarse. Fue anticipación, no capacidad. Eso tiene solución concreta.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Regresa</span>
+              <span>Se posiciona antes del saque de centro. Levanta la cabeza, busca al delantero rival con la mirada. Ya está en el siguiente duelo.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>En el minuto 71 gana un duelo aéreo decisivo que evita el segundo gol. El reset funcionó porque fue inmediato, no acumulado.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 03</div>
+        <ol>
+          <li>¿Cómo afecta perder un duelo importante al resto de tu partido? ¿Cuánto tiempo tardas en volver al nivel de presencia que tenías antes?</li>
+          <li>¿Hay algún tipo de delantero — rápido, técnico, físico — que mentalmente te genera más duda antes del duelo? ¿Qué pasa en tu cabeza cuando lo ves en el equipo rival?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- HISTORIA -->
+  <div class="athlete-story">
+    <div class="story-label">Historia Real</div>
+    <div class="story-name">Sergio Ramos — El defensa que decidió partidos en el último segundo</div>
+    <div class="story-body">
+      <p>
+        El 24 de mayo de 2014, en el estadio Da Luz de Lisboa, la final de la Champions League
+        entre Real Madrid y Atlético de Madrid llegaba al minuto 93 con el marcador 1-0 a favor
+        del Atlético. Real Madrid estaba a segundos de perder el título.
+      </p>
+      <p>
+        En ese momento, Sergio Ramos — defensa central y capitán del Real Madrid — remató de cabeza
+        un córner y marcó el 1-1 que llevó el partido a la prórroga. <strong>Real Madrid ganó 4-1
+        en los penales y se proclamó campeón de Europa</strong>. Fue uno de los goles más importantes
+        en la historia del club.
+      </p>
+      <div class="story-quote">
+        Lo que ese momento ilustra no es solo la calidad técnica de Ramos. Es que llegó al minuto 93
+        de una final de Champions, con su equipo perdiendo, con la presión máxima acumulada,
+        y ejecutó con precisión. Eso no ocurre por accidente.
+      </div>
+      <p>
+        A lo largo de su carrera, Ramos fue conocido por su liderazgo vocal — organizaba la defensa
+        de forma constante, se comunicaba con el portero, ajustaba la línea defensiva en tiempo real.
+        También fue conocido por su disposición a estar en los momentos difíciles:
+        goles en finales, acciones decisivas en partidos de eliminación directa.
+      </p>
+      <p>
+        Su trayectoria incluye también errores, expulsiones y momentos donde el equipo pagó consecuencias
+        de sus decisiones. Lo que es observable es que esos errores no lo sacaron del partido siguiente
+        como titular ni como referencia de liderazgo del grupo.
+        <strong>Siguió siendo el defensa que el equipo buscaba en los momentos de mayor presión.</strong>
+      </p>
+      <p>
+        Para un defensa central, esa consistencia — estar disponible, estar presente, seguir liderando
+        después de un error — es exactamente lo que este manual trabaja.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAP 4 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title">Liderazgo defensivo: organizar, comunicar, sostener</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Una línea defensiva bien organizada no ocurre sola. Alguien tiene que moverla, ajustarla
+        y mantenerla compacta durante 90 minutos. Ese trabajo, en la mayoría de los equipos,
+        recae en el defensa central. <strong>Es comunicación táctica constante, no solo en los momentos
+        de peligro — sino durante todo el partido.</strong>
+      </p>
+      <p>
+        La diferencia entre un defensa central que lidera y uno que simplemente defiende bien
+        es que el primero eleva el rendimiento de los jugadores que tiene alrededor.
+        Un lateral que recibe instrucciones claras a tiempo comete menos errores de posicionamiento.
+        Un segundo central que recibe el aviso del compañero llega al duelo con ventaja.
+      </p>
+
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplo en acción</p>
+
+      <div class="ejemplo">
+        <div class="ejemplo-header linea">
+          <div>
+            <div class="ejemplo-tipo">Liderazgo defensivo</div>
+            <div class="ejemplo-titulo">La presión alta del rival en el último cuarto de hora</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 76, el equipo gana 1-0. El rival saca a un segundo delantero y sube la presión. Los laterales están confundidos sobre cuándo subir la línea. El equipo empieza a replegarse demasiado y pierde el control del mediocampo.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+              <span>Nadie ajusta la línea. Los laterales siguen bajando por inercia. El mediocampo queda entre dos aguas. El rival encuentra espacio entre líneas y genera tres llegadas en diez minutos.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Lee</span>
+              <span>El defensa central ve el problema antes de que el rival explote el espacio. Tiene la visión y la autoridad para corregirlo en tiempo real.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Elige</span>
+              <span>Instrucciones cortas, específicas, por nombre. Sin monólogo — dos correcciones concretas y seguir jugando.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Actúa</span>
+              <span><em>"Línea arriba, todos juntos. Carlos, no te separes."</em> Y ajusta él mismo su posición para marcar la referencia con el cuerpo, no solo con la voz.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>La línea se compacta. El mediocampo tiene menos espacio entre líneas. El rival deja de encontrar el hueco que buscaba. El equipo cierra el partido.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 04</div>
+        <ol>
+          <li>¿Qué tan activo eres vocalmente durante el partido? ¿Tu defensa sabe dónde estar gracias a tu comunicación o descubre los errores cuando ya es tarde?</li>
+          <li>¿Hay algún compañero defensivo al que sientas que deberías apoyar más o comunicarte mejor? ¿Qué te detiene?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAP 5 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title">Gestión del error: cuando el defensa comete el fallo que cuesta el gol</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        No hay posición en el campo donde el error sea más costoso y más visible que la del defensa central.
+        Un pase errado del mediocampista rara vez cuesta un gol. Un mal control del defensa central
+        puede ser el último error antes del marcador.
+        <strong>Esa asimetría de consecuencias requiere una relación especial con el error.</strong>
+      </p>
+      <p>
+        Los defensas centrales que duran años en el alto rendimiento no son los que no se equivocan.
+        Son los que han construido la capacidad de procesar rápido, resetear y volver al nivel
+        de presencia que la posición exige. El que se rompe con cada error no puede mantenerse
+        90 minutos como referencia defensiva del equipo.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Los 20 segundos después del error que cuesta un gol</h4>
+        <ol>
+          <li><strong>0–5s · Suelta:</strong> un gesto físico propio (golpe al muslo, ajustar la camiseta). Exhala. No mires al entrenador ni a las gradas. El gol ya ocurrió.</li>
+          <li><strong>6–10s · Nombra:</strong> identifica qué tipo de error fue — anticipación, duelo, comunicación. Una sola palabra. No un análisis completo — eso es para después.</li>
+          <li><strong>11–15s · Señal al equipo:</strong> levanta la cabeza, da la señal de que el partido sigue. Eres la referencia defensiva. Si tú te caes, la defensa se cae contigo.</li>
+          <li><strong>16–20s · Regresa:</strong> posición, mirada al balón, comunicación con el compañero más cercano. El siguiente duelo no sabe nada del anterior.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 05</div>
+        <ol>
+          <li>¿Cuál es tu mayor miedo relacionado con cometer un error como defensa central? ¿Qué dice ese miedo sobre cómo valoras tu rendimiento?</li>
+          <li>¿Tienes ya un protocolo de reset después de un error tuyo que cueste un gol? ¿Qué haces en esos primeros 20 segundos?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAP 6 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title">La concentración en los últimos minutos: cuando más cuesta más importa</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El minuto 88 con ventaja de un gol es uno de los momentos mentalmente más difíciles
+        para un defensa central. El cuerpo está cansado, la mente empieza a calcular el final
+        del partido, y justo ahí es cuando el rival lanza su última presión desesperada.
+        <strong>La mayoría de los goles en los últimos minutos no ocurren porque el defensa perdió
+        la calidad — ocurren porque perdió la concentración.</strong>
+      </p>
+      <p>
+        Anticipar ese momento y prepararse para él durante el partido marca la diferencia.
+        El defensa que sabe que los últimos 10 minutos van a exigir más concentración, no menos,
+        puede activar sus mecanismos de foco cuando el cuerpo pide lo contrario.
+      </p>
+
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplo en acción</p>
+
+      <div class="ejemplo">
+        <div class="ejemplo-header final">
+          <div>
+            <div class="ejemplo-tipo">Concentración final</div>
+            <div class="ejemplo-titulo">El minuto 87 con ventaja de un gol</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            El equipo gana 1-0, minuto 87. El rival saca todo hacia adelante. Hay cansancio acumulado. El defensa central lleva 87 minutos en el campo.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin protocolo</span>
+              <span>La mente empieza a calcular el pitido final. El defensa baja medio metro la línea "por precaución". Ese espacio que cede es exactamente el que el rival busca. El rival empata de cabeza en el 90.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-lee">Activa</span>
+              <span>Reconoce que el cansancio está ahí — y que ese es exactamente el momento donde más se necesita la concentración. No un esfuerzo físico extra — un esfuerzo mental concreto.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-elige">Ancla</span>
+              <span>Se dice: <em>"Tres minutos más. Mismo nivel que el primero."</em> Reduce el universo. No el partido, no la temporada — tres minutos específicos.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-actua">Actúa</span>
+              <span>Sube la línea con autoridad, comunicando en voz alta. Entra al siguiente duelo aéreo al 100%. El cuerpo responde al nivel que le pide la mente.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>El equipo cierra el partido. El gol que habría sido el empate no existe porque el defensa central tomó la decisión de estar presente cuando más costaba.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio final</div>
+        <h4>Tu protocolo de los últimos 10 minutos</h4>
+        <p>Diseña ahora mismo qué vas a hacer específicamente en los últimos 10 minutos de un partido ajustado. Define:</p>
+        <ol>
+          <li>Una frase que uses para activarte cuando el cansancio quiere bajar tu concentración</li>
+          <li>Un ajuste táctico concreto que priorizas (línea más alta, más comunicación, mayor cercanía al segundo central)</li>
+          <li>Un gesto físico que uses como señal de "sigo al 100%"</li>
+        </ol>
+        <p style="margin-top:10px; font-size:13px; color:#888; font-style:italic;">Practica este protocolo en los entrenamientos. El final del partido no es el momento para improvisar.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 06</div>
+        <ol>
+          <li>¿En qué momento del partido sueles sentir que tu concentración baja más — al inicio del segundo tiempo, cuando el equipo va ganando, en los últimos minutos?</li>
+          <li>¿Qué defensa central admiras especialmente? ¿Qué tiene mentalmente que tú quieres construir?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- DIARIO DEL DEFENSA -->
+  <div style="margin-bottom: 56px;">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Herramienta de seguimiento</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario del Defensa Central</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Los patrones defensivos solo se ven cuando se registran. Llena esta tabla después de cada partido.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:80px;">Partido</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:120px;">Duelo / situación clave</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:90px;">Resultado</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:100px;">Estado mental</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Lección concreta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: vs. River</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">1v1 con el 9 en el min. 67</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Gané el duelo, despejes</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Concentrado, anticipé bien</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Bajar la línea antes del córner</td>
+          </tr>
+          <tr style="background:#f5f0e8;"><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td></tr>
+          <tr style="background:#fff;"><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td></tr>
+          <tr style="background:#f5f0e8;"><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td></tr>
+          <tr style="background:#fff;"><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td></tr>
+          <tr style="background:#f5f0e8;"><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td><td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+      Situaciones clave: duelo 1v1 · error que cuesta gol · organización de línea · córner en contra · últimos 10 minutos
+    </p>
+  </div>
+
+  <div class="closing">
+    <h2>Defiende con la mente. Gana con la calma.</h2>
+    <p>
+      La técnica te pone en posición. La anticipación te lleva al duelo con ventaja.
+      Y la mentalidad te mantiene presente cuando el partido, el cansancio y la presión
+      piden que te rindas. Eso se entrena. Empieza hoy.
+    </p>
+    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
+    <p class="url">lazonacampeon.com</p>
+    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
+    <p style="margin-top: 16px; font-size: 13px; color: #888;">Nivel 3 — Manuales por Posición · Fútbol — Defensa Central · La Zona Campeón © 2025</p>
+  </div>
+
+</div>
+</body>
+</html>

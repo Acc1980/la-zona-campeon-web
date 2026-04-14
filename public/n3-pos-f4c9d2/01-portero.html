@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mente del Portero — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── HEADER ── */
+    .brand {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .brand-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .level-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 20px;
+    }
+
+    /* ── PORTADA ── */
+    .cover {
+      text-align: center;
+      padding: 40px 0 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 42px;
+      line-height: 1.1;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      color: #555;
+      letter-spacing: 0.05em;
+      margin-top: 12px;
+      margin-bottom: 32px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      background: #fff;
+      border-left: 4px solid #c8aa32;
+      border-radius: 0 8px 8px 0;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: #333;
+    }
+    .intro strong { color: #111; }
+
+    /* ── CAPÍTULOS ── */
+    .chapter { margin-bottom: 56px; }
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .chapter-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #c8aa32;
+      line-height: 1;
+      opacity: 0.25;
+      flex-shrink: 0;
+    }
+    .chapter-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      padding-top: 8px;
+    }
+    .chapter-body p { margin-bottom: 16px; color: #333; font-size: 15px; }
+    .chapter-body strong { color: #111; }
+
+    /* ── FIGURAS ── */
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Ciclo del portero */
+    .cycle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .cnode {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 12px 14px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 100px;
+      line-height: 1.4;
+    }
+    .cnode small { display: block; font-size: 10px; color: #aaa; font-weight: 400; margin-top: 3px; text-transform: none; letter-spacing: 0; }
+    .carrow { font-size: 20px; color: #c8aa32; margin: 0 6px; }
+
+    /* Los 3 roles — grid */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: left;
+    }
+    .role-card {
+      background: #f5f0e8;
+      border: 1px solid #d4c99a;
+      border-radius: 10px;
+      padding: 16px 14px;
+    }
+    .role-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #c8aa32;
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .role-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #c8aa32;
+      margin-bottom: 6px;
+    }
+    .role-desc { font-size: 12px; color: #555; line-height: 1.5; }
+
+    /* Tabla reacción gol */
+    .react-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    .react-table th {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border-bottom: 2px solid #c8aa32;
+    }
+    .react-table th.bad  { color: #c0392b; }
+    .react-table th.good { color: #2e7d32; }
+    .react-table td { padding: 9px 14px; border-bottom: 1px solid #eee; color: #333; vertical-align: top; }
+    .react-table tr:last-child td { border-bottom: none; }
+    .react-table td.bad-v  { color: #c0392b; }
+    .react-table td.good-v { color: #2e7d32; font-weight: 600; }
+
+    /* ── EJEMPLO EN ACCIÓN ── */
+    .ejemplo {
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+    }
+    .ejemplo-header {
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ejemplo-header.gol      { background: #fff0f0; border-bottom: 2px solid #c85050; }
+    .ejemplo-header.penal    { background: #fff8e8; border-bottom: 2px solid #c8aa32; }
+    .ejemplo-header.liderazgo{ background: #f0f8ff; border-bottom: 2px solid #4080c0; }
+    .ejemplo-tipo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .ejemplo-header.gol       .ejemplo-tipo { color: #a03030; }
+    .ejemplo-header.penal     .ejemplo-tipo { color: #9a7a1a; }
+    .ejemplo-header.liderazgo .ejemplo-tipo { color: #2060a0; }
+    .ejemplo-titulo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: #111;
+    }
+    .ejemplo-body { background: #fff; padding: 18px 18px 20px; }
+    .ejemplo-situacion {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .ejemplo-steps { list-style: none; padding: 0; }
+    .ejemplo-steps li {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: #333;
+      padding: 7px 0;
+      border-bottom: 1px solid #f0ece4;
+      line-height: 1.55;
+    }
+    .ejemplo-steps li:last-child { border-bottom: none; }
+    .ejemplo-step-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 72px;
+    }
+    .tag-sin      { color: #c0392b; }
+    .tag-suelta   { color: #c87030; }
+    .tag-ancla    { color: #4040b0; }
+    .tag-regresa  { color: #2e7d32; }
+    .tag-resultado{ color: #c8aa32; }
+
+    /* ── PROTOCOLO DESTACADO ── */
+    .protocol-box {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 28px;
+      margin: 24px 0;
+    }
+    .protocol-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #c8aa32;
+      margin-bottom: 16px;
+    }
+    .protocol-box ol { padding-left: 20px; }
+    .protocol-box ol li { font-size: 14px; line-height: 1.7; margin-bottom: 8px; color: #ddd; }
+    .protocol-box ol li strong { color: #fff; }
+
+    /* ── HISTORIA DEL ATLETA ── */
+    .athlete-story {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #d4c99a;
+      padding: 32px 28px;
+      margin: 32px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 4px;
+    }
+    .story-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .story-body p { font-size: 14px; color: #444; margin-bottom: 14px; line-height: 1.8; }
+    .story-body strong { color: #111; }
+    .story-quote {
+      border-left: 3px solid #c8aa32;
+      padding: 10px 18px;
+      margin: 16px 0;
+      font-style: italic;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* ── REFLEXIONES ── */
+    .reflection {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-top: 24px;
+    }
+    .reflection-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 12px;
+    }
+    .reflection ol { padding-left: 20px; }
+    .reflection ol li { font-size: 14px; color: #ccc; margin-bottom: 8px; line-height: 1.6; }
+
+    /* ── EJERCICIO ── */
+    .exercise {
+      background: #fffdf5;
+      border: 1px solid #c8aa32;
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin: 24px 0;
+    }
+    .exercise-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8aa32;
+      margin-bottom: 8px;
+    }
+    .exercise h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #111; margin-bottom: 10px; }
+    .exercise p, .exercise li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 6px; }
+    .exercise ul, .exercise ol { padding-left: 20px; }
+
+    /* ── SEPARADOR ── */
+    .divider { border: none; border-top: 1px solid #d4c99a; margin: 48px 0; }
+
+    /* ── CIERRE ── */
+    .closing {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 2px solid #c8aa32;
+    }
+    .closing h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; text-transform: uppercase; color: #111; margin-bottom: 10px; }
+    .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
+    .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #c8aa32;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(200,170,50,0.35);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #b89928; }
+
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      .container { padding: 24px 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .cover h1 { font-size: 30px; }
+      .roles-grid { grid-template-columns: 1fr; }
+      .cycle { flex-direction: column; gap: 4px; }
+      .carrow { transform: rotate(90deg); margin: 2px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="container">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">La Zona Campeón</div>
+    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
+    <div><span class="level-badge">Nivel 3 — Manuales por Posición</span></div>
+  </div>
+
+  <!-- PORTADA -->
+  <div class="cover">
+    <p class="manual-num">Fútbol — Portero</p>
+    <h1>La Mente<br />del <span>Portero</span></h1>
+    <p class="cover-sub">Concentración extrema, liderazgo desde atrás y recuperación mental tras goles encajados</p>
+    <p class="cover-desc">
+      El portero vive en una posición única: puede pasar 89 minutos sin tocar el balón
+      y ser el protagonista del partido en el segundo 90. Este manual está construido
+      para esa realidad específica.
+    </p>
+    <div class="cover-stats">
+      <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+      <div class="cover-stat"><span>52</span><small>Páginas</small></div>
+      <div class="cover-stat"><span>1</span><small>Posición</small></div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>
+      Ningún otro jugador del campo tiene la combinación de responsabilidades que tiene un portero:
+      <strong>defender el arco, liderar la defensa, mantener la concentración en períodos largos de inactividad
+      y recuperarse mentalmente de los errores más visibles del juego</strong>.
+      Este manual no es de fútbol general. Es tuyo.
+    </p>
+    <p style="margin-top:12px; margin-bottom:0;">
+      Antes de cada entrenamiento o partido, activa tu mente en <strong>lazonacampeon.com/frases</strong>.
+      La preparación mental empieza antes de ponerte los guantes.
+    </p>
+  </div>
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 1 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">La identidad del portero: la posición que nadie más puede ocupar</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El portero es el único jugador del campo que juega de espaldas al arco rival, que puede tocar
+        el balón con las manos, que usa un uniforme diferente y que —cuando el equipo pierde— carga
+        con una visibilidad de error que ningún otro jugador tiene que soportar igual.
+      </p>
+      <p>
+        Esa diferencia no es solo táctica. Es <strong>psicológica</strong>. Y el primer trabajo mental
+        de un portero es construir una identidad que sostenga esa presión específica.
+        Muchos porteros tratan de parecerse a los demás jugadores para no sentirse tan expuestos.
+        Error. <strong>La fortaleza del portero viene de abrazar lo que lo hace diferente, no de esconderlo.</strong>
+      </p>
+      <p>
+        Un portero no es un jugador de campo que defiende el arco. Es un líder defensivo, un lector
+        del juego, un comunicador constante y, en los momentos decisivos, el jugador más importante
+        del partido. Esa identidad, construida con claridad, es la base de todo lo que viene en este manual.
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Los 3 roles del portero moderno</div>
+        <div class="roles-grid">
+          <div class="role-card">
+            <div class="role-num">01</div>
+            <div class="role-name">Último defensor</div>
+            <div class="role-desc">La línea final. Concentración extrema, posicionamiento y decisión en fracciones de segundo.</div>
+          </div>
+          <div class="role-card">
+            <div class="role-num">02</div>
+            <div class="role-name">Primer atacante</div>
+            <div class="role-desc">Inicio del juego desde atrás. Distribución, visión y calma bajo presión cuando el equipo construye.</div>
+          </div>
+          <div class="role-card">
+            <div class="role-num">03</div>
+            <div class="role-name">Líder comunicativo</div>
+            <div class="role-desc">El que ve todo el campo. Organiza, avisa, ajusta la línea y sostiene la concentración del equipo.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 01</div>
+        <ol>
+          <li>¿Cómo describirías tu identidad como portero ahora mismo? ¿Es una identidad que te da fuerza o que te pesa?</li>
+          <li>¿Cuál de los tres roles te resulta más natural y cuál más difícil? ¿Por qué?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 2 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">Concentración extrema: activo 90 minutos, decisivo en 10 segundos</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        En un partido de fútbol, un portero toca el balón en promedio entre 20 y 40 veces.
+        Muchas de esas intervenciones duran menos de 3 segundos. El resto del partido —
+        entre 80 y 88 minutos — está esperando, leyendo, organizando o simplemente sosteniendo
+        la concentración sin que nada ocurra directamente con él.
+      </p>
+      <p>
+        <strong>Ese es el reto mental único del portero: concentrarse intensamente durante períodos
+        prolongados de inactividad</strong>, para estar completamente disponible en el momento
+        en que el juego lo llame. Eso no ocurre de forma natural. Se entrena.
+      </p>
+      <p>
+        La mayoría de los goles que encajan los porteros no ocurren porque fallaron técnicamente.
+        Ocurren porque en ese segundo específico, la atención estaba al 90% en lugar del 100%.
+        Un pensamiento sobre el error anterior, una mirada al marcador, una conversación interna
+        sobre lo que dirá el entrenador. <strong>La concentración del portero no admite interrupciones.</strong>
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">El ciclo de concentración del portero</div>
+        <div class="cycle">
+          <div class="cnode">Espera activa<small>leer juego, posición</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Señal de alerta<small>el balón se acerca</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Acción<small>intervención 1–3 seg</small></div>
+          <div class="carrow">→</div>
+          <div class="cnode">Reset<small>volver a espera activa</small></div>
+        </div>
+        <p style="font-size:12px; color:#888; margin-top:14px;">El portero completa este ciclo entre 20 y 40 veces por partido. Cada reset debe ser inmediato.</p>
+      </div>
+
+      <div class="protocol-box">
+        <h4>Protocolo — Mantener la concentración en la espera activa</h4>
+        <ol>
+          <li><strong>Ancla visual constante:</strong> elige un punto de referencia en cada fase del juego. Cuando el equipo ataca, tu ancla es la línea defensiva. Cuando el rival construye, es el balón. Tener un ancla visual impide que la mente divague.</li>
+          <li><strong>Comunicación como herramienta de foco:</strong> hablar con tus defensas no es solo táctica — es una forma de mantenerte presente. Cuando hablas, estás en el partido.</li>
+          <li><strong>Microresets entre jugadas:</strong> después de cada intervención o pausa, usa un gesto propio (ajustar los guantes, tocar el poste, dar un paso adelante) que te devuelva al estado de alerta. Es tu señal de "estoy listo".</li>
+          <li><strong>Respira con intención:</strong> en los momentos de espera prolongada, la respiración controlada (inhala 4 seg, exhala 4 seg) mantiene el nivel de activación sin que el cuerpo entre en estado de relajación excesiva.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 02</div>
+        <ol>
+          <li>¿En qué momentos del partido sientes que tu concentración baja? ¿Cuando el equipo domina, cuando va ganando cómodamente, en el segundo tiempo después de un descanso?</li>
+          <li>¿Tienes ya algún ritual o gesto que uses para resetearte entre jugadas? ¿Lo haces de forma consciente o solo a veces?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 3 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">Liderazgo desde la portería: organizar sin perder el foco propio</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        El portero tiene la mejor visión del campo de todos los jugadores. Eso lo convierte en
+        el líder natural de la organización defensiva. Pero hay una tensión real que muchos porteros
+        no saben gestionar: <strong>liderar el equipo sin descuidar su propio trabajo</strong>.
+      </p>
+      <p>
+        Un portero que se obsesiona con dirigir a sus compañeros puede perder fracciones de segundo
+        de concentración propia cuando el balón llega al área. Uno que nunca habla deja a su defensa
+        ciega en jugadas que podría haber anticipado con una sola instrucción. El equilibrio está
+        en aprender <strong>cuándo hablar, qué decir y cuándo cerrar la boca y ejecutar</strong>.
+      </p>
+
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplos en acción</p>
+
+      <!-- Ejemplo 1: Liderazgo organizando -->
+      <div class="ejemplo">
+        <div class="ejemplo-header liderazgo">
+          <div>
+            <div class="ejemplo-tipo">Liderazgo vocal</div>
+            <div class="ejemplo-titulo">El portero que organiza un córner del rival</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Córner en contra, minuto 77. El partido está empatado. Hay ocho jugadores rivales en el área.
+            Dos defensas propios están mal posicionados. El portero tiene 8 segundos antes del saque.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin liderazgo</span>
+              <span>El portero asume que los defensas saben dónde estar. No dice nada. El córner llega, hay confusión en la marca y el rival remata libre.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">Lee</span>
+              <span>Identifica los dos huecos en la marca antes de que llegue el balón. Tiene información que sus compañeros no tienen desde su posición.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">Elige</span>
+              <span>Dos instrucciones, por nombre, claras. No más. Si habla demasiado genera ruido en lugar de orden.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">Actúa</span>
+              <span><em>"Carlos, al primer palo. Rodri, al hombre de azul."</em> Cuatro palabras cada una. Luego cierra la boca y se concentra en leer el vuelo del balón.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>La defensa está organizada. El córner se despeja. El portero lideró sin perder su propio foco de concentración.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio</div>
+        <h4>Tu vocabulario de portero</h4>
+        <p>Define 5 instrucciones que uses consistentemente en el partido. Deben ser cortas, claras y siempre las mismas palabras para que tu defensa las automatice:</p>
+        <ol>
+          <li>Para pedir que la defensa suba la línea: _______________</li>
+          <li>Para avisar de un rival sin marca: _______________</li>
+          <li>Para pedir el balón cuando tienes tiempo: _______________</li>
+          <li>Para resetear al equipo después de un gol en contra: _______________</li>
+          <li>Para cerrar el partido cuando van ganando: _______________</li>
+        </ol>
+        <p style="margin-top:10px; font-size:13px; color:#888; font-style:italic;">Las instrucciones consistentes crean automatismos. Si cambias las palabras cada partido, tu defensa tarda más en reaccionar.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 03</div>
+        <ol>
+          <li>¿Hablas demasiado, poco o en el momento justo durante el partido? ¿Cómo lo sabes?</li>
+          <li>¿Alguna vez tu comunicación con la defensa ha creado más confusión que claridad? ¿Qué pasó exactamente?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 4 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">04</div>
+      <div class="chapter-title">Recuperación mental tras un gol encajado</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Encajar un gol es el momento de mayor exposición mental de un portero. No importa si fue
+        un error propio, un desvío imposible de anticipar o un fallo defensivo ajeno.
+        El número del marcador cambia, el estadio reacciona, y el portero queda de pie en el área
+        con todos mirándolo. <strong>Lo que haga en los siguientes 30 segundos define el resto del partido.</strong>
+      </p>
+      <p>
+        Un portero que se derrumba después de un gol arrastra a toda la defensa con él.
+        Su lenguaje corporal — la cabeza baja, los hombros caídos, la mirada perdida —
+        comunica al equipo que hay razones para preocuparse. Al contrario, un portero que
+        procesa rápido y vuelve a su postura de liderazgo le dice al equipo que el partido sigue.
+        <strong>El portero es el espejo emocional de su defensa.</strong>
+      </p>
+
+      <div class="figure">
+        <div class="figure-title">Después del gol: reacción reactiva vs reacción regulada</div>
+        <table class="react-table">
+          <thead>
+            <tr>
+              <th class="bad">Reacción reactiva</th>
+              <th class="good">Reacción regulada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bad-v">Cabeza baja, golpea el poste o el suelo</td>
+              <td class="good-v">Recoge el balón de la red con calma</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Mira a los defensas con reproche</td>
+              <td class="good-v">Señala hacia adelante: "vamos, siguiente"</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Se queda paralizado mirando el marcador</td>
+              <td class="good-v">Regresa a su posición con paso firme</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Sigue pensando en el gol durante las jugadas siguientes</td>
+              <td class="good-v">Reset completo antes del saque de centro</td>
+            </tr>
+            <tr>
+              <td class="bad-v">Su lenguaje corporal comunica derrota</td>
+              <td class="good-v">Su postura comunica: el partido sigue</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Ejemplo: gol encajado por error propio -->
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplo en acción</p>
+      <div class="ejemplo">
+        <div class="ejemplo-header gol">
+          <div>
+            <div class="ejemplo-tipo">Gol encajado</div>
+            <div class="ejemplo-titulo">El portero que falla una salida y encaja el 0-1</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Minuto 23. El portero sale a cortar un centro, no llega, el rival remata al arco vacío. Error claro, en casa, ante su afición. Quedan 67 minutos.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin protocolo</span>
+              <span>Se queda parado mirando el balón en la red. Baja la cabeza. Sus defensas lo miran buscando una señal. No la encuentran. El equipo entra al resto del partido con la energía rota.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">1–5s · Suelta</span>
+              <span>Toca el poste con la palma — su ritual de reset. Exhala fuerte. No mira al entrenador ni a las gradas. Solo al balón que está siendo sacado de la red.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">6–10s · Ancla</span>
+              <span>Se dice en voz baja: <em>"Ya está. Quedan 67."</em> No analiza el error. El análisis es para después del partido. Ahora solo hay una tarea.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">11–20s · Regresa</span>
+              <span>Levanta la cabeza, da un paso al frente, mira a sus defensas y señala hacia adelante con el brazo. Dice una sola frase al capitán: <em>"Lo traemos de vuelta."</em></span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>El equipo tiene una referencia. El portero no se derrumbó — lideró desde el error. En el minuto 61 detiene un mano a mano que mantiene vivo al equipo.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 04</div>
+        <ol>
+          <li>¿Cómo reaccionas tú cuando encajas un gol? ¿Qué hace tu cuerpo automáticamente en esos primeros segundos?</li>
+          <li>¿Alguna vez un gol encajado te afectó durante el resto del partido? ¿Qué habrías hecho diferente con lo que sabes ahora?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- HISTORIA DEL ATLETA -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="athlete-story">
+    <div class="story-label">Historia Real</div>
+    <div class="story-name">Gianluigi Buffon — El portero que pidió ayuda y ganó el mundo</div>
+    <div class="story-body">
+      <p>
+        En el año 2000, Gianluigi Buffon tenía 22 años, era considerado uno de los mejores porteros
+        de su generación y acababa de llegar al Parma. Lo que nadie veía desde afuera era que
+        <strong>estaba atravesando una crisis mental severa</strong>. En entrevistas posteriores,
+        Buffon describió ese período como uno de los más oscuros de su vida: insomnio, angustia,
+        dificultad para encontrar sentido en lo que hacía.
+      </p>
+      <p>
+        Lo que hizo en ese momento fue significativo: <strong>buscó ayuda psicológica</strong>.
+        En una época en que el fútbol no hablaba de salud mental, Buffon eligió trabajar con un profesional
+        para atravesar ese período. Lo contó públicamente años después, en parte para normalizar
+        que los deportistas de élite también necesitan apoyo mental.
+      </p>
+      <div class="story-quote">
+        Lo que su historia muestra no es que Buffon fue débil. Es que reconoció lo que necesitaba
+        y fue a buscarlo. Eso requiere más fortaleza que fingir que todo está bien.
+      </div>
+      <p>
+        En 2001 fue transferido a la Juventus por lo que entonces fue un récord mundial para un portero.
+        Durante los años siguientes construyó una carrera que lo ubicó entre los mejores de la historia.
+        En 2006, en el Mundial de Alemania, <strong>Italia ganó el campeonato con Buffon como titular</strong>.
+        En todo el torneo, encajó dos goles — ambos en penales. Fue elegido el mejor portero del torneo.
+      </p>
+      <p>
+        La trayectoria de Buffon entre el 2000 y el 2006 es un recorrido documentado de alguien
+        que atravesó una crisis personal, buscó herramientas para superarla y construyó desde ahí
+        una de las carreras más consistentes de la historia del fútbol.
+        <strong>El trabajo mental no fue un accesorio de su carrera — fue parte de su base.</strong>
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 5 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">05</div>
+      <div class="chapter-title">El penal: el duelo mental más puro del fútbol</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        En un penal, el portero parte en desventaja estadística. El lanzador convierte en promedio
+        entre el 75% y el 80% de los penales en fútbol profesional. Si el portero adivina el lado
+        correcto y se lanza, tiene alrededor de un 30% de probabilidad de atajarlo.
+        <strong>El penal no es un duelo que el portero deba ganar. Es un duelo que el portero debe jugar bien.</strong>
+      </p>
+      <p>
+        La diferencia entre un portero que está presente en la tanda de penales y uno que ya se rindió
+        mentalmente antes de que empiece no está en la técnica. Está en cómo llega a ese momento.
+        Un portero que acepta las estadísticas, que tiene un ritual de preparación y que ejecuta
+        sin miedo —aunque el resultado sea incierto— tiene ventaja psicológica sobre uno que
+        llega paralizado por la responsabilidad.
+      </p>
+
+      <!-- Ejemplo: penal decisivo -->
+      <p style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:#888; margin: 28px 0 16px;">Ejemplo en acción</p>
+      <div class="ejemplo">
+        <div class="ejemplo-header penal">
+          <div>
+            <div class="ejemplo-tipo">Penal decisivo</div>
+            <div class="ejemplo-titulo">La tanda que define el partido</div>
+          </div>
+        </div>
+        <div class="ejemplo-body">
+          <p class="ejemplo-situacion">
+            Tanda de penales. 3-3. Quinto lanzador rival. Si marca, el equipo rival gana. El portero lleva tres penales sin atajar. El estadio está en silencio.
+          </p>
+          <ul class="ejemplo-steps">
+            <li>
+              <span class="ejemplo-step-tag tag-sin">Sin protocolo</span>
+              <span>El portero piensa: <em>"Ya fallé tres, no voy a atajar este tampoco."</em> Se lanza sin convicción. El lanzador lo lee en el cuerpo y define con calma.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-suelta">Prepara</span>
+              <span>Se acerca lentamente a la línea del arco. Ajusta los guantes — su ritual. Exhala. Hace contacto visual con el balón, no con el lanzador.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-ancla">Ancla</span>
+              <span>Se dice: <em>"Este penal es independiente de los anteriores. Cualquier lado puede ser el bueno."</em> Reduce el peso del momento al único lanzamiento que importa ahora.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-regresa">Ejecuta</span>
+              <span>Lee la carrera, elige un lado con convicción y se lanza al 100%. No a medias. Si falla, falla dándolo todo — eso es lo único que puede controlar.</span>
+            </li>
+            <li>
+              <span class="ejemplo-step-tag tag-resultado">Resultado</span>
+              <span>Ataja. O no. En cualquier caso, su equipo vio a un portero que llegó al quinto penal con la misma presencia que al primero. Eso también es liderazgo.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="protocol-box">
+        <h4>Ritual de preparación para el penal</h4>
+        <ol>
+          <li><strong>Acepta la estadística:</strong> el lanzador tiene ventaja. Eso no es debilidad — es el punto de partida real. Pelear contra eso gasta energía que necesitas para ejecutar.</li>
+          <li><strong>Reduce el universo:</strong> en el momento del penal, no existe ni el marcador, ni los penales anteriores, ni los que vienen. Existe solo ese lanzador y ese balón.</li>
+          <li><strong>Elige un ritual fijo:</strong> los mismos pasos antes de cada penal. Da igual si es el primero o el quinto. El ritual le dice a tu cerebro que estás en modo ejecución.</li>
+          <li><strong>Decide con convicción:</strong> cualquier lado que elijas, ve al 100%. El portero que se lanza a medias da ventaja al lanzador aunque haya elegido el lado correcto.</li>
+          <li><strong>Suelta el resultado:</strong> después de cada penal — atajado o gol — resetea completamente antes del siguiente. El portero que acumula el peso de cada lanzamiento llega al quinto penal con cinco veces la presión.</li>
+        </ol>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 05</div>
+        <ol>
+          <li>¿Cómo llegas mentalmente a los penales — con miedo, con indiferencia, con presencia? ¿Qué construye ese estado en ti?</li>
+          <li>¿Tienes un ritual fijo para los penales o cada vez es diferente? ¿Crees que un ritual consistente te ayudaría?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ─────────────────────────────────────────── -->
+  <!-- CAPÍTULO 6 -->
+  <!-- ─────────────────────────────────────────── -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">06</div>
+      <div class="chapter-title">Construir confianza en la posición más expuesta</div>
+    </div>
+    <div class="chapter-body">
+      <p>
+        Ningún error en el fútbol es más visible que el de un portero. Un lateral que falla un pase
+        en el mediocampo raramente aparece en los titulares. Un portero que falla una salida
+        puede ver su error repetido diez veces en los análisis del día siguiente.
+        <strong>Esa exposición requiere un tipo de confianza específica: una que no dependa de la opinión externa.</strong>
+      </p>
+      <p>
+        La confianza del portero no puede construirse sobre "lo que dirán si fallo".
+        Tiene que construirse sobre "lo que sé que he preparado". El portero que entra al campo
+        sabiendo que trabajó sus salidas, que entrenó sus reflejos, que tiene sus rituales listos,
+        entra diferente al que llega esperando que nada malo ocurra.
+      </p>
+
+      <div class="protocol-box">
+        <h4>Las 4 fuentes de confianza del portero</h4>
+        <ol>
+          <li><strong>El entrenamiento específico:</strong> cada repetición de salida, cada penal detenido en entrenamiento, cada trabajo de posicionamiento es un depósito en tu banco de confianza. El partido solo retira lo que el entrenamiento depositó.</li>
+          <li><strong>El historial de partidos difíciles:</strong> recuerda los partidos donde el equipo ganó y tú estuviste presente en los momentos clave. Esos recuerdos específicos son evidencia real de tu capacidad.</li>
+          <li><strong>Los rituales de preparación:</strong> el calentamiento, los ajustes de guantes, la rutina previa al partido. Los rituales no son superstición — son señales que le dan a tu sistema nervioso que estás preparado.</li>
+          <li><strong>El diálogo interno del portero:</strong> en lugar de "que no llegue a mi área", "estoy listo para lo que venga". En lugar de "no puedo fallar", "entrené para esto". El lenguaje anticipa el estado.</li>
+        </ol>
+      </div>
+
+      <div class="exercise">
+        <div class="exercise-label">Ejercicio final</div>
+        <h4>Tu banco de confianza como portero</h4>
+        <p>Escribe 5 momentos específicos en los que tu rendimiento en el arco marcó una diferencia real. No tienen que ser grandes partidos — pueden ser entrenamientos, tandas de penales, salidas difíciles que salieron bien. Para cada uno anota:</p>
+        <ul>
+          <li>¿Qué pasó exactamente?</li>
+          <li>¿Qué hiciste bien en ese momento?</li>
+        </ul>
+        <p style="margin-top:10px;">Lee esa lista antes del próximo partido importante. No como ritual mágico — como evidencia de que ya has estado aquí antes.</p>
+      </div>
+
+      <div class="reflection">
+        <div class="reflection-title">Reflexión — Capítulo 06</div>
+        <ol>
+          <li>¿Tu confianza como portero sube y baja según los últimos resultados, o tienes una base más estable? ¿Qué la sostiene?</li>
+          <li>¿Qué parte de tu preparación actual te da más seguridad cuando entras al campo? ¿Qué parte te falta construir?</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- DIARIO DEL PORTERO -->
+  <div style="margin-bottom: 56px;">
+    <div style="text-align:center; margin-bottom:28px;">
+      <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:4px; text-transform:uppercase; color:#c8aa32;">Herramienta de seguimiento</span>
+      <h2 style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:22px; color:#111; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Diario del Portero</h2>
+      <p style="font-size:14px; color:#555; margin-top:8px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Llena esta tabla después de cada partido. Los patrones que más afectan tu rendimiento solo se ven cuando los registras.
+      </p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; font-family:'Open Sans',sans-serif;">
+        <thead>
+          <tr style="background:#1a1a1a;">
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:80px;">Partido</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:120px;">Situación crítica</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Reacción inicial</th>
+            <th style="padding:12px 10px; text-align:left; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:110px;">Reset usado</th>
+            <th style="padding:12px 10px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c8aa32; border-bottom:2px solid #c8aa32; min-width:80px;">Foco post-reset 1–10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;">
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Ej: vs. Atlético</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Gol encajado por mala salida (min. 34)</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Cabeza baja, tensión en hombros</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px;">Toqué el poste, exhale, "quedan 56"</td>
+            <td style="padding:10px; border-bottom:1px solid #e8e0d0; color:#888; font-style:italic; font-size:12px; text-align:center;">8</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#fff;">
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+          <tr style="background:#f5f0e8;">
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+            <td style="padding:15px 10px; border-bottom:1px solid #e8e0d0;">&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:#888; margin-top:14px; text-align:center; font-style:italic;">
+      Situaciones críticas frecuentes: gol encajado · penal en contra · error en salida · presión alta del rival · tanda de penales
+    </p>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="closing">
+    <h2>El arco es tuyo. Defiéndelo con la mente primero.</h2>
+    <p>
+      La técnica te lleva al arco. La mentalidad te mantiene en él.
+      Cada entrenamiento, cada ritual, cada reset después de un gol encajado
+      es una decisión de seguir compitiendo. Esa decisión es tuya.
+    </p>
+    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
+    <p class="url">lazonacampeon.com</p>
+    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
+    <p style="margin-top: 16px; font-size: 13px; color: #888;">Nivel 3 — Manuales por Posición · Fútbol — Portero · La Zona Campeón © 2025</p>
+  </div>
+
+</div>
+</body>
+</html>

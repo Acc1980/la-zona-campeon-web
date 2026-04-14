@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mente del Delantero Centro — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f0e8;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    /* ── Brand header ── */
+    .brand-header {
+      background: #1a1a2e;
+      color: #e8c84a;
+      text-align: center;
+      padding: 14px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #f5f0e8;
+      text-align: center;
+      padding: 70px 30px 60px;
+    }
+    .level-badge {
+      display: inline-block;
+      background: #e8c84a;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .cover .position-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e8c84a;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .cover .subtitle {
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.82);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── Content wrapper ── */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 50px 28px 80px;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      background: #fff;
+      border-left: 5px solid #e8c84a;
+      border-radius: 6px;
+      padding: 28px 30px;
+      margin-bottom: 50px;
+      font-size: 1.02rem;
+    }
+    .intro h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    /* ── Chapter ── */
+    .chapter {
+      margin-bottom: 56px;
+    }
+    .chapter-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 6px;
+    }
+    .chapter h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e8c84a;
+      padding-bottom: 10px;
+    }
+    .chapter p { margin-bottom: 16px; }
+    .chapter ul {
+      padding-left: 22px;
+      margin-bottom: 16px;
+    }
+    .chapter ul li { margin-bottom: 8px; }
+
+    /* ── Figure (diagram) ── */
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* pillars grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .pillar-card {
+      background: #f5f0e8;
+      border-radius: 8px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .pillar-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .pillar-card .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .pillar-card .desc { font-size: 0.8rem; color: #555; }
+
+    /* cycle */
+    .cycle-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cycle-node {
+      background: #1a1a2e;
+      color: #f5f0e8;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .cycle-node.bad { background: #c85050; }
+    .cycle-node.break { background: #7ab870; color: #fff; }
+    .cycle-arrow { font-size: 1.2rem; color: #888; }
+
+    /* mentality compare table */
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .compare-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #e8e0d0;
+      font-size: 0.9rem;
+    }
+    .compare-table tr:nth-child(even) td { background: #f9f5ee; }
+    .compare-table td:first-child { color: #c85050; font-weight: 600; }
+    .compare-table td:last-child  { color: #2e7d32; font-weight: 600; }
+
+    /* ── Reflection box ── */
+    .reflection {
+      background: #1a1a2e;
+      color: #f5f0e8;
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-top: 24px;
+    }
+    .reflection p {
+      margin: 0;
+      font-style: italic;
+      font-size: 0.97rem;
+    }
+    .reflection strong { color: #e8c84a; font-style: normal; }
+
+    /* ── Example boxes ── */
+    .ejemplo {
+      border-radius: 8px;
+      padding: 24px 26px;
+      margin: 24px 0;
+      border-left: 5px solid #ccc;
+      background: #fff;
+    }
+    .ejemplo.tecnico  { border-color: #e07b30; }
+    .ejemplo.mental   { border-color: #3a7bd5; }
+    .ejemplo.emocional{ border-color: #c85050; }
+
+    .ejemplo .ej-header {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ejemplo.tecnico  .ej-header { color: #e07b30; }
+    .ejemplo.mental   .ej-header { color: #3a7bd5; }
+    .ejemplo.emocional .ej-header { color: #c85050; }
+
+    .ejemplo .situacion {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 14px;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .ejemplo .sin-protocolo {
+      font-size: 0.88rem;
+      color: #c85050;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .ejemplo .steps { list-style: none; padding: 0; margin-bottom: 12px; }
+    .ejemplo .steps li {
+      padding: 7px 12px;
+      margin-bottom: 6px;
+      background: #f5f0e8;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    .ejemplo .steps li strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      display: block;
+      color: #1a1a2e;
+      margin-bottom: 2px;
+    }
+    .ejemplo .resultado {
+      background: #fffbe6;
+      border: 1px solid #e8c84a;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #5a4a00;
+    }
+
+    /* ── Athlete story ── */
+    .athlete-story {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #f5f0e8;
+      border-radius: 10px;
+      padding: 40px 36px;
+      margin: 50px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 16px;
+    }
+    .athlete-story h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .athlete-story p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: rgba(245,240,232,0.9);
+    }
+    .story-quote {
+      border-left: 3px solid #e8c84a;
+      padding-left: 18px;
+      margin: 22px 0;
+      font-style: italic;
+      color: rgba(245,240,232,0.85);
+      font-size: 0.97rem;
+    }
+
+    /* ── Tracking table ── */
+    .tracking-section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 30px;
+      margin: 50px 0;
+      border: 2px solid #e8c84a;
+    }
+    .tracking-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .tracking-section .track-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 22px;
+    }
+    .tracking-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    .tracking-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 12px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .tracking-table td {
+      padding: 12px 12px;
+      border-bottom: 1px solid #ede7d8;
+      vertical-align: top;
+    }
+    .tracking-table tr:nth-child(even) td { background: #faf6ee; }
+    .tracking-table td.example { font-style: italic; color: #888; font-size: 0.82rem; }
+    .tracking-table td.blank { color: transparent; user-select: none; }
+    .tracking-note {
+      font-size: 0.82rem;
+      color: #888;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    /* ── Closing ── */
+    .closing {
+      text-align: center;
+      padding: 50px 20px 30px;
+      border-top: 2px solid #e8c84a;
+      margin-top: 20px;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+    }
+    .closing p { max-width: 520px; margin: 0 auto 10px; color: #444; }
+
+    /* ── Print button ── */
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #e8c84a;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 26px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #d4b53c; }
+
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .content { padding: 30px 18px 60px; }
+      .athlete-story { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
+  <div class="position-label">Fútbol · Delantero Centro</div>
+  <h1>La Mente del<br>Delantero Centro</h1>
+  <p class="subtitle">Sequías de gol, presión del equipo, instinto anotador y la mentalidad de quien vive para definir.</p>
+</div>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>Para quien vive de marcar</h2>
+    <p>El delantero centro es el jugador más medido en resultados. Un partido sin gol puede verse como fracaso aunque hayas trabajado toda la tarde. Esa presión no se elimina —se aprende a sostener.</p>
+    <p>Este manual no te va a enseñar a definir mejor con los pies. Va a entrenarte para que cuando llegue la oportunidad —la única, la que lleva noventa minutos esperando— tu mente esté lista para tomarla.</p>
+    <p><strong>Temas:</strong> identidad del delantero · sequías de gol · instinto anotador · presión del equipo · la oportunidad única · consistencia de temporada.</p>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 1</p>
+    <h2>La identidad del delantero: vivir para el gol</h2>
+
+    <p>Todo delantero centro enfrenta una realidad que ninguna otra posición vive igual: <strong>te miden en goles</strong>. Un mediocampista puede tener un partido mediocre y nadie lo nota. Un delantero que falla dos mano a mano aparece en los titulares. Esa es la posición que elegiste.</p>
+
+    <p>Antes de trabajar cualquier protocolo mental, necesitas aceptar esa realidad. No negarla. No resentirla. Aceptarla como parte de la identidad que viene con la camiseta número 9.</p>
+
+    <p>Los delanteros más consistentes comparten tres pilares mentales que los distinguen de quienes se pierden en la presión:</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 1.1 — Los tres pilares del delantero</div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="icon">🎯</div>
+          <div class="label">Presencia en el área</div>
+          <div class="desc">Leer el espacio antes de que llegue el balón. Estar donde nadie más está.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">⚡</div>
+          <div class="label">Mentalidad de definición</div>
+          <div class="desc">Decidir antes de recibir. Actuar sin dudar cuando llega la oportunidad.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">🔄</div>
+          <div class="label">Resiliencia de partido</div>
+          <div class="desc">Fallar y seguir buscando. El siguiente balón siempre es una oportunidad nueva.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Estos tres pilares no se desarrollan solo en el entrenamiento técnico. Se construyen con trabajo mental específico —que es exactamente lo que este manual te propone.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuál de estos tres pilares es tu punto más débil en este momento? ¿La presencia en el área, la decisión al definir o la resiliencia después del fallo?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 2</p>
+    <h2>La sequía: cuando el gol no llega</h2>
+
+    <p>Todo delantero, sin excepción, pasa por rachas sin gol. No importa el nivel. No importa la categoría. Las sequías llegan. La diferencia está en lo que haces mientras dura.</p>
+
+    <p>Una sequía no es solo no marcar. Es lo que ocurre dentro: la voz que empieza a decir que algo está roto, los compañeros que miran diferente, el técnico que te hace las preguntas incómodas. Todo eso junto crea un ciclo que, si no se interrumpe, se alimenta a sí mismo.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 2.1 — El ciclo de la sequía y cómo romperlo</div>
+      <div class="cycle-flow">
+        <div class="cycle-node bad">Partidos<br>sin gol</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node bad">Empieza<br>la duda</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node bad">Sobrepiensas<br>al definir</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node bad">Fallas más<br>fáciles</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node bad">La sequía<br>se alarga</div>
+      </div>
+      <p style="text-align:center; font-size:0.88rem; color:#888; margin:18px 0 14px;">El punto de ruptura está en la duda. Ahí es donde se interviene.</p>
+      <div class="cycle-flow">
+        <div class="cycle-node">Partidos<br>sin gol</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node break">Nombras<br>la sequía</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node break">Vuelves a<br>lo básico</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node break">Definición<br>sin pensar</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node">El gol<br>llega</div>
+      </div>
+    </div>
+
+    <p>Nombrar la sequía es el primer paso para salir de ella. No ignorarla, no dramatizarla —nombrarla. "Llevo cuatro partidos sin gol. Es normal. Mi trabajo es seguir buscando."</p>
+
+    <p>Lo que no puedes hacer es cambiar tu forma de definir porque estás en sequía. Si en los entrenamientos disparas a puerta en cuanto ves el espacio, en el partido tienes que hacer lo mismo. La sequía no se resuelve pensando más —se resuelve confiando en lo que ya sabes hacer.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> La última vez que estuviste en sequía, ¿en qué punto del ciclo te perdiste? ¿Cuándo empezó la duda?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 3</p>
+    <h2>El instinto anotador: mentalidad de definición</h2>
+
+    <p>Los grandes delanteros no piensan al definir. <strong>Actúan.</strong> Eso no es falta de inteligencia —es el resultado de miles de repeticiones que han convertido la decisión en automatismo.</p>
+
+    <p>El problema mental aparece cuando el delantero empieza a pensar durante la definición: "¿Coloco o potencia? ¿Derecha o izquierda? ¿Y si el portero sale?" Ese pensamiento dura una fracción de segundo. En esa fracción, la oportunidad se cierra.</p>
+
+    <p>La mentalidad de definición se entrena con una regla simple: <strong>decide antes de recibir.</strong> No después. No durante. Antes.</p>
+
+    <ul>
+      <li>Cuando el balón está en el aire hacia ti, ya sabes qué vas a hacer.</li>
+      <li>Cuando el lateral conduce hacia el área, ya estás decidiendo el espacio que vas a atacar.</li>
+      <li>Cuando el portero sale, tu decisión ya está tomada.</li>
+    </ul>
+
+    <p>Esto no significa que siempre vayas a ejecutar bien. Significa que tu mente no va a ser el obstáculo.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 3.1 — Mentalidad reactiva vs. mentalidad de definición</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Mentalidad reactiva (frena el gol)</th>
+            <th>Mentalidad de definición (libera el gol)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"¿Y si fallo?"</td>
+            <td>"¿Dónde está el espacio?"</td>
+          </tr>
+          <tr>
+            <td>Decide al recibir el balón</td>
+            <td>Decide antes de recibir</td>
+          </tr>
+          <tr>
+            <td>Mira al portero y se detiene</td>
+            <td>Lee al portero y elige el espacio</td>
+          </tr>
+          <tr>
+            <td>Piensa en el resultado del disparo</td>
+            <td>Piensa solo en el contacto con el balón</td>
+          </tr>
+          <tr>
+            <td>El fallo previo pesa al definir</td>
+            <td>El fallo previo ya no existe</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> En tus últimas definiciones falladas, ¿cuál de estos patrones reconoces? ¿Decidiste tarde, miraste al portero o dejaste que el fallo anterior pesara?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 4</p>
+    <h2>Presión y expectativas: jugar con el peso del equipo</h2>
+
+    <p>El delantero no solo carga con sus propias expectativas. Carga con las del técnico, las del estadio y las de sus compañeros. Cuando el equipo necesita un gol en el minuto 80, todos miran al número nueve.</p>
+
+    <p>Esa presión puede ser combustible o puede ser una trampa. La diferencia está en cómo la interpretas.</p>
+
+    <p>Si sientes que "tienes que" marcar para que el equipo gane, la presión se convierte en peso. Cada oportunidad fallada se siente como una deuda. El cuerpo se tensa. La definición se apresura o se bloquea.</p>
+
+    <p>Si en cambio ves esa presión como una señal de que eres la persona indicada para ese momento —no una garantía de éxito, sino una oportunidad de impacto— la misma situación activa energía en lugar de paralizarte.</p>
+
+    <p>La herramienta que marca esa diferencia es el control del foco:</p>
+
+    <ul>
+      <li><strong>Foco en resultado (contraproducente):</strong> "Necesito marcar. ¿Y si no marco? El equipo va a perder por mi culpa."</li>
+      <li><strong>Foco en proceso (eficaz):</strong> "Próximo balón. Leo el espacio. Ejecuto lo que sé hacer."</li>
+    </ul>
+
+    <p>El resultado del partido no está en tu control. El siguiente movimiento, sí.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuándo fue la última vez que la presión del equipo te hizo cambiar tu forma de jugar? ¿Qué pensabas en ese momento?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 5</p>
+    <h2>La oportunidad única: una sola chance por partido</h2>
+
+    <p>Hay partidos en los que el delantero recibe seis balones claros. Hay partidos en los que recibe uno. El problema mental no está en los partidos de seis oportunidades —está en los de una.</p>
+
+    <p>Cuando sabes que tuviste solo una chance y la fallaste, la mente tiene tendencia a magnificar ese momento. "Una oportunidad en noventa minutos y la desperdicié." Ese juicio es real y es doloroso. Pero también es inútil si no pasa a ser aprendizaje.</p>
+
+    <p>Lo que necesita el delantero de una sola oportunidad es un protocolo de 10 segundos después del fallo. No para olvidar —para continuar.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 5.1 — Los 10 segundos después de fallar la chance</div>
+      <div style="display:grid; grid-template-columns: 60px 1fr; gap: 10px; align-items:start;">
+        <div style="background:#c85050; color:#fff; border-radius:6px; padding:10px; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:700;">0–3s</div>
+        <div style="background:#f5f0e8; border-radius:6px; padding:10px; font-size:0.88rem;"><strong>Suelta la reacción.</strong> Un gesto, un soplo, lo que necesites. No lo reprimas.</div>
+        <div style="background:#e07b30; color:#fff; border-radius:6px; padding:10px; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:700;">4–6s</div>
+        <div style="background:#f5f0e8; border-radius:6px; padding:10px; font-size:0.88rem;"><strong>Regresa al cuerpo.</strong> Respira. Siente los pies en el piso. El partido sigue.</div>
+        <div style="background:#e8c84a; color:#1a1a2e; border-radius:6px; padding:10px; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.78rem; font-weight:700;">7–10s</div>
+        <div style="background:#f5f0e8; border-radius:6px; padding:10px; font-size:0.88rem;"><strong>Elige el foco.</strong> "Próximo balón." Punto. Nada más.</div>
+      </div>
+    </div>
+
+    <p>Este protocolo no te va a quitar la frustración. Te va a impedir que la frustración te quite el siguiente movimiento.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuántos segundos tardas normalmente en soltar un fallo dentro del partido? ¿Qué pasa con tu juego mientras no lo has soltado?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 6</p>
+    <h2>Construir consistencia: el delantero de temporada completa</h2>
+
+    <p>Un gol en el partido grande es memorable. Una temporada completa de presencia, movimiento y definición es lo que construye la carrera de un delantero. La consistencia no es glamorosa —es el trabajo que nadie ve.</p>
+
+    <p>Los delanteros inconsistentes suelen oscilar entre dos extremos: o están en racha y sienten que pueden marcar con los ojos cerrados, o están en sequía y dudan de todo. El objetivo del entrenamiento mental es comprimir ese rango —reducir los momentos en el piso y mantener el nivel promedio alto.</p>
+
+    <p>Tres hábitos que construyen consistencia mental a lo largo de la temporada:</p>
+
+    <ul>
+      <li><strong>Diario de oportunidades:</strong> No solo de goles. Cada oportunidad generada —aunque no se convierta— es evidencia de presencia en el área. Registrarlas cambia la narrativa interna.</li>
+      <li><strong>Revisión semanal breve:</strong> No para juzgar, para aprender. "¿Qué funcionó? ¿Qué ajusto?" Diez minutos, nada más.</li>
+      <li><strong>Carga mental consciente:</strong> Las semanas de alta presión (derbi, partido decisivo) necesitan más recuperación, no más trabajo. El cuerpo y la mente se recuperan juntos.</li>
+    </ul>
+
+    <p>La consistencia también implica aceptar que habrá partidos en los que no marques aunque hayas hecho todo bien. Eso no es fracaso —es el deporte. Lo que sí está en tu control es si apareces en el siguiente partido con la misma disposición.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cómo describes tu temporada hasta ahora? ¿Es una línea irregular con picos altos y valles profundos, o hay una base sólida debajo de los altibajos?</p>
+    </div>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="chapter">
+    <p class="chapter-number">Ejemplos de aplicación</p>
+    <h2>Tres situaciones del delantero, tres recuperaciones</h2>
+
+    <div class="ejemplo tecnico">
+      <div class="ej-header">Error técnico — Fallo de cara al arco vacío</div>
+      <div class="situacion">Minuto 58. El lateral hace un desborde perfecto y el pase te deja solo frente al arco vacío desde siete metros. Disparas al palo. El estadio silba. Tu cabeza se va.</div>
+      <div class="sin-protocolo">Sin protocolo: Pasas los siguientes diez minutos cabizbajo, evitando pedir el balón. Cuando finalmente lo recibes, intentas una definición imposible para "compensar" y pierdes el balón fácil.</div>
+      <ul class="steps">
+        <li><strong>0–3 seg — Suelta</strong>Puño cerrado, una sola vez. Nombras: "Palo. Ya fue."</li>
+        <li><strong>4–6 seg — Regresa</strong>Respiras una vez. Recuperas posición. El partido sigue.</li>
+        <li><strong>7–10 seg — Elige el foco</strong>"Próximo balón. Leo el espacio." Nada más.</li>
+      </ul>
+      <div class="resultado">Resultado: Al minuto 63 vuelves a pedir el balón en la misma zona. Esta vez llegas dos pasos antes. El disparo entra por abajo.</div>
+    </div>
+
+    <div class="ejemplo mental">
+      <div class="ej-header">Error mental — Sequía de seis partidos, sobrepensando la definición</div>
+      <div class="situacion">Llevas seis partidos sin marcar. En el séptimo, recibes un balón controlado dentro del área con tiempo para disparar. Empiezas a pensar: "¿Coloco? ¿Potencia? ¿Y si el portero va al palo contrario?" Cuando disparas, ya perdiste la ventana.</div>
+      <div class="sin-protocolo">Sin protocolo: Sigues el patrón partido tras partido. Llegas a las situaciones con demasiada información en la cabeza y poca acción en los pies.</div>
+      <ul class="steps">
+        <li><strong>Antes del partido — Fijar la decisión</strong>En el calentamiento te dices una sola regla: "Primer hueco que vea, disparo. Sin preguntas."</li>
+        <li><strong>Al recibir el balón</strong>No buscas confirmación. Actúas sobre lo que ya decidiste antes de que llegara el pase.</li>
+        <li><strong>Después del intento</strong>Independientemente del resultado: "Eso es lo que hago. Siguiente."</li>
+      </ul>
+      <div class="resultado">Resultado: El disparo puede no entrar la primera vez. Pero la decisión fue tuya, fue limpia y fue rápida. Eso rompe el ciclo de la sequía.</div>
+    </div>
+
+    <div class="ejemplo emocional">
+      <div class="ej-header">Error emocional — Frustración que apaga el movimiento</div>
+      <div class="situacion">Tu equipo va perdiendo 0–1. El técnico te mira desde la banda. Llevas 70 minutos sin tocar el balón en zona de peligro. La rabia empieza a crecer: con los centrales que no te alimentan, con el volante que nunca mira adelante. En los últimos 20 minutos te quedas parado esperando que el balón llegue solo.</div>
+      <div class="sin-protocolo">Sin protocolo: La frustración te paraliza. Dejas de moverse. Cuando finalmente recibes el balón en el 88, estás frío, sin ritmo, y la jugada no sale.</div>
+      <ul class="steps">
+        <li><strong>Reconocer la frustración</strong>"Estoy enojado. Es normal. Pero el partido no terminó."</li>
+        <li><strong>Redirigir la energía</strong>En lugar de esperar el pase, empiezas a moverte hacia espacios aunque no haya balón. El movimiento activa el cuerpo y el foco.</li>
+        <li><strong>Comunicar</strong>Pides el balón con una señal clara a tu compañero. Rompes la pasividad con una acción concreta.</li>
+      </ul>
+      <div class="resultado">Resultado: En el minuto 86, tu movimiento crea el espacio. El balón llega. El tiro va al arco. El partido sigue siendo difícil, pero tú ya no eres el obstáculo.</div>
+    </div>
+  </div>
+
+  <!-- ATHLETE STORY -->
+  <div class="athlete-story">
+    <div class="story-label">Historia de referencia</div>
+    <h2>El regreso del 9: Ronaldo Nazário y las rodillas que casi no cedieron</h2>
+
+    <p>En 1997 y 1998, Ronaldo Nazário era el mejor delantero del mundo. Dos Balones de Oro consecutivos, campeón de Copa del Rey con Barcelona, campeón de Copa de la UEFA con Inter. Nadie definía como él.</p>
+
+    <p>En 1999, durante un partido con el Inter, sufrió una rotura total de ligamentos en la rodilla derecha. La recuperación fue larga. En noviembre del 2000, mientras se preparaba para regresar, la misma rodilla cedió en un entrenamiento. Esta vez los médicos dijeron que la posibilidad de volver al fútbol de alto nivel era muy baja.</p>
+
+    <div class="story-quote">
+      Ronaldo pasó más de veinte meses sin jugar. Dos operaciones. Una rodilla reconstruida dos veces. El retorno completo tardó casi tres años desde la primera lesión.
+    </div>
+
+    <p>En el Mundial de Japón y Corea de 2002, Ronaldo jugó los siete partidos de Brasil. Marcó ocho goles, incluyendo los dos de la final contra Alemania. Fue el máximo goleador del torneo y Brasil ganó su quinta Copa del Mundo.</p>
+
+    <p>Lo que documentaron quienes estuvieron cerca de ese proceso fue su trabajo diario durante la recuperación: la constancia en la rehabilitación, la presencia en los entrenamientos aunque no pudiera participar, y la decisión de seguir compitiendo en lugar de retirarse. No fue un regreso fácil ni rápido. Fue uno de los regresos más documentados y admirados de la historia del fútbol.</p>
+
+    <div class="story-quote">
+      La forma en que manejó ese período —sin garantías de resultado, sin saber si sus rodillas aguantarían— muestra algo sobre lo que separa a los delanteros que duran de los que no: la capacidad de seguir trabajando cuando no hay certeza de que el esfuerzo vaya a dar fruto.
+    </div>
+
+    <p>Para un delantero, la lección no es que siempre vas a regresar más fuerte. La lección es que el proceso importa aunque no puedas controlar el resultado.</p>
+  </div>
+
+  <!-- TRACKING TABLE -->
+  <div class="tracking-section">
+    <h2>Diario del Delantero</h2>
+    <p class="track-desc">Registra tus partidos semana a semana. El objetivo no es solo contar goles —es entender tu estado mental en las situaciones clave y cómo eso afecta tu definición.</p>
+    <table class="tracking-table">
+      <thead>
+        <tr>
+          <th>Partido / Fecha</th>
+          <th>Oportunidades creadas</th>
+          <th>Goles · Definiciones</th>
+          <th>Estado mental al definir</th>
+          <th>Lección concreta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="example">Ej: vs. Deportivo — 12/04</td>
+          <td class="example">3 situaciones claras</td>
+          <td class="example">1 gol · 2 fallados</td>
+          <td class="example">Seguro en el 1.º, dudé en el 2.º, apresuré el 3.º</td>
+          <td class="example">Decidir antes de recibir en los balones aéreos</td>
+        </tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+      </tbody>
+    </table>
+    <p class="tracking-note">Revisa esta tabla al final de cada semana. Busca patrones: ¿en qué tipo de situaciones tu estado mental afecta más la definición?</p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>El próximo balón siempre es nuevo</h2>
+    <p>No puedes deshacer la oportunidad fallada. Sí puedes decidir qué haces con la siguiente.</p>
+    <p>Ese es el trabajo del delantero: estar listo para que cuando llegue el momento —aunque hayan pasado ochenta minutos esperando— tu mente ya haya tomado la decisión.</p>
+    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+  </div>
+
+</div><!-- /content -->
+
+<button class="print-btn" onclick="window.print()">Imprimir / PDF</button>
+
+</body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mente del Lateral — La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f0e8;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    .brand-header {
+      background: #1a1a2e;
+      color: #e8c84a;
+      text-align: center;
+      padding: 14px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .cover {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #f5f0e8;
+      text-align: center;
+      padding: 70px 30px 60px;
+    }
+    .level-badge {
+      display: inline-block;
+      background: #e8c84a;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .cover .position-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e8c84a;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .cover .subtitle {
+      font-size: 1.05rem;
+      color: rgba(245,240,232,0.82);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 50px 28px 80px;
+    }
+
+    .intro {
+      background: #fff;
+      border-left: 5px solid #e8c84a;
+      border-radius: 6px;
+      padding: 28px 30px;
+      margin-bottom: 50px;
+      font-size: 1.02rem;
+    }
+    .intro h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .chapter { margin-bottom: 56px; }
+    .chapter-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 6px;
+    }
+    .chapter h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e8c84a;
+      padding-bottom: 10px;
+    }
+    .chapter p { margin-bottom: 16px; }
+    .chapter ul { padding-left: 22px; margin-bottom: 16px; }
+    .chapter ul li { margin-bottom: 8px; }
+
+    .figure {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 28px 24px;
+      margin: 28px 0;
+    }
+    .figure-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .pillar-card {
+      background: #f5f0e8;
+      border-radius: 8px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+    .pillar-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .pillar-card .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .pillar-card .desc { font-size: 0.8rem; color: #555; }
+
+    /* decision map */
+    .decision-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .dm-card {
+      border-radius: 8px;
+      padding: 18px 16px;
+    }
+    .dm-card.go { background: #f0f8ee; border: 1px solid #7ab870; }
+    .dm-card.stay { background: #fff8e8; border: 1px solid #c8aa32; }
+    .dm-card .dm-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .dm-card.go .dm-label { color: #2e7d32; }
+    .dm-card.stay .dm-label { color: #7a5a00; }
+    .dm-card ul { padding-left: 18px; font-size: 0.85rem; }
+    .dm-card ul li { margin-bottom: 5px; }
+
+    /* compare table */
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    .compare-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #e8e0d0;
+      font-size: 0.9rem;
+    }
+    .compare-table tr:nth-child(even) td { background: #f9f5ee; }
+    .compare-table td:first-child { color: #c85050; font-weight: 600; }
+    .compare-table td:last-child  { color: #2e7d32; font-weight: 600; }
+
+    .reflection {
+      background: #1a1a2e;
+      color: #f5f0e8;
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-top: 24px;
+    }
+    .reflection p { margin: 0; font-style: italic; font-size: 0.97rem; }
+    .reflection strong { color: #e8c84a; font-style: normal; }
+
+    /* protocol steps */
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .proto-time {
+      border-radius: 6px;
+      padding: 10px 6px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .proto-time.t1 { background: #c85050; }
+    .proto-time.t2 { background: #e07b30; }
+    .proto-time.t3 { background: #e8c84a; color: #1a1a2e; }
+    .proto-time.t4 { background: #7ab870; }
+    .proto-body {
+      background: #f5f0e8;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+    .proto-body strong { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; display: block; color: #1a1a2e; margin-bottom: 2px; }
+    .proto-spacer { height: 8px; }
+
+    /* examples */
+    .ejemplo {
+      border-radius: 8px;
+      padding: 24px 26px;
+      margin: 24px 0;
+      border-left: 5px solid #ccc;
+      background: #fff;
+    }
+    .ejemplo.tecnico   { border-color: #e07b30; }
+    .ejemplo.mental    { border-color: #3a7bd5; }
+    .ejemplo.emocional { border-color: #c85050; }
+
+    .ejemplo .ej-header {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ejemplo.tecnico  .ej-header { color: #e07b30; }
+    .ejemplo.mental   .ej-header { color: #3a7bd5; }
+    .ejemplo.emocional .ej-header { color: #c85050; }
+
+    .ejemplo .situacion {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 14px;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .ejemplo .sin-protocolo {
+      font-size: 0.88rem;
+      color: #c85050;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .ejemplo .steps { list-style: none; padding: 0; margin-bottom: 12px; }
+    .ejemplo .steps li {
+      padding: 7px 12px;
+      margin-bottom: 6px;
+      background: #f5f0e8;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    .ejemplo .steps li strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      display: block;
+      color: #1a1a2e;
+      margin-bottom: 2px;
+    }
+    .ejemplo .resultado {
+      background: #fffbe6;
+      border: 1px solid #e8c84a;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #5a4a00;
+    }
+
+    /* athlete story */
+    .athlete-story {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #f5f0e8;
+      border-radius: 10px;
+      padding: 40px 36px;
+      margin: 50px 0;
+    }
+    .story-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 16px;
+    }
+    .athlete-story h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+    .athlete-story p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: rgba(245,240,232,0.9);
+    }
+    .story-quote {
+      border-left: 3px solid #e8c84a;
+      padding-left: 18px;
+      margin: 22px 0;
+      font-style: italic;
+      color: rgba(245,240,232,0.85);
+      font-size: 0.97rem;
+    }
+
+    /* tracking */
+    .tracking-section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 30px;
+      margin: 50px 0;
+      border: 2px solid #e8c84a;
+    }
+    .tracking-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .tracking-section .track-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 22px;
+    }
+    .tracking-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    .tracking-table th {
+      background: #1a1a2e;
+      color: #e8c84a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 11px 12px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .tracking-table td {
+      padding: 12px 12px;
+      border-bottom: 1px solid #ede7d8;
+      vertical-align: top;
+    }
+    .tracking-table tr:nth-child(even) td { background: #faf6ee; }
+    .tracking-table td.example { font-style: italic; color: #888; font-size: 0.82rem; }
+    .tracking-table td.blank { color: transparent; user-select: none; }
+    .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
+
+    .closing {
+      text-align: center;
+      padding: 50px 20px 30px;
+      border-top: 2px solid #e8c84a;
+      margin-top: 20px;
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+    }
+    .closing p { max-width: 520px; margin: 0 auto 10px; color: #444; }
+
+    .print-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #e8c84a;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 26px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #d4b53c; }
+
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .decision-map { grid-template-columns: 1fr; }
+      .content { padding: 30px 18px 60px; }
+      .athlete-story { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
+  <div class="position-label">Fútbol · Lateral</div>
+  <h1>La Mente del<br>Lateral</h1>
+  <p class="subtitle">Duelo defensivo, incorporación al ataque, recuperación de posición y la concentración de quien cubre un flanco entero durante noventa minutos.</p>
+</div>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>Para quien nunca para de correr</h2>
+    <p>El lateral es la posición que más metros recorre por partido. Sube al ataque, baja a defender, cubre al extremo, apoya al mediocampista, genera el centro, vuelve a correr. Y después lo repite. Noventa minutos, flanco entero, sin parar.</p>
+    <p>Esa exigencia física es conocida. Lo que este manual trabaja es la exigencia mental paralela: cómo gestionar el duelo perdido sin que afecte la cobertura siguiente, cómo decidir cuándo subir y cuándo quedarse, y cómo sostener la concentración cuando el partido lleva setenta minutos exigiéndote en ambas direcciones.</p>
+    <p><strong>Temas:</strong> identidad del lateral · duelo defensivo 1v1 · la carrera de ida y vuelta · cuando el extremo te supera · incorporación al ataque · concentración en los 90 minutos.</p>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 1</p>
+    <h2>La identidad del lateral: la posición de dos mundos</h2>
+
+    <p>El lateral vive en una tensión permanente que ninguna otra posición experimenta de la misma manera: <strong>es defensa y es atacante en el mismo partido.</strong> Esa dualidad exige una claridad mental específica: saber en cada momento cuál de los dos roles es el que el partido te pide.</p>
+
+    <p>Los laterales que se pierden mentalmente son los que quedan atrapados en un solo rol. El que sube demasiado y se olvida de defender. El que nunca sube porque tiene miedo de quedar expuesto. Ambos extremos cuestan al equipo.</p>
+
+    <p>Los tres pilares que sostienen al lateral de alto rendimiento son:</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 1.1 — Los tres pilares del lateral</div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="icon">🛡️</div>
+          <div class="label">Disciplina táctica</div>
+          <div class="desc">Leer el momento correcto para atacar y para defender. Nunca perder el equilibrio del equipo.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">🔄</div>
+          <div class="label">Ida y vuelta mental</div>
+          <div class="desc">Cambiar de rol sin arrastrar el rol anterior. Pasar de atacante a defensa sin dejar rastro.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="icon">💪</div>
+          <div class="label">Resiliencia de posición</div>
+          <div class="desc">Ser superado por el extremo y recuperar sin que ese momento defina el resto del partido.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>La disciplina táctica y la resiliencia de posición se entrenan en el campo. La ida y vuelta mental —ese cambio de chip entre roles— se entrena con trabajo psicológico específico. Es exactamente lo que este manual desarrolla.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Hacia qué lado tiendes más: quedarte demasiado atrás por miedo a quedar expuesto, o subir demasiado y descuidar la cobertura defensiva?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 2</p>
+    <h2>El duelo defensivo 1v1: sostener la marca sin perder la calma</h2>
+
+    <p>Cuando el extremo contrario tiene el balón y viene hacia ti, el lateral enfrenta uno de los momentos de mayor exigencia mental del partido. Un error ahí no es un pase mal dado —puede ser un gol encajado directamente.</p>
+
+    <p>La trampa mental más común en ese momento es la urgencia: la necesidad de resolver el duelo rápido, de no dejar que el extremo llegue a la línea de fondo, de recuperar el balón ya. Esa urgencia genera exactamente lo contrario —precipitación, desequilibrio y espacios para el rival.</p>
+
+    <p>El duelo defensivo se gana, con frecuencia, esperando. La paciencia táctica es una habilidad mental: sostenerse en una posición de alerta sin actuar hasta que el momento sea el correcto.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 2.1 — Lateral reactivo vs. lateral con presencia mental en el 1v1</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Lateral reactivo (se precipita)</th>
+            <th>Lateral con presencia mental (espera)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sale a por el balón antes de que el extremo defina</td>
+            <td>Retrocede ordenado, mantiene distancia de seguridad</td>
+          </tr>
+          <tr>
+            <td>La urgencia le hace dar el paso en falso</td>
+            <td>Espera el movimiento del extremo antes de comprometerse</td>
+          </tr>
+          <tr>
+            <td>Fuerza la entrada y deja espacio por detrás</td>
+            <td>Canaliza al extremo hacia donde hay cobertura</td>
+          </tr>
+          <tr>
+            <td>Cada duelo perdido genera más ansiedad en el siguiente</td>
+            <td>Cada duelo empieza desde el mismo punto de calma</td>
+          </tr>
+          <tr>
+            <td>El miedo al error le hace actuar antes de leer</td>
+            <td>La calma le permite leer antes de actuar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>La calma en el 1v1 no es pasividad. Es lectura activa. El lateral que espera con los pies bien plantados, el cuerpo abierto y los ojos en la cadera del extremo está trabajando —aunque no se mueva.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Cuándo sueles saltar a por el balón antes de que sea el momento correcto? ¿Hay tipos de extremo (más veloces, más técnicos) que te generan más urgencia?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 3</p>
+    <h2>La carrera de ida y vuelta: gestionar el esfuerzo físico y mental</h2>
+
+    <p>El lateral sube al ataque. El equipo pierde el balón. El lateral tiene que volver corriendo para cubrir el espacio. Esa secuencia puede repetirse ocho, diez, doce veces en un partido. Cada vez cuesta un poco más.</p>
+
+    <p>La fatiga física en esas carreras de vuelta es real. La fatiga mental es menos visible pero igual de importante: la lentitud en la decisión de cuándo subir, la tendencia a quedarse más atrás en la segunda mitad, la pérdida de comunicación con el extremo propio porque ya no hay energía para coordinarse.</p>
+
+    <p>Gestionar esa carga implica dos cosas:</p>
+
+    <ul>
+      <li><strong>Economizar las subidas:</strong> No cada posesión merece una incorporación al ataque. Elegir los momentos de mayor impacto potencial —y abstenerse en los demás— conserva energía para cuando realmente importa.</li>
+      <li><strong>Usar las transiciones como reset mental:</strong> La carrera de vuelta no es solo físicamente necesaria —es mentalmente útil. El sprint hacia atrás interrumpe cualquier bucle de pensamiento sobre lo que acaba de ocurrir y te devuelve al presente.</li>
+    </ul>
+
+    <p>Un lateral que sube diez veces en el primer tiempo y está agotado en el 60 ha administrado mal su energía. Uno que sube seis veces con criterio y llega al minuto 85 con capacidad de impacto ha jugado mejor —aunque parezca que hizo menos.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Hay un minuto del partido a partir del cual notas que empiezas a subir menos o a quedarte más lejos? ¿Es fatiga física, mental o táctica?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 4</p>
+    <h2>Cuando el extremo te supera: recuperar posición y compostura</h2>
+
+    <p>El extremo te va a superar. No en todos los partidos, no siempre de la misma manera, pero va a ocurrir. La pregunta no es cómo evitarlo siempre —la pregunta es qué haces en los cuatro segundos que siguen.</p>
+
+    <p>Esos cuatro segundos determinan si el duelo perdido se convierte en gol encajado o en una situación controlada por la defensa colectiva.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 4.1 — Los 4 segundos después de ser superado</div>
+      <div class="protocol-grid">
+        <div class="proto-time t1">0–1 seg</div>
+        <div class="proto-body"><strong>Sprínta inmediatamente</strong>No te quedes parado procesando. El sprint de recuperación es tu única prioridad en ese segundo.</div>
+        <div class="proto-spacer"></div><div class="proto-spacer"></div>
+        <div class="proto-time t2">2 seg</div>
+        <div class="proto-body"><strong>Comunica</strong>Una sola palabra al central: "¡Ayuda!" o "¡Cubro!" El equipo necesita saber que la situación está activa.</div>
+        <div class="proto-spacer"></div><div class="proto-spacer"></div>
+        <div class="proto-time t3">3 seg</div>
+        <div class="proto-body"><strong>Recupera ángulo</strong>No persigues al extremo por detrás —te posicionas entre él y el arco. Eso limita sus opciones aunque no recuperes el balón.</div>
+        <div class="proto-spacer"></div><div class="proto-spacer"></div>
+        <div class="proto-time t4">4 seg</div>
+        <div class="proto-body"><strong>Cierra la situación</strong>Con tu central cubriendo el centro y tú limitando el centro de fondo, la amenaza está contenida. El duelo perdido ya no es un gol probable.</div>
+      </div>
+    </div>
+
+    <p>Este protocolo no elimina el error. Lo gestiona. Y lo más importante: lo cierra rápido, para que no viva en tu cabeza durante los próximos cinco minutos.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> Cuando el extremo te supera, ¿cuánto tardas en activar el sprint de recuperación? ¿Hay un instante de parálisis antes de arrancar?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 5</p>
+    <h2>El lateral en ataque: decidir cuándo y cómo incorporarse</h2>
+
+    <p>La incorporación del lateral al ataque es uno de los recursos tácticos más valiosos del fútbol moderno. También es uno de los que más ansiedad genera cuando sale mal: quedas fuera de posición, tu equipo pierde el balón y tienes treinta metros de campo vacío detrás de ti.</p>
+
+    <p>Decidir cuándo subir no es solo táctico —es mental. Un lateral con miedo a quedar expuesto no sube aunque el partido lo pida. Uno con exceso de confianza sube en momentos que no son los adecuados. El equilibrio está en tener criterios claros y confiar en ellos.</p>
+
+    <div class="figure">
+      <div class="figure-title">Figura 5.1 — Cuándo subir · Cuándo quedarse</div>
+      <div class="decision-map">
+        <div class="dm-card go">
+          <div class="dm-label">Sube cuando...</div>
+          <ul>
+            <li>El mediocampista ya cubre tu zona si pierdes el balón</li>
+            <li>El extremo propio hace el movimiento hacia el interior</li>
+            <li>Tu equipo tiene posesión clara y el rival está ordenado defensivamente</li>
+            <li>El espacio en la banda está abierto y la transición defensiva es viable</li>
+          </ul>
+        </div>
+        <div class="dm-card stay">
+          <div class="dm-label">Quédate cuando...</div>
+          <ul>
+            <li>El extremo contrario está activo y sin cobertura directa</li>
+            <li>Tu mediocampista no tiene posición de cobertura</li>
+            <li>El balón está en zona de riesgo de perderlo</li>
+            <li>El partido exige equilibrio defensivo sobre todo lo demás</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p>Tener estos criterios memorizados antes del partido reduce la carga de decisión durante él. No tienes que evaluar todo desde cero cada vez —tienes una guía que ya aplicaste en el calentamiento mental.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Tomas la decisión de subir en base a criterios tácticos concretos o reaccionas al instinto del momento? ¿Cuántas veces en el último partido subiste sin cobertura?</p>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div class="chapter">
+    <p class="chapter-number">Capítulo 6</p>
+    <h2>Concentración sostenida: noventa minutos cubriendo todo el flanco</h2>
+
+    <p>El lateral necesita una concentración específica que combina alerta defensiva constante con disponibilidad ofensiva activa. Eso no se puede mantener al mismo nivel durante noventa minutos —la clave está en gestionar los picos y los valles de intensidad durante el partido.</p>
+
+    <p>Hay momentos en el partido donde el extremo contrario no tiene el balón y tu banda está inactiva. Esos momentos son recuperación real —pero no desconexión. La diferencia es sutil pero crítica:</p>
+
+    <ul>
+      <li><strong>Recuperación activa:</strong> El balón está lejos de tu banda. Caminas, recuperas el aliento, pero sigues mirando el campo y actualizando la posición del extremo contrario y de tus compañeros.</li>
+      <li><strong>Desconexión:</strong> El balón está lejos. Te desconectas completamente. Cuando el balón cambia de orientación hacia tu banda, llegas tarde porque no habías leído el peligro.</li>
+    </ul>
+
+    <p>La señal de alerta más valiosa que puede tener un lateral es el movimiento del extremo contrario. Cuando ese extremo empieza a pedir el balón o a moverse hacia su espacio favorito, el lateral ya debería estar ajustando su posición —antes de que el pase llegue.</p>
+
+    <p>Esa vigilancia constante es agotadora. Por eso los balones muertos, las interrupciones del juego y los cambios de orientación son momentos de recuperación genuina —y hay que usarlos conscientemente, no desperdiciarlos.</p>
+
+    <div class="reflection">
+      <p><strong>Pregunta de reflexión:</strong> ¿Hay fases del partido donde pierdes el hilo de lo que hace el extremo contrario? ¿Esos momentos coinciden con el segundo tiempo, con partidos de alta intensidad o con situaciones de ventaja en el marcador?</p>
+    </div>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="chapter">
+    <p class="chapter-number">Ejemplos de aplicación</p>
+    <h2>Tres situaciones del lateral, tres recuperaciones</h2>
+
+    <div class="ejemplo tecnico">
+      <div class="ej-header">Error técnico — Superado por el extremo, el centro lleva al gol</div>
+      <div class="situacion">Minuto 29. El extremo contrario recibe el balón en banda. Sales a por él antes de que defina su dirección. Te supera por dentro. Llegas tarde a la cobertura, el centro lo remata el delantero. Gol en contra.</div>
+      <div class="sin-protocolo">Sin protocolo: El gol encajado te persigue. Los siguientes quince minutos juegas pegado a tu área, sin subir aunque el partido lo pida, esperando que el extremo vuelva a atacar tu banda. Tu equipo pierde su recurso por la derecha.</div>
+      <ul class="steps">
+        <li><strong>Acción inmediata — Sprínta al saque de centro</strong>La carrera te devuelve al presente. No hay espacio para el bucle mental mientras corres.</li>
+        <li><strong>Al reinicio — Una sola conclusión</strong>"Salí antes de que definiera. Próxima vez espero su primer toque." Una lección, no un juicio.</li>
+        <li><strong>Siguiente vez que el extremo recibe</strong>Aplicas la corrección: retrocedes ordenado, esperas el movimiento. Sin importar que el gol anterior pese.</li>
+      </ul>
+      <div class="resultado">Resultado: En el minuto 41, el mismo extremo vuelve a recibir en banda. Esperas. Él intenta el interior, lo anticipas y recuperas el balón. Tu equipo sale al contraataque.</div>
+    </div>
+
+    <div class="ejemplo mental">
+      <div class="ej-header">Error mental — Demasiadas subidas en el primer tiempo, agotado en el 60</div>
+      <div class="situacion">Subiste al ataque ocho veces en la primera mitad. Tres llegaron al área, las otras cinco terminaron en pérdida y carrera de vuelta. Al minuto 60 del partido tus piernas no responden igual. El extremo contrario lo nota y empieza a atacar tu banda con más frecuencia.</div>
+      <div class="sin-protocolo">Sin protocolo: Sigues subiendo por inercia aunque ya no puedes sostener el ritmo. O te quedas atrás completamente y tu equipo pierde la amenaza por la derecha. En cualquiera de los dos casos, el partido ya no es tuyo.</div>
+      <ul class="steps">
+        <li><strong>Reconocer la fatiga como información</strong>"Estoy al límite físicamente. Tengo que economizar las subidas que me quedan." No es rendirse —es administrarse.</li>
+        <li><strong>Establecer la regla para los 30 minutos finales</strong>"Solo subo si el mediocampista me cubre explícitamente y la banda está abierta." Criterio claro, menos decisiones en tiempo real.</li>
+        <li><strong>Compensar con intensidad defensiva</strong>Las subidas se reducen, pero la cobertura al extremo contrario es impecable. El equipo no pierde al lateral —lo tiene en una función diferente.</li>
+      </ul>
+      <div class="resultado">Resultado: En el minuto 78, con energía conservada, subes en el momento correcto. El centro genera el córner del que sale el gol del empate.</div>
+    </div>
+
+    <div class="ejemplo emocional">
+      <div class="ej-header">Error emocional — El mediocampista no cubre cuando subes, quedas expuesto</div>
+      <div class="situacion">Minuto 52. Subes por la banda derecha en una situación de ventaja. Tu equipo pierde el balón. El mediocampista que debía cubrir tu zona no está. El rival sale al contraataque por donde tú dejaste el espacio. Llegas tarde. La jugada casi termina en gol.</div>
+      <div class="sin-protocolo">Sin protocolo: La rabia con el mediocampista te ocupa la cabeza los siguientes diez minutos. Dejas de comunicarte con él. La próxima vez que hay opción de subir, no vas aunque debías —porque no confías en que te cubra.</div>
+      <ul class="steps">
+        <li><strong>Cerrar la situación primero</strong>Corres la transición defensiva hasta que el peligro esté controlado. La conversación puede esperar. El partido, no.</li>
+        <li><strong>Comunicar, no reclamar</strong>En el siguiente balón muerto te acercas al mediocampista: "Cuando suba, necesito que cubras mi zona. Así puedo seguir atacando." Una instrucción, no un reproche.</li>
+        <li><strong>Siguiente incorporación — decides con criterio, no con miedo</strong>Si el mediocampista está en posición de cobertura, subes. Si no está, te quedas. El criterio táctico reemplaza a la desconfianza emocional.</li>
+      </ul>
+      <div class="resultado">Resultado: La comunicación restablece la coordinación. En el minuto 67 el mediocampista cubre activamente tu zona cuando subes. El centro que generas lleva a la ocasión más clara del partido.</div>
+    </div>
+  </div>
+
+  <!-- ATHLETE STORY -->
+  <div class="athlete-story">
+    <div class="story-label">Historia de referencia</div>
+    <h2>Cafu: el lateral que no paró en veinte años</h2>
+
+    <p>Marcos Evangelista de Morais, conocido como Cafu, nació en el barrio de Jardim Irene, en Santo André, en la periferia de São Paulo. Creció en condiciones de pobreza y empezó a jugar al fútbol en las calles del barrio. Su carrera tardó en despegar —pasó por varios clubes brasileños antes de establecerse en el São Paulo FC, donde ganó la Copa Libertadores y la Copa Intercontinental a principios de los años noventa.</p>
+
+    <div class="story-quote">
+      Lo que documentan quienes lo vieron jugar durante dos décadas no es un talento extraordinario en ninguna habilidad técnica aislada —es una consistencia física y mental que pocos laterales han sostenido durante tanto tiempo.
+    </div>
+
+    <p>Cafu llegó a la AS Roma en 1997 y se convirtió en uno de los mejores laterales del mundo durante sus años en la Serie A. Ganó el Scudetto con Roma en 2001 y después siguió en el AC Milan hasta 2008. En ese período ganó una Champions League y una Copa del Mundo más, además de múltiples ligas italianas.</p>
+
+    <p>Como lateral derecho de Brasil, participó en los Mundiales de 1994 y 2002 y fue el capitán que levantó la Copa del Mundo en Yokohama. Lo que caracterizó su juego a lo largo de su carrera fue la capacidad de mantener el rendimiento en ambas direcciones —no solo subir al ataque, sino volver con la misma intensidad— partido tras partido, temporada tras temporada.</p>
+
+    <div class="story-quote">
+      Para un lateral, lo que ilustra esa carrera no es ningún momento singular —es la acumulación. Veinte años corriendo el flanco derecho, ida y vuelta, con la misma disposición. Eso no se sostiene solo con piernas. Se sostiene con una cabeza que sabe gestionar la fatiga, los errores y la presión de ser el último recurso defensivo en la banda.
+    </div>
+
+    <p>Cafu se retiró en 2008, a los treinta y ocho años, todavía como titular en el AC Milan. Había jugado más de setecientos partidos como profesional y ganado prácticamente todo lo que existe en el fútbol de clubes y selecciones. Empezó descalzo en las calles de Santo André.</p>
+  </div>
+
+  <!-- TRACKING TABLE -->
+  <div class="tracking-section">
+    <h2>Diario del Lateral</h2>
+    <p class="track-desc">Registra tu partido en ambas dimensiones: defensiva y ofensiva. El objetivo es construir una imagen equilibrada de tu rendimiento y detectar patrones —en qué tipo de partidos fallas más duelos, en qué minutos desaparece tu subida al ataque.</p>
+    <table class="tracking-table">
+      <thead>
+        <tr>
+          <th>Partido / Fecha</th>
+          <th>Duelos defensivos (G/P)</th>
+          <th>Subidas al ataque</th>
+          <th>Momento más difícil</th>
+          <th>Lección concreta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="example">Ej: vs. Deportes — 13/04</td>
+          <td class="example">5 ganados / 2 perdidos</td>
+          <td class="example">6 (3 con impacto)</td>
+          <td class="example">Superado min. 38, costó el gol</td>
+          <td class="example">No saltar antes del primer toque del extremo</td>
+        </tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+      </tbody>
+    </table>
+    <p class="tracking-note">Revisa la columna de subidas: ¿cuántas tuvieron impacto real? Si el ratio es bajo, trabajar la selección del momento correcto genera más con menos energía.</p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>Ida y vuelta, noventa minutos, sin rendirse</h2>
+    <p>Nadie más en el campo cubre lo que cubre un lateral. Nadie más exige tanto en las dos direcciones a la vez.</p>
+    <p>Ese trabajo —discreto, constante, sin glamour— es lo que sostiene el equipo. Y empieza por sostener tu propia cabeza durante noventa minutos.</p>
+    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+  </div>
+
+</div><!-- /content -->
+
+<button class="print-btn" onclick="window.print()">Imprimir / PDF</button>
+
+</body>
+</html>
