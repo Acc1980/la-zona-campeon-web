@@ -91,11 +91,11 @@ const productos: Producto[] = [
   },
   {
     nivel: "Nivel 4",
-    tag: "$67 – $97",
-    tagColor: "bg-rojo-500",
+    tag: "En Construcción",
+    tagColor: "bg-dark-600",
     titulo: "Tu Manual 100% Personalizado",
     desc: "Manual generado según tu deporte, posición, fortalezas y áreas a mejorar. Progreso guardado en la web.",
-    precio: "Desde $67",
+    precio: "Próximamente",
     cta: "Próximamente",
     href: "/productos#nivel-4",
     highlight: false,
@@ -249,10 +249,16 @@ export default function HomePage() {
                   <p className="text-dark-300 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
                 )}
                 <div className="mt-auto">
-                  <p className="font-display font-black text-gold-500 text-xl mb-4">{p.precio}</p>
-                  <Link href={p.href} className={p.highlight ? "btn-primary w-full justify-center text-sm" : "btn-secondary w-full justify-center text-sm"}>
-                    {p.cta}
-                  </Link>
+                  <p className={`font-display font-black text-xl mb-4 ${p.cta === "Próximamente" ? "text-dark-400" : "text-gold-500"}`}>{p.precio}</p>
+                  {p.cta === "Próximamente" ? (
+                    <span className="flex w-full justify-center text-sm px-5 py-2.5 rounded-lg border border-dark-600 text-dark-400 font-display font-bold uppercase tracking-wider cursor-not-allowed">
+                      Próximamente
+                    </span>
+                  ) : (
+                    <Link href={p.href} className={p.highlight ? "btn-primary w-full justify-center text-sm" : "btn-secondary w-full justify-center text-sm"}>
+                      {p.cta}
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}

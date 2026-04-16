@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ManualesPosicion from "@/components/ManualesPosicion";
+import ManualesGenerales from "@/components/ManualesGenerales";
 
 export const metadata: Metadata = {
   title: "Productos",
   description: "Manuales de entrenamiento mental por posición, deporte y perfil. Todo en español.",
 };
-
-const manualesGenerales = [
-  { titulo: "La Espiral Negativa", desc: "Cómo detener el ciclo de errores, frustración y más errores. El problema mental más común en deportistas.", precio: "$9.99", disponible: false },
-  { titulo: "Concentración Bajo Presión", desc: "Técnicas para mantener el foco cuando el partido está en juego y el ambiente se pone difícil.", precio: "$9.99", disponible: false },
-  { titulo: "Confianza y Autoestima Deportiva", desc: "Construye una confianza que no depende de los resultados. Para deportistas que dudan de sí mismos.", precio: "$9.99", disponible: false },
-  { titulo: "Manejo de Errores y Fracasos", desc: "Aprende a procesar los errores rápido y volver al juego sin que te destruyan por dentro.", precio: "$9.99", disponible: false },
-  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener la banda de campeón.", precio: "$9.99", disponible: false },
-];
 
 
 function Badge({ text, color }: { text: string; color: string }) {
@@ -151,19 +144,7 @@ export default function ProductosPage() {
             titulo="Manuales de Temas Generales"
             desc="Problemas mentales que afectan a todos los deportistas sin importar el deporte o la posición."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {manualesGenerales.map((m) => (
-              <div key={m.titulo} className="card-dark flex flex-col opacity-70">
-                <Badge text="Próximamente" color="bg-dark-600 text-dark-300" />
-                <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mt-3 mb-2">{m.titulo}</h3>
-                <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">{m.desc}</p>
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="font-display font-black text-gold-500 text-xl">{m.precio}</span>
-                  <Link href="/gratis" className="btn-secondary text-xs px-5 py-2.5">Avísame</Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ManualesGenerales />
         </div>
       </section>
 
@@ -190,8 +171,8 @@ export default function ProductosPage() {
             desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
           />
           <div className="max-w-2xl">
-            <div className="card-dark border border-gold-500/30">
-              <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
+            <div className="card-dark border border-dark-600 opacity-80">
+              <Badge text="En Construcción" color="bg-dark-600 text-dark-300" />
               <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
                 Manual 100% Personalizado
               </h3>
@@ -200,12 +181,14 @@ export default function ProductosPage() {
               </p>
               <ul className="space-y-2 text-sm text-dark-300 mb-6">
                 {["Tu nombre, deporte, posición y categoría", "Tu autoevaluación mental (fortalezas + desafíos)", "La perspectiva de tu técnico (opcional)", "La perspectiva de tus padres (opcional)", "Análisis cruzado + plan de 4 semanas"].map(item => (
-                  <li key={item} className="flex gap-2"><span className="text-gold-500">→</span>{item}</li>
+                  <li key={item} className="flex gap-2"><span className="text-dark-500">→</span>{item}</li>
                 ))}
               </ul>
               <div className="flex items-center justify-between">
-                <span className="font-display font-black text-gold-500 text-2xl">$67</span>
-                <Link href="/personalizado" className="btn-primary text-xs px-5 py-2.5">Generar mi perfil</Link>
+                <span className="font-display font-black text-dark-400 text-2xl">Próximamente</span>
+                <span className="text-dark-400 text-xs font-display uppercase tracking-wider px-5 py-2.5 border border-dark-600 rounded-lg cursor-not-allowed">
+                  No disponible
+                </span>
               </div>
             </div>
           </div>
