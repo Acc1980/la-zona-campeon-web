@@ -17,57 +17,79 @@
 
     /* ── Brand header ── */
     .brand-header {
-      background: #1a1a2e;
-      color: #e8c84a;
+      background: #f5f0e8;
+      color: #1a1a2e;
+      border-bottom: 2px solid #c8aa32;
       text-align: center;
       padding: 14px 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     /* ── Cover ── */
     .cover {
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      color: #f5f0e8;
-      text-align: center;
-      padding: 70px 30px 60px;
-    }
-    .level-badge {
-      display: inline-block;
-      background: #e8c84a;
+      background: #f5f0e8;
       color: #1a1a2e;
+      text-align: center;
+      padding: 48px 30px 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 28px;
+      color: #888;
+      margin-bottom: 20px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.15;
-      margin-bottom: 10px;
+      color: #111;
+      margin-bottom: 8px;
     }
-    .cover .position-label {
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      font-size: 14px;
       font-weight: 600;
-      color: #e8c84a;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-    .cover .subtitle {
-      font-size: 1.05rem;
-      color: rgba(245,240,232,0.82);
+      color: #555;
+      letter-spacing: 0.04em;
       max-width: 560px;
-      margin: 0 auto;
+      margin: 0 auto 16px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 540px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
     }
 
     /* ── Content wrapper ── */
@@ -364,12 +386,42 @@
     .tracking-table tr:nth-child(even) td { background: #faf6ee; }
     .tracking-table td.example { font-style: italic; color: #888; font-size: 0.82rem; }
     .tracking-table td.blank { color: transparent; user-select: none; }
-    .tracking-note {
-      font-size: 0.82rem;
-      color: #888;
-      margin-top: 14px;
-      font-style: italic;
-    }
+    .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
+
+    /* plan de semanas */
+    .weeks-plan { margin: 50px 0; }
+    .weeks-plan h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+    .weeks-plan .plan-desc { font-size: 0.9rem; color: #666; margin-bottom: 28px; }
+    .week-card { background: #fff; border-radius: 8px; border: 1px solid #e0d8c8; border-left: 5px solid #e8c84a; padding: 22px 24px; margin-bottom: 16px; }
+    .week-tag { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e8c84a; margin-bottom: 4px; }
+    .week-pillar { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+    .week-title { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; }
+    .week-focus { font-size: 0.88rem; color: #444; margin-bottom: 12px; }
+    .week-indicators { background: #f5f0e8; border-radius: 6px; padding: 12px 16px; }
+    .week-indicators-title { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+    .week-indicators ul { padding-left: 18px; font-size: 0.83rem; color: #333; }
+    .week-indicators ul li { margin-bottom: 4px; }
+
+    /* pillar tag */
+    .pillar-tag { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e8c84a; background: #1a1a2e; padding: 1px 6px; border-radius: 3px; margin-bottom: 3px; white-space: nowrap; }
+
+    /* rutina pre-partido */
+    .preroutine { background: #fff; border: 2px solid #1a1a2e; border-radius: 10px; padding: 32px 30px; margin: 50px 0; }
+    .preroutine h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; }
+    .preroutine .pre-desc { font-size: 0.9rem; color: #666; margin-bottom: 24px; }
+    .pre-step { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: start; margin-bottom: 14px; }
+    .pre-num { background: #1a1a2e; color: #e8c84a; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; border-radius: 6px; padding: 10px 6px; text-align: center; }
+    .pre-body { background: #f5f0e8; border-radius: 6px; padding: 12px 16px; font-size: 0.88rem; }
+    .pre-body strong { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; display: block; color: #1a1a2e; margin-bottom: 4px; }
+    .pre-body .cap-ref { font-size: 0.75rem; color: #e8c84a; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .pre-body .ejemplo-text { margin-top: 8px; border-left: 3px solid #e8c84a; padding-left: 10px; font-style: italic; color: #555; font-size: 0.85rem; }
+
+    /* weekly numeric tracker */
+    .weekly-tracker { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 22px; }
+    .wt-cell { background: #f5f0e8; border-radius: 6px; padding: 12px 10px; text-align: center; }
+    .wt-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+    .wt-value { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; color: #1a1a2e; line-height: 1; }
+    .wt-value.blank { color: #d0c8b8; }
 
     /* ── Closing ── */
     .closing {
@@ -408,8 +460,25 @@
 
     @media print {
       .print-btn { display: none; }
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
+      p, li, td, th, .track-desc, .tracking-note, .week-focus,
+      .cover-desc, .cover-sub, .plan-desc, .dm-card,
+      .chapter p, .intro p, .closing p,
+      .sin-protocolo, .resultado, .reflection p { color: #111 !important; }
+      .chapter-number, .cover-stat small, .manual-num,
+      .tracking-note, .week-indicators li { color: #333 !important; }
+      .figure, .protocol-grid, .ejemplo-step, .week-card,
+      .pillar-card, .reflection, .sin-protocolo, .resultado,
+      .intro, .closing { page-break-inside: avoid; break-inside: avoid; }
+      .chapter { page-break-before: auto; }
+      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; }
+      .tracking-section { page-break-before: always; break-before: always; }
+      .tracking-section > div[style*="overflow"] { overflow: visible !important; }
+      .tracking-table { font-size: 0.68rem; table-layout: fixed; width: 100%; }
+      .tracking-table th { font-size: 0.62rem; padding: 7px 6px; white-space: normal; word-break: break-word; letter-spacing: 0; }
+      .tracking-table td { padding: 7px 6px; font-size: 0.68rem; word-break: break-word; }
     }
+    @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .content { padding: 30px 18px 60px; }
@@ -419,14 +488,19 @@
 </head>
 <body>
 
-<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+<div class="brand-header">La Zona Campeón · Control Mental para Deportistas</div>
 
 <!-- COVER -->
 <div class="cover">
-  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
-  <div class="position-label">Fútbol · Delantero Centro</div>
-  <h1>La Mente del<br>Delantero Centro</h1>
-  <p class="subtitle">Sequías de gol, presión del equipo, instinto anotador y la mentalidad de quien vive para definir.</p>
+  <p class="manual-num">Fútbol — Delantero Centro</p>
+  <h1>La Mente del<br><span>Delantero Centro</span></h1>
+  <p class="cover-sub">Sequías de gol, presión del equipo, instinto anotador y la mentalidad de quien vive para definir</p>
+  <p class="cover-desc">El delantero vive en los segundos más exigentes del partido. Este manual construye la mente que convierte la presión en decisión.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+    <div class="cover-stat"><span>3</span><small>Pilares</small></div>
+    <div class="cover-stat"><span>1</span><small>Posición</small></div>
+  </div>
 </div>
 
 <div class="content">
@@ -728,38 +802,173 @@
     <p>Para un delantero, la lección no es que siempre vas a regresar más fuerte. La lección es que el proceso importa aunque no puedas controlar el resultado.</p>
   </div>
 
+  <!-- RUTINA PRE-PARTIDO -->
+  <div class="preroutine">
+    <h2>Rutina mental pre-partido</h2>
+    <p class="pre-desc">Los cinco pasos siguientes se ejecutan en los 15–20 minutos previos al calentamiento físico. No son opcionales en semanas de presión alta. Cuanto más importante el partido, más necesaria la rutina.</p>
+
+    <div class="pre-step">
+      <div class="pre-num">1</div>
+      <div class="pre-body">
+        <span class="cap-ref">Capítulo 2 — La sequía</span>
+        <strong>Nombra tu estado real</strong>
+        Si estás en sequía, dilo en voz baja antes de salir al campo: "Llevo X partidos sin gol. Es normal. Mi trabajo es seguir buscando." Si estás en racha, dilo también: "Estoy en ritmo. Confío en lo que sé hacer." No importa cuál sea el estado — lo que importa es nombrarlo en lugar de ignorarlo.
+        <div class="ejemplo-text">"Llevo tres partidos sin marcar. El ciclo lo rompo hoy buscando la oportunidad, no el gol."</div>
+      </div>
+    </div>
+
+    <div class="pre-step">
+      <div class="pre-num">2</div>
+      <div class="pre-body">
+        <span class="cap-ref">Capítulo 3 — Instinto anotador</span>
+        <strong>Fija una sola regla de definición</strong>
+        Antes de calentar, elige una regla simple para la definición de hoy. Una sola. Eso reduce la carga cognitiva en el momento del disparo y activa el automatismo en lugar del análisis.
+        <div class="ejemplo-text">"Hoy: primer hueco que vea, disparo. Sin preguntas." / "Si el portero sale, toco al lado. Ya está decidido."</div>
+      </div>
+    </div>
+
+    <div class="pre-step">
+      <div class="pre-num">3</div>
+      <div class="pre-body">
+        <span class="cap-ref">Capítulo 4 — Presión y expectativas</span>
+        <strong>Establece tu frase de foco en proceso</strong>
+        Elige la frase interna que usarás cada vez que sientas que la presión del equipo o el marcador te empuja hacia el resultado en lugar de hacia el siguiente movimiento. La frase tiene que ser tuya, breve y concreta.
+        <div class="ejemplo-text">"Próximo balón. Leo el espacio. Ejecuto lo que sé hacer." / "Un movimiento a la vez."</div>
+      </div>
+    </div>
+
+    <div class="pre-step">
+      <div class="pre-num">4</div>
+      <div class="pre-body">
+        <span class="cap-ref">Capítulo 5 — La oportunidad única</span>
+        <strong>Ensaya el protocolo de los 10 segundos</strong>
+        Antes del partido, visualiza mentalmente que fallas una oportunidad clara. No para generar ansiedad — para ensayar la respuesta. Repasa los tres pasos: soltar (gesto + soplo), regresar al cuerpo (respiración + pies en el piso), elegir el foco ("próximo balón"). Ese ensayo mental hace que el protocolo sea automático cuando lo necesitas de verdad.
+        <div class="ejemplo-text">30 segundos de visualización: "Fallo el mano a mano. Puño, soplo. Respiro. Pies en el piso. Próximo balón."</div>
+      </div>
+    </div>
+
+    <div class="pre-step">
+      <div class="pre-num">5</div>
+      <div class="pre-body">
+        <span class="cap-ref">Capítulo 1 — Los tres pilares</span>
+        <strong>Activa tu identidad</strong>
+        Una frase o imagen que te ancle en quién eres como delantero — no lo que quieres conseguir hoy, sino lo que ya eres. Esto se dice en voz baja antes de salir al túnel.
+        <div class="ejemplo-text">"Soy el que busca el espacio antes de que llegue el balón. Soy el que vuelve a pedirlo después de fallarlo."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN DE 4 SEMANAS -->
+  <div class="weeks-plan">
+    <h2>Plan de trabajo — 4 semanas</h2>
+    <p class="plan-desc">Cada semana nombra los pilares dominantes del manual para que la conexión entre el trabajo diario y el contenido del manual sea inmediata. Los tres pilares —Presencia, Definición, Resiliencia— aparecen en cada semana con distinto énfasis.</p>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 1 · Capítulo 1 + Capítulo 3</div>
+      <div class="week-pillar">Pilares: Presencia en el área · Mentalidad de definición</div>
+      <div class="week-title">Semana 1: Presencia + Decisión</div>
+      <div class="week-focus">Objetivo: construir el hábito de decidir antes de recibir. En cada entrenamiento con finalización, la regla es la misma que en el partido: la opción está elegida cuando el balón todavía está en el aire. Trabajar también la presencia en el área — posicionarse donde nadie más está, moverse antes de que el pase salga. Aplicar la rutina pre-partido completa desde el primer día de esta semana.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables</div>
+        <ul>
+          <li>¿Cuántas definiciones del entrenamiento se ejecutaron sin pausa entre recepción y disparo?</li>
+          <li>En partido: oportunidades generadas (no solo goles) — ¿cuántas llegaste al área en posición de remate?</li>
+          <li>¿Aplicaste la rutina pre-partido los 5 pasos completos antes del partido de esta semana?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 2 · Capítulo 2</div>
+      <div class="week-pillar">Pilares: Resiliencia · Presencia (sostenida bajo presión)</div>
+      <div class="week-title">Semana 2: Resiliencia + Sequía</div>
+      <div class="week-focus">Objetivo: trabajar la gestión de la sequía como competencia activa, no como situación que se aguanta. Si no estás en sequía, este trabajo es preventivo — construyes los recursos antes de necesitarlos. Si estás en sequía, aplicas el ciclo de ruptura del Cap 2: nombrar, volver a lo básico, definir sin pensar. El registro numérico semanal de oportunidades vs. goles toma más peso esta semana que ninguna otra.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables</div>
+        <ul>
+          <li><strong>Conteo semanal:</strong> oportunidades claras generadas / goles marcados / % conversión.</li>
+          <li>¿En qué punto del último partido empezó la duda al definir — primer fallo, segundo, tercero?</li>
+          <li>¿La regla de definición pre-partido se mantuvo incluso después de fallar la primera oportunidad?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 3 · Capítulo 4 + Capítulo 5</div>
+      <div class="week-pillar">Pilares: Mentalidad de definición · Resiliencia (bajo presión máxima)</div>
+      <div class="week-title">Semana 3: Presión + Oportunidad única</div>
+      <div class="week-focus">Objetivo: entrenar la respuesta a los dos escenarios de mayor presión para el delantero — el partido donde el equipo te exige el gol y el partido donde solo llega una oportunidad. El foco en proceso (Cap 4) y el protocolo de los 10 segundos (Cap 5) son las herramientas de esta semana. Ambas se ensayan en la rutina pre-partido antes de cada entrenamiento con finalización.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables</div>
+        <ul>
+          <li>¿Cuántas veces en el partido reconociste que estabas en "foco resultado" y lo redirigiste a "foco proceso"?</li>
+          <li>Tras el fallo de la oportunidad más clara: ¿cuántas posesiones pasaron hasta que volviste a buscar el siguiente balón?</li>
+          <li>¿El protocolo de los 10 segundos se activó de forma automática o tuviste que forzarlo conscientemente?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 4 · Capítulo 6</div>
+      <div class="week-pillar">Pilares: Presencia · Definición · Resiliencia — integración completa</div>
+      <div class="week-title">Semana 4: Consistencia integral</div>
+      <div class="week-focus">Objetivo: integrar los tres pilares en una actuación de temporada — no un partido brillante, sino una base sólida partido a partido. Hacer la revisión semanal del Cap 6: qué funcionó, qué ajustar, cómo está la carga mental de la semana. Comparar el conteo de oportunidades/goles de las cuatro semanas del plan y detectar el patrón: ¿dónde sube la conversión? ¿Qué condiciones están presentes cuando baja?</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables</div>
+        <ul>
+          <li>Comparar el % de conversión (goles/oportunidades) de las 4 semanas: ¿hay tendencia de mejora?</li>
+          <li>¿El nivel de juego en los partidos difíciles de esta semana fue similar al de los partidos buenos?</li>
+          <li>¿La rutina pre-partido se consolidó como hábito o sigue siendo algo que necesita esfuerzo consciente?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- TRACKING TABLE -->
   <div class="tracking-section">
     <h2>Diario del Delantero</h2>
-    <p class="track-desc">Registra tus partidos semana a semana. El objetivo no es solo contar goles —es entender tu estado mental en las situaciones clave y cómo eso afecta tu definición.</p>
+    <p class="track-desc">Primero el conteo numérico semanal — los números que no mienten. Después el registro cualitativo partido a partido, con cada columna vinculada al capítulo del manual que trabaja ese aspecto.</p>
+
+    <p style="font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:12px;">Resumen numérico de la semana</p>
+    <div class="weekly-tracker">
+      <div class="wt-cell"><div class="wt-label">Partidos</div><div class="wt-value blank">—</div></div>
+      <div class="wt-cell"><div class="wt-label">Oportunidades claras</div><div class="wt-value blank">—</div></div>
+      <div class="wt-cell"><div class="wt-label">Goles</div><div class="wt-value blank">—</div></div>
+      <div class="wt-cell"><div class="wt-label">% Conversión</div><div class="wt-value blank">—</div></div>
+      <div class="wt-cell"><div class="wt-label">Rutina pre-partido aplicada</div><div class="wt-value blank">— / —</div></div>
+    </div>
+
+    <div style="overflow-x: auto;">
     <table class="tracking-table">
       <thead>
         <tr>
           <th>Partido / Fecha</th>
-          <th>Oportunidades creadas</th>
-          <th>Goles · Definiciones</th>
-          <th>Estado mental al definir</th>
+          <th><span class="pillar-tag">Cap 1 + 5</span><br>Oportunidades claras generadas</th>
+          <th><span class="pillar-tag">Cap 6</span><br>Goles · % conversión</th>
+          <th><span class="pillar-tag">Cap 3</span><br>¿Decidí antes de recibir? (sí/no/a veces)</th>
+          <th><span class="pillar-tag">Cap 5</span><br>Reset tras fallo (nº posesiones)</th>
+          <th><span class="pillar-tag">Cap 4</span><br>¿Foco proceso o foco resultado?</th>
           <th>Lección concreta</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="example">Ej: vs. Deportivo — 12/04</td>
-          <td class="example">3 situaciones claras</td>
-          <td class="example">1 gol · 2 fallados</td>
-          <td class="example">Seguro en el 1.º, dudé en el 2.º, apresuré el 3.º</td>
-          <td class="example">Decidir antes de recibir en los balones aéreos</td>
+          <td class="example">3 oportunidades claras</td>
+          <td class="example">1 gol / 33%</td>
+          <td class="example">Sí en el 1.º · No en el 2.º · A veces en el 3.º</td>
+          <td class="example">~3 posesiones (objetivo: máx. 2)</td>
+          <td class="example">Proceso en el 1.º tiempo · Resultado en el 2.º tras el fallo</td>
+          <td class="example">Decidir antes en balones aéreos. Frase de proceso desde el min 1.</td>
         </tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
       </tbody>
     </table>
-    <p class="tracking-note">Revisa esta tabla al final de cada semana. Busca patrones: ¿en qué tipo de situaciones tu estado mental afecta más la definición?</p>
+    </div>
+    <p class="tracking-note">El resumen numérico semanal es el primer dato que revisar: si las oportunidades son pocas, el trabajo es de Presencia (Cap 1). Si son muchas pero la conversión es baja, el trabajo es de Definición (Cap 3) o Reset (Cap 5). Si la conversión varía mucho entre semanas, el trabajo es de Consistencia (Cap 6).</p>
   </div>
 
   <!-- CLOSING -->
@@ -767,7 +976,10 @@
     <h2>El próximo balón siempre es nuevo</h2>
     <p>No puedes deshacer la oportunidad fallada. Sí puedes decidir qué haces con la siguiente.</p>
     <p>Ese es el trabajo del delantero: estar listo para que cuando llegue el momento —aunque hayan pasado ochenta minutos esperando— tu mente ya haya tomado la decisión.</p>
-    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <a href="delantero-centro-4-semanas.html" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; padding:13px 28px; border-radius:50px; text-decoration:none;">Ver el Plan de 4 Semanas →</a>
+    </div>
+    <p style="font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
   </div>
 
 </div><!-- /content -->

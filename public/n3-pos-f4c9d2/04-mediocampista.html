@@ -16,56 +16,78 @@
     }
 
     .brand-header {
-      background: #1a1a2e;
-      color: #e8c84a;
+      background: #f5f0e8;
+      color: #1a1a2e;
+      border-bottom: 2px solid #c8aa32;
       text-align: center;
       padding: 14px 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     .cover {
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      color: #f5f0e8;
-      text-align: center;
-      padding: 70px 30px 60px;
-    }
-    .level-badge {
-      display: inline-block;
-      background: #e8c84a;
+      background: #f5f0e8;
       color: #1a1a2e;
+      text-align: center;
+      padding: 48px 30px 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 28px;
+      color: #888;
+      margin-bottom: 20px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.15;
-      margin-bottom: 10px;
+      color: #111;
+      margin-bottom: 8px;
     }
-    .cover .position-label {
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      font-size: 14px;
       font-weight: 600;
-      color: #e8c84a;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-    .cover .subtitle {
-      font-size: 1.05rem;
-      color: rgba(245,240,232,0.82);
+      color: #555;
+      letter-spacing: 0.04em;
       max-width: 560px;
-      margin: 0 auto;
+      margin: 0 auto 16px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 540px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
     }
 
     .content {
@@ -360,6 +382,83 @@
     .tracking-table td.blank { color: transparent; user-select: none; }
     .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
 
+    /* plan de semanas */
+    .weeks-plan { margin: 50px 0; }
+    .weeks-plan h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .weeks-plan .plan-desc { font-size: 0.9rem; color: #666; margin-bottom: 28px; }
+    .week-card {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0d8c8;
+      border-left: 5px solid #e8c84a;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .week-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 4px;
+    }
+    .week-pillar {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .week-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+    }
+    .week-focus { font-size: 0.88rem; color: #444; margin-bottom: 12px; }
+    .week-indicators {
+      background: #f5f0e8;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .week-indicators-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .week-indicators ul { padding-left: 18px; font-size: 0.83rem; color: #333; }
+    .week-indicators ul li { margin-bottom: 4px; }
+
+    /* pillar tag en ficha */
+    .pillar-tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      background: #1a1a2e;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-bottom: 3px;
+      white-space: nowrap;
+    }
+
     .closing {
       text-align: center;
       padding: 50px 20px 30px;
@@ -395,8 +494,25 @@
 
     @media print {
       .print-btn { display: none; }
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
+      p, li, td, th, .track-desc, .tracking-note, .week-focus,
+      .cover-desc, .cover-sub, .plan-desc, .dm-card,
+      .chapter p, .intro p, .closing p,
+      .sin-protocolo, .resultado, .reflection p { color: #111 !important; }
+      .chapter-number, .cover-stat small, .manual-num,
+      .tracking-note, .week-indicators li { color: #333 !important; }
+      .figure, .protocol-grid, .ejemplo-step, .week-card,
+      .pillar-card, .reflection, .sin-protocolo, .resultado,
+      .intro, .closing { page-break-inside: avoid; break-inside: avoid; }
+      .chapter { page-break-before: auto; }
+      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; }
+      .tracking-section { page-break-before: always; break-before: always; }
+      .tracking-section > div[style*="overflow"] { overflow: visible !important; }
+      .tracking-table { font-size: 0.68rem; table-layout: fixed; width: 100%; }
+      .tracking-table th { font-size: 0.62rem; padding: 7px 6px; white-space: normal; word-break: break-word; letter-spacing: 0; }
+      .tracking-table td { padding: 7px 6px; font-size: 0.68rem; word-break: break-word; }
     }
+    @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .flow-horizontal { flex-direction: column; align-items: center; }
@@ -408,14 +524,19 @@
 </head>
 <body>
 
-<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+<div class="brand-header">La Zona Campeón · Control Mental para Deportistas</div>
 
 <!-- COVER -->
 <div class="cover">
-  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
-  <div class="position-label">Fútbol · Mediocampista</div>
-  <h1>La Mente del<br>Mediocampista</h1>
-  <p class="subtitle">Decisiones bajo presión, errores de pase, fatiga mental y la concentración que el partido exige durante noventa minutos.</p>
+  <p class="manual-num">Fútbol — Mediocampista</p>
+  <h1>La Mente del<br><span>Mediocampista</span></h1>
+  <p class="cover-sub">Decisiones bajo presión, velocidad de lectura y la concentración que el partido exige durante noventa minutos</p>
+  <p class="cover-desc">El mediocampista es el cerebro del equipo. Este manual trabaja la mente que tiene que pensar más rápido que los demás.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+    <div class="cover-stat"><span>3</span><small>Pilares</small></div>
+    <div class="cover-stat"><span>1</span><small>Posición</small></div>
+  </div>
 </div>
 
 <div class="content">
@@ -708,38 +829,108 @@
     <p>Iniesta continuó su carrera en el Barcelona hasta 2018, con múltiples Ligas y dos Champions más. Lo que queda de su trayectoria no es solo el gol en Sudáfrica —es la coherencia de quien durante años eligió resolver las cosas difíciles en lugar de ignorarlas, dentro y fuera del campo.</p>
   </div>
 
+  <!-- PLAN DE 4 SEMANAS -->
+  <div class="weeks-plan">
+    <h2>Plan de trabajo — 4 semanas</h2>
+    <p class="plan-desc">Cada semana tiene un objetivo dominante extraído de los tres pilares del manual. El liderazgo y la conexión con compañeros no son tema de la semana 4 — son pilar base desde la semana 2. Se distribuye así porque es transversal a todos los demás.</p>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 1 · Capítulo 2</div>
+      <div class="week-pillar">Pilar 1 — Decisión bajo presión</div>
+      <div class="week-title">Velocidad de decisión</div>
+      <div class="week-focus">Objetivo: acortar el tiempo entre recibir el balón y ejecutar la decisión. La meta no es decidir más rápido por impulso, sino completar el escaneo previo con suficiente antelación para que la decisión ya esté tomada cuando el balón llegue a los pies. Trabajar esto en cada posesión del entrenamiento, no solo en los partidos.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>% de posesiones con decisión pre-recepción:</strong> de cada 10 balones recibidos, ¿en cuántos ya tenías la opción elegida antes del primer toque?</li>
+          <li>¿Cuántas veces actuaste en el primer o segundo toque? ¿Cuántas necesitaste más de dos toques por falta de lectura previa?</li>
+          <li>¿En qué momento del partido empezó a caer esa velocidad — minuto 60, 70, en fases de presión alta?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 2 · Capítulo 2 + Capítulo 5</div>
+      <div class="week-pillar">Pilar 1 + Pilar 2 — Decisión bajo presión · Conexión del equipo</div>
+      <div class="week-title">Escaneo previo y conexión activa</div>
+      <div class="week-focus">Objetivo: consolidar el hábito de escaneo constante (también sin balón) y usarlo como base del liderazgo por conexión. El mediocampista que lee el campo antes que nadie puede anticipar el movimiento del compañero y activar la jugada antes de que el rival se organice. El liderazgo no empieza en semana 4 — empieza cuando le hablas al lateral antes de recibir el balón.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>% de recepciones con escaneo previo confirmado:</strong> estimas cuántas de tus posesiones comenzaron con la cabeza girada antes de tocar el balón.</li>
+          <li>¿Cuántas comunicaciones tácticas activas iniciaste hacia compañeros (señales de posición, pedidos de cobertura, cambios de orientación verbalizados)?</li>
+          <li>¿Hubo momentos en que perdiste el hilo del campo por no haber escaneado en los 2-3 segundos anteriores?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 3 · Capítulo 3 + Capítulo 4</div>
+      <div class="week-pillar">Pilar 1 + Pilar 3 — Decisión bajo presión · Resistencia mental</div>
+      <div class="week-title">Reset tras el error</div>
+      <div class="week-focus">Objetivo: aplicar el protocolo de tres pasos después de cada error de pase — sprint defensivo, frase interna de cierre, primer contacto siguiente con la misma intención. La métrica clave no es cuántos errores cometes, sino cuántas posesiones tardas en volver al nivel habitual después de cada uno. Paralelo: identificar el minuto en que aparece la fatiga cognitiva y usar los balones muertos como herramienta de reset preventivo.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>Tiempo promedio de reset:</strong> después de un error de pase, ¿cuántas posesiones del equipo transcurrieron hasta que volviste a pedir el balón con convicción? (objetivo: 1-2 posesiones máximo).</li>
+          <li>¿A partir de qué minuto detectaste la fatiga cognitiva — caída en escaneo, pases más conservadores, comunicación reducida?</li>
+          <li>¿Cuántos balones muertos usaste activamente como reinicio (respiración + mirada de campo actualizada)?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 4 · Capítulo 5 + Capítulo 6</div>
+      <div class="week-pillar">Pilar 2 + Pilar 3 — Conexión del equipo · Resistencia mental</div>
+      <div class="week-title">Liderazgo consistente</div>
+      <div class="week-focus">Objetivo: integrar los tres pilares en una actuación de partido completo. El foco específico esta semana es la consistencia del liderazgo por conexión: no en los momentos buenos, sino especialmente cuando el equipo pierde el hilo. Medir si el juego propio mantiene su forma cuando el equipo va perdiendo, cuando hay tensión con un compañero, o cuando el partido exige más de lo que quedan energías para dar.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>Acciones de liderazgo activo:</strong> comunicaciones iniciadas + compañeros buscados en momentos de dificultad del equipo (no solo cuando el partido fluye).</li>
+          <li>¿El nivel de juego propio cayó cuando el equipo encajó un gol o perdió el hilo? ¿Cuánto tardó en recuperarse?</li>
+          <li>¿Hubo factores externos (rival, resultado, tensión interna) que alteraron significativamente la consistencia de decisión partido a partido esta semana?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- TRACKING TABLE -->
   <div class="tracking-section">
     <h2>Diario del Mediocampista</h2>
-    <p class="track-desc">Registra tus partidos con foco en la calidad de decisión, no solo en el resultado. El mediocampista se evalúa en el proceso —cuántas veces tomó la mejor opción disponible— más que en estadísticas visibles.</p>
+    <p class="track-desc">Cada columna está ligada a uno de los tres pilares del manual. El objetivo es detectar qué pilar falla primero en cada partido y en qué condiciones — no solo registrar lo que pasó, sino entender el patrón.</p>
+    <div style="overflow-x: auto;">
     <table class="tracking-table">
       <thead>
         <tr>
           <th>Partido / Fecha</th>
-          <th>Decisión más difícil</th>
-          <th>Calidad de escaneo (1–10)</th>
-          <th>Recuperación tras error</th>
+          <th><span class="pillar-tag">Pilar 1</span><br>% posesiones con decisión pre-recepción</th>
+          <th><span class="pillar-tag">Pilar 1 + 2</span><br>% recepciones con escaneo previo</th>
+          <th><span class="pillar-tag">Pilar 2</span><br>Acciones de liderazgo / conexión activa</th>
+          <th><span class="pillar-tag">Pilar 1 + 3</span><br>Reset tras error (nº de posesiones)</th>
+          <th><span class="pillar-tag">Pilar 3</span><br>Minuto de caída de concentración</th>
           <th>Lección concreta</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="example">Ej: vs. Nacional — 11/04</td>
-          <td class="example">Pase entre líneas min. 38</td>
-          <td class="example">7 — bajó a 5 en el 2.º tiempo</td>
-          <td class="example">Tardé 8 min en volver a pedir el balón</td>
-          <td class="example">Usar balones muertos para resetear en la 2.ª parte</td>
+          <td class="example">6 de 10 (~60%)</td>
+          <td class="example">7 de 10 (1T) / 4 de 10 (2T)</td>
+          <td class="example">3 (señal al lateral, 2 cambios de orientación pedidos)</td>
+          <td class="example">~4 posesiones (objetivo: max. 2)</td>
+          <td class="example">Min. 68 — escaneo dejó de anticipar</td>
+          <td class="example">Usar el córner del min. 65 como reinicio consciente</td>
         </tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
       </tbody>
     </table>
-    <p class="tracking-note">Revisa semanalmente. Busca el patrón en la columna de escaneo: ¿baja sistemáticamente en la segunda mitad? ¿En ciertos tipos de partido? Ese es el punto de trabajo.</p>
+    </div>
+    <p class="tracking-note">Compara las columnas de escaneo entre primera y segunda mitad. Si la caída es sistemática, el trabajo es de resistencia mental (Pilar 3). Si la caída es situacional (presión alta, errores previos), el trabajo es de reset (Pilar 1). Si la columna de liderazgo siempre es baja, revisar Cap. 5.</p>
   </div>
 
   <!-- CLOSING -->
@@ -747,7 +938,10 @@
     <h2>La claridad que el equipo necesita empieza en tu cabeza</h2>
     <p>Cuando el partido se desordena, el equipo mira al mediocampo. Lo que encuentre ahí —calma o caos— va a contagiarse.</p>
     <p>Ese es el trabajo invisible del mediocampista: sostener la claridad por dentro para que el equipo pueda apoyarse en ella por fuera.</p>
-    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <a href="mediocampista-4-semanas.html" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; padding:13px 28px; border-radius:50px; text-decoration:none;">Ver el Plan de 4 Semanas →</a>
+    </div>
+    <p style="font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
   </div>
 
 </div><!-- /content -->

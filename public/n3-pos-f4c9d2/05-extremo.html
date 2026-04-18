@@ -16,56 +16,78 @@
     }
 
     .brand-header {
-      background: #1a1a2e;
-      color: #e8c84a;
+      background: #f5f0e8;
+      color: #1a1a2e;
+      border-bottom: 2px solid #c8aa32;
       text-align: center;
       padding: 14px 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     .cover {
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      color: #f5f0e8;
-      text-align: center;
-      padding: 70px 30px 60px;
-    }
-    .level-badge {
-      display: inline-block;
-      background: #e8c84a;
+      background: #f5f0e8;
       color: #1a1a2e;
+      text-align: center;
+      padding: 48px 30px 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 28px;
+      color: #888;
+      margin-bottom: 20px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.15;
-      margin-bottom: 10px;
+      color: #111;
+      margin-bottom: 8px;
     }
-    .cover .position-label {
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      font-size: 14px;
       font-weight: 600;
-      color: #e8c84a;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-    .cover .subtitle {
-      font-size: 1.05rem;
-      color: rgba(245,240,232,0.82);
+      color: #555;
+      letter-spacing: 0.04em;
       max-width: 560px;
-      margin: 0 auto;
+      margin: 0 auto 16px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 540px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
     }
 
     .content {
@@ -357,6 +379,20 @@
     .tracking-table td.blank { color: transparent; user-select: none; }
     .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
 
+    .weeks-plan { margin: 50px 0; }
+    .weeks-plan h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+    .weeks-plan .plan-desc { font-size: 0.9rem; color: #666; margin-bottom: 28px; }
+    .week-card { background: #fff; border-radius: 8px; border: 1px solid #e0d8c8; border-left: 5px solid #e8c84a; padding: 22px 24px; margin-bottom: 16px; }
+    .week-tag { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e8c84a; margin-bottom: 4px; }
+    .week-pillar { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+    .week-title { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 800; color: #1a1a2e; margin-bottom: 10px; }
+    .week-focus { font-size: 0.88rem; color: #444; margin-bottom: 12px; }
+    .week-indicators { background: #f5f0e8; border-radius: 6px; padding: 12px 16px; }
+    .week-indicators-title { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+    .week-indicators ul { padding-left: 18px; font-size: 0.83rem; color: #333; }
+    .week-indicators ul li { margin-bottom: 4px; }
+    .pillar-tag { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #e8c84a; background: #1a1a2e; padding: 1px 6px; border-radius: 3px; margin-bottom: 3px; white-space: nowrap; }
+
     .closing {
       text-align: center;
       padding: 50px 20px 30px;
@@ -392,8 +428,25 @@
 
     @media print {
       .print-btn { display: none; }
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
+      p, li, td, th, .track-desc, .tracking-note, .week-focus,
+      .cover-desc, .cover-sub, .plan-desc, .dm-card,
+      .chapter p, .intro p, .closing p,
+      .sin-protocolo, .resultado, .reflection p { color: #111 !important; }
+      .chapter-number, .cover-stat small, .manual-num,
+      .tracking-note, .week-indicators li { color: #333 !important; }
+      .figure, .protocol-grid, .ejemplo-step, .week-card,
+      .pillar-card, .reflection, .sin-protocolo, .resultado,
+      .intro, .closing { page-break-inside: avoid; break-inside: avoid; }
+      .chapter { page-break-before: auto; }
+      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; }
+      .tracking-section { page-break-before: always; break-before: always; }
+      .tracking-section > div[style*="overflow"] { overflow: visible !important; }
+      .tracking-table { font-size: 0.68rem; table-layout: fixed; width: 100%; }
+      .tracking-table th { font-size: 0.62rem; padding: 7px 6px; white-space: normal; word-break: break-word; letter-spacing: 0; }
+      .tracking-table td { padding: 7px 6px; font-size: 0.68rem; word-break: break-word; }
     }
+    @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .content { padding: 30px 18px 60px; }
@@ -403,14 +456,19 @@
 </head>
 <body>
 
-<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+<div class="brand-header">La Zona Campeón · Control Mental para Deportistas</div>
 
 <!-- COVER -->
 <div class="cover">
-  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
-  <div class="position-label">Fútbol · Extremo</div>
-  <h1>La Mente del<br>Extremo</h1>
-  <p class="subtitle">Desborde, duelo 1v1, resiliencia después del fallo y la mentalidad de quien lo intenta una vez más.</p>
+  <p class="manual-num">Fútbol — Extremo</p>
+  <h1>La Mente del<br><span>Extremo</span></h1>
+  <p class="cover-sub">Desborde, duelo 1v1, resiliencia después del fallo y la mentalidad de quien lo intenta una vez más</p>
+  <p class="cover-desc">El extremo vive del riesgo y del fracaso. Este manual entrena la mente que necesita fallar sin bloquearse.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+    <div class="cover-stat"><span>3</span><small>Pilares</small></div>
+    <div class="cover-stat"><span>1</span><small>Posición</small></div>
+  </div>
 </div>
 
 <div class="content">
@@ -702,38 +760,108 @@
     <p>Para un extremo, lo que ilustra esa carrera es algo concreto: la consistencia no viene de variar todo cuando algo falla, sino de confiar en el trabajo y seguir ejecutándolo.</p>
   </div>
 
+  <!-- PLAN DE 4 SEMANAS -->
+  <div class="weeks-plan">
+    <h2>Plan de trabajo — 4 semanas</h2>
+    <p class="plan-desc">Cada semana trabaja un pilar dominante. La semana 2 equilibra el plan hacia el trabajo sin balón y la lectura del partido — dimensiones que el extremo necesita tanto como el desborde, pero que se subestiman cuando el foco está solo en la recuperación tras el fallo.</p>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 1 · Capítulo 2</div>
+      <div class="week-pillar">Pilar 1 — Velocidad de decisión</div>
+      <div class="week-title">Velocidad de decisión</div>
+      <div class="week-focus">Objetivo: tener la acción elegida antes de que el balón llegue a los pies. Trabajar el ciclo completo del 1v1 — lectura del defensa, decisión anticipada, ejecución limpia, reset inmediato. No se trata de velocidad física: se trata de que el paso 3 del ciclo (decidir) ocurra antes del paso 4 (actuar), no al mismo tiempo.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>% de decisiones pre-recepción:</strong> de cada 10 balones recibidos en banda, ¿en cuántos ya tenías la acción elegida antes del primer toque? (objetivo progresivo: 5/10 → 7/10).</li>
+          <li>¿Cuántos duelos 1v1 resolviste en uno o dos toques vs. cuántos se demoraron porque dudaste?</li>
+          <li>¿En qué fase del partido la velocidad de decisión bajó — presión alta, cansancio, fallos previos?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 2 · Capítulo 4 + Capítulo 5</div>
+      <div class="week-pillar">Pilar 3 — Lectura del partido</div>
+      <div class="week-title">Presencia activa</div>
+      <div class="week-focus">Objetivo: sostener la presencia y el impacto en el partido cuando el balón no llega a la banda. Esto incluye los movimientos de desmarque que abren espacio para compañeros aunque el pase no llegue, la cobertura defensiva al lateral, la presión alta sobre el defensa rival en la salida, y la comunicación activa con el mediocampista para reactivar la banda. El extremo que solo existe cuando tiene el balón aporta la mitad de lo que podría.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>Acciones visibles sin balón:</strong> contar movimientos de desmarque, desdobles defensivos completados y presiones altas al defensa rival aunque no termine en recuperación.</li>
+          <li>¿En qué minuto del partido te "desconectaste" la primera vez (dejaste de hacer movimientos aunque no recibieras)? ¿Cuánto duró esa desconexión?</li>
+          <li>¿Cuántas veces iniciaste comunicación con el mediocampista para pedir el balón o señalar el espacio disponible?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 3 · Capítulo 3</div>
+      <div class="week-pillar">Pilar 2 — Resiliencia en el fallo</div>
+      <div class="week-title">Reset tras el fallo</div>
+      <div class="week-focus">Objetivo: reducir el tiempo entre un desborde fallado y volver a pedir el balón con la misma intención. El protocolo es de tres segundos: soltar (1), moverse (2), pedir (3). La métrica no es si el desborde sale — es si el ciclo de reset se activa de forma consistente. Un extremo que vuelve a pedir el balón en el segundo siguiente a perderlo ya está ganando.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li><strong>Tiempo promedio de reset:</strong> tras cada desborde fallado, ¿cuántas posesiones del equipo pasaron hasta que volviste a pedir el balón con una señal activa? (objetivo: máximo 1-2 posesiones).</li>
+          <li>¿Hubo tipos de error que tardaron más en soltarse — el fallo frente a muchos, el que generó contraataque, el repetido con el mismo defensa?</li>
+          <li>¿En qué intento (4.º, 5.º) el patrón de evitación apareció — cuándo dejaste de atacar la banda aunque el partido lo pedía?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 4 · Capítulo 6</div>
+      <div class="week-pillar">Pilares 1 + 2 + 3 — Integración</div>
+      <div class="week-title">Protocolo integral</div>
+      <div class="week-focus">Objetivo: integrar los tres pilares en partidos completos con condiciones de dificultad real — banda cerrada, defensa que te lee, poco balón, marcador adverso. La señal de que el trabajo de las semanas anteriores se ha consolidado es que el extremo no necesita que el partido salga bien para sostener su nivel: trabaja defensivamente, se mantiene presente sin balón, y cuando llega el suyo, decide rápido y reset inmediato si falla.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li>¿El nivel de trabajo defensivo y presencia sin balón se mantuvo incluso en los minutos donde el desborde no salió?</li>
+          <li>¿La velocidad de decisión en el 1v1 fue consistente en la segunda mitad, o bajó con el cansancio y los fallos acumulados?</li>
+          <li>¿Cuál de los tres pilares fue el primero en fallar este partido? ¿Es el mismo que la semana anterior?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- TRACKING TABLE -->
   <div class="tracking-section">
     <h2>Diario del Extremo</h2>
-    <p class="track-desc">Registra tus partidos partido a partido. El objetivo no es solo los goles o asistencias — es entender tu patrón de resiliencia: cuántas veces intentas, cuántas veces te recuperas y qué pasa con tu ritmo en los momentos difíciles.</p>
+    <p class="track-desc">Cada columna está ligada a un pilar del manual. El objetivo es identificar qué pilar falla primero — y si ese patrón se repite entre partidos. Las métricas cuantitativas hacen el progreso observable semana a semana.</p>
+    <div style="overflow-x: auto;">
     <table class="tracking-table">
       <thead>
         <tr>
           <th>Partido / Fecha</th>
-          <th>Desbordes intentados</th>
-          <th>Goles · Asistencias</th>
-          <th>Reacción tras el primer fallo</th>
+          <th><span class="pillar-tag">Pilar 1</span><br>% decisiones pre-recepción (de 10)</th>
+          <th><span class="pillar-tag">Pilar 1</span><br>Desbordes: intentados / exitosos</th>
+          <th><span class="pillar-tag">Pilar 2</span><br>Reset tras fallo (nº posesiones)</th>
+          <th><span class="pillar-tag">Pilar 3</span><br>Acciones sin balón (desmarques + coberturas)</th>
+          <th><span class="pillar-tag">Pilar 3</span><br>¿En qué fase te desconectaste? (1T / 2T / no ocurrió)</th>
           <th>Lección concreta</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="example">Ej: vs. Atlético — 09/04</td>
-          <td class="example">6 intentos, 2 completados</td>
-          <td class="example">0G · 1A</td>
-          <td class="example">Dejé de pedir el balón 5 min. Volví al 3.º intento.</td>
-          <td class="example">Reset más rápido: pedir el balón inmediatamente después</td>
+          <td class="example">5 de 10 (50%)</td>
+          <td class="example">6 intentados / 2 exitosos (33%)</td>
+          <td class="example">~4 posesiones (objetivo: máx. 2)</td>
+          <td class="example">3 desmarques + 2 coberturas = 5</td>
+          <td class="example">2T — después de dos fallos seguidos</td>
+          <td class="example">Pedir el balón en la posesión siguiente al fallo</td>
         </tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
       </tbody>
     </table>
-    <p class="tracking-note">Al revisar: ¿hay diferencia entre cómo reaccionas en casa vs. visitante? ¿En los primeros 45 min vs. los segundos? Esos patrones son los que vale la pena trabajar.</p>
+    </div>
+    <p class="tracking-note">Revisa el % de decisiones pre-recepción semana a semana: si sube, el Pilar 1 se está consolidando. Si el reset baja de 4 a 2 posesiones, el Pilar 2 avanza. Si la desconexión pasa de "2T" a "no ocurrió", el Pilar 3 mejora. El primer pilar en caer en cada partido es el punto de trabajo de la semana siguiente.</p>
   </div>
 
   <!-- CLOSING -->
@@ -741,7 +869,10 @@
     <h2>El siguiente intento siempre vale más que el anterior</h2>
     <p>Un desborde fallado no define tu partido. Lo que defines tú es si vuelves a pedirlo.</p>
     <p>Esa decisión —volver a intentarlo— es la que separa a los extremos que impactan de los que desaparecen cuando el partido se pone difícil.</p>
-    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <a href="extremo-4-semanas.html" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; padding:13px 28px; border-radius:50px; text-decoration:none;">Ver el Plan de 4 Semanas →</a>
+    </div>
+    <p style="font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
   </div>
 
 </div><!-- /content -->
