@@ -102,6 +102,7 @@ export default function HomePage() {
           alt="Atleta entrenando"
           fill
           priority
+          unoptimized
           className="object-cover object-center"
           sizes="100vw"
         />
@@ -180,6 +181,7 @@ export default function HomePage() {
                     src={a.img}
                     alt={a.titulo}
                     fill
+                    unoptimized
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
@@ -203,6 +205,7 @@ export default function HomePage() {
           src="https://images.unsplash.com/photo-1520420097861-e4959843b682?w=1920&q=80&fit=crop"
           alt="Estadio"
           fill
+          unoptimized
           className="object-cover object-center"
           sizes="100vw"
         />
