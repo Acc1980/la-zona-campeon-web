@@ -16,56 +16,78 @@
     }
 
     .brand-header {
-      background: #1a1a2e;
-      color: #e8c84a;
+      background: #f5f0e8;
+      color: #1a1a2e;
       text-align: center;
       padding: 14px 20px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      border-bottom: 2px solid #c8aa32;
     }
 
     .cover {
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      color: #f5f0e8;
-      text-align: center;
-      padding: 70px 30px 60px;
-    }
-    .level-badge {
-      display: inline-block;
-      background: #e8c84a;
+      background: #f5f0e8;
       color: #1a1a2e;
+      text-align: center;
+      padding: 40px 30px 48px;
+      border-bottom: 1px solid #d4c99a;
+      margin-bottom: 48px;
+    }
+    .manual-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 20px;
-      margin-bottom: 28px;
+      color: #888;
+      margin-bottom: 20px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.15;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: #111;
     }
-    .cover .position-label {
+    .cover h1 span { color: #c8aa32; }
+    .cover-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      font-size: 14px;
       font-weight: 600;
-      color: #e8c84a;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-    .cover .subtitle {
-      font-size: 1.05rem;
-      color: rgba(245,240,232,0.82);
+      color: #555;
+      letter-spacing: 0.04em;
       max-width: 560px;
-      margin: 0 auto;
+      margin: 0 auto 16px;
+    }
+    .cover-desc {
+      font-size: 15px;
+      color: #444;
+      max-width: 540px;
+      margin: 0 auto 28px;
+      line-height: 1.8;
+    }
+    .cover-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cover-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #c8aa32;
+    }
+    .cover-stat small {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
     }
 
     .content {
@@ -382,6 +404,58 @@
     .tracking-table td.blank { color: transparent; user-select: none; }
     .tracking-note { font-size: 0.82rem; color: #888; margin-top: 14px; font-style: italic; }
 
+    /* plan de semanas */
+    .weeks-plan { margin: 50px 0; }
+    .weeks-plan h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .weeks-plan .plan-desc { font-size: 0.9rem; color: #666; margin-bottom: 28px; }
+    .week-card {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e0d8c8;
+      border-left: 5px solid #e8c84a;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+    }
+    .week-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e8c84a;
+      margin-bottom: 4px;
+    }
+    .week-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+    }
+    .week-focus { font-size: 0.88rem; color: #444; margin-bottom: 12px; }
+    .week-indicators {
+      background: #f5f0e8;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .week-indicators-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .week-indicators ul { padding-left: 18px; font-size: 0.83rem; color: #333; }
+    .week-indicators ul li { margin-bottom: 4px; }
+
     .closing {
       text-align: center;
       padding: 50px 20px 30px;
@@ -429,14 +503,19 @@
 </head>
 <body>
 
-<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+<div class="brand-header">La Zona Campeón · Control Mental para Deportistas</div>
 
 <!-- COVER -->
 <div class="cover">
-  <div class="level-badge">Nivel 3 — Manuales por Posición</div>
-  <div class="position-label">Fútbol · Lateral</div>
-  <h1>La Mente del<br>Lateral</h1>
-  <p class="subtitle">Duelo defensivo, incorporación al ataque, recuperación de posición y la concentración de quien cubre un flanco entero durante noventa minutos.</p>
+  <p class="manual-num">Fútbol — Lateral</p>
+  <h1>La Mente<br>del <span>Lateral</span></h1>
+  <p class="cover-sub">Duelo defensivo, incorporación al ataque y concentración durante noventa minutos cubriendo un flanco entero</p>
+  <p class="cover-desc">El lateral vive en una tensión permanente: es defensa y es atacante en el mismo partido. Este manual está construido para esa realidad específica.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
+    <div class="cover-stat"><span>3</span><small>Pilares</small></div>
+    <div class="cover-stat"><span>1</span><small>Posición</small></div>
+  </div>
 </div>
 
 <div class="content">
@@ -723,38 +802,137 @@
     <p>Cafu se retiró en 2008, a los treinta y ocho años, todavía como titular en el AC Milan. Había jugado más de setecientos partidos como profesional y ganado prácticamente todo lo que existe en el fútbol de clubes y selecciones. Empezó descalzo en las calles de Santo André.</p>
   </div>
 
+  <!-- PLAN DE 4 SEMANAS -->
+  <div class="weeks-plan">
+    <h2>Plan de trabajo — 4 semanas</h2>
+    <p class="plan-desc">Cada semana tiene un objetivo técnico-mental dominante extraído directamente de los capítulos del manual. Trabaja uno a la vez para consolidar antes de avanzar.</p>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 1 · Capítulo 2 + Capítulo 6</div>
+      <div class="week-title">Lectura del extremo</div>
+      <div class="week-focus">Objetivo: anticipar el movimiento del extremo contrario antes de que reciba el balón. En defensa: retrasar la entrada y esperar el primer toque. En las fases sin balón: seguir activamente la posición del extremo aunque el juego esté lejos de tu banda.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li>¿Cuántas veces llegaste al duelo defensivo ya posicionado antes de que el extremo recibiera?</li>
+          <li>¿Cuántos duelos ganaste esperando el movimiento versus cuántos perdiste por entrar precipitado?</li>
+          <li>¿Hubo momentos en el segundo tiempo en que perdiste el hilo del extremo cuando el balón estaba lejos?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 2 · Capítulo 3 + Capítulo 5</div>
+      <div class="week-title">Criterios de subida</div>
+      <div class="week-focus">Objetivo: tomar cada decisión de incorporación al ataque por criterio táctico, no por impulso o inercia. Antes del partido, repasar mentalmente los cuatro criterios del manual. Durante el partido, reconocer explícitamente cuál criterio cumplido justificó cada subida.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li>¿Cuántas subidas totales hiciste? ¿Cuántas cumplían criterio explícito al momento de subir?</li>
+          <li>¿En cuántas subidas el mediocampista cubría activamente tu zona antes de salir?</li>
+          <li>¿Hubo subidas por impulso (el partido te arrastró) que dejaron tu banda expuesta?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 3 · Capítulo 4</div>
+      <div class="week-title">Reset tras el error</div>
+      <div class="week-focus">Objetivo: aplicar el protocolo de los 4 segundos cada vez que el extremo te supere. La métrica no es cuántas veces te superaron, sino cuántas veces activaste el sprint de recuperación de forma inmediata, sin parálisis, y cerraste la situación antes de que el peligro se consolidara.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li>¿Cuántas veces te superó el extremo? ¿En cuántas de ellas arrancaste el sprint en el primer segundo?</li>
+          <li>¿Comunicaste al central ("¡Ayuda!" / "¡Cubro!") en las situaciones de recuperación?</li>
+          <li>¿El siguiente duelo con ese extremo lo encaraste desde el mismo nivel de calma o con ansiedad acumulada?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="week-card">
+      <div class="week-tag">Semana 4 · Capítulo 3 + Capítulo 6</div>
+      <div class="week-title">Recuperación activa y gestión de los 90 minutos</div>
+      <div class="week-focus">Objetivo: usar los momentos sin balón en tu banda como recuperación genuina sin perder la vigilancia del extremo contrario. Gestionar conscientemente la energía a lo largo del partido: ajustar el número de subidas si la fatiga lo exige, compensar con intensidad defensiva.</div>
+      <div class="week-indicators">
+        <div class="week-indicators-title">Indicadores observables por partido</div>
+        <ul>
+          <li>¿En qué minuto empezaste a notar que el rendimiento bajaba — físico, mental o de decisión?</li>
+          <li>¿Ajustaste el criterio de subida en la segunda mitad en función de la energía disponible?</li>
+          <li>¿Hubo balones muertos que usaste conscientemente para recuperar versus momentos donde te desconectaste?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <!-- TRACKING TABLE -->
   <div class="tracking-section">
-    <h2>Diario del Lateral</h2>
-    <p class="track-desc">Registra tu partido en ambas dimensiones: defensiva y ofensiva. El objetivo es construir una imagen equilibrada de tu rendimiento y detectar patrones —en qué tipo de partidos fallas más duelos, en qué minutos desaparece tu subida al ataque.</p>
+    <h2>Diario del Lateral — Ficha 1: Decisiones tácticas</h2>
+    <p class="track-desc">Registra lo que ocurrió en el campo: duelos, subidas y la relación entre criterio y decisión. El objetivo es detectar si tus elecciones tácticas responden al manual o al impulso del momento.</p>
+    <div style="overflow-x: auto;">
     <table class="tracking-table">
       <thead>
         <tr>
           <th>Partido / Fecha</th>
-          <th>Duelos defensivos (G/P)</th>
-          <th>Subidas al ataque</th>
-          <th>Momento más difícil</th>
+          <th>Duelos 1v1 (G/P)</th>
+          <th>Subidas totales</th>
+          <th>Subidas por criterio</th>
+          <th>Lectura del extremo (1–5)</th>
           <th>Lección concreta</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="example">Ej: vs. Deportes — 13/04</td>
-          <td class="example">5 ganados / 2 perdidos</td>
-          <td class="example">6 (3 con impacto)</td>
-          <td class="example">Superado min. 38, costó el gol</td>
-          <td class="example">No saltar antes del primer toque del extremo</td>
+          <td class="example">5 G / 2 P</td>
+          <td class="example">7</td>
+          <td class="example">4 con criterio / 3 por impulso</td>
+          <td class="example">3 — perdí el hilo en el 2T</td>
+          <td class="example">Esperar el primer toque antes de entrar</td>
         </tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
-        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
       </tbody>
     </table>
-    <p class="tracking-note">Revisa la columna de subidas: ¿cuántas tuvieron impacto real? Si el ratio es bajo, trabajar la selección del momento correcto genera más con menos energía.</p>
+    </div>
+    <p class="tracking-note">Columna clave: "Subidas por criterio" vs. "totales". Si la diferencia es alta, el impulso está tomando decisiones que el criterio debería tomar.</p>
+  </div>
+
+  <div class="tracking-section" style="margin-top: 24px;">
+    <h2>Diario del Lateral — Ficha 2: Respuesta emocional tras el error</h2>
+    <p class="track-desc">Registra cómo respondiste mentalmente cuando algo salió mal. Esta ficha es distinta a la anterior: no evalúa lo que hiciste en el campo, sino lo que pasó en tu cabeza después. El manual insiste en que ambas dimensiones son distintas aunque estén relacionadas.</p>
+    <div style="overflow-x: auto;">
+    <table class="tracking-table">
+      <thead>
+        <tr>
+          <th>Partido / Fecha</th>
+          <th>Error / situación</th>
+          <th>¿Activé el reset inmediato?</th>
+          <th>¿Cuánto tardé en volver al nivel?</th>
+          <th>¿Afectó las siguientes decisiones?</th>
+          <th>Qué haré diferente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="example">Ej: vs. Deportes — 13/04</td>
+          <td class="example">Superado por el extremo, min. 38</td>
+          <td class="example">No — me quedé 3 seg. parado</td>
+          <td class="example">~10 minutos</td>
+          <td class="example">Sí — no subí en el 2T por miedo</td>
+          <td class="example">Sprint inmediato, una sola conclusión táctica</td>
+        </tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+        <tr><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td><td class="blank">.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tracking-note">Si la columna "¿Afectó las siguientes decisiones?" tiene muchos "Sí", el error técnico se está convirtiendo en deuda emocional que el partido te cobra después. El protocolo del Cap. 4 existe exactamente para cortar ese ciclo.</p>
   </div>
 
   <!-- CLOSING -->
@@ -762,7 +940,10 @@
     <h2>Ida y vuelta, noventa minutos, sin rendirse</h2>
     <p>Nadie más en el campo cubre lo que cubre un lateral. Nadie más exige tanto en las dos direcciones a la vez.</p>
     <p>Ese trabajo —discreto, constante, sin glamour— es lo que sostiene el equipo. Y empieza por sostener tu propia cabeza durante noventa minutos.</p>
-    <p style="margin-top:24px; font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
+    <div style="margin-top:24px; margin-bottom:16px;">
+      <a href="lateral-4-semanas.html" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; padding:13px 28px; border-radius:50px; text-decoration:none;">Ver el Plan de 4 Semanas →</a>
+    </div>
+    <p style="font-family:'Montserrat',sans-serif; font-weight:700; color:#1a1a2e;">La Zona Campeón · lazonacampeon.com</p>
   </div>
 
 </div><!-- /content -->
