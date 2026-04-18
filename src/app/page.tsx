@@ -109,7 +109,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-dark-900/95 via-dark-900/80 to-dark-900/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-dark-900/30" />
 
-        <div className="relative section-container w-full pt-28 pb-20">
+        <div className="relative section-container w-full pt-28 pb-36 md:pb-20">
           <div className="max-w-2xl">
             <p className="font-display text-gold-500 text-sm font-bold uppercase tracking-[0.3em] mb-5">
               Entrenamiento Mental para Deportistas
