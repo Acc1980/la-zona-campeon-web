@@ -523,7 +523,21 @@
         page-break-after: avoid;
         break-after: avoid;
       }
+      /* Tablas del Diario → hoja aparte en horizontal */
+      .tracking-section {
+        page: landscape-table;
+        page-break-before: always;
+        break-before: always;
+      }
+      .tracking-section > div[style*="overflow"] {
+        overflow: visible !important;
+      }
+      .tracking-table {
+        font-size: 0.78rem;
+      }
     }
+    @page { size: A4 portrait; margin: 18mm; }
+    @page landscape-table { size: A4 landscape; margin: 14mm; }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .decision-map { grid-template-columns: 1fr; }
