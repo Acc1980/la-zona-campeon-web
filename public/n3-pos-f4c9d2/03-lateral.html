@@ -523,9 +523,8 @@
         page-break-after: avoid;
         break-after: avoid;
       }
-      /* Tablas del Diario → hoja aparte en horizontal */
+      /* Tablas del Diario → hoja aparte, comprimidas para caber en portrait */
       .tracking-section {
-        page: landscape-table;
         page-break-before: always;
         break-before: always;
       }
@@ -533,11 +532,24 @@
         overflow: visible !important;
       }
       .tracking-table {
-        font-size: 0.78rem;
+        font-size: 0.68rem;
+        table-layout: fixed;
+        width: 100%;
+      }
+      .tracking-table th {
+        font-size: 0.62rem;
+        padding: 7px 6px;
+        white-space: normal;
+        word-break: break-word;
+        letter-spacing: 0;
+      }
+      .tracking-table td {
+        padding: 7px 6px;
+        font-size: 0.68rem;
+        word-break: break-word;
       }
     }
-    @page { size: A4 portrait; margin: 18mm; }
-    @page landscape-table { size: A4 landscape; margin: 14mm; }
+    @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .decision-map { grid-template-columns: 1fr; }
