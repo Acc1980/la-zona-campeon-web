@@ -492,6 +492,21 @@
     @media print {
       .print-btn { display: none; }
       body { background: #fff; }
+      .figure,
+      .protocol-grid,
+      .ejemplo-step,
+      .week-card,
+      .dm-card,
+      .pillar-card,
+      .reflection,
+      .sin-protocolo,
+      .resultado,
+      .intro,
+      .closing {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .chapter { page-break-before: auto; }
     }
     @media (max-width: 600px) {
       .pillars-grid { grid-template-columns: 1fr; }
