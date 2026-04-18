@@ -464,10 +464,21 @@
     .print-btn:hover { background: #b89928; }
 
     @media print {
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
       .print-btn { display: none; }
       .container { padding: 24px 24px 40px; }
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
+      .figure, .protocol-grid, .ejemplo-step, .week-card,
+      .pillar-card, .reflection, .sin-protocolo, .resultado,
+      .intro, .closing, .react-table, .roles-grid { page-break-inside: avoid; break-inside: avoid; }
+      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; }
+      .tracking-section { page-break-before: always; break-before: always; }
+      .tracking-table { font-size: 0.68rem; table-layout: fixed; width: 100%; }
+      .tracking-table th { font-size: 0.62rem; padding: 7px 6px; white-space: normal; word-break: break-word; letter-spacing: 0; }
+      .tracking-table td { padding: 7px 6px; font-size: 0.68rem; word-break: break-word; }
     }
+    @page { size: A4 portrait; margin: 15mm; }
 
     @media (max-width: 600px) {
       .cover h1 { font-size: 30px; }
