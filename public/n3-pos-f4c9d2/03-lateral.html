@@ -491,7 +491,18 @@
 
     @media print {
       .print-btn { display: none; }
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
+      p, li, td, th, .track-desc, .tracking-note, .week-focus,
+      .cover-desc, .cover-sub, .plan-desc, .dm-card,
+      .historia-text, .historia p, .ref-label,
+      .chapter p, .intro p, .closing p,
+      .sin-protocolo, .resultado, .reflection p {
+        color: #111 !important;
+      }
+      .chapter-number, .cover-stat small, .manual-num,
+      .tracking-note, .week-indicators li {
+        color: #333 !important;
+      }
       .figure,
       .protocol-grid,
       .ejemplo-step,
