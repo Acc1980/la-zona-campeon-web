@@ -1,18 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (pathname === "/links") return null;
 
   return (
     <header
@@ -34,8 +38,8 @@ export default function Header() {
             <Link href="/productos" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Productos
             </Link>
-            <Link href="/quiz" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
-              ¿Qué manual necesito?
+            <Link href="/#para-quien" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
+              ¿Para quién?
             </Link>
             <Link href="/frases" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Frase del Día
@@ -63,11 +67,8 @@ export default function Header() {
             <Link href="/productos" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Productos
             </Link>
-            <Link href="/quiz" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
-              ¿Qué manual necesito?
-            </Link>
             <Link href="/#para-quien" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
-              Para quién
+              ¿Para quién?
             </Link>
             <div className="px-4">
               <Link href="/gratis" onClick={() => setMenuOpen(false)} className="btn-primary text-sm w-full justify-center">
