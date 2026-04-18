@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ManualesPosicion from "@/components/ManualesPosicion";
 import ManualesGenerales from "@/components/ManualesGenerales";
 
@@ -36,8 +37,18 @@ export default function ProductosPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <section className="py-16 bg-dark-900 text-center">
-        <div className="section-container">
+      <section className="relative py-28 text-center overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1920&q=80&fit=crop"
+          alt="Atleta entrenando"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-900/80 to-dark-900/95" />
+        <div className="relative section-container">
           <div className="gold-line mx-auto mb-6" />
           <h1 className="heading-1 max-w-3xl mx-auto mb-4">Empieza Gratis. Avanza a tu Ritmo.</h1>
           <p className="text-dark-300 text-lg max-w-xl mx-auto">
