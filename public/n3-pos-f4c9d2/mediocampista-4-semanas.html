@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan 4 Semanas — La Mente del Mediocampista · La Zona Campeon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --gold: #e2bc8e; --dark: #2c2f3a; --cream: #f5f0e8; --red: #c85050; --green: #3a8a4a; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.6; }
+    .brand-header { background: var(--dark); color: var(--gold); text-align: center; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+    .cover { background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); color: var(--cream); text-align: center; padding: 56px 30px 48px; }
+    .cover .badge { display: inline-block; background: var(--gold); color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; margin-bottom: 22px; }
+    .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 10px; }
+    .cover h1 span { color: var(--gold); }
+    .cover .subtitle { font-size: 1rem; color: rgba(245,240,232,0.75); max-width: 520px; margin: 0 auto 28px; }
+    .cover .instrucciones { display: inline-flex; gap: 24px; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(232,200,74,0.3); border-radius: 10px; padding: 16px 28px; font-size: 0.85rem; color: rgba(245,240,232,0.85); }
+    .cover .instrucciones span::before { content: "-> "; color: var(--gold); font-weight: 700; }
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 28px 60px; }
+    .week-block { margin-bottom: 56px; }
+    .week-header { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 3px solid var(--gold); }
+    .week-number { background: var(--dark); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; border-radius: 6px; white-space: nowrap; }
+    .week-focus { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .week-title { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--dark); }
+    .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    .day-card { background: #fff; border-radius: 10px; padding: 16px 16px 16px 14px; border-left: 4px solid var(--gold); display: flex; gap: 12px; align-items: flex-start; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .day-card.red { border-color: var(--red); } .day-card.green { border-color: var(--green); } .day-card.blue { border-color: #3a7bd5; } .day-card.mid { border-color: #8855cc; }
+    .checkbox-wrap { flex-shrink: 0; width: 26px; height: 26px; border: 2.5px solid #ccc; border-radius: 5px; margin-top: 2px; }
+    .day-card.red .checkbox-wrap { border-color: var(--red); } .day-card.green .checkbox-wrap { border-color: var(--green); } .day-card.blue .checkbox-wrap { border-color: #3a7bd5; } .day-card.mid .checkbox-wrap { border-color: #8855cc; }
+    .day-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+    .day-action { font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; line-height: 1.4; }
+    .day-detail { font-size: 0.78rem; color: #666; line-height: 1.45; }
+    .week-note { background: var(--dark); color: rgba(245,240,232,0.85); border-radius: 8px; padding: 14px 18px; margin-top: 16px; font-size: 0.82rem; display: flex; gap: 10px; }
+    .week-note .note-icon { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+    .ficha-section { margin-top: 20px; page-break-before: always; }
+    .ficha-header { text-align: center; background: var(--dark); color: var(--cream); padding: 32px 20px 28px; border-radius: 12px 12px 0 0; }
+    .ficha-header .fh-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .ficha-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; }
+    .ficha-header p { font-size: 0.85rem; color: rgba(245,240,232,0.7); max-width: 460px; margin: 0 auto; }
+    .ficha-body { background: #fff; border: 2px solid var(--dark); border-top: none; border-radius: 0 0 12px 12px; padding: 28px 28px 32px; }
+    .ficha-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+    .meta-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+    .meta-line { border-bottom: 1.5px solid #ccc; height: 28px; }
+    .ficha-block { margin-bottom: 24px; }
+    .ficha-block-title { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); background: var(--cream); border-radius: 4px; padding: 6px 10px; margin-bottom: 12px; border-left: 3px solid var(--gold); }
+    .check-list { display: flex; flex-direction: column; gap: 10px; }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; }
+    .check-box { flex-shrink: 0; width: 22px; height: 22px; border: 2px solid #bbb; border-radius: 4px; margin-top: 1px; }
+    .check-text .label { font-weight: 700; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; }
+    .check-sub { font-size: 0.76rem; color: #777; display: block; }
+    .escala-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .escala-label { font-size: 0.83rem; font-weight: 600; min-width: 180px; }
+    .escala-boxes { display: flex; gap: 4px; }
+    .escala-box { width: 28px; height: 28px; border: 1.5px solid #bbb; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 700; color: #aaa; }
+    .escala-box:first-child { border-color: var(--red); color: var(--red); } .escala-box:last-child { border-color: var(--green); color: var(--green); }
+    .notes-area { border: 1.5px solid #ddd; border-radius: 6px; padding: 12px; min-height: 70px; background: var(--cream); font-size: 0.82rem; color: #aaa; font-style: italic; }
+    .ficha-copies-note { text-align: center; margin-top: 20px; font-size: 0.78rem; color: #888; font-style: italic; }
+    .closing { text-align: center; padding: 40px 20px; margin-top: 48px; border-top: 2px solid var(--gold); }
+    .closing h2 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 10px; }
+    .closing p { font-size: 0.9rem; color: #555; max-width: 460px; margin: 0 auto 6px; }
+    .closing .brand-foot { margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+    .print-btn { position: fixed; bottom: 24px; right: 24px; background: var(--gold); color: var(--dark); border: none; border-radius: 50px; padding: 13px 26px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 999; }
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; color: #111; }
+      .escala-row, .check-item, .ficha-block, .ficha-section,
+      .week-note, .day-card, .closing { page-break-inside: avoid; break-inside: avoid; }
+      .ficha-block-title, .ficha-header { page-break-after: avoid; break-after: avoid; }
+      p, .escala-label, .check-text, .day-detail, .closing p,
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
+    }
+    @page { size: A4 portrait; margin: 15mm; }
+    @media (max-width: 600px) { .days-grid { grid-template-columns: 1fr; } .ficha-meta { grid-template-columns: 1fr 1fr; } }
+  
+    /* ── INTERACTIVIDAD ── */
+    .ficha-textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(226,188,142,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .ficha-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .ficha-textarea:focus { outline: none; border-color: rgba(226,188,142,0.6); }
+
+  </style>
+</head>
+<body>
+<div class="brand-header">La Zona Campeon - Psicologia Deportiva</div>
+<div class="cover">
+  <div class="badge">Nivel 3 - Manual por Posicion - Futbol - Mediocampista</div>
+  <h1>Plan de <span>4 Semanas</span><br>del Mediocampista</h1>
+  <p class="subtitle">Un ejercicio por dia. Chequéalo cuando lo completes. En 28 dias, los protocolos de este manual son parte de tu juego.</p>
+  <div class="instrucciones"><span>Imprime esta hoja</span><span>Una accion por dia</span><span>Marca el cuadro al cumplir</span><span>Usa la Ficha de Partido despues de cada partido</span></div>
+</div>
+<div class="page">
+
+  <div class="week-block">
+    <div class="week-header"><div class="week-number">Semana 1</div><div><div class="week-focus">Capitulos 1 y 2</div><div class="week-title">Identidad del mediocampista · Decidir antes de recibir</div></div></div>
+    <div class="days-grid">
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 1 - Lectura</div><div class="day-action">Lee el Capitulo 1 completo</div><div class="day-detail">¿Cual de los 3 pilares es tu mayor debilidad: velocidad de decision, conexion con companeros o sostener el nivel en la segunda mitad?</div></div></div>
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 2 - Reflexion</div><div class="day-action">¿Como cambia tu juego cuando el equipo va perdiendo?</div><div class="day-detail">¿Tomas mas riesgos, te vuelves mas conservador o mantienes tu juego habitual? ¿Esa respuesta te ayuda o perjudica al equipo?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 3 - Memorizacion</div><div class="day-action">Memoriza los 3 pilares del mediocampista</div><div class="day-detail">Velocidad de decision · Conexion con companeros · Consistencia 90 minutos. Escribelos sin mirar. ¿En cual estas mas debil esta semana?</div></div></div>
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 4 - Lectura</div><div class="day-action">Lee el Capitulo 2 completo</div><div class="day-detail">Leer el campo antes de recibir. ¿Con que frecuencia escaneas antes del balon? ¿Hay momentos donde ese habito desaparece?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 5 - Habito de escaneo</div><div class="day-action">Practica: escanea el campo antes de recibir</div><div class="day-detail">Hoy en el entreno, cada vez que el balon venga hacia ti: mira hacia donde vas a jugar ANTES de que llegue. Una sola opcion clara en la cabeza.</div></div></div>
+      <div class="day-card green"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 6 - Entrenamiento</div><div class="day-action">Cuenta tus escaneos previos por partido</div><div class="day-detail">¿Cuantas veces en el entreno recibiste el balon ya sabiendo donde ibas a jugar? ¿Cuantas veces llegaste al balon sin opcion clara en la cabeza?</div></div></div>
+      <div class="day-card mid"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 7 - Revision semanal</div><div class="day-action">¿En que situacion desaparece tu habito de escaneo?</div><div class="day-detail">¿Bajo presion alta, en la segunda mitad, cuando el equipo va perdiendo? Ese es tu contexto de trabajo para las siguientes semanas.</div></div></div>
+    </div>
+    <div class="week-note"><div class="note-icon">💡</div><div>El mediocampista que llega al balon ya sabiendo donde va a jugar toma decisiones 3 veces mas rapido que el que decide despues de recibirlo. El escaneo previo no es un detalle tecnico: es la base de la inteligencia de juego.</div></div>
+  </div>
+
+  <div class="week-block">
+    <div class="week-header"><div class="week-number">Semana 2</div><div><div class="week-focus">Capitulos 3 y 4</div><div class="week-title">Gestion del error de pase · Fatiga mental en los minutos 70-90</div></div></div>
+    <div class="days-grid">
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 8 - Lectura</div><div class="day-action">Lee el Capitulo 3 completo</div><div class="day-detail">¿Cuanto tiempo suele pasarte entre cometer un error de pase y volver a pedir el balon con conviccion? ¿Segundos, minutos, mas?</div></div></div>
+      <div class="day-card red"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 9 - Memorizacion</div><div class="day-action">Memoriza el protocolo de reset tras error de pase</div><div class="day-detail">Sprint fisico inmediato → una sola conclusion tecnica → pide el balon de nuevo. Brevedad y fisicalidad. Escribelo con tus palabras.</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 10 - Visualizacion</div><div class="day-action">Visualiza: error de pase en zona peligrosa, aplicas el protocolo (5 min)</div><div class="day-detail">El pase sale mal. Sprint de pressing. "Abri el pie demasiado." Vuelves a pedir el balon en la siguiente jugada. No te escondes. 3 veces.</div></div></div>
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 11 - Lectura</div><div class="day-action">Lee el Capitulo 4 completo</div><div class="day-detail">¿A partir de que minuto empieza a notarse la fatiga mental? ¿Se manifiesta en la velocidad de decision, la comunicacion o el escaneo previo?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 12 - Estrategia personal</div><div class="day-action">Disena tu estrategia para los minutos 70-90</div><div class="day-detail">¿Simplificar el juego? ¿Comunicar mas? ¿Moverse menos pero con mas criterio? Una decision consciente, no dejar que el cansancio decida por ti.</div></div></div>
+      <div class="day-card green"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 13 - Entrenamiento</div><div class="day-action">Aplica: en el ultimo tramo del entreno, escanea mas</div><div class="day-detail">Cuando el cuerpo pide simplificar, fuerza un escaneo previo antes de cada balon. Compensa la fatiga fisica con mas lectura anticipada.</div></div></div>
+      <div class="day-card mid"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 14 - Revision semanal</div><div class="day-action">¿Cuanto tardas en volver a pedir el balon tras un error?</div><div class="day-detail">Sé honesto. ¿Te escondes despues de un error de pase? ¿Cuantas jugadas pasas antes de volver a exigir el balon con conviccion?</div></div></div>
+    </div>
+    <div class="week-note"><div class="note-icon">⚡</div><div>El mediocampista que se esconde despues de un error deja al equipo sin su jugador mas importante exactamente cuando mas lo necesitan. La vuelta rapida al balon es una decision de liderazgo, no de valentia.</div></div>
+  </div>
+
+  <div class="week-block">
+    <div class="week-header"><div class="week-number">Semana 3</div><div><div class="week-focus">Capitulos 5 y 6</div><div class="week-title">Liderazgo desde el centro · Consistencia de partido a partido</div></div></div>
+    <div class="days-grid">
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 15 - Lectura</div><div class="day-action">Lee el Capitulo 5 completo</div><div class="day-detail">¿Como cambia tu nivel de liderazgo en el partido segun el marcador, el rival o la importancia del partido?</div></div></div>
+      <div class="day-card red"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 16 - Practica de liderazgo</div><div class="day-action">Define tu estilo de conexion con el equipo</div><div class="day-detail">¿Lideras con la voz, con el cuerpo, con el ejemplo o con la creatividad? ¿En que momento del partido tu influencia es mas fuerte?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 17 - Entrenamiento</div><div class="day-action">En el entreno: conecta activamente con 3 companeros</div><div class="day-detail">Busca conscientemente 3 momentos donde tu comunicacion o tu juego conecte con un companero y mejore su decision. Anota cuales fueron.</div></div></div>
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 18 - Lectura</div><div class="day-action">Lee el Capitulo 6 completo</div><div class="day-detail">¿Como describes tu consistencia esta temporada? ¿Hay factores externos (rival, localidad, importancia) que afectan significativamente tu nivel?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 19 - Diagnostico de consistencia</div><div class="day-action">¿Que factores externos bajan mas tu rendimiento?</div><div class="day-detail">Lista los 3 factores que mas te desestabilizan. Para cada uno, escribe una accion concreta que reduce su impacto en tu juego.</div></div></div>
+      <div class="day-card green"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 20 - Entrenamiento</div><div class="day-action">Mantén tu juego habitual independiente del resultado</div><div class="day-detail">Hoy, sin importar si el equipo gana o pierde en el scrimmage, mantén el mismo nivel de escaneo, comunicacion y decision. Mide si lo logras.</div></div></div>
+      <div class="day-card mid"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 21 - Revision semanal</div><div class="day-action">¿Que capitulo impacto mas tu juego?</div><div class="day-detail">De los 6 capitulos, escribe cual fue el mas revelador. ¿Por que ese? Esa respuesta dice algo importante sobre donde esta tu mayor oportunidad de crecimiento.</div></div></div>
+    </div>
+    <div class="week-note"><div class="note-icon">🧠</div><div>La claridad que el equipo necesita empieza en tu cabeza. El mediocampista que toma la misma calidad de decision en el minuto 5 y en el minuto 85, en el partido facil y en el dificil, es el que el equipo busca cuando el partido se complica.</div></div>
+  </div>
+
+  <div class="week-block">
+    <div class="week-header"><div class="week-number">Semana 4</div><div><div class="week-focus">Integracion completa</div><div class="week-title">Todos los protocolos juntos · Tu sistema personal</div></div></div>
+    <div class="days-grid">
+      <div class="day-card"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 22 - Repaso</div><div class="day-action">Recita de memoria los 3 pilares y el protocolo de error</div><div class="day-detail">Sin abrir el manual. Escribe los 3 pilares del mediocampista y los pasos del protocolo de reset tras error de pase. ¿Cuantos recuerdas?</div></div></div>
+      <div class="day-card blue"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 23 - Pre-partido</div><div class="day-action">Calentamiento mental completo (10 min)</div><div class="day-detail">Visualiza: 3 escaneos previos exitosos → error de pase y reset inmediato → minuto 75 con fatiga, mantienes el escaneo → lideras con una conexion clara.</div></div></div>
+      <div class="day-card green"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 24 - Partido</div><div class="day-action">Completa la Ficha de Partido</div><div class="day-detail">En el vestuario, maximo 10 minutos despues. Una leccion concreta. No un juicio sobre si jugaste bien o mal.</div></div></div>
+      <div class="day-card red"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 25 - Diagnostico</div><div class="day-action">Identifica tu patron mas recurrente</div><div class="day-detail">¿Donde fallas mas: escaneo previo, reset tras error, fatiga mental, liderazgo en momentos dificiles o inconsistencia entre partidos?</div></div></div>
+      <div class="day-card mid"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 26 - Protocolo personal</div><div class="day-action">Escribe tu protocolo para tu punto mas debil</div><div class="day-detail">Situacion concreta. Tres pasos. Con tus palabras y tus referencias. No el del manual, el tuyo.</div></div></div>
+      <div class="day-card green"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 27 - Entrenamiento</div><div class="day-action">Aplica tu protocolo personal</div><div class="day-detail">Busca las situaciones donde tu punto debil aparece. Cuando aparezca, aplica tu protocolo. Anota si funciona o que necesita ajustarse.</div></div></div>
+      <div class="day-card mid"><div class="checkbox-wrap"></div><div><div class="day-label">Dia 28 - Evaluacion final</div><div class="day-action">¿Que cambio en tu juego en 4 semanas?</div><div class="day-detail">Dia 1 vs. hoy: ¿que habito usas ya de forma automatica? ¿Eres mas consistente? ¿Como describirias tu juego en la segunda mitad comparado con antes?</div></div></div>
+    </div>
+    <div class="week-note"><div class="note-icon">🏆</div><div>El mediocampista que entrena su toma de decision mental con la misma disciplina que su tecnica no pierde el hilo del partido cuando el cuerpo se cansa. Llega al minuto 85 tomando decisiones al mismo nivel que en el minuto 5.</div></div>
+  </div>
+
+  <div class="ficha-section">
+    <div class="ficha-header">
+      <div class="fh-label">Herramienta de seguimiento — Imprimir una por partido</div>
+      <h2>Ficha de Partido del Mediocampista</h2>
+      <p>Llenala en el vestuario, maximo 10 minutos despues del partido. Una leccion por partido. Sin juicios, solo datos.</p>
+    </div>
+    <div class="ficha-body">
+      <div class="ficha-meta">
+        <div><div class="meta-label">Rival</div><div class="meta-line"></div></div>
+        <div><div class="meta-label">Fecha</div><div class="meta-line"></div></div>
+        <div><div class="meta-label">Resultado</div><div class="meta-line"></div></div>
+      </div>
+      <div class="ficha-block">
+        <div class="ficha-block-title">🔍 Escaneo y decision</div>
+        <div class="check-list">
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Escané el campo antes de recibir el balon</span><span class="check-sub">Al menos en la mayoria de jugadas llegué al balon ya sabiendo donde iba a jugar</span></div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Mis decisiones fueron rapidas y claras</span><span class="check-sub">Pocas dudas. Cuando tuve opciones, la eleccion fue rapida</span></div></div>
+        </div>
+      </div>
+      <div class="ficha-block">
+        <div class="ficha-block-title">⚡ Gestion del error de pase</div>
+        <div class="check-list">
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Reset inmediato tras el error: sprint + una sola conclusion</span><span class="check-sub">No me quede procesando el error. El cuerpo arranco primero</span></div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Volvi a pedir el balon rapidamente</span><span class="check-sub">No me esconde despues del error. El siguiente balon fue mio</span></div></div>
+        </div>
+      </div>
+      <div class="ficha-block">
+        <div class="ficha-block-title">🕐 Minutos 70-90: fatiga mental</div>
+        <div class="check-list">
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Mantuve el escaneo previo en el segundo tiempo</span><span class="check-sub">El cansancio no elimino el habito de leer el campo antes de recibir</span></div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Aplique mi estrategia de ultimos minutos</span><span class="check-sub">Simplificacion consciente / mas comunicacion / mov. con mas criterio</span></div></div>
+        </div>
+      </div>
+      <div class="ficha-block">
+        <div class="ficha-block-title">📊 Escala de rendimiento mental (1 = muy bajo · 5 = muy alto)</div>
+        <div class="escala-row"><div class="escala-label">Escaneo y decision rapida</div><div class="escala-boxes"><div class="escala-box">1</div><div class="escala-box">2</div><div class="escala-box">3</div><div class="escala-box">4</div><div class="escala-box">5</div></div></div>
+        <div class="escala-row"><div class="escala-label">Reset tras error</div><div class="escala-boxes"><div class="escala-box">1</div><div class="escala-box">2</div><div class="escala-box">3</div><div class="escala-box">4</div><div class="escala-box">5</div></div></div>
+        <div class="escala-row"><div class="escala-label">Conexion y liderazgo</div><div class="escala-boxes"><div class="escala-box">1</div><div class="escala-box">2</div><div class="escala-box">3</div><div class="escala-box">4</div><div class="escala-box">5</div></div></div>
+        <div class="escala-row"><div class="escala-label">Consistencia 90 min</div><div class="escala-boxes"><div class="escala-box">1</div><div class="escala-box">2</div><div class="escala-box">3</div><div class="escala-box">4</div><div class="escala-box">5</div></div></div>
+      </div>
+      <div class="ficha-block">
+        <div class="ficha-block-title">✏️ Una sola leccion de este partido</div>
+        <div class="notes-area">Una instruccion concreta. No un juicio. Ej: "La proxima vez que el equipo vaya perdiendo en el segundo tiempo, mantengo mi juego habitual en lugar de forzar pases de riesgo."</div>
+      </div>
+    </div>
+    <div class="ficha-copies-note">Imprime varias copias de esta ficha — una para cada partido de la temporada.</div>
+  </div>
+
+  <div class="closing">
+    <h2>La claridad que el equipo necesita empieza en tu cabeza.</h2>
+    <p>Cada dia marcado es una decision futura que ya sabes como tomar.</p>
+    <p>El mediocampista que piensa antes de que llegue el balon tiene el partido bajo control antes de que empiece.</p>
+    <div class="brand-foot">La Zona Campeon · lazonacampeon.com</div>
+  </div>
+</div>
+<button class="print-btn" onclick="window.print()">Imprimir / PDF</button>
+
+<script>
+(function() {
+  var KEY = 'lzc_n3-pos-f4c9d2_mediocampista_4_semanas';
+  function save() {
+    var data = { checks: {}, texts: {} };
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+      data.checks[i] = el.checked;
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+      data.texts[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    if (data.checks) {
+      document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+        if (data.checks[i] !== undefined) el.checked = data.checks[i];
+      });
+    }
+    if (data.texts) {
+      document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+        if (data.texts[i] !== undefined) el.value = data.texts[i];
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el) {
+      el.addEventListener('change', save);
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

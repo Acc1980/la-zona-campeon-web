@@ -72,9 +72,8 @@
         page-break-after: avoid;
         break-after: avoid;
       }
-      p, .escala-label, .check-text, .notes-area,
-      .day-detail, .closing p { color: #111 !important; }
-      .meta-label, .ficha-copies-note { color: #555 !important; }
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
     }
     @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) { .days-grid { grid-template-columns: 1fr; } .ficha-meta { grid-template-columns: 1fr 1fr; } }

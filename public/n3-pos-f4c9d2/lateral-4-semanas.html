@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan 4 Semanas — La Mente del Lateral · La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #e2bc8e;
+      --dark: #2c2f3a;
+      --cream: #f5f0e8;
+      --red: #c85050;
+      --green: #3a8a4a;
+      --mid: #2d2d45;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* ── BRAND HEADER ── */
+    .brand-header {
+      background: var(--dark);
+      color: var(--gold);
+      text-align: center;
+      padding: 12px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: var(--cream);
+      text-align: center;
+      padding: 56px 30px 48px;
+    }
+    .cover .badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .cover h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .cover h1 span { color: var(--gold); }
+    .cover .subtitle {
+      font-size: 1rem;
+      color: rgba(245,240,232,0.75);
+      max-width: 520px;
+      margin: 0 auto 28px;
+    }
+    .cover .instrucciones {
+      display: inline-flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(232,200,74,0.3);
+      border-radius: 10px;
+      padding: 16px 28px;
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.85);
+    }
+    .cover .instrucciones span::before { content: "→ "; color: var(--gold); font-weight: 700; }
+
+    /* ── PAGE LAYOUT ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 28px 60px;
+    }
+
+    /* ── WEEK SECTION ── */
+    .week-block {
+      margin-bottom: 56px;
+      page-break-inside: avoid;
+    }
+    .week-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .week-number {
+      background: var(--dark);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .week-title-block {}
+    .week-focus {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .week-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    /* ── DAY CARDS ── */
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .day-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 16px 16px 14px;
+      border-left: 4px solid var(--gold);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .day-card.red   { border-color: var(--red); }
+    .day-card.green { border-color: var(--green); }
+    .day-card.blue  { border-color: #3a7bd5; }
+    .day-card.mid   { border-color: #8855cc; }
+
+    .checkbox-wrap {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border: 2.5px solid #ccc;
+      border-radius: 5px;
+      margin-top: 2px;
+    }
+    .day-card.red   .checkbox-wrap { border-color: var(--red); }
+    .day-card.green .checkbox-wrap { border-color: var(--green); }
+    .day-card.blue  .checkbox-wrap { border-color: #3a7bd5; }
+    .day-card.mid   .checkbox-wrap { border-color: #8855cc; }
+
+    .day-content {}
+    .day-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 4px;
+    }
+    .day-action {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .day-detail {
+      font-size: 0.78rem;
+      color: #666;
+      line-height: 1.45;
+    }
+
+    /* ── WEEK SEPARATOR ── */
+    .week-note {
+      background: var(--dark);
+      color: rgba(245,240,232,0.85);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .week-note .note-icon {
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── FICHA DE PARTIDO ── */
+    .ficha-section {
+      margin-top: 20px;
+      page-break-before: always;
+    }
+    .ficha-header {
+      text-align: center;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 32px 20px 28px;
+      border-radius: 12px 12px 0 0;
+    }
+    .ficha-header .fh-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .ficha-header h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .ficha-header p {
+      font-size: 0.85rem;
+      color: rgba(245,240,232,0.7);
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .ficha-body {
+      background: #fff;
+      border: 2px solid var(--dark);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 28px 28px 32px;
+    }
+
+    .ficha-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .meta-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .meta-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+    }
+    .meta-line {
+      border-bottom: 1.5px solid #ccc;
+      height: 28px;
+    }
+
+    .ficha-block {
+      margin-bottom: 24px;
+    }
+    .ficha-block-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .check-box {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #bbb;
+      border-radius: 4px;
+      margin-top: 1px;
+    }
+    .check-text {
+      font-size: 0.85rem;
+      color: var(--dark);
+      line-height: 1.4;
+    }
+    .check-text .label {
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+    }
+    .check-sub {
+      font-size: 0.76rem;
+      color: #777;
+    }
+
+    .escala-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .escala-label {
+      font-size: 0.83rem;
+      color: var(--dark);
+      font-weight: 600;
+      min-width: 160px;
+    }
+    .escala-boxes {
+      display: flex;
+      gap: 4px;
+    }
+    .escala-box {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid #bbb;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #aaa;
+    }
+    .escala-box:first-child { border-color: var(--red); color: var(--red); }
+    .escala-box:last-child  { border-color: var(--green); color: var(--green); }
+
+    .notes-area {
+      border: 1.5px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 70px;
+      background: var(--cream);
+      font-size: 0.82rem;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .ficha-copies-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 48px;
+      border-top: 2px solid var(--gold);
+    }
+    .closing h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .closing p {
+      font-size: 0.9rem;
+      color: #555;
+      max-width: 460px;
+      margin: 0 auto 6px;
+    }
+    .closing .brand-foot {
+      margin-top: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      padding: 13px 26px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .print-btn:hover { background: #d4b53c; }
+
+    /* ── PRINT ── */
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; color: #111; }
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
+      .week-block, .escala-row, .check-item, .ficha-block,
+      .ficha-section, .week-note, .day-card { page-break-inside: avoid; break-inside: avoid; }
+      .ficha-block-title, .ficha-header { page-break-after: avoid; break-after: avoid; }
+      .cover { padding: 36px 20px 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .days-grid { grid-template-columns: 1fr; }
+      .ficha-meta { grid-template-columns: 1fr 1fr; }
+      .cover .instrucciones { flex-direction: column; gap: 8px; }
+    }
+  
+    /* ── INTERACTIVIDAD ── */
+    .ficha-textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(226,188,142,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .ficha-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .ficha-textarea:focus { outline: none; border-color: rgba(226,188,142,0.6); }
+
+  </style>
+</head>
+<body>
+
+<div class="brand-header">La Zona Campeón · Psicología Deportiva</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="badge">Nivel 3 — Manual por Posición · Fútbol · Lateral</div>
+  <h1>Plan de <span>4 Semanas</span><br>del Lateral</h1>
+  <p class="subtitle">Un ejercicio por día. Chequéalo cuando lo completes. En 28 días, los protocolos de este manual son parte de tu juego.</p>
+  <div class="instrucciones">
+    <span>Imprime esta hoja</span>
+    <span>Una acción por día</span>
+    <span>Marca el cuadro al cumplir</span>
+    <span>Usa la Ficha de Partido después de cada partido</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ═══════════════════════════════ SEMANA 1 ═══════════════════════════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-number">Semana 1</div>
+      <div class="week-title-block">
+        <div class="week-focus">Capítulos 1 y 2</div>
+        <div class="week-title">Identidad del lateral · Duelo defensivo 1v1</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 1 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 1 completo</div>
+          <div class="day-detail">Identifica hacia qué lado tiendes: ¿subes demasiado o te quedas siempre atrás? Anótalo al margen.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 2 — Reflexión</div>
+          <div class="day-action">Responde la pregunta de reflexión del Cap. 1</div>
+          <div class="day-detail">¿Hacia qué rol tiendes más? Escribe 3 situaciones concretas de tu último partido donde lo notaste.</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 3 — Memorización</div>
+          <div class="day-action">Memoriza los 3 pilares del lateral</div>
+          <div class="day-detail">Disciplina táctica · Ida y vuelta mental · Resiliencia de posición. Recítalos antes de dormir. ¿Cuál es tu más débil?</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 4 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 2 completo</div>
+          <div class="day-detail">Estudia la tabla: "Lateral reactivo vs. lateral con presencia mental". ¿En cuál columna te reconoces más?</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 5 — Visualización</div>
+          <div class="day-action">Visualiza el 1v1 con calma (5 min)</div>
+          <div class="day-detail">Cierra los ojos. El extremo recibe el balón. Retrocedes ordenado. Esperas su primer toque. No te precipitas. Repite 3 veces.</div>
+        </div>
+      </div>
+
+      <div class="day-card green">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 6 — Entrenamiento</div>
+          <div class="day-action">Aplica en entrenamiento: espera el primer toque</div>
+          <div class="day-detail">En cada 1v1 del entrenamiento, recuérdate: "Espero su movimiento antes de comprometerme." Cuenta cuántas veces lo logras.</div>
+        </div>
+      </div>
+
+      <div class="day-card mid">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 7 — Revisión semanal</div>
+          <div class="day-action">¿Qué pillar necesita más trabajo?</div>
+          <div class="day-detail">De los 3 pilares del lateral, marca cuál trabajaste menos esta semana y escribe una acción concreta para la semana 2.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-note">
+      <div class="note-icon">💡</div>
+      <div>El objetivo de esta semana no es cambiar tu juego —es conocer exactamente cómo funciona tu cabeza en el duelo y en la decisión de rol. Sin ese diagnóstico, el cambio no tiene base.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ SEMANA 2 ═══════════════════════════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-number">Semana 2</div>
+      <div class="week-title-block">
+        <div class="week-focus">Capítulos 3 y 4</div>
+        <div class="week-title">Carrera de ida y vuelta · Cuando el extremo te supera</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 8 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 3 completo</div>
+          <div class="day-detail">Responde: ¿a partir de qué minuto del partido empiezas a subir menos? ¿Es fatiga física, mental o táctica?</div>
+        </div>
+      </div>
+
+      <div class="day-card red">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 9 — Análisis</div>
+          <div class="day-action">Cuenta tus subidas del último partido</div>
+          <div class="day-detail">¿Cuántas fueron? ¿Cuántas tuvieron impacto real? ¿Cuántas terminaron en pérdida y sprint de vuelta? Escribe los números.</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 10 — Concepto clave</div>
+          <div class="day-action">Practica el "reset mental en la carrera de vuelta"</div>
+          <div class="day-detail">Hoy en el entreno, cuando hagas un sprint de vuelta, úsalo conscientemente para vaciar la jugada anterior de tu cabeza.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 11 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 4 completo</div>
+          <div class="day-detail">Memoriza el protocolo de los 4 segundos: Sprint → Comunica → Recupera ángulo → Cierra la situación.</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 12 — Visualización</div>
+          <div class="day-action">Visualiza el protocolo de los 4 segundos (5 min)</div>
+          <div class="day-detail">El extremo te supera. En tu mente: sprint inmediato → "¡Ayuda!" al central → te pones entre él y el arco → situación contenida. 3 repeticiones.</div>
+        </div>
+      </div>
+
+      <div class="day-card green">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 13 — Entrenamiento</div>
+          <div class="day-action">Aplica: sprint inmediato cuando te superan</div>
+          <div class="day-detail">Sin pausa, sin procesamiento. El extremo pasa → el cuerpo arranca. Nota si hay un instante de parálisis antes del sprint y cuánto dura.</div>
+        </div>
+      </div>
+
+      <div class="day-card mid">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 14 — Revisión semanal</div>
+          <div class="day-action">¿Cuánto tiempo tardas en activar el sprint?</div>
+          <div class="day-detail">Sé honesto. ¿Hay parálisis antes de arrancar? Si la hay, ¿cuándo ocurre más: con extremos rápidos, en tu banda mala, en el segundo tiempo?</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-note">
+      <div class="note-icon">⚡</div>
+      <div>El protocolo de los 4 segundos no es para no cometer errores —es para que los errores no vivan en tu cabeza. Un duelo perdido con recuperación inmediata no afecta el partido. Un duelo perdido con parálisis, sí.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ SEMANA 3 ═══════════════════════════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-number">Semana 3</div>
+      <div class="week-title-block">
+        <div class="week-focus">Capítulos 5 y 6</div>
+        <div class="week-title">Decidir cuándo subir · Concentración en los 90 minutos</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 15 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 5 completo</div>
+          <div class="day-detail">Responde: ¿tomas la decisión de subir por criterio táctico o por instinto? ¿Cuántas veces en el último partido subiste sin cobertura?</div>
+        </div>
+      </div>
+
+      <div class="day-card red">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 16 — Memorización</div>
+          <div class="day-action">Memoriza los criterios de subida y de espera</div>
+          <div class="day-detail">"Sube cuando el mediocampista cubre tu zona, el extremo propio va al interior, la banda está abierta." Escríbelos 3 veces.</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 17 — Calentamiento mental</div>
+          <div class="day-action">Pre-entreno: aplica los criterios en tu cabeza</div>
+          <div class="day-detail">Antes de arrancar el entrenamiento, repasa mentalmente 3 situaciones donde subirías y 3 donde te quedarías. Usa los criterios del Cap. 5.</div>
+        </div>
+      </div>
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 18 — Lectura</div>
+          <div class="day-action">Lee el Capítulo 6 completo</div>
+          <div class="day-detail">Identifica la diferencia entre "recuperación activa" y "desconexión". ¿En qué fase del partido te desconectas más?</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 19 — Práctica</div>
+          <div class="day-action">Recuperación activa en entrenamiento</div>
+          <div class="day-detail">Cuando el balón esté lejos de tu banda: respira, recupérate físicamente, pero mantén los ojos en el extremo contrario. Sin desconectarte.</div>
+        </div>
+      </div>
+
+      <div class="day-card green">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 20 — Partido / Entreno</div>
+          <div class="day-action">Cuenta subidas con justificación táctica</div>
+          <div class="day-detail">Después del partido: ¿cuántas subidas cumplían los 4 criterios del Cap. 5? ¿Cuántas fueron por instinto? Anota la diferencia.</div>
+        </div>
+      </div>
+
+      <div class="day-card mid">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 21 — Revisión semanal</div>
+          <div class="day-action">¿Qué capítulo impactó más tu juego?</div>
+          <div class="day-detail">De los 6 capítulos leídos, marca el que más cambió algo en tu cabeza. Ese es tu mayor ganancia hasta ahora. Escribe por qué.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-note">
+      <div class="note-icon">🧠</div>
+      <div>Tener los criterios memorizados antes del partido reduce la carga de decisión durante él. No tienes que evaluar desde cero cada vez —tienes una guía que ya practicaste. Eso libera energía mental para lo que no se puede anticipar.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ SEMANA 4 ═══════════════════════════════ -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-number">Semana 4</div>
+      <div class="week-title-block">
+        <div class="week-focus">Integración completa</div>
+        <div class="week-title">Todos los protocolos juntos · Tu juego, tu sistema</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 22 — Repaso</div>
+          <div class="day-action">Relee los 3 pilares y el protocolo de 4 segundos</div>
+          <div class="day-detail">Sin leer el manual: escribe de memoria los 3 pilares del lateral y los 4 pasos del protocolo de recuperación. ¿Cuántos recuerdas?</div>
+        </div>
+      </div>
+
+      <div class="day-card blue">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 23 — Calentamiento mental completo</div>
+          <div class="day-action">Pre-partido: visualización de 10 minutos</div>
+          <div class="day-detail">Visualiza en secuencia: 1v1 con calma → ser superado y aplicar los 4 segundos → decisión correcta de subida → recuperación activa en el segundo tiempo.</div>
+        </div>
+      </div>
+
+      <div class="day-card green">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 24 — Partido</div>
+          <div class="day-action">Completa la Ficha de Partido (parte de abajo)</div>
+          <div class="day-detail">Llénala en el vestuario, máximo 10 minutos después del partido, mientras los recuerdos están frescos. Sé honesto.</div>
+        </div>
+      </div>
+
+      <div class="day-card red">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 25 — Diagnóstico</div>
+          <div class="day-action">Identifica tu patrón más recurrente</div>
+          <div class="day-detail">Revisa tus 3 fichas de partido. ¿En qué situación fallas más consistentemente? ¿Duelo perdido sin reset? ¿Subida sin criterio? ¿Desconexión?</div>
+        </div>
+      </div>
+
+      <div class="day-card mid">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 26 — Protocolo personal</div>
+          <div class="day-action">Diseña tu protocolo para tu punto débil</div>
+          <div class="day-detail">Una hoja. Una situación concreta. Tres pasos de respuesta que funcionan para ti. Escríbelo con tus palabras, no las del manual.</div>
+        </div>
+      </div>
+
+      <div class="day-card green">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 27 — Entrenamiento</div>
+          <div class="day-action">Aplica tu protocolo personal en el entrenamiento</div>
+          <div class="day-detail">Busca conscientemente las situaciones donde tu punto débil aparece. Cuando aparezca, aplica tu protocolo. Nota si funciona.</div>
+        </div>
+      </div>
+
+      <div class="day-card mid">
+        <div class="checkbox-wrap"></div>
+        <div class="day-content">
+          <div class="day-label">Día 28 — Evaluación final</div>
+          <div class="day-action">¿Qué cambió en tu juego en 4 semanas?</div>
+          <div class="day-detail">Compara el día 1 con hoy. ¿Qué tienes más claro sobre tu posición? ¿Qué protocolo usas ya de forma automática? ¿Qué sigue pendiente?</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-note">
+      <div class="note-icon">🏆</div>
+      <div>28 días no convierten un hábito nuevo en automático —pero construyen la base. El lateral que sabe cómo reacciona su cabeza en cada situación difícil tiene una ventaja real sobre el que solo confía en el instinto del momento.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ FICHA DE PARTIDO ═══════════════════════════════ -->
+  <div class="ficha-section">
+    <div class="ficha-header">
+      <div class="fh-label">Herramienta de seguimiento — Imprimir una por partido</div>
+      <h2>Ficha de Partido del Lateral</h2>
+      <p>Llénala en el vestuario, máximo 10 minutos después del partido. Una lección por partido. Sin juicios, solo datos.</p>
+    </div>
+
+    <div class="ficha-body">
+
+      <!-- META -->
+      <div class="ficha-meta">
+        <div class="meta-field">
+          <div class="meta-label">Rival</div>
+          <div class="meta-line"></div>
+        </div>
+        <div class="meta-field">
+          <div class="meta-label">Fecha</div>
+          <div class="meta-line"></div>
+        </div>
+        <div class="meta-field">
+          <div class="meta-label">Resultado</div>
+          <div class="meta-line"></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 1: DUELO DEFENSIVO -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">🛡️ Duelo defensivo 1v1</div>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Esperé el primer toque</span><br>
+              <span class="check-sub">No me precipité antes de que el extremo definiera su dirección</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Mantuve la calma en cada 1v1</span><br>
+              <span class="check-sub">Sin urgencia. Retrocedí ordenado y leí antes de actuar</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Cada duelo empezó desde el mismo punto de calma</span><br>
+              <span class="check-sub">El duelo anterior no afectó mi posición mental en el siguiente</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#999; margin-bottom:6px;">Duelos: ganados ___ / perdidos ___</div>
+      </div>
+
+      <!-- BLOQUE 2: RECUPERACIÓN TRAS SER SUPERADO -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">⚡ Protocolo de recuperación (cuando el extremo me superó)</div>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Sprint inmediato — sin parálisis</span><br>
+              <span class="check-sub">El cuerpo arrancó en el primer segundo, sin quedarme procesando el error</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Comuniqué al central</span><br>
+              <span class="check-sub">"¡Ayuda!" o "¡Cubro!" — el equipo supo que la situación estaba activa</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Recuperé ángulo entre él y el arco</span><br>
+              <span class="check-sub">No perseguí por detrás — me puse en posición de limitar sus opciones</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">El duelo perdido no vivió en mi cabeza</span><br>
+              <span class="check-sub">Siguiente acción = nueva página, sin arrastrar el error anterior</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 3: SUBIDAS AL ATAQUE -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">⚔️ Incorporaciones al ataque</div>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Subí por criterio, no por instinto</span><br>
+              <span class="check-sub">Mediocampista cubría mi zona + banda abierta + balón seguro</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Administré la energía</span><br>
+              <span class="check-sub">Llegué al minuto 70+ con capacidad de seguir subiendo cuando valía</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#999; margin-bottom:6px;">Subidas totales: ___ / Con impacto real: ___</div>
+      </div>
+
+      <!-- BLOQUE 4: CONCENTRACIÓN -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">🎯 Concentración y gestión del partido</div>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Recuperación activa (sin desconexión)</span><br>
+              <span class="check-sub">Cuando el balón estaba lejos de mi banda, seguí leyendo el movimiento del extremo contrario</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <span class="label">Usé los balones muertos para recuperarme</span><br>
+              <span class="check-sub">Córners, faltas, fuera de juego — los aproveché para respirar y reposicionarme mentalmente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESCALA DE RENDIMIENTO -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">📊 Escala de rendimiento mental hoy (1 = muy bajo · 5 = muy alto)</div>
+
+        <div class="escala-row">
+          <div class="escala-label">Calma en el duelo defensivo</div>
+          <div class="escala-boxes">
+            <div class="escala-box">1</div>
+            <div class="escala-box">2</div>
+            <div class="escala-box">3</div>
+            <div class="escala-box">4</div>
+            <div class="escala-box">5</div>
+          </div>
+        </div>
+        <div class="escala-row">
+          <div class="escala-label">Velocidad de reset tras error</div>
+          <div class="escala-boxes">
+            <div class="escala-box">1</div>
+            <div class="escala-box">2</div>
+            <div class="escala-box">3</div>
+            <div class="escala-box">4</div>
+            <div class="escala-box">5</div>
+          </div>
+        </div>
+        <div class="escala-row">
+          <div class="escala-label">Decisión de subida al ataque</div>
+          <div class="escala-boxes">
+            <div class="escala-box">1</div>
+            <div class="escala-box">2</div>
+            <div class="escala-box">3</div>
+            <div class="escala-box">4</div>
+            <div class="escala-box">5</div>
+          </div>
+        </div>
+        <div class="escala-row">
+          <div class="escala-label">Concentración en los 90 min</div>
+          <div class="escala-boxes">
+            <div class="escala-box">1</div>
+            <div class="escala-box">2</div>
+            <div class="escala-box">3</div>
+            <div class="escala-box">4</div>
+            <div class="escala-box">5</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNA LECCIÓN -->
+      <div class="ficha-block">
+        <div class="ficha-block-title">✏️ Una sola lección de este partido</div>
+        <div class="notes-area">Escribe una lección concreta. No un juicio ("jugué mal") — una instrucción para la próxima vez ("La próxima vez que el extremo me cierre hacia el interior, no salto hasta que defina el toque").</div>
+      </div>
+
+    </div>
+
+    <div class="ficha-copies-note">Imprime varias copias de esta ficha — una para cada partido de la temporada.</div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>Ida y vuelta. Noventa minutos. Sin rendirse.</h2>
+    <p>Cada día marcado es un paso. Cada ficha llena es un partido aprendido.</p>
+    <p>El lateral que entrena su mente con la misma disciplina que sus piernas no se agota en el 60 —llega al 90 con algo que dar.</p>
+    <div class="brand-foot">La Zona Campeón · lazonacampeon.com</div>
+  </div>
+
+</div><!-- /page -->
+
+<button class="print-btn" onclick="window.print()">🖨 Imprimir / PDF</button>
+
+
+<script>
+(function() {
+  var KEY = 'lzc_n3-pos-f4c9d2_lateral_4_semanas';
+  function save() {
+    var data = { checks: {}, texts: {} };
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+      data.checks[i] = el.checked;
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+      data.texts[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    if (data.checks) {
+      document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+        if (data.checks[i] !== undefined) el.checked = data.checks[i];
+      });
+    }
+    if (data.texts) {
+      document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+        if (data.texts[i] !== undefined) el.value = data.texts[i];
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el) {
+      el.addEventListener('change', save);
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
