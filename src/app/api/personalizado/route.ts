@@ -5,7 +5,6 @@ import { Resend } from 'resend'
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzWQx2Jo-Zv-wWQewL6ni9ZvkN-azdI0R8KPb9htaBSiGCgHZzdLthtZLn9ASVaUPMD/exec'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 const ASPECTOS_LABELS: Record<string, string> = {
   concentracion: 'Concentración bajo presión',
@@ -196,6 +195,7 @@ Devuelve ÚNICAMENTE el JSON corregido con la misma estructura.`,
 // ─── Email ───────────────────────────────────────────────────────────────────
 
 async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Record<string, unknown>) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const nombre = perfil.nombre as string
   const email = perfil.email as string
   const deporteLabel = perfil.deporteLabel as string
