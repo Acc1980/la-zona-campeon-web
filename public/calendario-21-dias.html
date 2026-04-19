@@ -293,23 +293,36 @@
       font-style: italic;
     }
 
+    .scroll-hint { display: none; }
+
     /* MÓVIL */
     @media (max-width: 640px) {
       .page { padding: 16px 12px; }
-      .week { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .week-grid { min-width: 500px; grid-template-columns: 120px repeat(7, 1fr); }
-      .grid-cell.habit-header { padding: 10px 8px; }
-      .habit-name { font-size: 9px; }
-      .scroll-hint { display: block; }
-    }
-    .scroll-hint {
-      display: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      color: #999;
-      text-align: right;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
+      .header h1 { font-size: 20px; }
+
+      /* Leyenda: 2 columnas */
+      .legend { gap: 8px; }
+      .legend-item { font-size: 11px; }
+
+      /* Grid: reflow — hábito ocupa fila completa, los 7 días debajo */
+      .week-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+      }
+      .grid-cell.corner { display: none; }
+      .grid-cell.day-header { padding: 6px 2px; }
+      .day-name { font-size: 9px; letter-spacing: 0; }
+      .grid-cell.habit-header {
+        grid-column: 1 / -1;
+        padding: 8px 12px;
+        border-radius: 0;
+      }
+      .habit-name { font-size: 11px; }
+      .grid-cell { padding: 8px 4px; }
+      .check-box { width: 22px; height: 22px; }
+
+      /* Reflexión: 1 columna */
+      .reflection { grid-template-columns: 1fr; gap: 8px; }
     }
 
     /* PRINT */
