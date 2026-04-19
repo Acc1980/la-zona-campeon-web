@@ -587,23 +587,17 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
             </p>
             {analisisIA!.autoevaluacionSemanal.preguntas.map((p, i) => (
               <div key={i} style={{ background: '#fff', border: '1px solid #e0e0e0', borderLeft: '4px solid #e8c84a', borderRadius: 6, padding: '16px 18px', marginBottom: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                  <div style={{ flexShrink: 0 }}>
-                    <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.68rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
-                      {p.area}
-                    </div>
-                    <div style={{ fontSize: '0.88rem', color: '#1a1a2e', lineHeight: 1.6, flex: 1 }}>{p.pregunta}</div>
-                  </div>
-                  <div style={{ flexShrink: 0, marginLeft: 'auto', paddingLeft: 16 }}>
-                    <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.65rem', color: '#aaa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Puntuación</div>
-                    <div style={{ display: 'flex', gap: 4 }}>
-                      {[1,2,3,4,5,6,7,8,9,10].map(n => (
-                        <div key={n} style={{ width: 18, height: 18, border: '1px solid #ddd', borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', color: '#ccc' }}>{n}</div>
-                      ))}
-                    </div>
-                  </div>
+                <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.68rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6 }}>
+                  {p.area}
                 </div>
-                <div style={{ marginTop: 10, borderTop: '1px dashed #e0e0e0', paddingTop: 8 }}>
+                <div style={{ fontSize: '0.88rem', color: '#1a1a2e', lineHeight: 1.7, marginBottom: 12 }}>{p.pregunta}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
+                  <span style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.65rem', color: '#aaa', textTransform: 'uppercase', letterSpacing: 1 }}>Puntuación:</span>
+                  {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                    <div key={n} style={{ width: 20, height: 20, border: '1px solid #ddd', borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.62rem', color: '#bbb' }}>{n}</div>
+                  ))}
+                </div>
+                <div style={{ borderTop: '1px dashed #e0e0e0', paddingTop: 8 }}>
                   <span style={{ fontSize: '0.72rem', color: '#aaa', fontFamily: "'Montserrat',sans-serif", textTransform: 'uppercase', letterSpacing: 1 }}>Reflexión: </span>
                   <span style={{ fontSize: '0.75rem', color: '#ddd' }}>_______________________________________________</span>
                 </div>
