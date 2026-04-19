@@ -234,13 +234,23 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
   return (
     <div style={{ fontFamily: "'Open Sans', sans-serif", background: '#f5f0e8', color: '#1a1a1a', lineHeight: 1.75 }}>
 
+      <style>{`
+        @media print {
+          .doc-cabecera { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .doc-cover { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .doc-cover * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .doc-dark-section { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          .doc-dark-section * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+      `}</style>
+
       {/* Cabecera */}
-      <div style={{ background: '#1a1a2e', color: '#e8c84a', textAlign: 'center', padding: '14px 20px', fontFamily: "'Montserrat', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>
+      <div className="doc-cabecera" style={{ background: '#1a1a2e', color: '#e8c84a', textAlign: 'center', padding: '14px 20px', fontFamily: "'Montserrat', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>
         La Zona Campeón · Psicología Deportiva
       </div>
 
       {/* Cover */}
-      <div style={{ background: 'linear-gradient(160deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)', color: '#f5f0e8', textAlign: 'center', padding: '60px 30px 50px' }}>
+      <div className="doc-cover" style={{ background: 'linear-gradient(160deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)', color: '#f5f0e8', textAlign: 'center', padding: '60px 30px 50px' }}>
         <div style={{ display: 'inline-block', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 18px', borderRadius: 20, marginBottom: 24 }}>
           Nivel 4 · Análisis de Perfil Mental
         </div>
@@ -395,7 +405,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
               </div>
             )}
             {analisis.length > 0 && (
-              <div style={{ background: '#1a1a2e', borderRadius: 8, padding: '20px 22px' }}>
+              <div className="doc-dark-section" style={{ background: '#1a1a2e', borderRadius: 8, padding: '20px 22px' }}>
                 <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.82rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 14 }}>
                   Análisis cruzado: deportista vs. técnico
                 </h3>
@@ -492,7 +502,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
         )}
 
         {/* Manuales recomendados */}
-        <div style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44 }}>
+        <div className="doc-dark-section" style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44 }}>
           <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 16 }}>
             Manuales recomendados para tu perfil
           </div>
