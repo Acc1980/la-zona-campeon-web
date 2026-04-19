@@ -686,8 +686,10 @@ export default function PersonalizadoPage() {
       {/* Print styles */}
       <style>{`
         @media print {
-          body > * { display: none !important; }
-          #documento-generado { display: block !important; }
+          body { background: white !important; }
+          body * { visibility: hidden; }
+          #documento-generado, #documento-generado * { visibility: visible; }
+          #documento-generado { position: absolute; left: 0; top: 0; width: 100%; }
         }
       `}</style>
     </div>
