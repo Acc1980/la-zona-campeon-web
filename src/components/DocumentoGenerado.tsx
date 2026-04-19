@@ -23,6 +23,7 @@ export type PerfilCompleto = {
   padresNombre: string
   padresObservaciones: string
   padresPreocupaciones: string
+  padresEntrenadorDijo: string
   email: string
 }
 
@@ -376,7 +377,7 @@ export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }
         )}
 
         {/* Perspectiva de los padres */}
-        {perfil.incluyePadres && (perfil.padresObservaciones || perfil.padresPreocupaciones) && (
+        {perfil.incluyePadres && (perfil.padresObservaciones || perfil.padresPreocupaciones || perfil.padresEntrenadorDijo) && (
           <div style={{ marginBottom: 44 }}>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
               Sección 4
@@ -393,11 +394,19 @@ export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }
               </div>
             )}
             {perfil.padresPreocupaciones && (
-              <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px' }}>
+              <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px', marginBottom: 14 }}>
                 <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.82rem', fontWeight: 700, color: '#e07b30', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>
                   Situaciones que les generan preocupación
                 </h3>
                 <p style={{ fontSize: '0.92rem', margin: 0, fontStyle: 'italic', color: '#333' }}>{perfil.padresPreocupaciones}</p>
+              </div>
+            )}
+            {perfil.padresEntrenadorDijo && (
+              <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px' }}>
+                <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.82rem', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>
+                  Lo que el entrenador/a les ha dicho
+                </h3>
+                <p style={{ fontSize: '0.92rem', margin: 0, fontStyle: 'italic', color: '#333' }}>{perfil.padresEntrenadorDijo}</p>
               </div>
             )}
           </div>

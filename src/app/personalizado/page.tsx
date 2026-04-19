@@ -78,7 +78,7 @@ const perfilVacio: PerfilCompleto = {
   categoria: '', fortalezas: [], fortalezasTexto: '', desafios: [], desafiosTexto: '',
   situaciones: '', incluyeTecnico: false, tecnicoNombre: '', tecnicoFortalezas: '',
   tecnicoDesafios: '', incluyePadres: false, padresNombre: '', padresObservaciones: '',
-  padresPreocupaciones: '', email: '',
+  padresPreocupaciones: '', padresEntrenadorDijo: '', email: '',
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -378,16 +378,16 @@ export default function PersonalizadoPage() {
           </div>
         )}
 
-        {/* ── PASO 3: TÉCNICO ────────────────────────────────────────────── */}
+        {/* ── PASO 3: LO QUE HA DICHO EL ENTRENADOR ─────────────────────── */}
         {step === 3 && (
           <div>
-            <StepHeader step={3} total={totalSteps} title="Perspectiva del técnico" subtitle="La visión de quien te observa desde fuera enriquece el análisis." />
+            <StepHeader step={3} total={totalSteps} title="Lo que ha visto tu entrenador/a" subtitle="Tú mismo/a respondes basándote en las conversaciones con tu entrenador/a." />
 
             <div className="bg-dark-800 border border-dark-600 rounded-xl p-5 mb-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-display font-bold text-sm text-white uppercase tracking-wide">
-                    ¿Incluir la perspectiva de tu técnico?
+                    ¿Incluir la perspectiva de tu entrenador/a?
                   </p>
                   <p className="text-dark-400 text-xs mt-1">Opcional · Enriquece el análisis con una visión externa</p>
                 </div>
@@ -403,20 +403,20 @@ export default function PersonalizadoPage() {
 
             {perfil.incluyeTecnico && (
               <div className="space-y-4">
-                <Campo label="Nombre del técnico">
+                <Campo label="Nombre del entrenador/a">
                   <input className={inputCls} placeholder="Nombre del entrenador/a"
                     value={perfil.tecnicoNombre} onChange={e => set('tecnicoNombre', e.target.value)} />
                 </Campo>
-                <Campo label="¿Qué considera que el deportista hace bien mentalmente?">
+                <Campo label="¿Qué fortalezas mentales ve en ti tu entrenador/a?">
                   <textarea className={textareaCls} rows={4}
-                    placeholder="Descripción libre de las fortalezas mentales que observa el técnico en el deportista..."
+                    placeholder="Ej: Me dice que soy muy competitivo, que no me rindo, que tengo buena actitud cuando las cosas van mal..."
                     value={perfil.tecnicoFortalezas}
                     onChange={e => set('tecnicoFortalezas', e.target.value)}
                   />
                 </Campo>
-                <Campo label="¿En qué aspectos mentales considera que debe trabajar más?">
+                <Campo label="¿Qué te pide mejorar? ¿Cuál dice que es tu mayor área de desarrollo?">
                   <textarea className={textareaCls} rows={4}
-                    placeholder="Descripción libre de los aspectos mentales donde el técnico ve mayor margen de mejora..."
+                    placeholder="Ej: Me dice que me desconcentro después de los errores, que me pongo muy nervioso en partidos importantes, que debo tener más confianza..."
                     value={perfil.tecnicoDesafios}
                     onChange={e => set('tecnicoDesafios', e.target.value)}
                   />
@@ -426,7 +426,7 @@ export default function PersonalizadoPage() {
 
             {!perfil.incluyeTecnico && (
               <div className="text-center py-8 text-dark-500">
-                <p className="text-sm">Puedes continuar sin incluir la perspectiva del técnico.</p>
+                <p className="text-sm">Puedes continuar sin incluir esta perspectiva.</p>
                 <p className="text-xs mt-1">El análisis se basará solo en tu autoevaluación.</p>
               </div>
             )}
@@ -481,6 +481,13 @@ export default function PersonalizadoPage() {
                     placeholder="Ej: Se frustra mucho cuando pierde, se pone muy nervioso antes de los partidos importantes, carga mucho los errores..."
                     value={perfil.padresPreocupaciones}
                     onChange={e => set('padresPreocupaciones', e.target.value)}
+                  />
+                </Campo>
+                <Campo label="¿Qué les ha dicho el entrenador/a sobre su hijo/a a nivel mental?">
+                  <textarea className={textareaCls} rows={3}
+                    placeholder="Ej: El entrenador nos dice que tiene mucho potencial pero que necesita más confianza en sí mismo, que se bloquea en los partidos importantes..."
+                    value={perfil.padresEntrenadorDijo}
+                    onChange={e => set('padresEntrenadorDijo', e.target.value)}
                   />
                 </Campo>
               </div>
