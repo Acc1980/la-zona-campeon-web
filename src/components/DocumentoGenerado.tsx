@@ -507,41 +507,22 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
           </div>
         )}
 
-        {/* Manuales recomendados */}
-        <div className="doc-dark-section" style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44 }}>
+        {/* CTA siguiente paso */}
+        <div className="doc-dark-section" style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44, textAlign: 'center' }}>
           <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 16 }}>
-            Manuales recomendados para tu perfil
+            Próximo paso
           </div>
-          {manualN3 && (
-            <div style={{ background: 'rgba(232,200,74,0.1)', border: '1px solid rgba(232,200,74,0.4)', borderRadius: 8, padding: '18px 20px', marginBottom: 12 }}>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.72rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
-                Nivel 3 · Tu manual de posición
-              </div>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, color: '#f5f0e8', fontSize: '1rem' }}>
-                {manualN3} — $19.99
-              </div>
-            </div>
-          )}
-          {!manualN3 && (
-            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '18px 20px', marginBottom: 12 }}>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.72rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
-                Nivel 3 · Manual de posición
-              </div>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, color: 'rgba(245,240,232,0.5)', fontSize: '1rem' }}>
-                {perfil.deporteLabel} · {perfil.posicionLabel} — Próximamente
-              </div>
-            </div>
-          )}
-          {manualesN2.map((titulo, i) => (
-            <div key={i} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '18px 20px', marginBottom: 12 }}>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.72rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
-                Nivel 2 · Manual general
-              </div>
-              <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, color: '#f5f0e8', fontSize: '1rem' }}>
-                {titulo} — $9.99
-              </div>
-            </div>
-          ))}
+          <p style={{ color: 'rgba(245,240,232,0.85)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: 20, maxWidth: 480, margin: '0 auto 20px' }}>
+            En 4 semanas habrás trabajado tu plan. Vuelve a evaluar tu perfil — verás cuánto ha cambiado tu mente.
+          </p>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://lazonacampeon.com/personalizado" style={{ display: 'inline-block', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '12px 24px', borderRadius: 6, textDecoration: 'none' }}>
+              Reevaluar en 4 semanas →
+            </a>
+            <a href="https://lazonacampeon.com/gratis" style={{ display: 'inline-block', background: 'transparent', color: '#e8c84a', border: '1px solid rgba(232,200,74,0.5)', fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '12px 24px', borderRadius: 6, textDecoration: 'none' }}>
+              Compartir con un compañero
+            </a>
+          </div>
         </div>
 
         {/* Registro diario */}
