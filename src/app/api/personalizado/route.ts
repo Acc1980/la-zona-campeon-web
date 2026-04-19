@@ -47,12 +47,17 @@ ${p.situaciones ? `Situaciones donde la mente le frena: "${p.situaciones}"` : ''
 }
 
 function parseJSON(text: string): Record<string, unknown> | null {
-  const match = text.match(/\{[\s\S]*\}/)
-  if (!match) return null
+  // Find the first { and the last } to handle extra text before/after
+  const start = text.indexOf('{')
+  const end = text.lastIndexOf('}')
+  if (start === -1 || end === -1 || end <= start) return null
   try {
-    return JSON.parse(match[0])
+    return JSON.parse(text.slice(start, end + 1))
   } catch {
-    return null
+    // If still fails, try to find valid JSON block
+    const match = text.match(/\{[\s\S]*\}/)
+    if (!match) return null
+    try { return JSON.parse(match[0]) } catch { return null }
   }
 }
 
@@ -61,7 +66,7 @@ function parseJSON(text: string): Record<string, unknown> | null {
 async function agente1_generador(perfilTexto: string, nombre: string, deporte: string, posicion: string): Promise<string> {
   const msg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 3500,
+    max_tokens: 4096,
     system: `Eres un psicólogo deportivo de élite especializado en rendimiento mental.
 Tu tarea es generar análisis mentales personalizados profundos y accionables para deportistas.
 Escribes de forma directa, empática y sin rodeos. Cada análisis debe sentirse escrito específicamente para esa persona, no como una plantilla genérica.
@@ -145,7 +150,7 @@ async function agente3_implementador(perfilTexto: string, borrador: string, corr
 
   const msg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 2500,
+    max_tokens: 4096,
     system: `Eres un psicólogo deportivo editor. Recibes un análisis mental borrador y una lista de correcciones. Aplicas las correcciones y devuelves el análisis mejorado.
 Responde ÚNICAMENTE con el JSON corregido, sin texto antes ni después. Mantén exactamente la misma estructura del JSON original.`,
     messages: [{
