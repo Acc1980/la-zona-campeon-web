@@ -2,6 +2,13 @@
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
+export type AnalisisIA = {
+  diagnostico: string
+  estrategias: { titulo: string; descripcion: string }[]
+  plan4semanas: { semana: number; titulo: string; foco: string; ejercicios: string[] }[]
+  mensajeFinal: string
+}
+
 export type PerfilCompleto = {
   nombre: string
   edad: string
@@ -210,7 +217,7 @@ function analisisCruzado(
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }) {
+export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: PerfilCompleto; analisisIA?: AnalisisIA }) {
   const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
   const plan = generarPlan(perfil.desafios, perfil.fortalezas)
   const manualN3 = NIVEL3_POSICION[perfil.deporte]?.[perfil.posicion]
@@ -253,20 +260,49 @@ export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }
         {/* Resumen del diagnóstico */}
         <div style={{ background: '#fff', borderLeft: '5px solid #e8c84a', borderRadius: 6, padding: '26px 28px', marginBottom: 44 }}>
           <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.1rem', fontWeight: 700, marginBottom: 12, color: '#1a1a2e' }}>
-            Resumen del diagnóstico
+            Diagnóstico mental personalizado
           </h2>
-          <p style={{ marginBottom: 12 }}>
-            Este análisis está basado en la información que {perfil.nombre} proporcionó sobre su perfil deportivo
-            {perfil.incluyeTecnico ? `, la perspectiva de ${perfil.tecnicoNombre || 'su técnico'}` : ''}
-            {perfil.incluyePadres ? ` y las observaciones de ${perfil.padresNombre || 'sus padres'}` : ''}.
-          </p>
-          <p>
-            <strong>{perfil.deporteLabel} · {perfil.posicionLabel} · {perfil.categoria}</strong>
-            {perfil.edad ? ` · ${perfil.edad} años` : ''}.
-            {perfil.fortalezas.length > 0 && ` Fortalezas identificadas: ${perfil.fortalezas.map(f => ASPECTOS[f]?.label).filter(Boolean).join(', ')}.`}
-            {perfil.desafios.length > 0 && ` Áreas de trabajo prioritario: ${perfil.desafios.map(d => ASPECTOS[d]?.label).filter(Boolean).join(', ')}.`}
-          </p>
+          {analisisIA?.diagnostico
+            ? analisisIA.diagnostico.split('\n').filter(Boolean).map((p, i) => (
+                <p key={i} style={{ marginBottom: 12, fontSize: '0.95rem', lineHeight: 1.8 }}>{p}</p>
+              ))
+            : (
+              <>
+                <p style={{ marginBottom: 12 }}>
+                  Este análisis está basado en la información que {perfil.nombre} proporcionó sobre su perfil deportivo
+                  {perfil.incluyeTecnico ? `, la perspectiva de ${perfil.tecnicoNombre || 'su técnico'}` : ''}
+                  {perfil.incluyePadres ? ` y las observaciones de ${perfil.padresNombre || 'sus padres'}` : ''}.
+                </p>
+                <p>
+                  <strong>{perfil.deporteLabel} · {perfil.posicionLabel} · {perfil.categoria}</strong>
+                  {perfil.edad ? ` · ${perfil.edad} años` : ''}.
+                  {perfil.fortalezas.length > 0 && ` Fortalezas identificadas: ${perfil.fortalezas.map(f => ASPECTOS[f]?.label).filter(Boolean).join(', ')}.`}
+                  {perfil.desafios.length > 0 && ` Áreas de trabajo prioritario: ${perfil.desafios.map(d => ASPECTOS[d]?.label).filter(Boolean).join(', ')}.`}
+                </p>
+              </>
+            )
+          }
         </div>
+
+        {/* Estrategias IA */}
+        {analisisIA?.estrategias && analisisIA.estrategias.length > 0 && (
+          <div style={{ marginBottom: 44 }}>
+            <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
+              Estrategias clave
+            </div>
+            <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 20, borderBottom: '2px solid #e8c84a', paddingBottom: 10 }}>
+              Estrategias específicas para ti
+            </h2>
+            {analisisIA.estrategias.map((e, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid #ddd', borderLeft: '4px solid #e8c84a', borderRadius: 8, padding: '20px 22px', marginBottom: 14 }}>
+                <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.9rem', fontWeight: 700, color: '#1a1a2e', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 8 }}>
+                  {e.titulo}
+                </h3>
+                <p style={{ fontSize: '0.92rem', margin: 0, lineHeight: 1.75 }}>{e.descripcion}</p>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Fortalezas */}
         {perfil.fortalezas.length > 0 && (
@@ -413,26 +449,44 @@ export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }
         )}
 
         {/* Plan de 4 semanas */}
-        {plan.length > 0 && (
+        {(analisisIA?.plan4semanas?.length || plan.length > 0) && (
           <div style={{ marginBottom: 44 }}>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
-              Sección {perfil.incluyeTecnico && perfil.incluyePadres ? '5' : perfil.incluyeTecnico || perfil.incluyePadres ? '4' : '3'}
+              Plan de trabajo
             </div>
             <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 20, borderBottom: '2px solid #e8c84a', paddingBottom: 10 }}>
-              Plan de trabajo — Próximas 4 semanas
+              Tu plan — Próximas 4 semanas
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 14 }}>
-              {plan.map((semana, i) => (
-                <div key={i} style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px' }}>
-                  <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.75rem', fontWeight: 800, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 6 }}>
-                    {semana.semana}
-                  </div>
-                  <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.88rem', fontWeight: 700, color: '#1a1a2e', marginBottom: 10 }}>
-                    {semana.titulo}
-                  </h3>
-                  <p style={{ fontSize: '0.88rem', color: '#444', margin: 0, lineHeight: 1.7 }}>{semana.desc}</p>
-                </div>
-              ))}
+              {analisisIA?.plan4semanas
+                ? analisisIA.plan4semanas.map((s) => (
+                    <div key={s.semana} style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px' }}>
+                      <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.75rem', fontWeight: 800, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 6 }}>
+                        Semana {s.semana}
+                      </div>
+                      <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.88rem', fontWeight: 700, color: '#1a1a2e', marginBottom: 6 }}>
+                        {s.titulo}
+                      </h3>
+                      <p style={{ fontSize: '0.82rem', color: '#555', marginBottom: 10, fontStyle: 'italic' }}>{s.foco}</p>
+                      <ul style={{ margin: 0, paddingLeft: 18 }}>
+                        {s.ejercicios.map((ej, j) => (
+                          <li key={j} style={{ fontSize: '0.85rem', color: '#333', marginBottom: 4, lineHeight: 1.6 }}>{ej}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                : plan.map((semana, i) => (
+                    <div key={i} style={{ background: '#fff', border: '1px solid #ddd', borderRadius: 8, padding: '20px 22px' }}>
+                      <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.75rem', fontWeight: 800, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 2, marginBottom: 6 }}>
+                        {semana.semana}
+                      </div>
+                      <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.88rem', fontWeight: 700, color: '#1a1a2e', marginBottom: 10 }}>
+                        {semana.titulo}
+                      </h3>
+                      <p style={{ fontSize: '0.88rem', color: '#444', margin: 0, lineHeight: 1.7 }}>{semana.desc}</p>
+                    </div>
+                  ))
+              }
             </div>
           </div>
         )}
@@ -476,6 +530,11 @@ export default function DocumentoGenerado({ perfil }: { perfil: PerfilCompleto }
 
         {/* Cierre */}
         <div style={{ textAlign: 'center', borderTop: '2px solid #e8c84a', paddingTop: 36 }}>
+          {analisisIA?.mensajeFinal && (
+            <p style={{ fontSize: '0.95rem', color: '#333', lineHeight: 1.8, maxWidth: 560, margin: '0 auto 20px', fontStyle: 'italic' }}>
+              {analisisIA.mensajeFinal}
+            </p>
+          )}
           <p style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '1.1rem', color: '#1a1a2e', marginBottom: 10 }}>
             El campeón se construye desde adentro.
           </p>

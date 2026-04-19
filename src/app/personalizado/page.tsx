@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import Link from 'next/link'
-import DocumentoGenerado, { type PerfilCompleto } from '@/components/DocumentoGenerado'
+import DocumentoGenerado, { type PerfilCompleto, type AnalisisIA } from '@/components/DocumentoGenerado'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -170,9 +170,12 @@ function BtnBack({ onClick }: { onClick: () => void }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function PersonalizadoPage() {
-  const [step, setStep]       = useState(1)
-  const [perfil, setPerfil]   = useState<PerfilCompleto>(perfilVacio)
+  const [step, setStep]         = useState(1)
+  const [perfil, setPerfil]     = useState<PerfilCompleto>(perfilVacio)
   const [generado, setGenerado] = useState(false)
+  const [cargando, setCargando] = useState(false)
+  const [error, setError]       = useState('')
+  const [analisisIA, setAnalisisIA] = useState<AnalisisIA | undefined>(undefined)
   const docRef = useRef<HTMLDivElement>(null)
 
   const totalSteps = 5
@@ -191,15 +194,34 @@ export default function PersonalizadoPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  function generar() {
-    setGenerado(true)
+  async function generar() {
+    setCargando(true)
+    setError('')
     setStep(6)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    try {
+      const res = await fetch('/api/personalizado', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...perfil, deporteLabel, posicionLabel: posLabel }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error desconocido')
+      setAnalisisIA(data.analisisIA)
+      setGenerado(true)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Error generando el análisis')
+    } finally {
+      setCargando(false)
+    }
   }
 
   function reiniciar() {
     setPerfil(perfilVacio)
     setGenerado(false)
+    setCargando(false)
+    setError('')
+    setAnalisisIA(undefined)
     setStep(1)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -592,46 +614,70 @@ export default function PersonalizadoPage() {
           </div>
         )}
 
-        {/* ── PASO 6: DOCUMENTO GENERADO ─────────────────────────────────── */}
-        {step === 6 && generado && (
+        {/* ── PASO 6: CARGANDO / ERROR / DOCUMENTO ───────────────────────── */}
+        {step === 6 && (
           <div>
-            {/* Aviso top */}
-            <div className="bg-dark-700 border border-gold-500/30 rounded-xl p-5 mb-8 text-center">
-              <p className="font-display font-black text-gold-500 uppercase tracking-wide text-sm mb-1">
-                Tu análisis está listo
-              </p>
-              <p className="text-dark-300 text-xs">
-                Usa el botón de imprimir para guardarlo como PDF. También puedes hacer clic en cada sección.
-              </p>
-            </div>
+            {/* Estado: cargando */}
+            {cargando && (
+              <div className="text-center py-20">
+                <div className="inline-block w-12 h-12 border-4 border-dark-600 border-t-gold-500 rounded-full animate-spin mb-6" />
+                <p className="font-display font-bold text-gold-500 uppercase tracking-widest text-sm mb-2">
+                  Generando tu análisis
+                </p>
+                <p className="text-dark-400 text-xs max-w-xs mx-auto">
+                  Tres especialistas IA están analizando tu perfil. Tarda unos 20-30 segundos.
+                </p>
+              </div>
+            )}
 
-            {/* Acciones */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
-              <button
-                onClick={() => window.print()}
-                className="btn-primary text-sm px-6 py-3 flex-1 justify-center"
-              >
-                Imprimir / Guardar PDF
-              </button>
-              <Link href="/productos#nivel-3" className="btn-secondary text-sm px-6 py-3 flex-1 justify-center">
-                Ver manuales recomendados
-              </Link>
-            </div>
+            {/* Estado: error */}
+            {!cargando && error && (
+              <div className="text-center py-16">
+                <p className="text-red-400 font-display font-bold uppercase tracking-wide text-sm mb-4">{error}</p>
+                <button onClick={reiniciar} className="btn-primary text-sm px-8 py-3">
+                  Intentar de nuevo
+                </button>
+              </div>
+            )}
 
-            {/* Documento */}
-            <div ref={docRef} id="documento-generado" className="rounded-xl overflow-hidden border border-dark-600">
-              <DocumentoGenerado perfil={{ ...perfil, deporteLabel, posicionLabel: posLabel }} />
-            </div>
+            {/* Estado: generado */}
+            {!cargando && !error && generado && (
+              <>
+                <div className="bg-dark-700 border border-gold-500/30 rounded-xl p-5 mb-8 text-center">
+                  <p className="font-display font-black text-gold-500 uppercase tracking-wide text-sm mb-1">
+                    Tu análisis está listo
+                  </p>
+                  <p className="text-dark-300 text-xs">
+                    Usa el botón de imprimir para guardarlo como PDF.
+                  </p>
+                </div>
 
-            {/* Acciones finales */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-dark-700">
-              <button
-                onClick={reiniciar}
-                className="text-dark-400 hover:text-gold-500 text-sm font-display uppercase tracking-wider transition-colors"
-              >
-                ← Generar otro perfil
-              </button>
-            </div>
+                <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                  <button onClick={() => window.print()} className="btn-primary text-sm px-6 py-3 flex-1 justify-center">
+                    Imprimir / Guardar PDF
+                  </button>
+                  <Link href="/productos#nivel-3" className="btn-secondary text-sm px-6 py-3 flex-1 justify-center">
+                    Ver manuales recomendados
+                  </Link>
+                </div>
+
+                <div ref={docRef} id="documento-generado" className="rounded-xl overflow-hidden border border-dark-600">
+                  <DocumentoGenerado
+                    perfil={{ ...perfil, deporteLabel, posicionLabel: posLabel }}
+                    analisisIA={analisisIA}
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-dark-700">
+                  <button
+                    onClick={reiniciar}
+                    className="text-dark-400 hover:text-gold-500 text-sm font-display uppercase tracking-wider transition-colors"
+                  >
+                    ← Generar otro perfil
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         )}
 
