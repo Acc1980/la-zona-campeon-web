@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { Resend } from 'resend'
 
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzWQx2Jo-Zv-wWQewL6ni9ZvkN-azdI0R8KPb9htaBSiGCgHZzdLthtZLn9ASVaUPMD/exec'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 const ASPECTOS_LABELS: Record<string, string> = {
   concentracion: 'Concentración bajo presión',
@@ -191,6 +193,87 @@ Devuelve ÚNICAMENTE el JSON corregido con la misma estructura.`,
   return msg.content[0].type === 'text' ? msg.content[0].text : borrador
 }
 
+// ─── Email ───────────────────────────────────────────────────────────────────
+
+async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Record<string, unknown>) {
+  const nombre = perfil.nombre as string
+  const email = perfil.email as string
+  const deporteLabel = perfil.deporteLabel as string
+  const posicionLabel = perfil.posicionLabel as string
+
+  type Estrategia = { titulo: string; descripcion: string }
+  type Semana = { semana: number; titulo: string; foco: string }
+
+  const estrategias = (analisis.estrategias as Estrategia[] | undefined) ?? []
+  const plan = (analisis.plan4semanas as Semana[] | undefined) ?? []
+  const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
+
+  const estrategiasHtml = estrategias.map(e => `
+    <div style="background:#f9f5ee;border-left:3px solid #c8aa32;padding:12px 16px;margin-bottom:10px;border-radius:4px;">
+      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 4px;text-transform:uppercase;letter-spacing:1px;">${e.titulo}</p>
+      <p style="color:#444;font-size:13px;margin:0;line-height:1.6;">${e.descripcion}</p>
+    </div>`).join('')
+
+  const planHtml = plan.map(s => `
+    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:12px 16px;margin-bottom:8px;">
+      <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Semana ${s.semana}</p>
+      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 2px;">${s.titulo}</p>
+      <p style="color:#666;font-size:12px;margin:0;font-style:italic;">${s.foco}</p>
+    </div>`).join('')
+
+  await resend.emails.send({
+    from: 'La Zona Campeón <info@lazonacampeon.com>',
+    to: email,
+    subject: `Tu análisis mental personalizado está listo, ${nombre}`,
+    html: `
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:580px;margin:0 auto;background:#ffffff;">
+
+        <!-- Header -->
+        <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
+          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
+          <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu análisis está listo</h1>
+        </div>
+
+        <!-- Intro -->
+        <div style="padding:28px 32px;background:#f5f0e8;">
+          <p style="color:#1a1a2e;font-size:14px;margin:0 0 6px;">Hola <strong>${nombre}</strong>,</p>
+          <p style="color:#444;font-size:13px;line-height:1.7;margin:0;">Tu análisis mental de <strong>${deporteLabel} · ${posicionLabel}</strong> está listo. Aquí tienes el resumen — guarda este email para consultarlo cuando lo necesites.</p>
+        </div>
+
+        <!-- Diagnóstico -->
+        <div style="padding:24px 32px;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 10px;">Tu diagnóstico</p>
+          <p style="color:#333;font-size:13px;line-height:1.8;margin:0;">${diagnostico.split('\n').filter(Boolean).join('</p><p style="color:#333;font-size:13px;line-height:1.8;margin:12px 0 0;">')}</p>
+        </div>
+
+        <!-- Estrategias -->
+        <div style="padding:0 32px 24px;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;">Tus estrategias clave</p>
+          ${estrategiasHtml}
+        </div>
+
+        <!-- Plan -->
+        <div style="padding:0 32px 24px;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;">Tu plan de 4 semanas</p>
+          ${planHtml}
+        </div>
+
+        <!-- CTA -->
+        <div style="padding:24px 32px;background:#1a1a2e;text-align:center;">
+          <p style="color:rgba(245,240,232,0.7);font-size:12px;margin:0 0 16px;">Tu documento completo incluye el registro diario y la autoevaluación semanal.</p>
+          <a href="https://lazonacampeon.com/personalizado" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Volver a mi análisis →</a>
+        </div>
+
+        <!-- Footer -->
+        <div style="padding:20px 32px;text-align:center;">
+          <p style="color:#aaa;font-size:11px;margin:0;">¿Dudas? <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;">info@lazonacampeon.com</a></p>
+          <p style="color:#ccc;font-size:10px;margin:8px 0 0;">La Zona Campeón · lazonacampeon.com</p>
+        </div>
+
+      </div>`,
+  })
+}
+
 // ─── Route Handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -263,6 +346,13 @@ export async function POST(req: NextRequest) {
 
     if (!analisisIA) {
       throw new Error(`Pipeline falló tras 3 intentos. Último error: ${ultimoError}`)
+    }
+
+    // Enviar email (sin bloquear la respuesta)
+    if (perfil.email) {
+      enviarEmailManual(perfil, analisisIA).catch(err =>
+        console.error('[personalizado] Error enviando email:', err)
+      )
     }
 
     return NextResponse.json({ success: true, analisisIA })
