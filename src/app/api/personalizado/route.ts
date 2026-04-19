@@ -200,13 +200,22 @@ async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Reco
   const email = perfil.email as string
   const deporteLabel = perfil.deporteLabel as string
   const posicionLabel = perfil.posicionLabel as string
+  const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
 
   type Estrategia = { titulo: string; descripcion: string }
-  type Semana = { semana: number; titulo: string; foco: string }
+  type Semana = { semana: number; titulo: string; foco: string; ejercicios?: string[] }
+  type Habito = { nombre: string; descripcion: string }
+  type Pregunta = { area: string; pregunta: string }
 
+  const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
   const estrategias = (analisis.estrategias as Estrategia[] | undefined) ?? []
   const plan = (analisis.plan4semanas as Semana[] | undefined) ?? []
-  const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
+  const habitos = (analisis.registroDiario as { habitos?: Habito[] } | undefined)?.habitos ?? []
+  const preguntas = (analisis.autoevaluacionSemanal as { preguntas?: Pregunta[] } | undefined)?.preguntas ?? []
+  const mensajeFinal = (analisis.mensajeFinal as string | undefined) ?? ''
+
+  const section = (label: string) =>
+    `<p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;border-bottom:1px solid #e8e8e8;padding-bottom:8px;">${label}</p>`
 
   const estrategiasHtml = estrategias.map(e => `
     <div style="background:#f9f5ee;border-left:3px solid #c8aa32;padding:12px 16px;margin-bottom:10px;border-radius:4px;">
@@ -215,59 +224,90 @@ async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Reco
     </div>`).join('')
 
   const planHtml = plan.map(s => `
-    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:12px 16px;margin-bottom:8px;">
+    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:14px 16px;margin-bottom:8px;">
       <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Semana ${s.semana}</p>
-      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 2px;">${s.titulo}</p>
-      <p style="color:#666;font-size:12px;margin:0;font-style:italic;">${s.foco}</p>
+      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 4px;">${s.titulo}</p>
+      <p style="color:#555;font-size:12px;margin:0 0 ${s.ejercicios?.length ? '8px' : '0'};font-style:italic;">${s.foco}</p>
+      ${s.ejercicios?.length ? `<ul style="margin:0;padding-left:16px;">${s.ejercicios.map(ej => `<li style="color:#444;font-size:12px;margin-bottom:3px;">${ej}</li>`).join('')}</ul>` : ''}
+    </div>`).join('')
+
+  const habitosHtml = habitos.map((h, i) => `
+    <div style="background:${i % 2 === 0 ? '#f9f5ee' : '#fff'};border:1px solid #e8e8e8;border-radius:4px;padding:10px 14px;margin-bottom:6px;">
+      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 2px;">${h.nombre}</p>
+      <p style="color:#555;font-size:12px;margin:0;line-height:1.5;">${h.descripcion}</p>
+    </div>`).join('')
+
+  const preguntasHtml = preguntas.map((p, i) => `
+    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:12px 16px;margin-bottom:8px;">
+      <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">${p.area}</p>
+      <p style="color:#1a1a2e;font-size:13px;margin:0 0 6px;line-height:1.6;">${i + 1}. ${p.pregunta}</p>
+      <p style="color:#aaa;font-size:11px;margin:0;font-style:italic;">Puntuación del 1 al 10: ___</p>
     </div>`).join('')
 
   await resend.emails.send({
     from: 'La Zona Campeón <info@lazonacampeon.com>',
     to: email,
-    subject: `Tu análisis mental personalizado está listo, ${nombre}`,
+    subject: `Tu manual mental personalizado, ${nombre} · La Zona Campeón`,
     html: `
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:580px;margin:0 auto;background:#ffffff;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:620px;margin:0 auto;background:#ffffff;">
 
         <!-- Header -->
         <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
-          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
-          <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu análisis está listo</h1>
+          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón · Nivel 4</p>
+          <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0 0 8px;">Manual Mental Personalizado</h1>
+          <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:0;">${nombre} · ${deporteLabel} · ${posicionLabel}</p>
+          <p style="color:rgba(255,255,255,0.4);font-size:11px;margin:6px 0 0;">Generado el ${fecha}</p>
         </div>
 
         <!-- Intro -->
-        <div style="padding:28px 32px;background:#f5f0e8;">
+        <div style="padding:24px 32px;background:#f5f0e8;border-bottom:1px solid #e8e0d0;">
           <p style="color:#1a1a2e;font-size:14px;margin:0 0 6px;">Hola <strong>${nombre}</strong>,</p>
-          <p style="color:#444;font-size:13px;line-height:1.7;margin:0;">Tu análisis mental de <strong>${deporteLabel} · ${posicionLabel}</strong> está listo. Aquí tienes el resumen — guarda este email para consultarlo cuando lo necesites.</p>
+          <p style="color:#555;font-size:13px;line-height:1.7;margin:0;">Este es tu manual mental completo. Guarda este email — contiene tu diagnóstico, estrategias, plan de 4 semanas, hábitos de seguimiento diario y autoevaluación semanal.</p>
         </div>
 
         <!-- Diagnóstico -->
-        <div style="padding:24px 32px;">
-          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 10px;">Tu diagnóstico</p>
-          <p style="color:#333;font-size:13px;line-height:1.8;margin:0;">${diagnostico.split('\n').filter(Boolean).join('</p><p style="color:#333;font-size:13px;line-height:1.8;margin:12px 0 0;">')}</p>
+        <div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          ${section('Tu diagnóstico mental')}
+          ${diagnostico.split('\n').filter(Boolean).map(p => `<p style="color:#333;font-size:13px;line-height:1.8;margin:0 0 10px;">${p}</p>`).join('')}
         </div>
 
         <!-- Estrategias -->
-        <div style="padding:0 32px 24px;">
-          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;">Tus estrategias clave</p>
+        ${estrategias.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          ${section('Tus estrategias clave')}
           ${estrategiasHtml}
-        </div>
+        </div>` : ''}
 
-        <!-- Plan -->
-        <div style="padding:0 32px 24px;">
-          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;">Tu plan de 4 semanas</p>
+        <!-- Plan 4 semanas -->
+        ${plan.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          ${section('Tu plan de 4 semanas')}
           ${planHtml}
-        </div>
+        </div>` : ''}
 
-        <!-- CTA -->
-        <div style="padding:24px 32px;background:#1a1a2e;text-align:center;">
-          <p style="color:rgba(245,240,232,0.7);font-size:12px;margin:0 0 16px;">Tu documento completo incluye el registro diario y la autoevaluación semanal.</p>
-          <a href="https://lazonacampeon.com/personalizado" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Volver a mi análisis →</a>
-        </div>
+        <!-- Registro diario -->
+        ${habitos.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          ${section('Hábitos de seguimiento diario')}
+          <p style="color:#555;font-size:12px;margin:0 0 12px;font-style:italic;">Marca cada día si cumpliste cada hábito (✓ / ✗). Revísalos cada noche antes de dormir.</p>
+          ${habitosHtml}
+        </div>` : ''}
+
+        <!-- Autoevaluación -->
+        ${preguntas.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          ${section('Autoevaluación semanal')}
+          <p style="color:#555;font-size:12px;margin:0 0 12px;font-style:italic;">Cada semana, puntúa del 1 al 10 y escribe una reflexión breve sobre cada pregunta.</p>
+          ${preguntasHtml}
+        </div>` : ''}
+
+        <!-- Mensaje final -->
+        ${mensajeFinal ? `<div style="padding:28px 32px;background:#f5f0e8;border-bottom:1px solid #e8e0d0;">
+          ${section('Mensaje de tu equipo')}
+          <p style="color:#1a1a2e;font-size:13px;line-height:1.8;margin:0;font-style:italic;">"${mensajeFinal}"</p>
+        </div>` : ''}
 
         <!-- Footer -->
-        <div style="padding:20px 32px;text-align:center;">
-          <p style="color:#aaa;font-size:11px;margin:0;">¿Dudas? <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;">info@lazonacampeon.com</a></p>
-          <p style="color:#ccc;font-size:10px;margin:8px 0 0;">La Zona Campeón · lazonacampeon.com</p>
+        <div style="padding:24px 32px;background:#1a1a2e;text-align:center;">
+          <p style="color:rgba(245,240,232,0.6);font-size:12px;margin:0 0 6px;">¿Tienes dudas sobre tu plan?</p>
+          <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;font-size:12px;text-decoration:none;">info@lazonacampeon.com</a>
+          <p style="color:rgba(255,255,255,0.3);font-size:10px;margin:16px 0 0;">La Zona Campeón · lazonacampeon.com</p>
         </div>
 
       </div>`,
