@@ -634,7 +634,7 @@ export default function PersonalizadoPage() {
             {!cargando && error && (
               <div className="text-center py-16">
                 <p className="text-red-400 font-display font-bold uppercase tracking-wide text-sm mb-4">{error}</p>
-                <button onClick={reiniciar} className="btn-primary text-sm px-8 py-3">
+                <button onClick={generar} className="btn-primary text-sm px-8 py-3">
                   Intentar de nuevo
                 </button>
               </div>
