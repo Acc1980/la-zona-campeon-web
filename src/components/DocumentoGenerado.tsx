@@ -505,6 +505,22 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
           </div>
         )}
 
+        {/* Frases activadoras */}
+        <div style={{ background: '#fff', border: '2px solid #e8c84a', borderRadius: 10, padding: '28px 32px', marginBottom: 44, textAlign: 'center' }}>
+          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 10 }}>
+            Antes de tu próximo partido
+          </div>
+          <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.2rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 10 }}>
+            Tu frase activadora del día
+          </h3>
+          <p style={{ fontSize: '0.88rem', color: '#555', lineHeight: 1.7, marginBottom: 20, maxWidth: 440, margin: '0 auto 20px' }}>
+            Léela en voz alta antes de entrar al campo. Una frase distinta cada día para activar tu mente de campeón.
+          </p>
+          <a href="https://lazonacampeon.com/frases" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: '#1a1a2e', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '13px 28px', borderRadius: 6, textDecoration: 'none' }}>
+            Ver mi frase activadora →
+          </a>
+        </div>
+
         {/* CTA siguiente paso */}
         <div className="doc-dark-section" style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44, textAlign: 'center' }}>
           <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 16 }}>
