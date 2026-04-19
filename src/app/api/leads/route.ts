@@ -80,6 +80,14 @@ async function enviarEmailGuia(nombre: string, email: string) {
 
         </div>
 
+        <!-- Frases activadoras -->
+        <div style="padding:24px 32px;border:2px solid #c8aa32;margin:0 32px 28px;border-radius:8px;text-align:center;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 8px;">Antes de tu próximo partido</p>
+          <p style="font-weight:800;color:#1a1a2e;font-size:15px;margin:0 0 8px;">Tu frase activadora del día</p>
+          <p style="color:#555;font-size:12px;line-height:1.6;margin:0 0 16px;">Léela en voz alta antes de entrar al campo. Una frase distinta cada día para activar tu mente de campeón.</p>
+          <a href="https://lazonacampeon.com/frases" style="display:inline-block;background:#1a1a2e;color:#c8aa32;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px 26px;border-radius:4px;text-decoration:none;">Ver mi frase activadora →</a>
+        </div>
+
         <!-- Footer -->
         <div style="padding:20px 32px;background:#1a1a2e;text-align:center;">
           <p style="color:rgba(255,255,255,0.5);font-size:11px;margin:0 0 6px;">¿Quieres llevar tu entrenamiento mental al siguiente nivel?</p>
