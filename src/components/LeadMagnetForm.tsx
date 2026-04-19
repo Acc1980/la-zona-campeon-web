@@ -17,13 +17,27 @@ export default function LeadMagnetForm({ fuente = "lead-magnet", dark = false }:
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
+    const nombreTrim = form.nombre.trim();
+    const emailTrim = form.email.trim().toLowerCase();
+
+    if (!nombreTrim || nombreTrim.length < 2) {
+      setError("Por favor escribe tu nombre completo.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailTrim || !emailRegex.test(emailTrim)) {
+      setError("Escribe un email válido (ejemplo: tu@correo.com).");
+      return;
+    }
+
     setLoading(true);
 
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, fuente }),
+        body: JSON.stringify({ nombre: nombreTrim, email: emailTrim, deporte: form.deporte, fuente }),
       });
 
       const data = await res.json();
