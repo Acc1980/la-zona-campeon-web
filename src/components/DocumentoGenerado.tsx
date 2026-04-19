@@ -242,31 +242,29 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
 
       <style>{`
         @media print {
-          .doc-cabecera { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-          .doc-cover { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-          .doc-cover * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
           .doc-dark-section { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
           .doc-dark-section * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
       `}</style>
 
       {/* Cabecera */}
-      <div className="doc-cabecera" style={{ background: '#1a1a2e', color: '#e8c84a', textAlign: 'center', padding: '14px 20px', fontFamily: "'Montserrat', sans-serif", fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>
-        La Zona Campeón · Psicología Deportiva
+      <div style={{ background: '#fff', borderBottom: '3px solid #e8c84a', textAlign: 'center', padding: '14px 20px', fontFamily: "'Montserrat', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: '#1a1a2e' }}>
+        La Zona Campeón · Control Mental para Deportistas
       </div>
 
       {/* Cover */}
-      <div className="doc-cover" style={{ background: 'linear-gradient(160deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)', color: '#f5f0e8', textAlign: 'center', padding: '60px 30px 50px' }}>
-        <div style={{ display: 'inline-block', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 18px', borderRadius: 20, marginBottom: 24 }}>
+      <div style={{ background: '#fff', color: '#1a1a2e', textAlign: 'center', padding: '60px 30px 50px', borderBottom: '1px solid #e8e8e8' }}>
+        <div style={{ display: 'inline-block', background: '#1a1a2e', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 18px', borderRadius: 20, marginBottom: 28 }}>
           Nivel 4 · Análisis de Perfil Mental
         </div>
-        <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 'clamp(1.8rem,5vw,2.8rem)', fontWeight: 800, lineHeight: 1.15, margin: '0 0 12px' }}>
+        <div style={{ width: 60, height: 4, background: '#e8c84a', margin: '0 auto 28px' }} />
+        <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 'clamp(1.8rem,5vw,2.8rem)', fontWeight: 800, lineHeight: 1.15, margin: '0 0 16px', color: '#1a1a2e' }}>
           {perfil.nombre}
         </h1>
-        <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.05rem', fontWeight: 600, color: '#e8c84a', letterSpacing: 1, marginBottom: 8 }}>
+        <p style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.05rem', fontWeight: 700, color: '#1a1a2e', letterSpacing: 1, marginBottom: 8 }}>
           {perfil.deporteLabel} · {perfil.posicionLabel} · {perfil.categoria}
         </p>
-        <p style={{ fontSize: '0.9rem', color: 'rgba(245,240,232,0.7)' }}>
+        <p style={{ fontSize: '0.88rem', color: '#777' }}>
           Generado el {fecha}
         </p>
       </div>
