@@ -129,11 +129,14 @@
     .print-btn:hover { background: #b89928; }
 
     @media print {
-      body { background: #fff; }
+      body { background: #fff; color: #111; }
       .print-btn { display: none; }
       .container { padding: 24px 24px 40px; }
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
       .chapter { page-break-inside: avoid; }
       .ejemplo { page-break-inside: avoid; }
+      .ejemplo-header { page-break-after: avoid; break-after: avoid; }
       .protocol-box { page-break-inside: avoid; }
       .figure { page-break-inside: avoid; }
       .athlete-story { page-break-inside: avoid; }
@@ -142,7 +145,12 @@
       .closing { page-break-inside: avoid; }
       .divider { display: none; }
       .ejemplo-steps li { page-break-inside: avoid; }
+      .ejemplo-steps { width: 100%; }
+      .ejemplo-steps li { display: table; width: 100%; table-layout: fixed; }
+      .ejemplo-step-tag { display: table-cell; width: 115px; vertical-align: top; padding-right: 10px; }
+      .ejemplo-steps li > span:last-child { display: table-cell; vertical-align: top; }
     }
+    @page { size: A4 portrait; margin: 15mm; }
     @media (max-width: 600px) {
       .cover h1 { font-size: 30px; }
       .pillars { grid-template-columns: 1fr; }
