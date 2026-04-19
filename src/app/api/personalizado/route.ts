@@ -67,11 +67,17 @@ async function agente1_generador(perfilTexto: string, nombre: string, deporte: s
   const msg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
-    system: `Eres un psicólogo deportivo de élite especializado en rendimiento mental.
+    system: [
+      {
+        type: 'text',
+        text: `Eres un psicólogo deportivo de élite especializado en rendimiento mental.
 Tu tarea es generar análisis mentales personalizados profundos y accionables para deportistas.
 Escribes de forma directa, empática y sin rodeos. Cada análisis debe sentirse escrito específicamente para esa persona, no como una plantilla genérica.
 Las herramientas de seguimiento deben ser 100% específicas al deporte, posición y desafíos concretos del deportista — nunca genéricas.
 Responde ÚNICAMENTE con JSON válido, sin texto antes ni después.`,
+        cache_control: { type: 'ephemeral' },
+      },
+    ],
     messages: [{
       role: 'user',
       content: `Genera el análisis mental personalizado para este deportista:
@@ -123,9 +129,15 @@ async function agente2_revisor(perfilTexto: string, borrador: string): Promise<s
   const msg = await anthropic.messages.create({
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 800,
-    system: `Eres un revisor editorial de documentos de psicología deportiva. Tu rol es detectar problemas de calidad en análisis mentales personalizados.
+    system: [
+      {
+        type: 'text',
+        text: `Eres un revisor editorial de documentos de psicología deportiva. Tu rol es detectar problemas de calidad en análisis mentales personalizados.
 Evalúas: (1) personalización real vs. texto genérico, (2) coherencia entre el perfil y el análisis, (3) especificidad de los ejercicios al deporte y posición, (4) que los hábitos del registro diario sean concretos y no genéricos, (5) que las preguntas de autoevaluación reflejen situaciones reales del deporte/posición del deportista.
 Responde en formato de lista concisa de correcciones. Si el análisis es correcto, responde "APROBADO".`,
+        cache_control: { type: 'ephemeral' },
+      },
+    ],
     messages: [{
       role: 'user',
       content: `Revisa este análisis mental para el siguiente perfil. Identifica máximo 3 problemas concretos a corregir.
@@ -151,8 +163,14 @@ async function agente3_implementador(perfilTexto: string, borrador: string, corr
   const msg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
-    system: `Eres un psicólogo deportivo editor. Recibes un análisis mental borrador y una lista de correcciones. Aplicas las correcciones y devuelves el análisis mejorado.
+    system: [
+      {
+        type: 'text',
+        text: `Eres un psicólogo deportivo editor. Recibes un análisis mental borrador y una lista de correcciones. Aplicas las correcciones y devuelves el análisis mejorado.
 Responde ÚNICAMENTE con el JSON corregido, sin texto antes ni después. Mantén exactamente la misma estructura del JSON original.`,
+        cache_control: { type: 'ephemeral' },
+      },
+    ],
     messages: [{
       role: 'user',
       content: `Aplica estas correcciones al borrador y devuelve el JSON mejorado.
