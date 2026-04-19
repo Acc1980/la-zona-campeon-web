@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SHEETS_URL = "https://script.google.com/macros/s/AKfycbxMv2y8qNMPZDxWs2rbhZCYLDWUh6B3UpW13kHpqU9w1HPx6SL_Mggiy-aKLHjt9W7m/exec";
+const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzWQx2Jo-Zv-wWQewL6ni9ZvkN-azdI0R8KPb9htaBSiGCgHZzdLthtZLn9ASVaUPMD/exec";
 
 export async function POST(req: NextRequest) {
   try {
