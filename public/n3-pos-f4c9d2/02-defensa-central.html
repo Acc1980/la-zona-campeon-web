@@ -85,7 +85,7 @@
     .ejemplo-steps { list-style: none; padding: 0; }
     .ejemplo-steps li { display: flex; gap: 10px; font-size: 13px; color: #333; padding: 7px 0; border-bottom: 1px solid #f0ece4; line-height: 1.55; }
     .ejemplo-steps li:last-child { border-bottom: none; }
-    .ejemplo-step-tag { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; min-width: 72px; }
+    .ejemplo-step-tag { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; padding-top: 2px; min-width: 96px; flex-shrink: 0; }
     .tag-sin      { color: #c0392b; }
     .tag-lee      { color: #2060a0; }
     .tag-elige    { color: #9a7a1a; }
@@ -123,10 +123,26 @@
     .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
     .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
 
+    .protocol-tag { display: inline-block; background: #f5f0e8; border: 1px solid #c8aa32; color: #9a7a1a; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+
     .print-btn { position: fixed; bottom: 28px; right: 28px; background: #c8aa32; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 22px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 16px rgba(200,170,50,0.35); z-index: 999; }
     .print-btn:hover { background: #b89928; }
 
-    @media print { body { background: #fff; } .print-btn { display: none; } .container { padding: 24px 24px 40px; } }
+    @media print {
+      body { background: #fff; }
+      .print-btn { display: none; }
+      .container { padding: 24px 24px 40px; }
+      .chapter { page-break-inside: avoid; }
+      .ejemplo { page-break-inside: avoid; }
+      .protocol-box { page-break-inside: avoid; }
+      .figure { page-break-inside: avoid; }
+      .athlete-story { page-break-inside: avoid; }
+      .reflection { page-break-inside: avoid; }
+      .exercise { page-break-inside: avoid; }
+      .closing { page-break-inside: avoid; }
+      .divider { display: none; }
+      .ejemplo-steps li { page-break-inside: avoid; }
+    }
     @media (max-width: 600px) {
       .cover h1 { font-size: 30px; }
       .pillars { grid-template-columns: 1fr; }
@@ -169,6 +185,13 @@
       <strong>cada error puede costar un gol, cada duelo puede definir un partido y cada decisión se toma en fracciones de segundo
       con consecuencias que el marcador registra de forma inmediata</strong>.
       Este manual trabaja la mentalidad específica que esa posición exige.
+    </p>
+    <p style="margin-top:12px;">
+      Está organizado en torno a los <strong>tres pilares estructurales de la posición</strong>:
+      anticipación (Cap. 2), solidez en el duelo individual (Cap. 3) y liderazgo vocal (Cap. 4).
+      Los dos capítulos finales — gestión del error (Cap. 5) y concentración en los últimos minutos (Cap. 6) —
+      son <strong>protocolos de aplicación</strong>: competencias que atraviesan los tres pilares
+      y se activan en los momentos de mayor exigencia del partido.
     </p>
     <p style="margin-top:12px; margin-bottom:0;">
       Antes de cada entrenamiento o partido, activa tu mente en <strong>lazonacampeon.com/frases</strong>.
@@ -500,6 +523,7 @@
 
   <!-- CAP 5 -->
   <div class="chapter">
+    <div style="margin-bottom:6px;"><span class="protocol-tag">Protocolo de aplicación — Duelo mental &amp; Anticipación</span></div>
     <div class="chapter-header">
       <div class="chapter-num">05</div>
       <div class="chapter-title">Gestión del error: cuando el defensa comete el fallo que cuesta el gol</div>
@@ -542,6 +566,7 @@
 
   <!-- CAP 6 -->
   <div class="chapter">
+    <div style="margin-bottom:6px;"><span class="protocol-tag">Protocolo de aplicación — Los 3 pilares bajo presión máxima</span></div>
     <div class="chapter-header">
       <div class="chapter-num">06</div>
       <div class="chapter-title">La concentración en los últimos minutos: cuando más cuesta más importa</div>
@@ -671,7 +696,10 @@
       Y la mentalidad te mantiene presente cuando el partido, el cansancio y la presión
       piden que te rindas. Eso se entrena. Empieza hoy.
     </p>
-    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
+    <div style="margin: 24px 0 16px;">
+      <a href="defensa-central-4-semanas.html" style="display:inline-block; background:#c8aa32; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; padding:13px 28px; border-radius:8px; text-decoration:none;">Ver el Plan de 4 Semanas →</a>
+    </div>
+    <p style="margin-top: 8px;">Continúa tu entrenamiento mental en:</p>
     <p class="url">lazonacampeon.com</p>
     <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
     <p style="margin-top: 16px; font-size: 13px; color: #888;">Nivel 3 — Manuales por Posición · Fútbol — Defensa Central · La Zona Campeón © 2025</p>
