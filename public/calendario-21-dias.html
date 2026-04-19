@@ -293,10 +293,30 @@
       font-style: italic;
     }
 
+    /* MÓVIL */
+    @media (max-width: 640px) {
+      .page { padding: 16px 12px; }
+      .week { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .week-grid { min-width: 500px; grid-template-columns: 120px repeat(7, 1fr); }
+      .grid-cell.habit-header { padding: 10px 8px; }
+      .habit-name { font-size: 9px; }
+      .scroll-hint { display: block; }
+    }
+    .scroll-hint {
+      display: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      color: #999;
+      text-align: right;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
     /* PRINT */
     @media print {
       body { background: white; }
       .page { padding: 20px; max-width: 100%; }
+      .scroll-hint { display: none !important; }
       @page { margin: 1cm; size: A4 landscape; }
     }
   </style>
@@ -343,6 +363,7 @@
       <div class="week-label">Semana 1</div>
       <div class="week-line"></div>
     </div>
+    <div class="scroll-hint">← desliza para ver todos los días →</div>
     <div class="week-grid">
       <div class="grid-cell corner"></div>
       <div class="grid-cell day-header"><span class="day-name">Lun</span></div>
@@ -420,6 +441,7 @@
       <div class="week-label">Semana 2</div>
       <div class="week-line"></div>
     </div>
+    <div class="scroll-hint">← desliza para ver todos los días →</div>
     <div class="week-grid">
       <div class="grid-cell corner"></div>
       <div class="grid-cell day-header"><span class="day-name">Lun</span></div>
@@ -458,6 +480,7 @@
       <div class="week-label">Semana 3</div>
       <div class="week-line"></div>
     </div>
+    <div class="scroll-hint">← desliza para ver todos los días →</div>
     <div class="week-grid">
       <div class="grid-cell corner"></div>
       <div class="grid-cell day-header"><span class="day-name">Lun</span></div>
@@ -496,6 +519,7 @@
       <div class="week-label">Semana 4</div>
       <div class="week-line"></div>
     </div>
+    <div class="scroll-hint">← desliza para ver todos los días →</div>
     <div class="week-grid">
       <div class="grid-cell corner"></div>
       <div class="grid-cell day-header"><span class="day-name">Lun</span></div>
