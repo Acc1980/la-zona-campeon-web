@@ -545,7 +545,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
         </div>
 
         {/* Registro diario */}
-        {analisisIA?.registroDiario?.habitos?.length > 0 && (
+        {(analisisIA?.registroDiario?.habitos?.length ?? 0) > 0 && (
           <div style={{ marginBottom: 44, pageBreakBefore: 'always' }}>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
               Herramienta de seguimiento · 1
@@ -572,7 +572,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
                   </tr>
                 </thead>
                 <tbody>
-                  {analisisIA.registroDiario.habitos.map((h, i) => (
+                  {analisisIA!.registroDiario.habitos.map((h, i) => (
                     <tr key={i} style={{ borderBottom: '1px solid #e0e0e0', background: i % 2 === 0 ? '#fff' : '#faf8f3' }}>
                       <td style={{ padding: '12px 14px', verticalAlign: 'top' }}>
                         <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, color: '#1a1a2e', fontSize: '0.82rem', marginBottom: 2 }}>{h.nombre}</div>
@@ -593,7 +593,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
         )}
 
         {/* Autoevaluación semanal */}
-        {analisisIA?.autoevaluacionSemanal?.preguntas?.length > 0 && (
+        {(analisisIA?.autoevaluacionSemanal?.preguntas?.length ?? 0) > 0 && (
           <div style={{ marginBottom: 44 }}>
             <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
               Herramienta de seguimiento · 2
@@ -604,7 +604,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
             <p style={{ fontSize: '0.88rem', color: '#555', marginBottom: 20 }}>
               Cada domingo, dedica 10 minutos a responder estas preguntas. Puntúa del 1 al 10 y escribe una frase de reflexión.
             </p>
-            {analisisIA.autoevaluacionSemanal.preguntas.map((p, i) => (
+            {analisisIA!.autoevaluacionSemanal.preguntas.map((p, i) => (
               <div key={i} style={{ background: '#fff', border: '1px solid #e0e0e0', borderLeft: '4px solid #e8c84a', borderRadius: 6, padding: '16px 18px', marginBottom: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
                   <div style={{ flexShrink: 0 }}>
