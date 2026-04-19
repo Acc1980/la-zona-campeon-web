@@ -6,6 +6,12 @@ export type AnalisisIA = {
   diagnostico: string
   estrategias: { titulo: string; descripcion: string }[]
   plan4semanas: { semana: number; titulo: string; foco: string; ejercicios: string[] }[]
+  registroDiario: {
+    habitos: { nombre: string; descripcion: string }[]
+  }
+  autoevaluacionSemanal: {
+    preguntas: { area: string; pregunta: string }[]
+  }
   mensajeFinal: string
 }
 
@@ -537,6 +543,93 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
             </div>
           ))}
         </div>
+
+        {/* Registro diario */}
+        {analisisIA?.registroDiario?.habitos?.length > 0 && (
+          <div style={{ marginBottom: 44, pageBreakBefore: 'always' }}>
+            <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
+              Herramienta de seguimiento · 1
+            </div>
+            <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 8, borderBottom: '2px solid #e8c84a', paddingBottom: 10 }}>
+              Registro diario
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: '#555', marginBottom: 20 }}>
+              Marca cada hábito al finalizar el día. Un ✓ si lo hiciste, una ✗ si no. Sin juicio — solo registro honesto.
+            </p>
+            {/* Tabla de hábitos */}
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem' }}>
+                <thead>
+                  <tr style={{ background: '#1a1a2e' }}>
+                    <th style={{ textAlign: 'left', padding: '10px 14px', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1, width: '38%' }}>
+                      Hábito mental
+                    </th>
+                    {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(d => (
+                      <th key={d} style={{ textAlign: 'center', padding: '10px 8px', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: '0.72rem', textTransform: 'uppercase' }}>
+                        {d}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {analisisIA.registroDiario.habitos.map((h, i) => (
+                    <tr key={i} style={{ borderBottom: '1px solid #e0e0e0', background: i % 2 === 0 ? '#fff' : '#faf8f3' }}>
+                      <td style={{ padding: '12px 14px', verticalAlign: 'top' }}>
+                        <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, color: '#1a1a2e', fontSize: '0.82rem', marginBottom: 2 }}>{h.nombre}</div>
+                        <div style={{ fontSize: '0.78rem', color: '#666', lineHeight: 1.5 }}>{h.descripcion}</div>
+                      </td>
+                      {[0,1,2,3,4,5,6].map(j => (
+                        <td key={j} style={{ textAlign: 'center', padding: '12px 8px', color: '#ccc', fontSize: '1.1rem' }}>○</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p style={{ fontSize: '0.78rem', color: '#999', marginTop: 10, fontStyle: 'italic' }}>
+              Imprime una tabla por semana. Guárdalas para ver tu evolución.
+            </p>
+          </div>
+        )}
+
+        {/* Autoevaluación semanal */}
+        {analisisIA?.autoevaluacionSemanal?.preguntas?.length > 0 && (
+          <div style={{ marginBottom: 44 }}>
+            <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 8 }}>
+              Herramienta de seguimiento · 2
+            </div>
+            <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 8, borderBottom: '2px solid #e8c84a', paddingBottom: 10 }}>
+              Autoevaluación semanal
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: '#555', marginBottom: 20 }}>
+              Cada domingo, dedica 10 minutos a responder estas preguntas. Puntúa del 1 al 10 y escribe una frase de reflexión.
+            </p>
+            {analisisIA.autoevaluacionSemanal.preguntas.map((p, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid #e0e0e0', borderLeft: '4px solid #e8c84a', borderRadius: 6, padding: '16px 18px', marginBottom: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+                  <div style={{ flexShrink: 0 }}>
+                    <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.68rem', fontWeight: 700, color: '#e8c84a', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>
+                      {p.area}
+                    </div>
+                    <div style={{ fontSize: '0.88rem', color: '#1a1a2e', lineHeight: 1.6, flex: 1 }}>{p.pregunta}</div>
+                  </div>
+                  <div style={{ flexShrink: 0, marginLeft: 'auto', paddingLeft: 16 }}>
+                    <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.65rem', color: '#aaa', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Puntuación</div>
+                    <div style={{ display: 'flex', gap: 4 }}>
+                      {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                        <div key={n} style={{ width: 18, height: 18, border: '1px solid #ddd', borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', color: '#ccc' }}>{n}</div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ marginTop: 10, borderTop: '1px dashed #e0e0e0', paddingTop: 8 }}>
+                  <span style={{ fontSize: '0.72rem', color: '#aaa', fontFamily: "'Montserrat',sans-serif", textTransform: 'uppercase', letterSpacing: 1 }}>Reflexión: </span>
+                  <span style={{ fontSize: '0.75rem', color: '#ddd' }}>_______________________________________________</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Cierre */}
         <div style={{ textAlign: 'center', borderTop: '2px solid #e8c84a', paddingTop: 36 }}>

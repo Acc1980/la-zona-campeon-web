@@ -61,10 +61,11 @@ function parseJSON(text: string): Record<string, unknown> | null {
 async function agente1_generador(perfilTexto: string, nombre: string, deporte: string, posicion: string): Promise<string> {
   const msg = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 2500,
+    max_tokens: 3500,
     system: `Eres un psicólogo deportivo de élite especializado en rendimiento mental.
 Tu tarea es generar análisis mentales personalizados profundos y accionables para deportistas.
 Escribes de forma directa, empática y sin rodeos. Cada análisis debe sentirse escrito específicamente para esa persona, no como una plantilla genérica.
+Las herramientas de seguimiento deben ser 100% específicas al deporte, posición y desafíos concretos del deportista — nunca genéricas.
 Responde ÚNICAMENTE con JSON válido, sin texto antes ni después.`,
     messages: [{
       role: 'user',
@@ -81,11 +82,30 @@ Responde ÚNICAMENTE con este JSON (sin texto adicional):
     {"titulo": "...", "descripcion": "..."}
   ],
   "plan4semanas": [
-    {"semana": 1, "titulo": "Título de la semana", "foco": "Objetivo central de esta semana en una frase", "ejercicios": ["Ejercicio concreto y específico 1", "Ejercicio concreto 2", "Ejercicio concreto 3"]},
+    {"semana": 1, "titulo": "Título de la semana", "foco": "Objetivo central de esta semana en una frase", "ejercicios": ["Ejercicio concreto y específico 1 para ${deporte}/${posicion}", "Ejercicio concreto 2", "Ejercicio concreto 3"]},
     {"semana": 2, "titulo": "...", "foco": "...", "ejercicios": ["...", "...", "..."]},
     {"semana": 3, "titulo": "...", "foco": "...", "ejercicios": ["...", "...", "..."]},
     {"semana": 4, "titulo": "...", "foco": "...", "ejercicios": ["...", "...", "..."]}
   ],
+  "registroDiario": {
+    "habitos": [
+      {"nombre": "Nombre del hábito (máx 4 palabras, específico a ${deporte}/${posicion})", "descripcion": "Qué hace exactamente y cuándo. Vinculado a sus desafíos concretos."},
+      {"nombre": "...", "descripcion": "..."},
+      {"nombre": "...", "descripcion": "..."},
+      {"nombre": "...", "descripcion": "..."},
+      {"nombre": "...", "descripcion": "..."}
+    ]
+  },
+  "autoevaluacionSemanal": {
+    "preguntas": [
+      {"area": "Área específica (ej: Concentración en partidos)", "pregunta": "Pregunta concreta en primera persona que el deportista se hace al final de la semana. Debe referirse a situaciones reales de ${deporte}/${posicion}."},
+      {"area": "...", "pregunta": "..."},
+      {"area": "...", "pregunta": "..."},
+      {"area": "...", "pregunta": "..."},
+      {"area": "...", "pregunta": "..."},
+      {"area": "...", "pregunta": "..."}
+    ]
+  },
   "mensajeFinal": "Un párrafo corto (3-4 líneas) dirigido directamente a ${nombre}. Personal, específico a su deporte y posición, genuinamente motivador sin ser genérico."
 }`,
     }],
@@ -99,7 +119,7 @@ async function agente2_revisor(perfilTexto: string, borrador: string): Promise<s
     model: 'claude-haiku-4-5-20251001',
     max_tokens: 800,
     system: `Eres un revisor editorial de documentos de psicología deportiva. Tu rol es detectar problemas de calidad en análisis mentales personalizados.
-Evalúas: (1) personalización real vs. texto genérico, (2) coherencia entre el perfil y el análisis, (3) especificidad de los ejercicios, (4) tono apropiado.
+Evalúas: (1) personalización real vs. texto genérico, (2) coherencia entre el perfil y el análisis, (3) especificidad de los ejercicios al deporte y posición, (4) que los hábitos del registro diario sean concretos y no genéricos, (5) que las preguntas de autoevaluación reflejen situaciones reales del deporte/posición del deportista.
 Responde en formato de lista concisa de correcciones. Si el análisis es correcto, responde "APROBADO".`,
     messages: [{
       role: 'user',
