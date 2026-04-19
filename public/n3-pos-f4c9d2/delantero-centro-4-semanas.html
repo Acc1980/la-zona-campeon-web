@@ -1,387 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Delantero Centro – Plan de 4 Semanas | La Zona Campeón</title>
-<style>
-  :root {
-    --gold: #e2bc8e;
-    --dark: #2c2f3a;
-    --dark2: #16171e;
-    --cream: #f5f0e8;
-    --green: #2ecc71;
-    --red: #e74c3c;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Georgia', serif;
-    background: var(--cream);
-    color: var(--dark);
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 24px 20px 48px;
-  }
-
-  /* HEADER */
-  .header {
-    background: var(--dark);
-    color: var(--gold);
-    text-align: center;
-    padding: 36px 24px 28px;
-    border-radius: 12px;
-    margin-bottom: 32px;
-  }
-  .header .pos-tag {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 8px;
-  }
-  .header h1 { font-size: 28px; margin-bottom: 6px; }
-  .header .subtitle { font-size: 15px; color: #ccc; }
-
-  /* INTRO BOX */
-  .intro {
-    background: #fff;
-    border-left: 5px solid var(--gold);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin-bottom: 32px;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .intro strong { color: var(--dark); }
-
-  /* WEEK BLOCK */
-  .week {
-    margin-bottom: 40px;
-  }
-  .week-header {
-    background: var(--dark);
-    color: var(--gold);
-    padding: 14px 20px;
-    border-radius: 10px 10px 0 0;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .week-header .focus {
-    font-size: 12px;
-    font-weight: normal;
-    color: #ccc;
-    font-style: italic;
-  }
-  .days-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0;
-    border: 2px solid var(--dark);
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    overflow: hidden;
-  }
-  .day-card {
-    background: #fff;
-    padding: 12px 8px;
-    border-right: 1px solid #e0d8cc;
-    border-bottom: 1px solid #e0d8cc;
-    text-align: center;
-    min-height: 130px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .day-card:last-child { border-right: none; }
-  .day-card.rest {
-    background: #f9f6f0;
-    opacity: 0.7;
-  }
-  .day-label {
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 8px;
-  }
-  .day-num {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--dark);
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-  .day-check {
-    width: 28px;
-    height: 28px;
-    border: 2.5px solid var(--gold);
-    border-radius: 6px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .day-action {
-    font-size: 10px;
-    color: var(--dark);
-    line-height: 1.4;
-    font-weight: bold;
-    margin-bottom: 4px;
-  }
-  .day-detail {
-    font-size: 9px;
-    color: #777;
-    line-height: 1.3;
-    font-style: italic;
-  }
-  .day-card.rest .day-action {
-    color: #aaa;
-    font-weight: normal;
-  }
-
-  /* WEEK NOTES */
-  .week-notes {
-    background: var(--dark2);
-    border-radius: 0 0 10px 10px;
-    padding: 14px 20px;
-    margin-top: -2px;
-  }
-  .week-notes label {
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
-  }
-  .week-notes textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(232,200,74,0.3);
-    border-radius: 6px;
-    color: #eee;
-    font-size: 13px;
-    padding: 10px 12px;
-    resize: none;
-    height: 64px;
-    font-family: inherit;
-  }
-  .week-notes textarea::placeholder { color: #666; }
-
-  /* FICHA DE PARTIDO */
-  .ficha {
-    background: var(--dark);
-    border-radius: 12px;
-    padding: 30px 28px;
-    margin-top: 40px;
-    color: #eee;
-  }
-  .ficha h2 {
-    color: var(--gold);
-    font-size: 20px;
-    margin-bottom: 4px;
-  }
-  .ficha .ficha-sub {
-    color: #aaa;
-    font-size: 12px;
-    margin-bottom: 24px;
-  }
-
-  .ficha-meta {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .ficha-field label {
-    display: block;
-    font-size: 10px;
-    color: #aaa;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .ficha-field input[type="text"] {
-    width: 100%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 13px;
-    padding: 8px 10px;
-    font-family: inherit;
-  }
-
-  .ficha-section {
-    margin-bottom: 22px;
-  }
-  .ficha-section h3 {
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(232,200,74,0.25);
-    padding-bottom: 6px;
-    margin-bottom: 12px;
-  }
-  .check-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  .check-row input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--gold);
-    cursor: pointer;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .check-row span {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #ddd;
-  }
-  .check-row span em {
-    color: #aaa;
-    font-size: 12px;
-  }
-
-  /* COUNTER ROW */
-  .counter-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  .counter-row label {
-    font-size: 13px;
-    color: #ddd;
-    flex: 1;
-  }
-  .counter-row input[type="number"] {
-    width: 64px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 14px;
-    padding: 6px 10px;
-    text-align: center;
-    font-family: inherit;
-  }
-
-  /* SCALE */
-  .scale-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-  }
-  .scale-row label {
-    font-size: 13px;
-    color: #ddd;
-    width: 100%;
-    margin-bottom: 6px;
-  }
-  .scale-btn {
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    color: #ccc;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .scale-btn:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* NOTES */
-  .ficha-notes textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    color: #eee;
-    font-size: 13px;
-    padding: 12px 14px;
-    resize: none;
-    height: 90px;
-    font-family: inherit;
-  }
-  .ficha-notes textarea::placeholder { color: #555; }
-
-  /* PRINT */
-    .print-btn {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    background: #C8AA32;
-    color: #1a1a2e;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 24px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(200,170,50,0.35);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .print-btn:hover { background: #b89a28; }
-  @media print { .print-btn { display: none !important; } }
-@media print {
-    body { padding: 12px; }
-    .week-notes textarea, .ficha-notes textarea, input[type="text"], input[type="number"] {
-      border-bottom: 1px solid #999 !important;
-      background: transparent !important;
-      color: #000 !important;
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan 4 Semanas — La Mente del Delantero Centro · La Zona Campeon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --gold: #e2bc8e; --dark: #2c2f3a; --cream: #f5f0e8; --red: #c85050; --green: #3a8a4a; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.6; }
+    .brand-header { background: var(--dark); color: var(--gold); text-align: center; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+    .cover { background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%); color: var(--cream); text-align: center; padding: 56px 30px 48px; }
+    .cover .badge { display: inline-block; background: var(--gold); color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 5px 16px; border-radius: 20px; margin-bottom: 22px; }
+    .cover h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 10px; }
+    .cover h1 span { color: var(--gold); }
+    .cover .subtitle { font-size: 1rem; color: rgba(245,240,232,0.75); max-width: 520px; margin: 0 auto 28px; }
+    .cover .instrucciones { display: inline-flex; gap: 24px; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(232,200,74,0.3); border-radius: 10px; padding: 16px 28px; font-size: 0.85rem; color: rgba(245,240,232,0.85); }
+    .cover .instrucciones span::before { content: "-> "; color: var(--gold); font-weight: 700; }
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 28px 60px; }
+    .week-block { margin-bottom: 56px; }
+    .week-header { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 3px solid var(--gold); }
+    .week-number { background: var(--dark); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; border-radius: 6px; white-space: nowrap; }
+    .week-focus { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .week-title { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--dark); }
+    .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    .day-card { background: #fff; border-radius: 10px; padding: 16px 16px 16px 14px; border-left: 4px solid var(--gold); display: flex; gap: 12px; align-items: flex-start; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .day-card.blue { border-color: #3a7bd5; } .day-card.green { border-color: var(--green); } .day-card.mid { border-color: #8855cc; } .day-card.rest { border-color: #bbb; background: #fafafa; }
+    .checkbox-wrap { flex-shrink: 0; width: 26px; height: 26px; border: 2.5px solid #ccc; border-radius: 5px; margin-top: 2px; cursor: pointer; }
+    .day-card.blue .checkbox-wrap { border-color: #3a7bd5; } .day-card.green .checkbox-wrap { border-color: var(--green); } .day-card.mid .checkbox-wrap { border-color: #8855cc; }
+    .day-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+    .day-action { font-size: 0.85rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; line-height: 1.4; }
+    .day-detail { font-size: 0.78rem; color: #666; line-height: 1.45; }
+    .week-notes { background: var(--dark); border-radius: 0 0 8px 8px; padding: 14px 20px; margin-top: 12px; }
+    .week-notes label { font-size: 11px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 6px; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .week-notes textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(232,200,74,0.3); border-radius: 6px; color: #eee; font-size: 13px; padding: 10px 12px; resize: none; height: 64px; font-family: inherit; }
+    .week-notes textarea::placeholder { color: #666; }
+    .ficha-section { margin-top: 40px; }
+    .ficha-header { text-align: center; background: var(--dark); color: var(--cream); padding: 32px 20px 28px; border-radius: 12px 12px 0 0; }
+    .ficha-header .fh-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .ficha-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; }
+    .ficha-header p { font-size: 0.85rem; color: rgba(245,240,232,0.7); max-width: 460px; margin: 0 auto; }
+    .ficha-body { background: #fff; border: 2px solid var(--dark); border-top: none; border-radius: 0 0 12px 12px; padding: 28px 28px 32px; }
+    .ficha-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+    .meta-label { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+    .meta-line { border-bottom: 1.5px solid #ccc; height: 28px; }
+    .ficha-block { margin-bottom: 24px; }
+    .ficha-block-title { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); background: var(--cream); border-radius: 4px; padding: 6px 10px; margin-bottom: 12px; border-left: 3px solid var(--gold); }
+    .check-list { display: flex; flex-direction: column; gap: 10px; }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; }
+    .check-box { flex-shrink: 0; width: 22px; height: 22px; border: 2px solid #bbb; border-radius: 4px; margin-top: 1px; }
+    .check-text .label { font-weight: 700; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; }
+    .check-sub { font-size: 0.76rem; color: #777; display: block; }
+    .escala-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .escala-label { font-size: 0.83rem; font-weight: 600; min-width: 180px; flex: 1; }
+    .escala-boxes { display: flex; gap: 4px; }
+    .escala-box { width: 32px; height: 32px; border: 1.5px solid #bbb; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #aaa; cursor: pointer; }
+    .escala-box:first-child { border-color: var(--red); color: var(--red); } .escala-box:last-child { border-color: var(--green); color: var(--green); }
+    .notes-area { border: 1.5px solid #ddd; border-radius: 6px; padding: 12px; min-height: 70px; background: var(--cream); font-size: 0.82rem; color: #aaa; font-style: italic; }
+    .contador-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .contador-row label { font-size: 0.83rem; color: #444; flex: 1; }
+    .contador-row input[type="number"] { width: 64px; border: 1.5px solid #ccc; border-radius: 6px; padding: 6px 10px; font-size: 14px; text-align: center; font-family: inherit; }
+    .closing { text-align: center; padding: 40px 20px; margin-top: 48px; border-top: 2px solid var(--gold); }
+    .closing h2 { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 10px; }
+    .closing p { font-size: 0.9rem; color: #555; max-width: 460px; margin: 0 auto 6px; }
+    .closing .brand-foot { margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+    .print-btn { position: fixed; bottom: 24px; right: 24px; background: var(--gold); color: var(--dark); border: none; border-radius: 50px; padding: 13px 26px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); z-index: 999; display: flex; align-items: center; gap: 8px; }
+    @media print {
+      .print-btn { display: none; }
+      body { background: #fff; color: #111; }
+      .escala-row, .check-item, .ficha-block, .ficha-section,
+      .week-note, .week-notes, .day-card, .closing { page-break-inside: avoid; break-inside: avoid; }
+      .ficha-block-title, .ficha-header, .week-header { page-break-after: avoid; break-after: avoid; }
+      * { color: #111 !important; }
+      [style*="color"] { color: #111 !important; }
+      .week-notes textarea { border: 1px solid #999 !important; background: transparent !important; }
     }
-    .scale-btn { border: 2px solid #999; }
-    .ficha { background: #f0f0f0; color: #000; }
-    .ficha h2, .ficha-section h3 { color: #000; }
-    * { color: #111 !important; }
-    [style*="color"] { color: #111 !important; }
-    .escala-row, .check-item, .check-row, .scale-row, .ficha-block,
-    .ficha-section, .week-note, .day-card, .closing { page-break-inside: avoid; break-inside: avoid; }
-    .ficha-block-title, .ficha-header, .ficha h2 { page-break-after: avoid; break-after: avoid; }
-  }
-  @page { size: A4 portrait; margin: 15mm; }
-
-    /* ── INTERACTIVIDAD ── */
-    .ficha-textarea {
-      width: 100%;
-      margin-top: 8px;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(226,188,142,0.3);
-      border-radius: 6px;
-      color: #ddd;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 13px;
-      line-height: 1.6;
-      resize: vertical;
-      min-height: 72px;
-      box-sizing: border-box;
-    }
-    .ficha-textarea::placeholder { color: rgba(255,255,255,0.2); }
-    .ficha-textarea:focus { outline: none; border-color: rgba(226,188,142,0.6); }
-
+    @page { size: A4 portrait; margin: 15mm; }
+    @media (max-width: 600px) { .days-grid { grid-template-columns: 1fr; } .ficha-meta { grid-template-columns: 1fr 1fr; } }
   </style>
 </head>
 <body>
@@ -390,79 +84,86 @@
   Imprimir
 </button>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="pos-tag">Nivel 3 · Delantero Centro</div>
-  <h1>Plan de Implementación — 4 Semanas</h1>
-  <div class="subtitle">Del conocimiento a la cancha: un hábito por día</div>
+<div class="brand-header">La Zona Campeon — Control Mental para Deportistas</div>
+
+<div class="cover">
+  <div class="badge">Nivel 3 · Manual por Posición · Fútbol · Delantero Centro</div>
+  <h1>Plan de <span>4 Semanas</span><br>del Delantero Centro</h1>
+  <p class="subtitle">Del conocimiento a la cancha: un hábito por día</p>
+  <div class="instrucciones">
+    <span>Marca cada día al completarlo</span>
+    <span>Reflexiona al final de cada semana</span>
+    <span>Usa la ficha antes y después de cada partido</span>
+  </div>
 </div>
 
-<!-- INTRO -->
-<div class="intro">
-  <strong>Cómo usar este plan:</strong> Cada día marca el checkbox cuando hayas completado la práctica. Al final de cada semana escribe una reflexión breve. La <em>Ficha de Partido</em> al final es para usarla antes, durante y después de cada juego. Imprímela y llévala contigo.
-</div>
+<div class="page">
 
 <!-- SEMANA 1 -->
-<div class="week">
+<div class="week-block">
   <div class="week-header">
-    <span>Semana 1 — Días 1 al 7</span>
-    <span class="focus">Identidad: los 3 pilares del delantero</span>
+    <div class="week-number">Semana 1</div>
+    <div>
+      <div class="week-focus">Días 1 al 7</div>
+      <div class="week-title">Identidad: los 3 pilares del delantero</div>
+    </div>
   </div>
   <div class="days-grid">
-    <!-- Día 1 -->
     <div class="day-card">
-      <div class="day-label">Lun</div>
-      <div class="day-num">1</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 1</div>
-      <div class="day-detail">Identidad del delantero: vivir para el gol</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 1 · Lectura</div>
+        <div class="day-action">Leer Capítulo 1</div>
+        <div class="day-detail">Identidad del delantero: vivir para el gol</div>
+      </div>
     </div>
-    <!-- Día 2 -->
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 2 · Pilar</div>
+        <div class="day-action">Pilar 1</div>
+        <div class="day-detail">Presencia en el área: posicionarte antes de que llegue el balón</div>
+      </div>
+    </div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 3 · Pilar</div>
+        <div class="day-action">Pilar 2</div>
+        <div class="day-detail">Decisión al definir: no pensar, actuar con el primer impulso</div>
+      </div>
+    </div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 4 · Pilar</div>
+        <div class="day-action">Pilar 3</div>
+        <div class="day-detail">Resiliencia tras fallo: el próximo disparo como nueva oportunidad</div>
+      </div>
+    </div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 5 · Entrenamiento</div>
+        <div class="day-action">Integración</div>
+        <div class="day-detail">Aplicar los 3 pilares conscientemente en ejercicios de definición</div>
+      </div>
+    </div>
     <div class="day-card">
-      <div class="day-label">Mar</div>
-      <div class="day-num">2</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Pilar 1</div>
-      <div class="day-detail">Presencia en el área: posicionarte antes de que llegue el balón</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 6 · Lectura</div>
+        <div class="day-action">Leer Capítulo 2</div>
+        <div class="day-detail">La sequía: cuando el gol no llega — qué hacer mental y físicamente</div>
+      </div>
     </div>
-    <!-- Día 3 -->
-    <div class="day-card">
-      <div class="day-label">Mié</div>
-      <div class="day-num">3</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Pilar 2</div>
-      <div class="day-detail">Decisión al definir: no pensar, actuar con el primer impulso</div>
-    </div>
-    <!-- Día 4 -->
-    <div class="day-card">
-      <div class="day-label">Jue</div>
-      <div class="day-num">4</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Pilar 3</div>
-      <div class="day-detail">Resiliencia tras fallo: el próximo disparo como nueva oportunidad</div>
-    </div>
-    <!-- Día 5 -->
-    <div class="day-card">
-      <div class="day-label">Vie</div>
-      <div class="day-num">5</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Entrenamiento</div>
-      <div class="day-detail">Aplicar los 3 pilares conscientemente en ejercicios de definición</div>
-    </div>
-    <!-- Día 6 -->
-    <div class="day-card">
-      <div class="day-label">Sáb</div>
-      <div class="day-num">6</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 2</div>
-      <div class="day-detail">La sequía: cuando el gol no llega — qué hacer mental y físicamente</div>
-    </div>
-    <!-- Día 7 -->
     <div class="day-card rest">
-      <div class="day-label">Dom</div>
-      <div class="day-num">7</div>
-      <div class="day-action">Descanso activo</div>
-      <div class="day-detail">Visualizar 5 min: próxima vez que llegue el balón al área</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 7 · Descanso</div>
+        <div class="day-action">Visualización</div>
+        <div class="day-detail">5 min: próxima vez que llegue el balón al área, tú ya estás posicionado</div>
+      </div>
     </div>
   </div>
   <div class="week-notes">
@@ -472,66 +173,70 @@
 </div>
 
 <!-- SEMANA 2 -->
-<div class="week">
+<div class="week-block">
   <div class="week-header">
-    <span>Semana 2 — Días 8 al 14</span>
-    <span class="focus">Instinto anotador y gestión de la presión</span>
+    <div class="week-number">Semana 2</div>
+    <div>
+      <div class="week-focus">Días 8 al 14</div>
+      <div class="week-title">Instinto anotador y gestión de la presión</div>
+    </div>
   </div>
   <div class="days-grid">
-    <!-- Día 8 -->
     <div class="day-card">
-      <div class="day-label">Lun</div>
-      <div class="day-num">8</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 3</div>
-      <div class="day-detail">El instinto anotador: mentalidad de definición pura</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 8 · Lectura</div>
+        <div class="day-action">Leer Capítulo 3</div>
+        <div class="day-detail">El instinto anotador: mentalidad de definición pura</div>
+      </div>
     </div>
-    <!-- Día 9 -->
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 9 · Práctica</div>
+        <div class="day-action">Decisión rápida</div>
+        <div class="day-detail">Antes de cada definición en entrenamiento, decide el lado ANTES de recibir</div>
+      </div>
+    </div>
     <div class="day-card">
-      <div class="day-label">Mar</div>
-      <div class="day-num">9</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Decisión rápida</div>
-      <div class="day-detail">Ejercicio: antes de cada definición en entrenamiento, decide el lado ANTES de recibir</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 10 · Lectura</div>
+        <div class="day-action">Leer Capítulo 4</div>
+        <div class="day-detail">Presión y expectativas: jugar con el peso del equipo</div>
+      </div>
     </div>
-    <!-- Día 10 -->
-    <div class="day-card">
-      <div class="day-label">Mié</div>
-      <div class="day-num">10</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 4</div>
-      <div class="day-detail">Presión y expectativas: jugar con el peso del equipo</div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 11 · Reflexión</div>
+        <div class="day-action">Gestión de presión</div>
+        <div class="day-detail">Identifica 1 momento de presión reciente y escribe cómo lo gestionarías ahora</div>
+      </div>
     </div>
-    <!-- Día 11 -->
-    <div class="day-card">
-      <div class="day-label">Jue</div>
-      <div class="day-num">11</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Gestión presión</div>
-      <div class="day-detail">Identifica 1 momento de presión reciente y escribe cómo gestionarías ahora</div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 12 · Entrenamiento</div>
+        <div class="day-action">Presencia de área</div>
+        <div class="day-detail">Foco en llegar antes al área y posicionarte mejor en cada jugada</div>
+      </div>
     </div>
-    <!-- Día 12 -->
-    <div class="day-card">
-      <div class="day-label">Vie</div>
-      <div class="day-num">12</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Entrenamiento</div>
-      <div class="day-detail">Foco en presencia de área: llegar antes, posicionarte mejor</div>
+    <div class="day-card mid">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 13 · Evaluación</div>
+        <div class="day-action">Revisión semanal</div>
+        <div class="day-detail">¿Cuántas oportunidades claras tuviste esta semana? ¿Las aprovechaste?</div>
+      </div>
     </div>
-    <!-- Día 13 -->
-    <div class="day-card">
-      <div class="day-label">Sáb</div>
-      <div class="day-num">13</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Revisión</div>
-      <div class="day-detail">¿Cuántas oportunidades claras tuviste esta semana? ¿Las aprovechaste?</div>
-    </div>
-    <!-- Día 14 -->
     <div class="day-card rest">
-      <div class="day-label">Dom</div>
-      <div class="day-num">14</div>
-      <div class="day-action">Descanso activo</div>
-      <div class="day-detail">Visualizar: manejar la presión del equipo y convertir igual</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 14 · Descanso</div>
+        <div class="day-action">Visualización</div>
+        <div class="day-detail">Manejar la presión del equipo y convertir igual</div>
+      </div>
     </div>
   </div>
   <div class="week-notes">
@@ -541,66 +246,70 @@
 </div>
 
 <!-- SEMANA 3 -->
-<div class="week">
+<div class="week-block">
   <div class="week-header">
-    <span>Semana 3 — Días 15 al 21</span>
-    <span class="focus">Protocolo de 10 segundos tras el fallo</span>
+    <div class="week-number">Semana 3</div>
+    <div>
+      <div class="week-focus">Días 15 al 21</div>
+      <div class="week-title">Protocolo de 10 segundos tras el fallo</div>
+    </div>
   </div>
   <div class="days-grid">
-    <!-- Día 15 -->
     <div class="day-card">
-      <div class="day-label">Lun</div>
-      <div class="day-num">15</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 5</div>
-      <div class="day-detail">La oportunidad única: protocolo de 10 segundos tras el fallo</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 15 · Lectura</div>
+        <div class="day-action">Leer Capítulo 5</div>
+        <div class="day-detail">La oportunidad única: protocolo de 10 segundos tras el fallo</div>
+      </div>
     </div>
-    <!-- Día 16 -->
-    <div class="day-card">
-      <div class="day-label">Mar</div>
-      <div class="day-num">16</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Aprender proto.</div>
-      <div class="day-detail">Memorizar los 3 pasos: exhalar → frase corta → mirada al frente</div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 16 · Aprendizaje</div>
+        <div class="day-action">Aprender protocolo</div>
+        <div class="day-detail">Memorizar los 3 pasos: exhalar → frase corta → mirada al frente</div>
+      </div>
     </div>
-    <!-- Día 17 -->
-    <div class="day-card">
-      <div class="day-label">Mié</div>
-      <div class="day-num">17</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Práctica proto.</div>
-      <div class="day-detail">Aplicarlo en cada error del entrenamiento de hoy (no solo en definición)</div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 17 · Entrenamiento</div>
+        <div class="day-action">Práctica protocolo</div>
+        <div class="day-detail">Aplicarlo en cada error del entrenamiento de hoy (no solo en definición)</div>
+      </div>
     </div>
-    <!-- Día 18 -->
-    <div class="day-card">
-      <div class="day-label">Jue</div>
-      <div class="day-num">18</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Frase personal</div>
-      <div class="day-detail">Elegir tu frase de reset. Ejemplo: "Siguiente", "Soy el delantero", "Ahora sí"</div>
+    <div class="day-card mid">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 18 · Personal</div>
+        <div class="day-action">Frase de reset</div>
+        <div class="day-detail">Elegir tu frase personal. Ejemplo: "Siguiente", "Soy el delantero", "Ahora sí"</div>
+      </div>
     </div>
-    <!-- Día 19 -->
-    <div class="day-card">
-      <div class="day-label">Vie</div>
-      <div class="day-num">19</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Entrenamiento</div>
-      <div class="day-detail">Cada fallo = protocolo de 10 segundos. Contar cuántas veces lo aplicas</div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 19 · Entrenamiento</div>
+        <div class="day-action">Protocolo en acción</div>
+        <div class="day-detail">Cada fallo = protocolo de 10 segundos. Contar cuántas veces lo aplicas</div>
+      </div>
     </div>
-    <!-- Día 20 -->
-    <div class="day-card">
-      <div class="day-label">Sáb</div>
-      <div class="day-num">20</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Evaluación</div>
-      <div class="day-detail">¿Lograste no quedarte "pegado" en el error? ¿Cuántos resets aplicaste?</div>
+    <div class="day-card mid">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 20 · Evaluación</div>
+        <div class="day-action">Evaluación</div>
+        <div class="day-detail">¿Lograste no quedarte "pegado" en el error? ¿Cuántos resets aplicaste?</div>
+      </div>
     </div>
-    <!-- Día 21 -->
     <div class="day-card rest">
-      <div class="day-label">Dom</div>
-      <div class="day-num">21</div>
-      <div class="day-action">Descanso activo</div>
-      <div class="day-detail">Visualizar: fallás, aplicas el protocolo, tu siguiente acción es positiva</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 21 · Descanso</div>
+        <div class="day-action">Visualización</div>
+        <div class="day-detail">Fallás, aplicas el protocolo, tu siguiente acción es positiva</div>
+      </div>
     </div>
   </div>
   <div class="week-notes">
@@ -610,67 +319,70 @@
 </div>
 
 <!-- SEMANA 4 -->
-<div class="week">
+<div class="week-block">
   <div class="week-header">
-    <span>Semana 4 — Días 22 al 28</span>
-    <span class="focus">Consistencia: el delantero de temporada completa</span>
+    <div class="week-number">Semana 4</div>
+    <div>
+      <div class="week-focus">Días 22 al 28</div>
+      <div class="week-title">Consistencia: el delantero de temporada completa</div>
+    </div>
   </div>
   <div class="days-grid">
-    <!-- Día 22 -->
     <div class="day-card">
-      <div class="day-label">Lun</div>
-      <div class="day-num">22</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Leer Cap 6</div>
-      <div class="day-detail">Construir consistencia: el delantero de temporada completa</div>
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 22 · Lectura</div>
+        <div class="day-action">Leer Capítulo 6</div>
+        <div class="day-detail">Construir consistencia: el delantero de temporada completa</div>
+      </div>
     </div>
-    <!-- Día 23 -->
-    <div class="day-card">
-      <div class="day-label">Mar</div>
-      <div class="day-num">23</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Rutina prepartido</div>
-      <div class="day-detail">Diseñar tu activación mental: los 5 minutos antes de entrar a la cancha</div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 23 · Diseño</div>
+        <div class="day-action">Rutina prepartido</div>
+        <div class="day-detail">Diseñar tu activación mental: los 5 minutos antes de entrar a la cancha</div>
+      </div>
     </div>
-    <!-- Día 24 -->
-    <div class="day-card">
-      <div class="day-label">Mié</div>
-      <div class="day-num">24</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Integración</div>
-      <div class="day-detail">En entrenamiento: aplicar los 3 pilares + protocolo de 10 seg de forma consciente</div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 24 · Integración</div>
+        <div class="day-action">Todo junto</div>
+        <div class="day-detail">3 pilares + protocolo de 10 seg de forma consciente en entrenamiento</div>
+      </div>
     </div>
-    <!-- Día 25 -->
-    <div class="day-card">
-      <div class="day-label">Jue</div>
-      <div class="day-num">25</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Secuencia completa</div>
-      <div class="day-detail">Fallar → protocolo 10s → volver a buscar el gol. Repetir sin rendirse</div>
+    <div class="day-card blue">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 25 · Práctica</div>
+        <div class="day-action">Secuencia completa</div>
+        <div class="day-detail">Fallar → protocolo 10s → volver a buscar el gol. Repetir sin rendirse</div>
+      </div>
     </div>
-    <!-- Día 26 -->
-    <div class="day-card">
-      <div class="day-label">Vie</div>
-      <div class="day-num">26</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Entrenamiento</div>
-      <div class="day-detail">Partido de práctica: usar la Ficha de Partido al final para evaluar</div>
+    <div class="day-card green">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 26 · Partido</div>
+        <div class="day-action">Partido de práctica</div>
+        <div class="day-detail">Usar la Ficha de Partido al final para evaluar</div>
+      </div>
     </div>
-    <!-- Día 27 -->
-    <div class="day-card">
-      <div class="day-label">Sáb</div>
-      <div class="day-num">27</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Revisión 4 semanas</div>
-      <div class="day-detail">Contar días completados. ¿Qué pilar mejoró más? ¿Cuál sigue pendiente?</div>
+    <div class="day-card mid">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 27 · Evaluación</div>
+        <div class="day-action">Revisión 4 semanas</div>
+        <div class="day-detail">¿Qué pilar mejoró más? ¿Cuál sigue pendiente?</div>
+      </div>
     </div>
-    <!-- Día 28 -->
-    <div class="day-card">
-      <div class="day-label">Dom</div>
-      <div class="day-num">28</div>
-      <input type="checkbox" class="day-check">
-      <div class="day-action">Compromiso</div>
-      <div class="day-detail">Escribir: "Soy un delantero que…" — tu declaración de identidad completada</div>
+    <div class="day-card mid">
+      <div class="checkbox-wrap"></div>
+      <div>
+        <div class="day-label">Día 28 · Compromiso</div>
+        <div class="day-action">Declaración</div>
+        <div class="day-detail">Escribir: "Soy un delantero que…" — tu declaración de identidad completada</div>
+      </div>
     </div>
   </div>
   <div class="week-notes">
@@ -680,150 +392,110 @@
 </div>
 
 <!-- FICHA DE PARTIDO -->
-<div class="ficha">
-  <h2>Ficha de Partido</h2>
-  <div class="ficha-sub">Lleva esta hoja a cada partido — úsala en el vestuario antes y después</div>
+<div class="ficha-section">
+  <div class="ficha-header">
+    <div class="fh-label">Herramienta de partido</div>
+    <h2>Ficha del Delantero Centro</h2>
+    <p>Úsala en el vestuario antes y después de cada partido</p>
+  </div>
+  <div class="ficha-body">
+    <div class="ficha-meta">
+      <div><div class="meta-label">Fecha</div><div class="meta-line"></div></div>
+      <div><div class="meta-label">Rival</div><div class="meta-line"></div></div>
+      <div><div class="meta-label">Resultado</div><div class="meta-line"></div></div>
+    </div>
 
-  <!-- META -->
-  <div class="ficha-meta">
-    <div class="ficha-field">
-      <label>Fecha</label>
-      <input type="text" placeholder="dd/mm/aaaa">
+    <div class="ficha-block">
+      <div class="ficha-block-title">Instinto anotador y presencia de área</div>
+      <div class="check-list">
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Presencia de área</span><span class="check-sub">Me posicioné antes de que llegara el balón en situaciones clave</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Decisión previa</span><span class="check-sub">Decidí el lado o el remate antes de recibir el pase</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Sin parálisis mental</span><span class="check-sub">No dudé ni ralenticé mi ejecución pensando demasiado</span></div></div>
+      </div>
+      <div class="contador-row" style="margin-top:12px;">
+        <label>Oportunidades claras:</label>
+        <input type="number" min="0" max="30" placeholder="0">
+      </div>
+      <div class="contador-row">
+        <label>Goles convertidos:</label>
+        <input type="number" min="0" max="30" placeholder="0">
+      </div>
     </div>
-    <div class="ficha-field">
-      <label>Rival</label>
-      <input type="text" placeholder="Equipo contrario">
+
+    <div class="ficha-block">
+      <div class="ficha-block-title">Protocolo de 10 segundos tras el fallo</div>
+      <div class="check-list">
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Protocolo aplicado</span><span class="check-sub">Tras cada fallo: exhalar → frase de reset → mirada al frente</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Sin lenguaje corporal negativo</span><span class="check-sub">No me quedé "pegado" visualmente después de un fallo</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Seguí buscando el gol</span><span class="check-sub">Misma intensidad después de errar</span></div></div>
+      </div>
     </div>
-    <div class="ficha-field">
-      <label>Resultado</label>
-      <input type="text" placeholder="X – X">
+
+    <div class="ficha-block">
+      <div class="ficha-block-title">Gestión de la presión</div>
+      <div class="check-list">
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Jugué libre mentalmente</span><span class="check-sub">El peso de marcar no me paralizó</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Presencia activa en sequía</span><span class="check-sub">Cuando no llegaba el balón, seguí moviéndome y buscando</span></div></div>
+        <div class="check-item"><div class="check-box"></div><div class="check-text"><span class="label">Energía sostenida</span><span class="check-sub">Terminé con más energía mental que al inicio</span></div></div>
+      </div>
+    </div>
+
+    <div class="ficha-block">
+      <div class="ficha-block-title">Evaluación general</div>
+      <div class="escala-row">
+        <span class="escala-label">Rendimiento mental hoy (1 muy por mejorar — 5 excelente)</span>
+        <div class="escala-boxes">
+          <div class="escala-box">1</div><div class="escala-box">2</div><div class="escala-box">3</div><div class="escala-box">4</div><div class="escala-box">5</div>
+        </div>
+      </div>
+      <div class="notes-area" style="margin-top:10px;">¿Cuál fue la mejor decisión de hoy? ¿Qué harías diferente en la próxima oportunidad de gol? ¿Cómo estuvo tu protocolo de reset?</div>
     </div>
   </div>
+</div>
 
-  <!-- SECCIÓN 1: Instinto anotador y presencia de área -->
-  <div class="ficha-section">
-    <h3>Instinto Anotador y Presencia de Área</h3>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>Me posicioné en el área <em>antes</em> de que llegara el balón en situaciones clave <em>(pilar de presencia)</em></span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>En mis oportunidades de gol, decidí el lado o el remate <em>antes</em> de recibir el pase <em>(instinto anotador)</em></span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>No dudé ni ralenticé mi ejecución pensando demasiado al momento de definir</span>
-    </div>
-    <div class="counter-row">
-      <label>Oportunidades claras que tuve:</label>
-      <input type="number" min="0" max="30" placeholder="0">
-    </div>
-    <div class="counter-row">
-      <label>Goles convertidos:</label>
-      <input type="number" min="0" max="30" placeholder="0">
-    </div>
-  </div>
+<div class="closing">
+  <h2>El área es tu territorio. Defiéndelo con decisión.</h2>
+  <p>El gol no se piensa — se ejecuta. Cada fallo es el inicio del siguiente acierto.</p>
+  <div class="brand-foot">lazonacampeon.com</div>
+</div>
 
-  <!-- SECCIÓN 2: Protocolo de 10 segundos -->
-  <div class="ficha-section">
-    <h3>Protocolo de 10 Segundos tras el Fallo</h3>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>Tras cada oportunidad fallada, apliqué: <strong>exhalar → frase de reset → mirada al frente</strong></span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>No me quedé "pegado" visualmente ni en lenguaje corporal después de un fallo</span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>Seguí buscando el balón y los espacios con la misma intensidad después de errar</span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>Mi actitud en la sequía (cuando no llegaba el balón) siguió siendo de presencia activa</span>
-    </div>
-  </div>
-
-  <!-- SECCIÓN 3: Gestión de la presión -->
-  <div class="ficha-section">
-    <h3>Gestión de la Presión y Expectativas</h3>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>No sentí que el peso de marcar me paralizara — jugué libre mentalmente</span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>En los momentos de presión del equipo, mantuve la calma y seguí buscando el área</span>
-    </div>
-    <div class="check-row">
-      <input type="checkbox">
-      <span>Terminé el partido con más energía mental de la que tenía en la primera mitad</span>
-    </div>
-  </div>
-
-  <!-- ESCALA -->
-  <div class="ficha-section">
-    <h3>Evaluación General del Partido</h3>
-    <div class="scale-row">
-      <label>Mi rendimiento mental como delantero (1 = muy por mejorar / 5 = excelente):</label>
-      <div class="scale-btn">1</div>
-      <div class="scale-btn">2</div>
-      <div class="scale-btn">3</div>
-      <div class="scale-btn">4</div>
-      <div class="scale-btn">5</div>
-    </div>
-  </div>
-
-  <!-- NOTAS -->
-  <div class="ficha-section ficha-notes">
-    <h3>Notas Post-Partido</h3>
-    <textarea placeholder="¿Cuál fue la mejor decisión de hoy? ¿Qué harías diferente en la próxima oportunidad de gol? ¿Cómo estuvo tu protocolo de reset?"></textarea>
-  </div>
-
-</div><!-- /ficha -->
-
+</div><!-- /page -->
 
 <script>
 (function() {
-  var KEY = 'lzc_n3-pos-f4c9d2_delantero_centro_4_semanas';
+  var KEY = 'lzc_n3-pos-f4c9d2_delantero_centro_4_semanas_v2';
   function save() {
-    var data = { checks: {}, texts: {} };
-    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
-      data.checks[i] = el.checked;
-    });
-    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
-      data.texts[i] = el.value;
-    });
+    var data = { c: [], t: [], n: [] };
+    document.querySelectorAll('.checkbox-wrap').forEach(function(el) { data.c.push(el.classList.contains('checked')); });
+    document.querySelectorAll('textarea').forEach(function(el) { data.t.push(el.value); });
+    document.querySelectorAll('input[type="number"]').forEach(function(el) { data.n.push(el.value); });
     try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
   }
   function restore() {
     var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
     if (!raw) return;
     var data = JSON.parse(raw);
-    if (data.checks) {
-      document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
-        if (data.checks[i] !== undefined) el.checked = data.checks[i];
-      });
-    }
-    if (data.texts) {
-      document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
-        if (data.texts[i] !== undefined) el.value = data.texts[i];
-      });
-    }
+    var checks = document.querySelectorAll('.checkbox-wrap');
+    var texts = document.querySelectorAll('textarea');
+    var nums = document.querySelectorAll('input[type="number"]');
+    if (data.c) checks.forEach(function(el, i) { if (data.c[i]) { el.classList.add('checked'); el.style.background = '#c8aa32'; } });
+    if (data.t) texts.forEach(function(el, i) { if (data.t[i] !== undefined) el.value = data.t[i]; });
+    if (data.n) nums.forEach(function(el, i) { if (data.n[i] !== undefined) el.value = data.n[i]; });
   }
   document.addEventListener('DOMContentLoaded', function() {
     restore();
-    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el) {
-      el.addEventListener('change', save);
+    document.querySelectorAll('.checkbox-wrap').forEach(function(el) {
+      el.addEventListener('click', function() {
+        el.classList.toggle('checked');
+        el.style.background = el.classList.contains('checked') ? '#c8aa32' : '';
+        save();
+      });
     });
-    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el) {
+    document.querySelectorAll('textarea, input[type="number"]').forEach(function(el) {
       el.addEventListener('input', save);
     });
   });
 })();
 </script>
-
 </body>
 </html>
