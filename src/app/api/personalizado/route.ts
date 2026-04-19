@@ -215,18 +215,36 @@ export async function POST(req: NextRequest) {
 
     const perfilTexto = buildPerfilTexto(perfil)
 
-    // Agente 1: Generador
-    const borrador = await agente1_generador(perfilTexto, perfil.nombre, perfil.deporteLabel, perfil.posicionLabel)
+    // Pipeline con reintentos automáticos (hasta 3 intentos)
+    let analisisIA: Record<string, unknown> | null = null
+    let ultimoError = ''
 
-    // Agente 2: Revisor
-    const correcciones = await agente2_revisor(perfilTexto, borrador)
+    for (let intento = 1; intento <= 3; intento++) {
+      try {
+        // Agente 1: Generador
+        const borrador = await agente1_generador(perfilTexto, perfil.nombre, perfil.deporteLabel, perfil.posicionLabel)
 
-    // Agente 3: Implementador
-    const final = await agente3_implementador(perfilTexto, borrador, correcciones)
+        // Agente 2: Revisor
+        const correcciones = await agente2_revisor(perfilTexto, borrador)
 
-    const analisisIA = parseJSON(final)
+        // Agente 3: Implementador
+        const final = await agente3_implementador(perfilTexto, borrador, correcciones)
+
+        analisisIA = parseJSON(final)
+
+        if (analisisIA) break // Éxito — salir del loop
+
+        ultimoError = `Intento ${intento}: JSON inválido`
+        console.warn(`[personalizado] ${ultimoError} — reintentando...`)
+      } catch (err) {
+        ultimoError = `Intento ${intento}: ${err instanceof Error ? err.message : 'error desconocido'}`
+        console.warn(`[personalizado] ${ultimoError} — reintentando...`)
+        if (intento === 3) throw err
+      }
+    }
+
     if (!analisisIA) {
-      throw new Error('No se pudo parsear el análisis generado')
+      throw new Error(`Pipeline falló tras 3 intentos. Último error: ${ultimoError}`)
     }
 
     return NextResponse.json({ success: true, analisisIA })
