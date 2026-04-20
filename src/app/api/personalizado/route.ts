@@ -678,7 +678,7 @@ export async function POST(req: NextRequest) {
     // Generar página HTML del manual y enviar email
     const manualHtml = generarManualHTML(perfil, analisisIA)
     const manualId = guardarManual(manualHtml)
-    const manualUrl = `${SITE_URL}/manuales/${manualId}.html`
+    const manualUrl = `${SITE_URL}/manual/${manualId}`
 
     if (perfil.email) {
       enviarEmailManual(perfil, analisisIA, manualUrl).catch(err =>
