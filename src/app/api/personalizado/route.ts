@@ -275,17 +275,15 @@ async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Reco
     </div>`
 
   const fortalezasHtml = fortalezas.filter(id => ASPECTOS[id]).map(id => `
-    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #7ab870;border-radius:6px;padding:14px 16px;margin-bottom:8px;">
-      <p style="font-weight:700;color:#2e7d32;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">${ASPECTOS[id].label}</p>
-      <p style="color:#444;font-size:13px;margin:0;line-height:1.6;">${ASPECTOS[id].fortaleza}</p>
+    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #7ab870;border-radius:6px;padding:10px 16px;margin-bottom:6px;">
+      <p style="font-weight:700;color:#2e7d32;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0;">✓ ${ASPECTOS[id].label}</p>
     </div>`).join('')
 
   const fortalezasTexto = (perfil.fortalezasTexto as string | undefined) ?? ''
 
   const desafiosHtml = desafios.filter(id => ASPECTOS[id]).map((id, i) => `
-    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #c85050;border-radius:6px;padding:14px 16px;margin-bottom:8px;">
-      <p style="font-weight:700;color:#c85050;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Prioridad ${i + 1} — ${ASPECTOS[id].label}</p>
-      <p style="color:#444;font-size:13px;margin:0;line-height:1.6;">${ASPECTOS[id].desafio}</p>
+    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #c85050;border-radius:6px;padding:10px 16px;margin-bottom:6px;">
+      <p style="font-weight:700;color:#c85050;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0;">Prioridad ${i + 1} — ${ASPECTOS[id].label}</p>
     </div>`).join('')
 
   const desafiosTexto = (perfil.desafiosTexto as string | undefined) ?? ''
