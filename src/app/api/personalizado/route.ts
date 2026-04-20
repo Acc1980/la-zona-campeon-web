@@ -483,6 +483,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Faltan datos requeridos' }, { status: 400 })
     }
 
+    perfil.nombre = (perfil.nombre as string).trim().replace(/\b\w/g, (c: string) => c.toUpperCase())
+
     // Guardar en Sheets (sin bloquear)
     const sheetsData = JSON.stringify({
       nombre: perfil.nombre,
