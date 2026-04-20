@@ -177,29 +177,29 @@ export default function ProductosPage() {
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 4"
-            rango="$67 – $97"
+            rango="$49"
             titulo="Tu Manual 100% Personalizado"
             desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
           />
           <div className="max-w-2xl">
-            <div className="card-dark border border-dark-600 opacity-80">
-              <Badge text="En Construcción" color="bg-dark-600 text-dark-300" />
+            <div className="card-dark border border-gold-500/30">
+              <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
               <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
                 Manual 100% Personalizado
               </h3>
               <p className="text-dark-300 text-sm leading-relaxed mb-6">
-                Respondes un perfil completo — deporte, posición, habilidades actuales y áreas a mejorar — y recibes un manual único generado para ti. Acceso web con progreso guardado para que puedas avanzar a tu ritmo y retomar cuando quieras.
+                Respondes un perfil completo — deporte, posición, fortalezas y desafíos mentales — y nuestro sistema especializado genera un manual único para ti con diagnóstico, estrategias, plan de 4 semanas y herramientas de seguimiento.
               </p>
               <ul className="space-y-2 text-sm text-dark-300 mb-6">
-                {["Tu nombre, deporte, posición y categoría", "Tu autoevaluación mental (fortalezas + desafíos)", "La perspectiva de tu técnico (opcional)", "La perspectiva de tus padres (opcional)", "Análisis cruzado + plan de 4 semanas"].map(item => (
-                  <li key={item} className="flex gap-2"><span className="text-dark-500">→</span>{item}</li>
+                {["Tu nombre, deporte, posición y categoría", "Tu autoevaluación mental (fortalezas + desafíos)", "La perspectiva de tu técnico (opcional)", "La perspectiva de tus padres (opcional)", "Diagnóstico + estrategias + plan de 4 semanas", "Registro diario y autoevaluación semanal"].map(item => (
+                  <li key={item} className="flex gap-2"><span className="text-gold-500">→</span>{item}</li>
                 ))}
               </ul>
               <div className="flex items-center justify-between">
-                <span className="font-display font-black text-dark-400 text-2xl">Próximamente</span>
-                <span className="text-dark-400 text-xs font-display uppercase tracking-wider px-5 py-2.5 border border-dark-600 rounded-lg cursor-not-allowed">
-                  No disponible
-                </span>
+                <span className="font-display font-black text-gold-500 text-2xl">$49</span>
+                <Link href="/personalizado" className="btn-primary text-xs px-5 py-2.5">
+                  Generar mi manual →
+                </Link>
               </div>
             </div>
           </div>

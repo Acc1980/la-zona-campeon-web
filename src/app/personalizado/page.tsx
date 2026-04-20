@@ -53,6 +53,7 @@ const POSICIONES: Record<string, { id: string; label: string }[]> = {
 
 const CATEGORIAS = [
   'Infantil (sub-12)',
+  'Juvenil temprano (sub-13 / sub-15)',
   'Juvenil (sub-16 / sub-18)',
   'Amateur adulto',
   'Semiprofesional',
@@ -345,6 +346,14 @@ export default function PersonalizadoPage() {
                 <option value="">Selecciona tu deporte...</option>
                 {DEPORTES.map(d => <option key={d.id} value={d.id}>{d.label}</option>)}
               </select>
+              {perfil.deporte === 'otro' && (
+                <input
+                  className={inputCls + ' mt-3'}
+                  placeholder="¿Cuál es tu deporte?"
+                  value={perfil.deporteLabel === 'Otro deporte' ? '' : perfil.deporteLabel}
+                  onChange={e => setPerfil(p => ({ ...p, deporteLabel: e.target.value }))}
+                />
+              )}
             </Campo>
 
             {perfil.deporte && (
