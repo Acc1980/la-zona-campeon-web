@@ -23,24 +23,9 @@ function getNivel(productoId: string): "n2" | "n3" {
 
 // ─── Email templates ──────────────────────────────────────────────────────────
 
-function emailDia0(productoTitle: string, manualUrl: string): string {
+function guiaUsoN2N4(): string {
   return `
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
-      <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
-        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
-        <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu manual está listo</h1>
-      </div>
-      <div style="padding:32px;background:#f5f0e8;">
-
-        <!-- Botón acceso -->
-        <div style="background:#ffffff;border-left:4px solid #c8aa32;border-radius:4px;padding:20px 24px;margin-bottom:28px;text-align:center;">
-          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 6px;">Tu manual</p>
-          <p style="font-size:16px;font-weight:800;color:#1a1a2e;text-transform:uppercase;margin:0 0 20px;">${productoTitle}</p>
-          <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Abrir mi manual →</a>
-        </div>
-
-        <!-- Guía de uso -->
-        <div style="background:#1a1a2e;border-radius:8px;padding:22px 24px;margin-bottom:0;">
+        <div style="background:#1a1a2e;border-radius:8px;padding:22px 24px;">
           <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:3px;text-align:center;margin:0 0 18px;">Cómo usar este manual</p>
           <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
@@ -66,8 +51,55 @@ function emailDia0(productoTitle: string, manualUrl: string): string {
               </td>
             </tr>
           </table>
-        </div>
+        </div>`;
+}
 
+function guiaUsoN3(productoTitle: string, planUrl: string): string {
+  const planTitulo = productoTitle.replace('La Mente del ', 'Plan de 4 Semanas del ').replace('La Mente de la ', 'Plan de 4 Semanas de la ');
+  return `
+        <div style="background:#1a1a2e;border-radius:8px;padding:22px 24px;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:3px;text-align:center;margin:0 0 14px;">Lo que incluye tu compra</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;">
+            <span style="background:rgba(200,170,50,0.15);border:1px solid rgba(200,170,50,0.35);border-radius:5px;padding:6px 14px;font-size:11px;font-weight:700;color:#e8dab0;font-family:'Helvetica Neue',Arial,sans-serif;text-transform:uppercase;letter-spacing:0.5px;">${productoTitle}</span>
+            <a href="${planUrl}" style="background:rgba(200,170,50,0.15);border:1px solid rgba(200,170,50,0.35);border-radius:5px;padding:6px 14px;font-size:11px;font-weight:700;color:#c8aa32;font-family:'Helvetica Neue',Arial,sans-serif;text-transform:uppercase;letter-spacing:0.5px;text-decoration:none;">${planTitulo} →</a>
+          </div>
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td width="33%" style="text-align:center;padding:0 8px;vertical-align:top;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:14px;line-height:32px;text-align:center;margin:0 auto 10px;">1</div>
+                <p style="font-size:10px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 5px;">Sigue el plan</p>
+                <p style="font-size:10px;color:rgba(245,240,232,0.55);line-height:1.5;margin:0;">El plan de 4 semanas te indica qué hacer cada día.</p>
+              </td>
+              <td width="33%" style="text-align:center;padding:0 8px;vertical-align:top;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:14px;line-height:32px;text-align:center;margin:0 auto 10px;">2</div>
+                <p style="font-size:10px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 5px;">Lee el manual</p>
+                <p style="font-size:10px;color:rgba(245,240,232,0.55);line-height:1.5;margin:0;">Cada día el plan te indica el capítulo a leer en el manual.</p>
+              </td>
+              <td width="33%" style="text-align:center;padding:0 8px;vertical-align:top;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:14px;line-height:32px;text-align:center;margin:0 auto 10px;">3</div>
+                <p style="font-size:10px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 5px;">Ficha del partido</p>
+                <p style="font-size:10px;color:rgba(245,240,232,0.55);line-height:1.5;margin:0;">Antes y después de cada partido usa la ficha al final del plan.</p>
+              </td>
+            </tr>
+          </table>
+        </div>`;
+}
+
+function emailDia0(productoTitle: string, manualUrl: string, planUrl?: string): string {
+  const guia = planUrl ? guiaUsoN3(productoTitle, planUrl) : guiaUsoN2N4();
+  return `
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
+      <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
+        <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
+        <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu manual está listo</h1>
+      </div>
+      <div style="padding:32px;background:#f5f0e8;">
+        <div style="background:#ffffff;border-left:4px solid #c8aa32;border-radius:4px;padding:20px 24px;margin-bottom:28px;text-align:center;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 6px;">Tu manual</p>
+          <p style="font-size:16px;font-weight:800;color:#1a1a2e;text-transform:uppercase;margin:0 0 20px;">${productoTitle}</p>
+          <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Abrir mi manual →</a>
+        </div>
+        ${guia}
       </div>
       <div style="padding:20px 32px;background:#1a1a2e;text-align:center;">
         <p style="color:rgba(255,255,255,0.4);font-size:10px;margin:0;">Guarda este email — puedes volver a tu manual cuando quieras · <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;text-decoration:none;">info@lazonacampeon.com</a></p>
@@ -238,6 +270,7 @@ export async function POST(req: NextRequest) {
     }
 
     const manualUrl = `${SITE_URL}${producto.manualUrl}`;
+    const planUrl = producto.planUrl ? `${SITE_URL}${producto.planUrl}` : undefined;
     const nivel = getNivel(productoId);
 
     // Día 0 — inmediato
@@ -245,7 +278,7 @@ export async function POST(req: NextRequest) {
       from: FROM,
       to: payerEmail,
       subject: `Tu manual está listo: ${producto.title}`,
-      html: emailDia0(producto.title, manualUrl),
+      html: emailDia0(producto.title, manualUrl, planUrl),
     });
 
     // Días 3, 14, 30 — programados con scheduledAt
