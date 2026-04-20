@@ -16,7 +16,7 @@
       line-height: 1.75;
     }
 
-    .container {
+    .page {
       max-width: 780px;
       margin: 0 auto;
       padding: 48px 32px 80px;
@@ -59,69 +59,83 @@
       border-radius: 20px;
     }
 
-    /* ── PORTADA ── */
+    
+
+    /* PORTADA */
     .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a1a2e 0%, #2c2f3a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 48px;
-      border-bottom: 1px solid #d4c99a;
-      margin-bottom: 48px;
+      padding: 60px 40px;
+      position: relative;
+      border-bottom: 4px solid #C8AA32;
     }
-    .manual-num {
+    .cover-logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: #888;
-      margin-bottom: 12px;
+      color: #C8AA32;
+      margin-bottom: 60px;
+      opacity: 0.9;
+    }
+    .cover-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      background: rgba(200, 170, 50, 0.12);
+      border: 1px solid rgba(200, 170, 50, 0.35);
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 38px;
-      line-height: 1.15;
-      color: #111;
+      font-size: 52px;
+      line-height: 1.1;
       text-transform: uppercase;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      color: #ffffff;
+      margin-bottom: 16px;
     }
-    .cover h1 span { color: #c8aa32; }
+    .cover h1 span { color: #C8AA32; }
     .cover-sub {
-      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #9090b0;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: #C8AA32;
+      margin: 0 auto 40px;
+    }
+    .cover-promise {
+      background: rgba(200, 170, 50, 0.1);
+      border: 1px solid rgba(200, 170, 50, 0.25);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 480px;
       font-size: 14px;
-      color: #555;
-      letter-spacing: 0.05em;
-      margin-top: 12px;
-      margin-bottom: 32px;
-    }
-    .cover-desc {
-      font-size: 15px;
-      color: #444;
-      max-width: 560px;
-      margin: 0 auto 32px;
+      color: #b0b0cc;
       line-height: 1.8;
+      font-style: italic;
     }
-    .cover-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .cover-stat span {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 26px;
-      color: #c8aa32;
-    }
-    .cover-stat small {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #888;
-    }
+    .cover-promise strong { color: #C8AA32; font-style: normal; }
+
 
     /* ── INTRO ── */
+    .chapter-content, .intro { padding-left: 40px; padding-right: 40px; }
     .intro {
       background: #fff;
       border-left: 4px solid #c8aa32;
@@ -316,7 +330,8 @@
     .ejemplo-steps { list-style: none; padding: 0; }
     .ejemplo-steps li {
       display: flex;
-      gap: 10px;
+      align-items: flex-start;
+      gap: 14px;
       font-size: 13px;
       color: #333;
       padding: 7px 0;
@@ -332,7 +347,9 @@
       letter-spacing: 0.1em;
       white-space: nowrap;
       padding-top: 2px;
-      min-width: 72px;
+      width: 185px;
+      min-width: 185px;
+      flex-shrink: 0;
     }
     .tag-sin      { color: #c0392b; }
     .tag-lee      { color: #2060a0; }
@@ -492,22 +509,53 @@
     /* ── SEPARADOR ── */
     .divider { border: none; border-top: 1px solid #d4c99a; margin: 48px 0; }
 
-    /* ── CIERRE ── */
-    .closing {
+        /* CIERRE */
+    .close {
+      padding: 70px 50px;
       text-align: center;
-      padding: 32px 0;
-      border-top: 2px solid #c8aa32;
+      background: #f5f0e8;
+      border-top: 3px solid #C8AA32;
     }
-    .closing h2 {
+    .close h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 20px;
+      font-size: 30px;
       text-transform: uppercase;
-      color: #111;
-      margin-bottom: 10px;
+      color: #2c2f3a;
+      margin-bottom: 16px;
     }
-    .closing p { color: #555; font-size: 14px; margin-bottom: 6px; }
-    .closing .url { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #c8aa32; font-size: 14px; letter-spacing: 0.05em; }
+    .close p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+    .close p strong { color: #C8AA32; }
+    .cta-btn {
+      display: inline-block;
+      background: #C8AA32;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      text-align: center;
+      padding: 24px 30px;
+      background: #2c2f3a;
+    }
 
     /* ── PRINT BUTTON ── */
     .print-btn {
@@ -533,7 +581,7 @@
     @media print {
       body { background: #fff; }
       .print-btn { display: none; }
-      .container { padding: 24px 24px 40px; }
+      .page { padding: 24px 24px 40px; }
     }
 
     @media (max-width: 600px) {
@@ -542,37 +590,114 @@
       .cycle { flex-direction: column; gap: 4px; }
       .carrow { transform: rotate(90deg); margin: 2px 0; }
     }
+  
+    /* ── INTERACTIVIDAD ── */
+    .reflection-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(200,170,50,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .reflection-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .reflection-textarea:focus { outline: none; border-color: rgba(200,170,50,0.6); background: rgba(255,255,255,0.1); }
+
+    .fill-blank {
+      display: inline-block;
+      border: none;
+      border-bottom: 2px solid #c8aa32;
+      background: transparent;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      padding: 2px 6px;
+      width: 180px;
+      outline: none;
+    }
+    .fill-blank:focus { border-bottom-color: #a08020; background: rgba(200,170,50,0.08); }
+
+    .exercise-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fffef8;
+      border: 1px solid #c8aa32;
+      border-radius: 6px;
+      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 90px;
+      box-sizing: border-box;
+    }
+    .exercise-textarea::placeholder { color: #bbb; }
+    .exercise-textarea:focus { outline: none; border-color: #a08020; }
+
+  
+    .uso-block { background: #1a1a2e; border-radius: 10px; padding: 26px 28px; margin: 0 auto 36px; max-width: 760px; }
+    .uso-block .uso-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8aa32; margin-bottom: 16px; text-align: center; }
+    .uso-incluye { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+    .uso-item { background: rgba(200,170,50,0.12); border: 1px solid rgba(200,170,50,0.3); border-radius: 6px; padding: 8px 14px; font-size: 12px; font-weight: 700; color: #e8dab0; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .uso-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .uso-paso { text-align: center; }
+    .uso-paso .num { width: 30px; height: 30px; border-radius: 50%; background: #c8aa32; color: #1a1a2e; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; line-height: 30px; text-align: center; margin: 0 auto 8px; }
+    .uso-paso .ptitulo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .uso-paso .pdesc { font-size: 11px; color: rgba(245,240,232,0.55); line-height: 1.5; }
+    .uso-block a { color: #c8aa32; text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
+  <!-- INSTRUCCIONES DE USO -->
+  <div class="uso-block">
+    <div class="uso-label">Lo que incluye tu compra</div>
+    <div class="uso-incluye">
+      <span class="uso-item">Manual Liderazgo y Comunicación en Equipo</span>
+      <span class="uso-item"><a href="liderazgo-4-semanas.html">Plan de 4 Semanas — Liderazgo →</a></span>
+    </div>
+    <div class="uso-pasos">
+      <div class="uso-paso">
+        <div class="num">1</div>
+        <div class="ptitulo">Sigue el plan</div>
+        <div class="pdesc">El <a href="liderazgo-4-semanas.html">Plan de 4 Semanas — Liderazgo</a> te indica qué hacer cada día.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">2</div>
+        <div class="ptitulo">Lee el manual</div>
+        <div class="pdesc">Cada día el plan te indica el capítulo a leer en el manual.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">3</div>
+        <div class="ptitulo">Ficha del partido</div>
+        <div class="pdesc">Antes y después de cada partido, usa la ficha al final del plan.</div>
+      </div>
+    </div>
+  </div>
 
 <button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
 
-<div class="container">
-
-  <!-- BRAND -->
-  <div class="brand">
-    <div class="brand-name">La Zona Campeón</div>
-    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
-    <div><span class="level-badge">Nivel 2 — Manuales de Temas Generales</span></div>
-  </div>
-
-  <!-- PORTADA -->
+<div class="page">
+    <!-- PORTADA -->
   <div class="cover">
-    <p class="manual-num">Manual 05 de 05</p>
-    <h1>Liderazgo y<br /><span>Comunicación</span><br />en Equipo</h1>
+    <div class="cover-logo">La Zona Campeón</div>
+    <div class="cover-tag">Manual 05 de 05 &mdash; Nivel 2</div>
+    <h1>Liderazgo y<br><span>Comunicación</span><br>en Equipo</h1>
+    <div class="gold-line"></div>
     <p class="cover-sub">Influye positivamente sin necesitar la banda de campeón</p>
-    <p class="cover-desc">
-      El liderazgo no lo da el puesto ni los años en el equipo. Lo da la forma en que te comportas
-      cuando el partido se complica, cuando un compañero falla, cuando el equipo necesita energía
-      y no hay nadie más mirando.
-    </p>
-    <div class="cover-stats">
-      <div class="cover-stat"><span>6</span><small>Capítulos</small></div>
-      <div class="cover-stat"><span>12</span><small>Ejercicios</small></div>
-      <div class="cover-stat"><span>1</span><small>Historia real</small></div>
+    <div class="cover-promise">
+      <strong>Lo que encontrarás aquí:</strong><br>
+      El liderazgo no lo da el puesto. Lo da la forma en que te comportas cuando el partido se complica, cuando un compañero falla, cuando el equipo necesita <strong>energía y dirección</strong>.
     </div>
   </div>
+
 
   <!-- INTRO -->
   <div class="intro">
@@ -583,7 +708,7 @@
       en su equipo desde donde está.
     </p>
     <p style="margin-top:12px; margin-bottom:0;">
-      Antes de cada entrenamiento o partido, activa tu mente en <strong>lazonacampeon.com/frases</strong>.
+      Antes de cada entrenamiento o partido, activa tu mente en <strong><a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></strong>.
       La energía que llevas al equipo empieza en cómo llegas tú.
     </p>
   </div>
@@ -643,8 +768,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 01</div>
         <ol>
-          <li>¿Hay alguien en tu equipo que lidere sin tener el título de capitán? ¿Qué hace exactamente que lo convierte en referencia para los demás?</li>
-          <li>¿Qué tipo de influencia tienes tú ahora mismo en tu equipo — positiva, neutral o negativa? ¿Cómo lo sabes?</li>
+          <li>¿Hay alguien en tu equipo que lidere sin tener el título de capitán? ¿Qué hace exactamente que lo convierte en referencia para los demás?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué tipo de influencia tienes tú ahora mismo en tu equipo — positiva, neutral o negativa? ¿Cómo lo sabes?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -700,7 +825,9 @@
       </p>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio</div>
+        <div class="exercise-label">Ejercicio
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Identifica tu estilo dominante</h4>
         <p>Responde estas tres preguntas con honestidad:</p>
         <ol>
@@ -714,8 +841,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 02</div>
         <ol>
-          <li>¿Cuál de los tres estilos describe mejor cómo lideras ahora? ¿Es el estilo que quieres tener o el que simplemente salió por defecto?</li>
-          <li>¿Hay algún contexto específico (partido importante, racha mala, vestuario tenso) donde tu liderazgo desaparece o cambia para peor?</li>
+          <li>¿Cuál de los tres estilos describe mejor cómo lideras ahora? ¿Es el estilo que quieres tener o el que simplemente salió por defecto?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Hay algún contexto específico (partido importante, racha mala, vestuario tenso) donde tu liderazgo desaparece o cambia para peor?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -919,8 +1046,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 03</div>
         <ol>
-          <li>¿Qué tipo de comunicación no verbal usas cuando un compañero falla? ¿Eres consciente de lo que tu cuerpo comunica en ese momento?</li>
-          <li>¿Hay alguna forma de comunicarte con el equipo que sabes que no funciona pero sigues usando? ¿Por qué crees que la repites?</li>
+          <li>¿Qué tipo de comunicación no verbal usas cuando un compañero falla? ¿Eres consciente de lo que tu cuerpo comunica en ese momento?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Hay alguna forma de comunicarte con el equipo que sabes que no funciona pero sigues usando? ¿Por qué crees que la repites?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -977,8 +1104,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 04</div>
         <ol>
-          <li>¿Cuándo fue la última vez que le diste una crítica a un compañero? ¿Usaste observación + impacto + alternativa, o fue más bien un reproche?</li>
-          <li>¿Cómo reaccionas físicamente cuando alguien te critica en el partido? ¿Tu cuerpo cierra o se abre? ¿Qué dice eso de cómo recibes el feedback?</li>
+          <li>¿Cuándo fue la última vez que le diste una crítica a un compañero? ¿Usaste observación + impacto + alternativa, o fue más bien un reproche?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cómo reaccionas físicamente cuando alguien te critica en el partido? ¿Tu cuerpo cierra o se abre? ¿Qué dice eso de cómo recibes el feedback?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -1064,7 +1191,9 @@
       </div>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio</div>
+        <div class="exercise-label">Ejercicio
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Tu frase de equipo</h4>
         <p>Escribe una frase corta (máximo 5 palabras) que usarás cuando el equipo necesite una señal para resetear. Tiene que ser:</p>
         <ul>
@@ -1078,8 +1207,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 05</div>
         <ol>
-          <li>¿Cómo reaccionas tú cuando el equipo va perdiendo? ¿Eres parte de la solución o parte del problema emocional?</li>
-          <li>¿Recuerdas algún partido en el que alguien del equipo cambió el ambiente con una sola acción o una sola frase? ¿Qué hizo exactamente?</li>
+          <li>¿Cómo reaccionas tú cuando el equipo va perdiendo? ¿Eres parte de la solución o parte del problema emocional?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Recuerdas algún partido en el que alguien del equipo cambió el ambiente con una sola acción o una sola frase? ¿Qué hizo exactamente?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -1127,7 +1256,9 @@
       </p>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio</div>
+        <div class="exercise-label">Ejercicio
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Las 3 normas no escritas de tu equipo</h4>
         <p>Escribe las tres normas no escritas que actualmente rigen el comportamiento de tu equipo. No las que están en el reglamento — las que realmente se siguen en el día a día:</p>
         <ol>
@@ -1150,8 +1281,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 06</div>
         <ol>
-          <li>Si pudieras cambiar una sola dinámica de tu equipo con tu conducta, ¿cuál sería y qué harías exactamente diferente desde mañana?</li>
-          <li>¿Qué tipo de líder quieres ser en cinco años? ¿Qué tiene que construir la versión actual de ti para que eso sea posible?</li>
+          <li>Si pudieras cambiar una sola dinámica de tu equipo con tu conducta, ¿cuál sería y qué harías exactamente diferente desde mañana?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué tipo de líder quieres ser en cinco años? ¿Qué tiene que construir la versión actual de ti para que eso sea posible?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -1485,20 +1616,56 @@
   </div>
 
   <!-- CIERRE -->
-  <div class="closing">
-    <h2>El liderazgo no espera el momento perfecto</h2>
-    <p>
-      No esperes la banda, el título ni los años de experiencia.
-      Empieza hoy con la conducta, la comunicación y la energía que tienes.
-      El equipo que construyas desde adentro es el equipo que te va a sostener
-      cuando más lo necesites.
-    </p>
-    <p style="margin-top: 16px;">Continúa tu entrenamiento mental en:</p>
-    <p class="url">lazonacampeon.com</p>
-    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
-    <p style="margin-top: 16px; font-size: 13px; color: #888;">Manual 05 de 05 — Nivel 2 — La Zona Campeón © 2025</p>
+  <div class="close">
+    <div class="gold-line"></div>
+    <h2>El liderazgo no espera<br>el momento perfecto</h2>
+    <p>No esperes la banda, el título ni los años de experiencia. Empieza hoy con la conducta, la comunicación y la energía que tienes.</p>
+    <p>El equipo que construyas desde adentro es el equipo que te va a <strong>sostener cuando más lo necesites</strong>. Ese liderazgo silencioso es el más poderoso.</p>
+    <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
+    <br>
+    <div style="background:#1a1a2e; border-radius:10px; padding:28px 30px; margin:40px 0; text-align:center;">
+    <p style="color:#aaa; font-size:13px; margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Tu plan de implementación</p>
+    <a href="liderazgo-4-semanas.html" target="_blank" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-weight:bold; font-size:16px; padding:14px 32px; border-radius:8px; text-decoration:none; letter-spacing:0.5px;">Abrir el Plan de 4 Semanas →</a>
+  </div>
+    <br><br>
+    <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
+    <br><br>
+    <p style="font-size:13px; color:#9090b0; max-width:420px; margin:0 auto 8px;">Antes de tu próximo partido, enciende tu mente con la <strong style="color:#C8AA32;">Frase Activadora del Día</strong>:</p>
+    <a href="https://lazonacampeon.com/frases" target="_blank" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <br><br>
+    <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
   </div>
 
+  <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
+
 </div>
+
+<script>
+(function() {
+  var KEY = 'lzc_n2-rev-c3a8f1_05_liderazgo_comunicacion';
+  function save() {
+    var data = {};
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      data[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      if (data[i] !== undefined) el.value = data[i];
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

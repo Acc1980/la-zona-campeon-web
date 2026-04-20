@@ -16,7 +16,7 @@
       line-height: 1.75;
     }
 
-    .container {
+    .page {
       max-width: 780px;
       margin: 0 auto;
       padding: 48px 32px 80px;
@@ -59,69 +59,83 @@
       border-radius: 20px;
     }
 
-    /* ── PORTADA ── */
+    
+
+    /* PORTADA */
     .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a1a2e 0%, #2c2f3a 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 48px;
-      border-bottom: 1px solid #d4c99a;
-      margin-bottom: 48px;
+      padding: 60px 40px;
+      position: relative;
+      border-bottom: 4px solid #C8AA32;
     }
-    .manual-num {
+    .cover-logo {
       font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.3em;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: #888;
-      margin-bottom: 12px;
+      color: #C8AA32;
+      margin-bottom: 60px;
+      opacity: 0.9;
+    }
+    .cover-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      background: rgba(200, 170, 50, 0.12);
+      border: 1px solid rgba(200, 170, 50, 0.35);
+      padding: 8px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
     }
     .cover h1 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 38px;
-      line-height: 1.15;
-      color: #111;
+      font-size: 52px;
+      line-height: 1.1;
       text-transform: uppercase;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
+      color: #ffffff;
+      margin-bottom: 16px;
     }
-    .cover h1 span { color: #c8aa32; }
+    .cover h1 span { color: #C8AA32; }
     .cover-sub {
-      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #9090b0;
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+    .gold-line {
+      width: 60px;
+      height: 3px;
+      background: #C8AA32;
+      margin: 0 auto 40px;
+    }
+    .cover-promise {
+      background: rgba(200, 170, 50, 0.1);
+      border: 1px solid rgba(200, 170, 50, 0.25);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 480px;
       font-size: 14px;
-      color: #555;
-      letter-spacing: 0.05em;
-      margin-top: 12px;
-      margin-bottom: 32px;
-    }
-    .cover-desc {
-      font-size: 15px;
-      color: #444;
-      max-width: 560px;
-      margin: 0 auto 32px;
+      color: #b0b0cc;
       line-height: 1.8;
+      font-style: italic;
     }
-    .cover-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    .cover-stat span {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 26px;
-      color: #c8aa32;
-    }
-    .cover-stat small {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #888;
-    }
+    .cover-promise strong { color: #C8AA32; font-style: normal; }
+
 
     /* ── INTRO ── */
+    .chapter-content, .intro { padding-left: 40px; padding-right: 40px; }
     .intro {
       background: #fff;
       border-left: 4px solid #c8aa32;
@@ -441,31 +455,52 @@
       margin: 48px 0;
     }
 
-    /* ── CIERRE ── */
-    .closing {
+        /* CIERRE */
+    .close {
+      padding: 70px 50px;
       text-align: center;
-      padding: 32px 0;
-      border-top: 2px solid #c8aa32;
+      background: #f5f0e8;
+      border-top: 3px solid #C8AA32;
     }
-    .closing h2 {
+    .close h2 {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 20px;
+      font-size: 30px;
       text-transform: uppercase;
-      color: #111;
-      margin-bottom: 10px;
+      color: #2c2f3a;
+      margin-bottom: 16px;
     }
-    .closing p {
+    .close p {
+      font-size: 15px;
       color: #555;
-      font-size: 14px;
-      margin-bottom: 6px;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 20px;
     }
-    .closing .url {
+    .close p strong { color: #C8AA32; }
+    .cta-btn {
+      display: inline-block;
+      background: #C8AA32;
+      color: #1a1a2e;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: #c8aa32;
-      font-size: 14px;
-      letter-spacing: 0.05em;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      text-align: center;
+      padding: 24px 30px;
+      background: #2c2f3a;
     }
 
     /* ── PRINT BUTTON ── */
@@ -492,7 +527,7 @@
     @media print {
       body { background: #fff; }
       .print-btn { display: none; }
-      .container { padding: 24px 24px 40px; }
+      .page { padding: 24px 24px 40px; }
     }
 
     @media (max-width: 600px) {
@@ -502,45 +537,114 @@
       .cycle-diagram { flex-direction: column; gap: 4px; }
       .cycle-arrow { transform: rotate(90deg); margin: 2px 0; }
     }
+  
+    /* ── INTERACTIVIDAD ── */
+    .reflection-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(200,170,50,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .reflection-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .reflection-textarea:focus { outline: none; border-color: rgba(200,170,50,0.6); background: rgba(255,255,255,0.1); }
+
+    .fill-blank {
+      display: inline-block;
+      border: none;
+      border-bottom: 2px solid #c8aa32;
+      background: transparent;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      padding: 2px 6px;
+      width: 180px;
+      outline: none;
+    }
+    .fill-blank:focus { border-bottom-color: #a08020; background: rgba(200,170,50,0.08); }
+
+    .exercise-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fffef8;
+      border: 1px solid #c8aa32;
+      border-radius: 6px;
+      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 90px;
+      box-sizing: border-box;
+    }
+    .exercise-textarea::placeholder { color: #bbb; }
+    .exercise-textarea:focus { outline: none; border-color: #a08020; }
+
+  
+    .uso-block { background: #1a1a2e; border-radius: 10px; padding: 26px 28px; margin: 0 auto 36px; max-width: 760px; }
+    .uso-block .uso-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8aa32; margin-bottom: 16px; text-align: center; }
+    .uso-incluye { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+    .uso-item { background: rgba(200,170,50,0.12); border: 1px solid rgba(200,170,50,0.3); border-radius: 6px; padding: 8px 14px; font-size: 12px; font-weight: 700; color: #e8dab0; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .uso-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .uso-paso { text-align: center; }
+    .uso-paso .num { width: 30px; height: 30px; border-radius: 50%; background: #c8aa32; color: #1a1a2e; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; line-height: 30px; text-align: center; margin: 0 auto 8px; }
+    .uso-paso .ptitulo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .uso-paso .pdesc { font-size: 11px; color: rgba(245,240,232,0.55); line-height: 1.5; }
+    .uso-block a { color: #c8aa32; text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
-
-<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
-
-<div class="container">
-
-  <!-- BRAND -->
-  <div class="brand">
-    <div class="brand-name">La Zona Campeón</div>
-    <div class="brand-tagline">Entrenamiento Mental para Deportistas</div>
-    <div><span class="level-badge">Nivel 2 — Manuales de Temas Generales</span></div>
-  </div>
-
-  <!-- PORTADA -->
-  <div class="cover">
-    <p class="manual-num">Manual 03 de 05</p>
-    <h1>Confianza y<br /><span>Autoestima</span><br />Deportiva</h1>
-    <p class="cover-sub">Construye una confianza que no depende de los resultados</p>
-    <p class="cover-desc">
-      La duda puede destruir a un deportista antes de que el rival haga nada. Este manual te enseña
-      a construir una confianza sólida, que no se desmorona con una racha mala o una crítica.
-    </p>
-    <div class="cover-stats">
-      <div class="cover-stat">
-        <span>6</span>
-        <small>Capítulos</small>
+  <!-- INSTRUCCIONES DE USO -->
+  <div class="uso-block">
+    <div class="uso-label">Lo que incluye tu compra</div>
+    <div class="uso-incluye">
+      <span class="uso-item">Manual Confianza y Autoestima Deportiva</span>
+      <span class="uso-item"><a href="confianza-4-semanas.html">Plan de 4 Semanas — Confianza →</a></span>
+    </div>
+    <div class="uso-pasos">
+      <div class="uso-paso">
+        <div class="num">1</div>
+        <div class="ptitulo">Sigue el plan</div>
+        <div class="pdesc">El <a href="confianza-4-semanas.html">Plan de 4 Semanas — Confianza</a> te indica qué hacer cada día.</div>
       </div>
-      <div class="cover-stat">
-        <span>12</span>
-        <small>Ejercicios</small>
+      <div class="uso-paso">
+        <div class="num">2</div>
+        <div class="ptitulo">Lee el manual</div>
+        <div class="pdesc">Cada día el plan te indica el capítulo a leer en el manual.</div>
       </div>
-      <div class="cover-stat">
-        <span>1</span>
-        <small>Historia real</small>
+      <div class="uso-paso">
+        <div class="num">3</div>
+        <div class="ptitulo">Ficha del partido</div>
+        <div class="pdesc">Antes y después de cada partido, usa la ficha al final del plan.</div>
       </div>
     </div>
   </div>
+
+<button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+<div class="page">
+    <!-- PORTADA -->
+  <div class="cover">
+    <div class="cover-logo">La Zona Campeón</div>
+    <div class="cover-tag">Manual 03 de 05 &mdash; Nivel 2</div>
+    <h1>Confianza y<br><span>Autoestima</span><br>Deportiva</h1>
+    <div class="gold-line"></div>
+    <p class="cover-sub">Construye una confianza que no depende de los resultados</p>
+    <div class="cover-promise">
+      <strong>Lo que encontrarás aquí:</strong><br>
+      La duda puede destruir a un deportista antes de que el rival haga nada. Este manual te enseña a construir una <strong>confianza sólida</strong>, que no se desmorona con una racha mala o una crítica.
+    </div>
+  </div>
+
 
   <!-- INTRO -->
   <div class="intro">
@@ -551,7 +655,7 @@
       construir seguridad desde adentro para que los resultados lleguen después.
     </p>
     <p style="margin-top:12px; margin-bottom:0;">
-      Antes de entrenar, visita <strong>lazonacampeon.com/frases</strong> para activar tu mente
+      Antes de entrenar, visita <strong><a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></strong> para activar tu mente
       con una frase del día. El entrenamiento mental empieza antes de saltar a la cancha.
     </p>
   </div>
@@ -623,8 +727,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 01</div>
         <ol>
-          <li>¿Tu confianza ahora mismo es situacional (depende del día) o de base (estable)? ¿Cómo lo notas?</li>
-          <li>¿Cuándo fue la última vez que competiste con plena confianza? ¿Qué tenías diferente ese día?</li>
+          <li>¿Tu confianza ahora mismo es situacional (depende del día) o de base (estable)? ¿Cómo lo notas?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cuándo fue la última vez que competiste con plena confianza? ¿Qué tenías diferente ese día?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -675,8 +779,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 02</div>
         <ol>
-          <li>¿Cuál es el detonador más frecuente que activa tu ciclo de duda? ¿Un error técnico, una comparación, una crítica del entrenador?</li>
-          <li>¿En qué punto del ciclo crees que es más fácil para ti intervenir? ¿En el pensamiento, en el cuerpo o en el reencuadre del detonador?</li>
+          <li>¿Cuál es el detonador más frecuente que activa tu ciclo de duda? ¿Un error técnico, una comparación, una crítica del entrenador?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿En qué punto del ciclo crees que es más fácil para ti intervenir? ¿En el pensamiento, en el cuerpo o en el reencuadre del detonador?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -739,7 +843,9 @@
       </p>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio</div>
+        <div class="exercise-label">Ejercicio
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Tu banco de confianza</h4>
         <p>Escribe 10 cosas que hayas logrado en el deporte en los últimos 12 meses. No tienen que ser victorias. Pueden ser pequeños logros: mejorar una técnica, aguantar un entrenamiento difícil, ejecutar bien en un partido importante. Guarda esa lista y léela antes de competir.</p>
       </div>
@@ -747,8 +853,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 03</div>
         <ol>
-          <li>¿En cuál de los tres pilares eres más débil ahora mismo? ¿Qué podrías hacer esta semana para fortalecerlo?</li>
-          <li>Si tuvieras que describir tu identidad deportiva en dos frases — no tus resultados, sino quién eres en cancha — ¿qué dirías?</li>
+          <li>¿En cuál de los tres pilares eres más débil ahora mismo? ¿Qué podrías hacer esta semana para fortalecerlo?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>Si tuvieras que describir tu identidad deportiva en dos frases — no tus resultados, sino quién eres en cancha — ¿qué dirías?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -848,8 +954,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 04</div>
         <ol>
-          <li>¿Cómo es la calidad de tu actitud en los entrenamientos? ¿Estás construyendo confianza cada día o llegando a cumplir?</li>
-          <li>¿Cuál es el hábito de entrenamiento que más te costaría cambiar para mejorar? ¿Por qué no lo has cambiado?</li>
+          <li>¿Cómo es la calidad de tu actitud en los entrenamientos? ¿Estás construyendo confianza cada día o llegando a cumplir?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cuál es el hábito de entrenamiento que más te costaría cambiar para mejorar? ¿Por qué no lo has cambiado?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -914,21 +1020,23 @@
       </p>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio</div>
+        <div class="exercise-label">Ejercicio
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Tu frase de ancla</h4>
         <p>Escribe una frase corta (3 a 6 palabras) que resuma lo que necesitas recordarte en los momentos difíciles. Debe ser específica para ti, no genérica.</p>
         <ul>
           <li>Ejemplos: "Yo estoy preparado", "Punto a punto", "Este es mi momento", "Más fuerte que la duda"</li>
         </ul>
         <p style="margin-top:10px;">Úsala en los entrenamientos. Repítela cuando la duda aparezca. Hazla tuya antes del partido.</p>
-        <p style="margin-top:8px; font-style: italic; color: #888; font-size:13px;">Encuentra más frases activadoras en lazonacampeon.com/frases</p>
+        <p style="margin-top:8px; font-style: italic; color: #888; font-size:13px;">Encuentra más frases activadoras en <a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></p>
       </div>
 
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 05</div>
         <ol>
-          <li>¿Cuál es el pensamiento negativo que más se repite en tu cabeza durante la competencia? Escríbelo y luego escribe la respuesta racional que lo desmonta.</li>
-          <li>¿Cómo te hablarías a ti mismo si fueras tu mejor entrenador? ¿Esas palabras se parecen a lo que realmente te dices?</li>
+          <li>¿Cuál es el pensamiento negativo que más se repite en tu cabeza durante la competencia? Escríbelo y luego escribe la respuesta racional que lo desmonta.<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cómo te hablarías a ti mismo si fueras tu mejor entrenador? ¿Esas palabras se parecen a lo que realmente te dices?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -986,7 +1094,9 @@
       </p>
 
       <div class="exercise">
-        <div class="exercise-label">Ejercicio final</div>
+        <div class="exercise-label">Ejercicio final
+      <textarea class="exercise-textarea" placeholder="Escribe aquí tus respuestas..." rows="8"></textarea>
+    </div>
         <h4>Tu plan de confianza</h4>
         <p>Escribe en un párrafo (no más de 5 líneas) cómo vas a construir tu confianza en los próximos 30 días. Incluye:</p>
         <ol>
@@ -1000,8 +1110,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 06</div>
         <ol>
-          <li>¿Cómo han sido tus últimas rachas malas? ¿Qué hiciste que las hizo durar más? ¿Qué podrías hacer diferente con lo que sabes ahora?</li>
-          <li>¿Qué parte de este manual fue la más difícil de leer? Eso generalmente indica dónde más lo necesitas.</li>
+          <li>¿Cómo han sido tus últimas rachas malas? ¿Qué hiciste que las hizo durar más? ¿Qué podrías hacer diferente con lo que sabes ahora?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué parte de este manual fue la más difícil de leer? Eso generalmente indica dónde más lo necesitas.<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ol>
       </div>
     </div>
@@ -1081,24 +1191,57 @@
   </div>
 
   <!-- CIERRE -->
-  <div class="closing">
-    <h2>La confianza es una decisión diaria</h2>
-    <p>
-      No la decide el marcador. No la decide el entrenador. No la decide el rival.
-      La construyes tú, en cada entrenamiento, en cada pensamiento, en cada momento en que eliges
-      seguir trabajando cuando nadie te está mirando.
-    </p>
-    <p style="margin-top: 16px;">
-      Continúa tu entrenamiento mental en:
-    </p>
-    <p class="url">lazonacampeon.com</p>
-    <p style="margin-top:6px; font-size:13px; color:#888;">Frases activadoras diarias → lazonacampeon.com/frases</p>
-    <p style="margin-top: 16px; font-size: 13px; color: #888;">
-      Manual 03 de 05 — Nivel 2 — La Zona Campeón © 2025
-    </p>
+  <div class="close">
+    <div class="gold-line"></div>
+    <h2>La confianza es<br>una decisión diaria</h2>
+    <p>No la decide el marcador. No la decide el entrenador. No la decide el rival. La construyes tú, en cada entrenamiento, en cada pensamiento, en cada momento en que eliges seguir trabajando cuando nadie te está mirando.</p>
+    <p>Practica el <strong>diálogo interno positivo</strong>. Usa el <strong>historial de victorias</strong> cuando la duda aparezca. Actúa con confianza antes de sentirla.</p>
+    <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
+    <br>
+    <div style="background:#1a1a2e; border-radius:10px; padding:28px 30px; margin:40px 0; text-align:center;">
+    <p style="color:#aaa; font-size:13px; margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Tu plan de implementación</p>
+    <a href="confianza-4-semanas.html" target="_blank" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-weight:bold; font-size:16px; padding:14px 32px; border-radius:8px; text-decoration:none; letter-spacing:0.5px;">Abrir el Plan de 4 Semanas →</a>
+  </div>
+    <br><br>
+    <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
+    <br><br>
+    <p style="font-size:13px; color:#9090b0; max-width:420px; margin:0 auto 8px;">Antes de tu próximo partido, enciende tu mente con la <strong style="color:#C8AA32;">Frase Activadora del Día</strong>:</p>
+    <a href="https://lazonacampeon.com/frases" target="_blank" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <br><br>
+    <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
   </div>
 
+  <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
+
 </div>
+
+
+<script>
+(function() {
+  var KEY = 'lzc_n2-rev-c3a8f1_03_confianza_autoestima';
+  function save() {
+    var data = {};
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      data[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      if (data[i] !== undefined) el.value = data[i];
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

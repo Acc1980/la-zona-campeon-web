@@ -690,7 +690,8 @@
     .close {
       padding: 70px 50px;
       text-align: center;
-      background: linear-gradient(160deg, #2c2f3a 0%, #1a1a2e 100%);
+      background: #f5f0e8;
+      border-top: 3px solid #C8AA32;
     }
 
     .close h2 {
@@ -698,13 +699,13 @@
       font-weight: 900;
       font-size: 30px;
       text-transform: uppercase;
-      color: #ffffff;
+      color: #2c2f3a;
       margin-bottom: 16px;
     }
 
     .close p {
       font-size: 15px;
-      color: #9090b0;
+      color: #555;
       line-height: 1.8;
       max-width: 500px;
       margin: 0 auto 20px;
@@ -732,10 +733,10 @@
       font-size: 11px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(200,170,50,0.5);
+      color: #C8AA32;
       text-align: center;
-      padding: 30px;
-      background: #1a1a2e;
+      padding: 24px 30px;
+      background: #2c2f3a;
     }
 
     /* PRINT */
@@ -749,9 +750,97 @@
       .protocol-circle.step1, .protocol-circle.step3 { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .protocol-circle.step2 { background: #C8AA32 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
+  
+    /* ── INTERACTIVIDAD ── */
+    .reflection-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(200,170,50,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .reflection-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .reflection-textarea:focus { outline: none; border-color: rgba(200,170,50,0.6); background: rgba(255,255,255,0.1); }
+
+    .fill-blank {
+      display: inline-block;
+      border: none;
+      border-bottom: 2px solid #c8aa32;
+      background: transparent;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      padding: 2px 6px;
+      width: 180px;
+      outline: none;
+    }
+    .fill-blank:focus { border-bottom-color: #a08020; background: rgba(200,170,50,0.08); }
+
+    .exercise-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fffef8;
+      border: 1px solid #c8aa32;
+      border-radius: 6px;
+      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 90px;
+      box-sizing: border-box;
+    }
+    .exercise-textarea::placeholder { color: #bbb; }
+    .exercise-textarea:focus { outline: none; border-color: #a08020; }
+
+  
+    .uso-block { background: #1a1a2e; border-radius: 10px; padding: 26px 28px; margin: 0 auto 36px; max-width: 760px; }
+    .uso-block .uso-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8aa32; margin-bottom: 16px; text-align: center; }
+    .uso-incluye { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+    .uso-item { background: rgba(200,170,50,0.12); border: 1px solid rgba(200,170,50,0.3); border-radius: 6px; padding: 8px 14px; font-size: 12px; font-weight: 700; color: #e8dab0; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .uso-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .uso-paso { text-align: center; }
+    .uso-paso .num { width: 30px; height: 30px; border-radius: 50%; background: #c8aa32; color: #1a1a2e; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; line-height: 30px; text-align: center; margin: 0 auto 8px; }
+    .uso-paso .ptitulo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .uso-paso .pdesc { font-size: 11px; color: rgba(245,240,232,0.55); line-height: 1.5; }
+    .uso-block a { color: #c8aa32; text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
+  <!-- INSTRUCCIONES DE USO -->
+  <div class="uso-block">
+    <div class="uso-label">Lo que incluye tu compra</div>
+    <div class="uso-incluye">
+      <span class="uso-item">Manual La Espiral Negativa</span>
+      <span class="uso-item"><a href="espiral-negativa-4-semanas.html">Plan de 4 Semanas — Espiral Negativa →</a></span>
+    </div>
+    <div class="uso-pasos">
+      <div class="uso-paso">
+        <div class="num">1</div>
+        <div class="ptitulo">Sigue el plan</div>
+        <div class="pdesc">El <a href="espiral-negativa-4-semanas.html">Plan de 4 Semanas — Espiral Negativa</a> te indica qué hacer cada día.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">2</div>
+        <div class="ptitulo">Lee el manual</div>
+        <div class="pdesc">Cada día el plan te indica el capítulo a leer en el manual.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">3</div>
+        <div class="ptitulo">Ficha del partido</div>
+        <div class="pdesc">Antes y después de cada partido, usa la ficha al final del plan.</div>
+      </div>
+    </div>
+  </div>
 
 <!-- BOTÓN IMPRIMIR -->
 <button class="print-btn" onclick="window.print()">
@@ -833,7 +922,7 @@
     <p>Lo que hace tan peligrosa a la <strong>espiral</strong> es que se siente inevitable. Cuando estás dentro, parece que no hay salida. La mente se convence de que seguirá fallando, el cuerpo se tensa, la atención se va al error anterior en lugar de a la siguiente jugada. Y así, el ciclo continúa.</p>
     <p><strong>La buena noticia:</strong> la espiral no es inevitable. Tiene puntos de interrupción. Y cuando aprendes a usarlos, puedes salir de ella en segundos — no en minutos, no al final del partido.</p>
     <p>Este manual te enseña exactamente cómo hacerlo.</p>
-    <p><strong>Un consejo antes de empezar:</strong> la espiral suele aparecer cuando la mente llega a la competencia sin estar encendida. Si aún no lo haces, visita <strong>lazonacampeon.com/frases</strong> antes de cada partido o entrenamiento — una frase activadora es el primer paso para llegar con la mente ya enfocada, no esperando que se enfoque sola.</p>
+    <p><strong>Un consejo antes de empezar:</strong> la espiral suele aparecer cuando la mente llega a la competencia sin estar encendida. Si aún no lo haces, visita <strong><a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></strong> antes de cada partido o entrenamiento — una frase activadora es el primer paso para llegar con la mente ya enfocada, no esperando que se enfoque sola.</p>
   </div>
 
   <!-- CAPÍTULO 1 -->
@@ -873,8 +962,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 1</div>
         <ul>
-          <li>¿Has experimentado alguna vez una espiral negativa durante un partido o entrenamiento? ¿Cómo te sentías físicamente y mentalmente en ese momento?</li>
-          <li>¿Recuerdas alguna actuación en la que un error inicial desencadenó más errores? ¿Qué crees que lo disparó?</li>
+          <li>¿Has experimentado alguna vez una espiral negativa durante un partido o entrenamiento? ¿Cómo te sentías físicamente y mentalmente en ese momento?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Recuerdas alguna actuación en la que un error inicial desencadenó más errores? ¿Qué crees que lo disparó?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -948,8 +1037,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 2</div>
         <ul>
-          <li>¿Cuál de las tres señales — física, mental o en el juego — es la que aparece primero en ti? ¿Por qué crees que es esa?</li>
-          <li>Si tuvieras que elegir UNA señal de alarma temprana que te avise de que estás entrando en espiral, ¿cuál sería?</li>
+          <li>¿Cuál de las tres señales — física, mental o en el juego — es la que aparece primero en ti? ¿Por qué crees que es esa?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>Si tuvieras que elegir UNA señal de alarma temprana que te avise de que estás entrando en espiral, ¿cuál sería?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -996,8 +1085,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 3</div>
         <ul>
-          <li>¿Cuál de los 3 detonadores es el que más te afecta? ¿Por qué crees que ese en particular tiene tanto poder sobre ti?</li>
-          <li>¿Hay situaciones específicas (tipo de partido, tipo de error, presencia de ciertas personas) donde ese detonador se activa más fácilmente?</li>
+          <li>¿Cuál de los 3 detonadores es el que más te afecta? ¿Por qué crees que ese en particular tiene tanto poder sobre ti?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Hay situaciones específicas (tipo de partido, tipo de error, presencia de ciertas personas) donde ese detonador se activa más fácilmente?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -1074,8 +1163,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 4</div>
         <ul>
-          <li>¿Qué gesto físico funciona mejor para ti como señal de "stop" cuando entras en espiral?</li>
-          <li>¿Cuál sería tu instrucción de regreso? La palabra o frase corta que te ancla al presente en tu deporte.</li>
+          <li>¿Qué gesto físico funciona mejor para ti como señal de "stop" cuando entras en espiral?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cuál sería tu instrucción de regreso? La palabra o frase corta que te ancla al presente en tu deporte.<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -1117,8 +1206,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 5</div>
         <ul>
-          <li>¿Cuál podría ser tu "punto de reset" específico en tu deporte? Un momento físico concreto entre jugadas.</li>
-          <li>¿Qué palabra de reset resuena más contigo? ¿Por qué esa y no otra?</li>
+          <li>¿Cuál podría ser tu "punto de reset" específico en tu deporte? Un momento físico concreto entre jugadas.<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué palabra de reset resuena más contigo? ¿Por qué esa y no otra?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -1190,8 +1279,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 6</div>
         <ul>
-          <li>¿Estás dispuesto a llevar el diario de errores durante 2 semanas? ¿Qué crees que podrías descubrir sobre tus propios patrones?</li>
-          <li>¿Cómo describirías tu "tiempo de recuperación" actual después de un error? ¿Minutos, jugadas, medio tiempo?</li>
+          <li>¿Estás dispuesto a llevar el diario de errores durante 2 semanas? ¿Qué crees que podrías descubrir sobre tus propios patrones?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cómo describirías tu "tiempo de recuperación" actual después de un error? ¿Minutos, jugadas, medio tiempo?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -1238,10 +1327,15 @@
     <p>El tiempo de recuperación más corto es tu ventaja competitiva más poderosa.</p>
     <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
     <br>
+    <div style="background:#1a1a2e; border-radius:10px; padding:28px 30px; margin:40px 0; text-align:center;">
+    <p style="color:#aaa; font-size:13px; margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Tu plan de implementación</p>
+    <a href="espiral-negativa-4-semanas.html" target="_blank" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-weight:bold; font-size:16px; padding:14px 32px; border-radius:8px; text-decoration:none; letter-spacing:0.5px;">Abrir el Plan de 4 Semanas →</a>
+  </div>
+    <br><br>
     <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
     <br><br>
     <p style="font-size:13px; color:#9090b0; max-width:420px; margin:0 auto 8px;">Antes de tu próximo partido, enciende tu mente con la <strong style="color:#C8AA32;">Frase Activadora del Día</strong>:</p>
-    <a href="https://lazonacampeon.com/frases" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <a href="https://lazonacampeon.com/frases" target="_blank" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
     <br><br>
     <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
   </div>
@@ -1249,5 +1343,33 @@
   <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
 
 </div>
+
+<script>
+(function() {
+  var KEY = 'lzc_n2-rev-c3a8f1_01_espiral_negativa';
+  function save() {
+    var data = {};
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      data[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      if (data[i] !== undefined) el.value = data[i];
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

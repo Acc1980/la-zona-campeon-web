@@ -225,13 +225,53 @@
     .story p:last-child { margin-bottom:0; }
     .story-quote { font-family:'Montserrat',sans-serif; font-weight:700; font-size:15px; color:#ffffff; font-style:italic; border-left:3px solid #C8AA32; padding:12px 20px; margin:20px 0; }
 
-    /* CIERRE */
-    .close { padding:70px 50px; text-align:center; background:linear-gradient(160deg,#2c2f3a 0%,#1a1a2e 100%); }
-    .close h2 { font-family:'Montserrat',sans-serif; font-weight:900; font-size:30px; text-transform:uppercase; color:#ffffff; margin-bottom:16px; }
-    .close p { font-size:15px; color:#9090b0; line-height:1.8; max-width:500px; margin:0 auto 20px; }
-    .close p strong { color:#C8AA32; }
-    .cta-btn { display:inline-block; background:#C8AA32; color:#1a1a2e; font-family:'Montserrat',sans-serif; font-weight:900; font-size:13px; letter-spacing:3px; text-transform:uppercase; padding:16px 40px; border-radius:8px; text-decoration:none; }
-    .footer-brand { font-family:'Montserrat',sans-serif; font-weight:900; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(200,170,50,0.5); text-align:center; padding:30px; background:#1a1a2e; }
+        /* CIERRE */
+    .close {
+      padding: 70px 50px;
+      text-align: center;
+      background: #f5f0e8;
+      border-top: 3px solid #C8AA32;
+    }
+    .close h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: #2c2f3a;
+      margin-bottom: 16px;
+    }
+    .close p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+    .close p strong { color: #C8AA32; }
+    .cta-btn {
+      display: inline-block;
+      background: #C8AA32;
+      color: #1a1a2e;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    .footer-brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #C8AA32;
+      text-align: center;
+      padding: 24px 30px;
+      background: #2c2f3a;
+    }
 
     /* PRINT */
     @media print {
@@ -241,9 +281,97 @@
       body { background:#fff; }
       .story, .reflection { background:#1a1a2e !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
     }
+  
+    /* ── INTERACTIVIDAD ── */
+    .reflection-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(200,170,50,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .reflection-textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .reflection-textarea:focus { outline: none; border-color: rgba(200,170,50,0.6); background: rgba(255,255,255,0.1); }
+
+    .fill-blank {
+      display: inline-block;
+      border: none;
+      border-bottom: 2px solid #c8aa32;
+      background: transparent;
+      color: #1a1a1a;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      padding: 2px 6px;
+      width: 180px;
+      outline: none;
+    }
+    .fill-blank:focus { border-bottom-color: #a08020; background: rgba(200,170,50,0.08); }
+
+    .exercise-textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fffef8;
+      border: 1px solid #c8aa32;
+      border-radius: 6px;
+      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 90px;
+      box-sizing: border-box;
+    }
+    .exercise-textarea::placeholder { color: #bbb; }
+    .exercise-textarea:focus { outline: none; border-color: #a08020; }
+
+  
+    .uso-block { background: #1a1a2e; border-radius: 10px; padding: 26px 28px; margin: 0 auto 36px; max-width: 760px; }
+    .uso-block .uso-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #c8aa32; margin-bottom: 16px; text-align: center; }
+    .uso-incluye { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; justify-content: center; }
+    .uso-item { background: rgba(200,170,50,0.12); border: 1px solid rgba(200,170,50,0.3); border-radius: 6px; padding: 8px 14px; font-size: 12px; font-weight: 700; color: #e8dab0; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
+    .uso-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .uso-paso { text-align: center; }
+    .uso-paso .num { width: 30px; height: 30px; border-radius: 50%; background: #c8aa32; color: #1a1a2e; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; line-height: 30px; text-align: center; margin: 0 auto 8px; }
+    .uso-paso .ptitulo { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .uso-paso .pdesc { font-size: 11px; color: rgba(245,240,232,0.55); line-height: 1.5; }
+    .uso-block a { color: #c8aa32; text-decoration: none; font-weight: 700; }
   </style>
 </head>
 <body>
+  <!-- INSTRUCCIONES DE USO -->
+  <div class="uso-block">
+    <div class="uso-label">Lo que incluye tu compra</div>
+    <div class="uso-incluye">
+      <span class="uso-item">Manual Concentración Bajo Presión</span>
+      <span class="uso-item"><a href="concentracion-4-semanas.html">Plan de 4 Semanas — Concentración →</a></span>
+    </div>
+    <div class="uso-pasos">
+      <div class="uso-paso">
+        <div class="num">1</div>
+        <div class="ptitulo">Sigue el plan</div>
+        <div class="pdesc">El <a href="concentracion-4-semanas.html">Plan de 4 Semanas — Concentración</a> te indica qué hacer cada día.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">2</div>
+        <div class="ptitulo">Lee el manual</div>
+        <div class="pdesc">Cada día el plan te indica el capítulo a leer en el manual.</div>
+      </div>
+      <div class="uso-paso">
+        <div class="num">3</div>
+        <div class="ptitulo">Ficha del partido</div>
+        <div class="pdesc">Antes y después de cada partido, usa la ficha al final del plan.</div>
+      </div>
+    </div>
+  </div>
 
 <button class="print-btn" onclick="window.print()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -286,7 +414,7 @@
     <p>La mayoría de los deportistas cree que la <strong>concentración</strong> es algo que aparece cuando el partido es importante. Que si de verdad te importa, te vas a concentrar. Que si llevas mucho tiempo entrenando algo, lo harás bien automáticamente bajo presión.</p>
     <p>No funciona así. La concentración bajo presión es una <strong>habilidad entrenada</strong>, no un estado que aparece por sí solo. Los deportistas que rinden cuando más importa no se concentran más que los demás — han aprendido cómo redirigir su atención de forma consciente cuando algo intenta robarla.</p>
     <p>El ambiente, el marcador, el rival, las gradas, los errores propios, las expectativas del entrenador — todo compite por tu atención durante la competencia. Tu trabajo no es eliminar esas distracciones. Es aprender a <strong>volver al foco</strong> cada vez que tu mente se va.</p>
-    <p><strong>Un consejo antes de empezar:</strong> la concentración se construye antes del partido, no durante. Visita <strong>lazonacampeon.com/frases</strong> antes de cada competencia — una frase activadora encenderá tu mente y te pondrá en modo foco antes de que empiece el primer minuto.</p>
+    <p><strong>Un consejo antes de empezar:</strong> la concentración se construye antes del partido, no durante. Visita <strong><a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></strong> antes de cada competencia — una frase activadora encenderá tu mente y te pondrá en modo foco antes de que empiece el primer minuto.</p>
   </div>
 
   <!-- CAPÍTULO 1 -->
@@ -325,8 +453,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 1</div>
         <ul>
-          <li>¿Cuándo sientes que estás realmente concentrado en la competencia? ¿Cómo describe ese estado físicamente?</li>
-          <li>¿Usas más la concentración amplia o la estrecha en tu deporte? ¿Cuándo necesitas cambiar entre una y otra?</li>
+          <li>¿Cuándo sientes que estás realmente concentrado en la competencia? ¿Cómo describe ese estado físicamente?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Usas más la concentración amplia o la estrecha en tu deporte? ¿Cuándo necesitas cambiar entre una y otra?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -385,8 +513,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 2</div>
         <ul>
-          <li>¿Cuál es tu ladrón de concentración más frecuente — externo o interno? ¿Por qué crees que ese tiene tanto poder sobre ti?</li>
-          <li>¿Hay algún tipo de partido o situación específica donde los distractores son más intensos para ti?</li>
+          <li>¿Cuál es tu ladrón de concentración más frecuente — externo o interno? ¿Por qué crees que ese tiene tanto poder sobre ti?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Hay algún tipo de partido o situación específica donde los distractores son más intensos para ti?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -440,8 +568,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 3</div>
         <ul>
-          <li>¿Tiendes a sobre-activarte (ansiedad, precipitación) o a sub-activarte (dispersión, desgana) en competencias importantes?</li>
-          <li>¿Puedes recordar un partido en el que estuviste en tu zona óptima? ¿Qué era diferente ese día?</li>
+          <li>¿Tiendes a sobre-activarte (ansiedad, precipitación) o a sub-activarte (dispersión, desgana) en competencias importantes?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Puedes recordar un partido en el que estuviste en tu zona óptima? ¿Qué era diferente ese día?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -495,8 +623,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 4</div>
         <ul>
-          <li>¿Cuál de las 4 técnicas crees que sería más útil para ti? ¿Por qué esa en particular encaja con tu forma de perder el foco?</li>
-          <li>¿Cuál podría ser tu "palabra de anclaje"? Escribe 3 opciones y quédate con la que más resuene.</li>
+          <li>¿Cuál de las 4 técnicas crees que sería más útil para ti? ¿Por qué esa en particular encaja con tu forma de perder el foco?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Cuál podría ser tu "palabra de anclaje"? Escribe 3 opciones y quédate con la que más resuene.<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -519,7 +647,7 @@
         <div class="chapter-box-title">Estructura de la rutina de concentración</div>
         <p><strong>Cierre del mundo exterior (5–10 min):</strong> Guarda el teléfono. Sal de conversaciones innecesarias. Este es el momento de entrar en tu espacio mental. No es antisocial — es profesional.</p>
         <p><strong>Activación física (10–15 min):</strong> El movimiento físico activa el sistema nervioso y sube la activación hasta la zona óptima. Calentamiento con intención, no mecánico.</p>
-        <p><strong>Frase activadora (2 min):</strong> Una frase que encienda tu mentalidad competitiva. Puede ser de <strong>lazonacampeon.com/frases</strong> o una propia. Repítela en voz baja mientras terminas el calentamiento.</p>
+        <p><strong>Frase activadora (2 min):</strong> Una frase que encienda tu mentalidad competitiva. Puede ser de <strong><a href="https://lazonacampeon.com/frases" target="_blank" style="color:inherit;">lazonacampeon.com/frases</a></strong> o una propia. Repítela en voz baja mientras terminas el calentamiento.</p>
         <p><strong>Instrucción de foco (1 min):</strong> Define UNA cosa en la que vas a enfocarte durante el partido. No un objetivo de resultado — una intención de proceso. <em>"Voy a hacer presión alta en cada pérdida"</em>. <em>"Voy a comunicar en cada jugada defensiva"</em>.</p>
       </div>
 
@@ -534,8 +662,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 5</div>
         <ul>
-          <li>¿Qué haces normalmente en los 30 minutos antes de competir? ¿Cómo llega tu mente al primer minuto del partido?</li>
-          <li>¿Qué elemento de la rutina pre-competencia podrías empezar a implementar desde el próximo partido?</li>
+          <li>¿Qué haces normalmente en los 30 minutos antes de competir? ¿Cómo llega tu mente al primer minuto del partido?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué elemento de la rutina pre-competencia podrías empezar a implementar desde el próximo partido?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -583,8 +711,8 @@
       <div class="reflection">
         <div class="reflection-title">Reflexión — Capítulo 6</div>
         <ul>
-          <li>¿Estás dispuesto a dedicar 5 minutos diarios durante 30 días a entrenar tu concentración fuera del deporte? ¿Qué esperas notar al final?</li>
-          <li>¿Qué práctica de las tres te parece más accesible para empezar esta semana?</li>
+          <li>¿Estás dispuesto a dedicar 5 minutos diarios durante 30 días a entrenar tu concentración fuera del deporte? ¿Qué esperas notar al final?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
+          <li>¿Qué práctica de las tres te parece más accesible para empezar esta semana?<br><textarea class="reflection-textarea" placeholder="Escribe tu respuesta aquí..." rows="3"></textarea></li>
         </ul>
       </div>
     </div>
@@ -700,10 +828,15 @@
     <p>La <strong>concentración bajo presión</strong> no depende del ambiente. Depende de lo que has entrenado antes de que llegue la presión.</p>
     <p>Conoce tus distractores. Mantente en tu <strong>zona de activación óptima</strong>. Usa las técnicas de foco en tiempo real. Construye tu rutina pre-competencia. Entrena el músculo de la atención.</p>
     <p>Y antes de cada partido, enciende tu mente con la <strong>Frase Activadora del Día:</strong></p>
-    <a href="https://lazonacampeon.com/frases" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
+    <a href="https://lazonacampeon.com/frases" target="_blank" style="color:#C8AA32; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-decoration:none;">lazonacampeon.com/frases →</a>
     <br><br>
     <p><strong>Tu juego cambia cuando tu mente cambia.</strong></p>
     <br>
+    <div style="background:#1a1a2e; border-radius:10px; padding:28px 30px; margin:40px 0; text-align:center;">
+    <p style="color:#aaa; font-size:13px; margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Tu plan de implementación</p>
+    <a href="concentracion-4-semanas.html" target="_blank" style="display:inline-block; background:#e8c84a; color:#1a1a2e; font-weight:bold; font-size:16px; padding:14px 32px; border-radius:8px; text-decoration:none; letter-spacing:0.5px;">Abrir el Plan de 4 Semanas →</a>
+  </div>
+    <br><br>
     <a href="https://lazonacampeon.com/productos" class="cta-btn">Ver más manuales</a>
     <br><br>
     <p style="font-size:13px; color:#606080;">¿Quieres ir al siguiente nivel? Explora los manuales específicos para tu posición en lazonacampeon.com</p>
@@ -712,5 +845,33 @@
   <div class="footer-brand">© La Zona Campeón — lazonacampeon.com</div>
 
 </div>
+
+<script>
+(function() {
+  var KEY = 'lzc_n2-rev-c3a8f1_02_concentracion_bajo_presion';
+  function save() {
+    var data = {};
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      data[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el, i) {
+      if (data[i] !== undefined) el.value = data[i];
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('textarea, input.fill-blank').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

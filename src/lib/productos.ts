@@ -13,30 +13,35 @@ export const PRODUCTOS: Record<string, Producto> = {
     price: 9.99,
     description: "Cómo detener el ciclo de errores, frustración y más errores. Manual N2 — 5 capítulos.",
     manualUrl: "/n2-rev-c3a8f1/01-espiral-negativa.html",
+    planUrl: "/n2-rev-c3a8f1/espiral-negativa-4-semanas.html",
   },
   "n2-concentracion": {
     title: "Concentración Bajo Presión",
     price: 9.99,
     description: "Técnicas para mantener el foco cuando el partido está en juego. Manual N2.",
     manualUrl: "/n2-rev-c3a8f1/02-concentracion-bajo-presion.html",
+    planUrl: "/n2-rev-c3a8f1/concentracion-4-semanas.html",
   },
   "n2-confianza": {
     title: "Confianza y Autoestima Deportiva",
     price: 9.99,
     description: "Construye una confianza que no depende de los resultados. Manual N2.",
     manualUrl: "/n2-rev-c3a8f1/03-confianza-autoestima.html",
+    planUrl: "/n2-rev-c3a8f1/confianza-4-semanas.html",
   },
   "n2-errores": {
     title: "Manejo de Errores y Fracasos",
     price: 9.99,
     description: "Procesa los errores rápido y vuelve al juego sin que te destruyan. Manual N2.",
     manualUrl: "/n2-rev-c3a8f1/04-manejo-errores-fracasos.html",
+    planUrl: "/n2-rev-c3a8f1/errores-fracasos-4-semanas.html",
   },
   "n2-liderazgo": {
     title: "Liderazgo y Comunicación en Equipo",
     price: 9.99,
     description: "Influye positivamente en tu equipo sin necesitar la banda de campeón. Manual N2.",
     manualUrl: "/n2-rev-c3a8f1/05-liderazgo-comunicacion.html",
+    planUrl: "/n2-rev-c3a8f1/liderazgo-4-semanas.html",
   },
 
   // ── NIVEL 3 — $19.99 ─────────────────────────────────────────────────────

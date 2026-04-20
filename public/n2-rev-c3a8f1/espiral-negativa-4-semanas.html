@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espiral Negativa – Plan de 4 Semanas | La Zona Campeón</title>
+<style>
+  :root {
+    --gold: #e2bc8e;
+    --dark: #2c2f3a;
+    --dark2: #16171e;
+    --cream: #f5f0e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--cream);
+    color: var(--dark);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 48px;
+  }
+  .header {
+    background: var(--dark);
+    color: var(--gold);
+    text-align: center;
+    padding: 36px 24px 28px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+  }
+  .header .pos-tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+  .header h1 { font-size: 28px; margin-bottom: 6px; }
+  .header .subtitle { font-size: 15px; color: #ccc; }
+  .intro { background: #fff; border-left: 5px solid var(--gold); border-radius: 8px; padding: 20px 24px; margin-bottom: 32px; font-size: 14px; line-height: 1.7; }
+  .week { margin-bottom: 40px; }
+  .week-header { background: var(--dark); color: var(--gold); padding: 14px 20px; border-radius: 10px 10px 0 0; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+  .week-header .focus { font-size: 12px; font-weight: normal; color: #ccc; font-style: italic; }
+  .days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border: 2px solid var(--dark); border-top: none; border-radius: 0 0 10px 10px; overflow: hidden; }
+  .day-card { background: #fff; padding: 12px 8px; border-right: 1px solid #e0d8cc; border-bottom: 1px solid #e0d8cc; text-align: center; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .day-card:last-child { border-right: none; }
+  .day-card.rest { background: #f9f6f0; opacity: 0.7; }
+  .day-label { font-size: 9px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .day-num { font-size: 20px; font-weight: bold; color: var(--dark); margin-bottom: 8px; line-height: 1; }
+  .day-check { width: 28px; height: 28px; border: 2.5px solid var(--gold); border-radius: 6px; margin-bottom: 8px; cursor: pointer; flex-shrink: 0; }
+  .day-action { font-size: 10px; color: var(--dark); line-height: 1.4; font-weight: bold; margin-bottom: 4px; }
+  .day-detail { font-size: 9px; color: #777; line-height: 1.3; font-style: italic; }
+  .day-card.rest .day-action { color: #aaa; font-weight: normal; }
+  .week-notes { background: var(--dark2); border-radius: 0 0 10px 10px; padding: 14px 20px; margin-top: -2px; }
+  .week-notes label { font-size: 11px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .week-notes textarea { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(232,200,74,0.3); border-radius: 6px; color: #eee; font-size: 13px; padding: 10px 12px; resize: none; height: 64px; font-family: inherit; }
+  .week-notes textarea::placeholder { color: #666; }
+  .ficha { background: var(--dark); border-radius: 12px; padding: 30px 28px; margin-top: 40px; color: #eee; }
+  .ficha h2 { color: var(--gold); font-size: 20px; margin-bottom: 4px; }
+  .ficha .ficha-sub { color: #aaa; font-size: 12px; margin-bottom: 24px; }
+  .ficha-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+  .ficha-field label { display: block; font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .ficha-field input[type="text"] { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: #fff; font-size: 13px; padding: 8px 10px; font-family: inherit; }
+  .ficha-section { margin-bottom: 22px; }
+  .ficha-section h3 { font-size: 13px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(232,200,74,0.25); padding-bottom: 6px; margin-bottom: 12px; }
+  .check-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .check-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+  .check-row span { font-size: 13px; line-height: 1.5; color: #ddd; }
+  .check-row span em { color: #aaa; font-size: 12px; }
+  .scale-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .scale-row label { font-size: 13px; color: #ddd; width: 100%; margin-bottom: 6px; }
+  .scale-btn { width: 40px; height: 40px; border: 2px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: #ccc; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .scale-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .ficha-notes textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #eee; font-size: 13px; padding: 12px 14px; resize: none; height: 90px; font-family: inherit; }
+  .ficha-notes textarea::placeholder { color: #555; }
+  .counter-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .counter-row label { font-size: 13px; color: #ddd; flex: 1; }
+  .counter-row input[type="number"] { width: 64px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: #fff; font-size: 14px; padding: 6px 10px; text-align: center; font-family: inherit; }
+  .print-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: #C8AA32;
+    color: #1a1a2e;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(200,170,50,0.35);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .print-btn:hover { background: #b89a28; }
+  @media print {
+    .print-btn { display: none !important; }
+    body { padding: 12px; }
+    .week-notes textarea, .ficha-notes textarea, input[type="text"], input[type="number"] { border-bottom: 1px solid #999 !important; background: transparent !important; color: #000 !important; }
+    .scale-btn { border: 2px solid #999; }
+    .ficha { background: #f0f0f0; color: #000; }
+    .ficha h2, .ficha-section h3 { color: #000; }
+    .ficha-field label, .ficha-sub, .check-row span, .counter-row label, .scale-row label { color: #333; }
+  }
+
+    /* ── INTERACTIVIDAD ── */
+    .ficha-textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(226,188,142,0.3);
+      border-radius: 6px;
+      color: #ddd;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+    .ficha-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .ficha-textarea:focus { outline: none; border-color: rgba(226,188,142,0.6); }
+
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  Imprimir
+</button>
+
+<div class="header">
+  <div class="pos-tag">Nivel 2 · Mentalidad General</div>
+  <h1>La Espiral Negativa — Plan de 4 Semanas</h1>
+  <div class="subtitle">Del conocimiento a la cancha: un hábito por día</div>
+</div>
+
+<div class="intro">
+  <strong>Cómo usar este plan:</strong> Cada día marca el checkbox cuando hayas completado la práctica. Al final de cada semana escribe una reflexión breve. La <em>Ficha de Partido</em> al final es para usar antes y después de cada juego.
+</div>
+
+<!-- SEMANA 1 -->
+<div class="week">
+  <div class="week-header">
+    <span>Semana 1 — Días 1 al 7</span>
+    <span class="focus">Qué es la espiral y cómo reconocerla</span>
+  </div>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-label">Lun</div><div class="day-num">1</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 1</div>
+      <div class="day-detail">Qué es la espiral negativa y cómo funciona en el cerebro</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mar</div><div class="day-num">2</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Registro personal</div>
+      <div class="day-detail">Escribe la última vez que entraste en espiral. ¿Cómo empezó?</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mié</div><div class="day-num">3</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 2</div>
+      <div class="day-detail">Reconocer las señales: físicas, mentales y en el rendimiento</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Jue</div><div class="day-num">4</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Mis señales</div>
+      <div class="day-detail">Identificar tus 3 señales personales de que estás entrando en espiral</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Vie</div><div class="day-num">5</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Entrenamiento</div>
+      <div class="day-detail">En el entrenamiento de hoy: observar si aparece alguna señal de espiral</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Sáb</div><div class="day-num">6</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Revisión</div>
+      <div class="day-detail">¿Reconociste alguna señal esta semana? Anota qué la desencadenó</div>
+    </div>
+    <div class="day-card rest">
+      <div class="day-label">Dom</div><div class="day-num">7</div>
+      <div class="day-action">Descanso activo</div>
+      <div class="day-detail">Visualizar: reconoces la señal a tiempo y decides no seguir la espiral</div>
+    </div>
+  </div>
+  <div class="week-notes">
+    <label>Reflexión de la semana 1</label>
+    <textarea placeholder="¿Cuáles son tus 3 señales personales de espiral? ¿En qué momento del partido aparecen con más frecuencia?"></textarea>
+  </div>
+</div>
+
+<!-- SEMANA 2 -->
+<div class="week">
+  <div class="week-header">
+    <span>Semana 2 — Días 8 al 14</span>
+    <span class="focus">Los 3 detonadores y el protocolo de pausa</span>
+  </div>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-label">Lun</div><div class="day-num">8</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 3</div>
+      <div class="day-detail">Los 3 detonadores: error propio, crítica externa, mal momento colectivo</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mar</div><div class="day-num">9</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Mi detonador</div>
+      <div class="day-detail">¿Cuál de los 3 detonadores te afecta más? Escribe un ejemplo reciente</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mié</div><div class="day-num">10</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 4</div>
+      <div class="day-detail">El protocolo de pausa: los 3 pasos para interrumpir la espiral en plena competencia</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Jue</div><div class="day-num">11</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Memorizar proto.</div>
+      <div class="day-detail">Practicar los 3 pasos del protocolo de pausa 5 veces en voz alta o en silencio</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Vie</div><div class="day-num">12</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Entrenamiento</div>
+      <div class="day-detail">Aplicar el protocolo de pausa ante cualquier error en el entrenamiento de hoy</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Sáb</div><div class="day-num">13</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Evaluación</div>
+      <div class="day-detail">¿Cuántas veces usaste el protocolo? ¿Qué paso te costó más ejecutar?</div>
+    </div>
+    <div class="day-card rest">
+      <div class="day-label">Dom</div><div class="day-num">14</div>
+      <div class="day-action">Descanso activo</div>
+      <div class="day-detail">Visualizar: entra el detonador, ejecutas el protocolo, continúas jugando sin espiral</div>
+    </div>
+  </div>
+  <div class="week-notes">
+    <label>Reflexión de la semana 2</label>
+    <textarea placeholder="¿Qué detonador es tu mayor riesgo en un partido? ¿Qué paso del protocolo necesitas reforzar más?"></textarea>
+  </div>
+</div>
+
+<!-- SEMANA 3 -->
+<div class="week">
+  <div class="week-header">
+    <span>Semana 3 — Días 15 al 21</span>
+    <span class="focus">El reset entre jugadas</span>
+  </div>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-label">Lun</div><div class="day-num">15</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 5</div>
+      <div class="day-detail">El reset entre jugadas: los segundos muertos donde la espiral se consolida o se disuelve</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mar</div><div class="day-num">16</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Diseñar mi reset</div>
+      <div class="day-detail">Elegir tu ritual de reset entre jugadas: gesto físico + palabra + respiración</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mié</div><div class="day-num">17</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Práctica reset</div>
+      <div class="day-detail">Ejecutar tu ritual de reset 10 veces antes del entrenamiento de hoy</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Jue</div><div class="day-num">18</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Entrenamiento</div>
+      <div class="day-detail">Usar el reset entre jugadas cada vez que pases de una acción a la siguiente</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Vie</div><div class="day-num">19</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Combinado</div>
+      <div class="day-detail">Protocolo de pausa ante errores + reset entre jugadas como hábito continuo</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Sáb</div><div class="day-num">20</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Evaluación</div>
+      <div class="day-detail">¿Cuánto duró la espiral tras el último error? ¿Menos que antes?</div>
+    </div>
+    <div class="day-card rest">
+      <div class="day-label">Dom</div><div class="day-num">21</div>
+      <div class="day-action">Descanso activo</div>
+      <div class="day-detail">Visualizar: el reset entre jugadas es automático — el partido fluye sin espirales</div>
+    </div>
+  </div>
+  <div class="week-notes">
+    <label>Reflexión de la semana 3</label>
+    <textarea placeholder="¿Cuál es tu ritual de reset? ¿Notas diferencia en tu tiempo de recuperación comparado con la semana 1?"></textarea>
+  </div>
+</div>
+
+<!-- SEMANA 4 -->
+<div class="week">
+  <div class="week-header">
+    <span>Semana 4 — Días 22 al 28</span>
+    <span class="focus">Construir resistencia mental a largo plazo</span>
+  </div>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-label">Lun</div><div class="day-num">22</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Leer Cap 6</div>
+      <div class="day-detail">Construir resistencia a la espiral: lo que trabajas fuera del partido</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mar</div><div class="day-num">23</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Rutina diaria</div>
+      <div class="day-detail">Diseñar una rutina de 5 min/día de registro emocional tras el entrenamiento</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Mié</div><div class="day-num">24</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Integración</div>
+      <div class="day-detail">Entrenamiento: protocolo de pausa + reset entre jugadas sin pensarlo conscientemente</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Jue</div><div class="day-num">25</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Simulación</div>
+      <div class="day-detail">Pedir al entrenador/compañero que te dé crítica fuerte — practica el protocolo bajo presión</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Vie</div><div class="day-num">26</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Entrenamiento</div>
+      <div class="day-detail">Partido de práctica con Ficha al final. Registrar duración de cada espiral</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Sáb</div><div class="day-num">27</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Revisión 4 sem.</div>
+      <div class="day-detail">Comparar semana 1 vs semana 4: ¿cuánto tardas en salir de la espiral ahora?</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">Dom</div><div class="day-num">28</div>
+      <input type="checkbox" class="day-check">
+      <div class="day-action">Compromiso</div>
+      <div class="day-detail">Escribir: "Cuando entre en espiral, yo…" — tu declaración de respuesta</div>
+    </div>
+  </div>
+  <div class="week-notes">
+    <label>Reflexión final — ¿Qué tan resistente eres a la espiral hoy vs hace 4 semanas?</label>
+    <textarea placeholder="Tu tiempo de recuperación. Qué protocolo funcionó mejor. Qué detonador sigue siendo tu mayor reto."></textarea>
+  </div>
+</div>
+
+<!-- FICHA DE PARTIDO -->
+<div class="ficha">
+  <h2>Ficha de Partido</h2>
+  <div class="ficha-sub">Úsala antes y después de cada partido para monitorear tu gestión de la espiral</div>
+  <div class="ficha-meta">
+    <div class="ficha-field"><label>Fecha</label><input type="text" placeholder="dd/mm/aaaa"></div>
+    <div class="ficha-field"><label>Rival</label><input type="text" placeholder="Equipo contrario"></div>
+    <div class="ficha-field"><label>Resultado</label><input type="text" placeholder="X – X"></div>
+  </div>
+
+  <div class="ficha-section">
+    <h3>Reconocimiento de Señales</h3>
+    <div class="check-row"><input type="checkbox"><span>Identifiqué al menos una señal de espiral antes de que se consolidara <em>(física, mental o en rendimiento)</em></span></div>
+    <div class="check-row"><input type="checkbox"><span>Noté el detonador exacto que desencadenó la espiral <em>(error propio / crítica externa / mal momento colectivo)</em></span></div>
+    <div class="check-row"><input type="checkbox"><span>En ningún momento "perdí" el partido dentro de mi cabeza antes de que terminara en la cancha</span></div>
+  </div>
+
+  <div class="ficha-section">
+    <h3>Protocolo de Pausa</h3>
+    <div class="check-row"><input type="checkbox"><span>Usé el protocolo de pausa al menos una vez durante el partido</span></div>
+    <div class="check-row"><input type="checkbox"><span>Los 3 pasos del protocolo los ejecuté en orden y sin saltarme ninguno</span></div>
+    <div class="counter-row">
+      <label>Veces que apliqué el protocolo de pausa:</label>
+      <input type="number" min="0" max="20" placeholder="0">
+    </div>
+    <div class="counter-row">
+      <label>Duración aprox. de la espiral más larga (en jugadas):</label>
+      <input type="number" min="0" max="50" placeholder="0">
+    </div>
+  </div>
+
+  <div class="ficha-section">
+    <h3>Reset entre Jugadas</h3>
+    <div class="check-row"><input type="checkbox"><span>Usé mi ritual de reset entre jugadas de forma regular durante el partido</span></div>
+    <div class="check-row"><input type="checkbox"><span>El espacio entre jugadas no lo ocupé con pensamientos negativos sobre el error anterior</span></div>
+    <div class="check-row"><input type="checkbox"><span>Terminé el partido con energía mental similar a como empecé <em>(no agotado por la espiral)</em></span></div>
+  </div>
+
+  <div class="ficha-section">
+    <h3>Evaluación General</h3>
+    <div class="scale-row">
+      <label>Control de la espiral negativa hoy (1 = me dominó / 5 = la controlé):</label>
+      <div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div>
+    </div>
+  </div>
+
+  <div class="ficha-section ficha-notes">
+    <h3>Notas Post-Partido</h3>
+    <textarea placeholder="¿Cuándo entró la espiral? ¿Qué la desencadenó? ¿Cuánto tardaste en salir? ¿Qué funcionó y qué no?"></textarea>
+  </div>
+</div>
+
+
+<script>
+(function() {
+  var KEY = 'lzc_n2-rev-c3a8f1_espiral_negativa_4_semanas';
+  function save() {
+    var data = { checks: {}, texts: {} };
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+      data.checks[i] = el.checked;
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+      data.texts[i] = el.value;
+    });
+    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function restore() {
+    var raw; try { raw = localStorage.getItem(KEY); } catch(e) { return; }
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    if (data.checks) {
+      document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el, i) {
+        if (data.checks[i] !== undefined) el.checked = data.checks[i];
+      });
+    }
+    if (data.texts) {
+      document.querySelectorAll('textarea, input[type="text"]').forEach(function(el, i) {
+        if (data.texts[i] !== undefined) el.value = data.texts[i];
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    restore();
+    document.querySelectorAll('input[type="checkbox"].day-check').forEach(function(el) {
+      el.addEventListener('change', save);
+    });
+    document.querySelectorAll('textarea, input[type="text"]').forEach(function(el) {
+      el.addEventListener('input', save);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
