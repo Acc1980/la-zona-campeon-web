@@ -278,6 +278,9 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
               { num: '2', titulo: 'Sigue el plan 4 semanas', desc: 'Un paso concreto por semana. Sin saltar etapas.' },
               { num: '3', titulo: 'Registro diario', desc: 'Marca tus hábitos cada día. La constancia es la clave.' },
               { num: '4', titulo: 'Autoevalúate cada domingo', desc: 'Puntúa tu semana y ajusta lo que necesites.' },
+              ...(['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)', 'Juvenil (sub-16 / sub-18)'].includes(perfil.categoria)
+                ? [{ num: '5', titulo: 'Guía para padres', desc: 'Al final del manual encontrarás una sección dedicada a tu acompañante. Léela juntos.' }]
+                : []),
             ].map(item => (
               <div key={item.num} style={{ textAlign: 'center' }}>
                 <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
@@ -606,6 +609,81 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Guía para el acompañante — solo categorías juveniles */}
+        {['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)', 'Juvenil (sub-16 / sub-18)'].includes(perfil.categoria) && (
+          <div style={{ marginBottom: 44, pageBreakBefore: 'always' }}>
+            <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#3a7bd5', marginBottom: 8 }}>
+              Para el padre / madre / acompañante
+            </div>
+            <h2 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.5rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 8, borderBottom: '2px solid #3a7bd5', paddingBottom: 10 }}>
+              Cómo acompañar a {perfil.nombre} en este proceso
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: '#555', marginBottom: 24, lineHeight: 1.8 }}>
+              El entrenamiento mental en deportistas jóvenes funciona mucho mejor cuando el entorno familiar acompaña sin presionar. Esta guía es para ti.
+            </p>
+
+            {[
+              {
+                titulo: 'Antes del partido',
+                color: '#3a7bd5',
+                puntos: [
+                  'Evita darle instrucciones técnicas justo antes de competir. Su mente ya está preparándose.',
+                  'Una frase de confianza vale más que diez consejos. Ej: "Confío en ti. Disfrútalo."',
+                  `Si ${perfil.nombre} tiene una rutina de preparación, respétala sin interrumpirla.`,
+                  'No hables de resultados antes del partido. Habla de actitud y esfuerzo.',
+                ],
+              },
+              {
+                titulo: 'Durante el partido',
+                color: '#e07b30',
+                puntos: [
+                  'Aplaudir los esfuerzos, no solo los goles o los aciertos.',
+                  'Evitar gritar instrucciones desde la grada — genera confusión y presión adicional.',
+                  'Si comete un error, tu gesto desde fuera importa. Mantén la calma visible.',
+                  'No compares su rendimiento con el de otros jugadores en voz alta.',
+                ],
+              },
+              {
+                titulo: 'Después del partido',
+                color: '#7ab870',
+                puntos: [
+                  'Primero pregunta cómo se sintió él/ella, antes de dar tu evaluación.',
+                  'Dale al menos 20-30 minutos antes de hablar del partido si perdieron.',
+                  'Evita el análisis exhaustivo inmediato. Un solo aprendizaje por partido es suficiente.',
+                  `Refuerza el proceso, no el resultado: "Vi que seguiste intentando después del error. Eso es lo importante."`,
+                ],
+              },
+              {
+                titulo: 'En el día a día',
+                color: '#e8c84a',
+                puntos: [
+                  `Apoya el registro diario de hábitos: pregunta "¿hiciste tu registro de hoy?" sin presionar.`,
+                  'No conviertas cada conversación familiar en un análisis de su rendimiento deportivo.',
+                  'Celebra el trabajo, no solo los resultados. La constancia es lo que construye campeones.',
+                  `Si notas que ${perfil.nombre} está pasando por una racha difícil, escucha antes de aconsejar.`,
+                ],
+              },
+            ].map((sec) => (
+              <div key={sec.titulo} style={{ background: '#fff', border: '1px solid #e0e0e0', borderLeft: `4px solid ${sec.color}`, borderRadius: 8, padding: '20px 22px', marginBottom: 14 }}>
+                <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '0.85rem', fontWeight: 700, color: sec.color, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 12 }}>
+                  {sec.titulo}
+                </h3>
+                <ul style={{ margin: 0, paddingLeft: 18 }}>
+                  {sec.puntos.map((p, i) => (
+                    <li key={i} style={{ fontSize: '0.88rem', color: '#333', marginBottom: 8, lineHeight: 1.7 }}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div style={{ background: '#f0f4ff', border: '1px solid #c0d0f0', borderRadius: 8, padding: '16px 20px', marginTop: 8 }}>
+              <p style={{ fontSize: '0.85rem', color: '#3a7bd5', margin: 0, lineHeight: 1.7 }}>
+                <strong>Recuerda:</strong> Tu papel no es entrenar a {perfil.nombre} — es crear el ambiente donde él/ella puede crecer. Los deportistas jóvenes que tienen un entorno familiar estable y de apoyo desarrollan su mentalidad mucho más rápido.
+              </p>
+            </div>
           </div>
         )}
 
