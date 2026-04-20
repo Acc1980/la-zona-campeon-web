@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
             id: 'n4-personalizado',
             title: 'Manual Mental Personalizado — La Zona Campeón',
             quantity: 1,
-            unit_price: 49,
+            unit_price: 1,
             currency_id: 'USD',
           },
         ],
