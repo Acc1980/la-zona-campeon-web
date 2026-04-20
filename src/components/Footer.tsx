@@ -1,6 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/links") return null;
   return (
     <footer className="bg-dark-900 border-t border-dark-700">
       <div className="section-container py-12">
@@ -27,6 +32,7 @@ export default function Footer() {
                 { label: "Inicio", href: "/" },
                 { label: "Productos", href: "/productos" },
                 { label: "Guía Gratis", href: "/gratis" },
+                { label: "Política de Privacidad", href: "/privacidad" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-dark-300 hover:text-gold-500 text-sm transition-colors">
@@ -39,26 +45,31 @@ export default function Footer() {
 
           <div>
             <h4 className="font-display font-bold text-sm uppercase tracking-wider text-gold-500 mb-4">
-              Redes sociales
+              Contacto
             </h4>
-            <ul className="space-y-2">
-              {[
-                { label: "Instagram", href: "https://instagram.com/lazonacampeon" },
-                { label: "TikTok", href: "https://tiktok.com/@lazonacampeon" },
-                { label: "YouTube", href: "https://youtube.com/@lazonacampeon" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-gold-500 text-sm transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:info@lazonacampeon.com" className="text-dark-300 hover:text-gold-500 text-sm transition-colors flex items-center gap-2">
+                  <span className="text-gold-500">✉</span> info@lazonacampeon.com
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/lazonacampeon" target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-gold-500 text-sm transition-colors flex items-center gap-2">
+                  <span className="text-gold-500">📸</span> Instagram DM @lazonacampeon
+                </a>
+              </li>
+              <li>
+                <a href="https://tiktok.com/@lazonacampeon" target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-gold-500 text-sm transition-colors flex items-center gap-2">
+                  <span className="text-gold-500">▶</span> TikTok @lazonacampeon
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-dark-700 text-center text-dark-400 text-xs">
-          © {new Date().getFullYear()} La Zona Campeón. Todos los derechos reservados.
+        <div className="mt-10 pt-6 border-t border-dark-700 flex flex-col sm:flex-row items-center justify-between gap-3 text-dark-400 text-xs">
+          <span>© {new Date().getFullYear()} La Zona Campeón. Todos los derechos reservados.</span>
+          <Link href="/privacidad" className="hover:text-gold-500 transition-colors">Política de Privacidad</Link>
         </div>
       </div>
     </footer>
