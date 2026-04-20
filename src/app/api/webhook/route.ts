@@ -3,6 +3,7 @@ import { MercadoPagoConfig, Payment } from "mercadopago";
 import { Resend } from "resend";
 import { PRODUCTOS } from "@/lib/productos";
 import { getAfiliado, COMISION_AFILIADO } from "@/lib/afiliados";
+import { runPipeline, generarManualHTML, guardarManual, enviarEmailManual, leerPerfilPendiente, eliminarPerfilPendiente } from "@/lib/n4-pipeline";
 
 const mp = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN!,
@@ -246,6 +247,28 @@ export async function POST(req: NextRequest) {
     }
 
     const externalRef = paymentData.external_reference ?? '';
+
+    // ── N4: Manual Mental Personalizado ──────────────────────────────────────
+    if (externalRef.startsWith('n4-personalizado|')) {
+      const uuid = externalRef.split('|')[1]
+      // Run generation in background
+      ;(async () => {
+        try {
+          const perfil = leerPerfilPendiente(uuid)
+          if (!perfil) return
+          const analisis = await runPipeline(perfil)
+          const html = generarManualHTML(perfil, analisis)
+          const manualId = guardarManual(html)
+          const manualUrl = `${SITE_URL}/manual/${manualId}`
+          await enviarEmailManual(perfil, analisis, manualUrl)
+          eliminarPerfilPendiente(uuid)
+        } catch (e) {
+          console.error('[webhook n4]', e)
+        }
+      })()
+      return NextResponse.json({ ok: true })
+    }
+
     const [productoId, codigoAfiliado] = externalRef.includes('|')
       ? externalRef.split('|')
       : [externalRef, null];

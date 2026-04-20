@@ -2,8 +2,8 @@ export interface Producto {
   title: string;
   price: number;
   description: string;
-  manualUrl: string; // ruta relativa al public/
-  planUrl?: string;  // plan de 4 semanas (solo N3)
+  manualUrl?: string; // ruta relativa al public/
+  planUrl?: string;   // plan de 4 semanas (solo N3)
 }
 
 export const PRODUCTOS: Record<string, Producto> = {
@@ -86,5 +86,12 @@ export const PRODUCTOS: Record<string, Producto> = {
     description: "Sequías de gol, presión del equipo e instinto anotador. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/06-delantero-centro.html",
     planUrl: "/n3-pos-f4c9d2/delantero-centro-4-semanas.html",
+  },
+
+  // ── NIVEL 4 — $49 ────────────────────────────────────────────────────────
+  "n4-personalizado": {
+    title: "Manual Mental Personalizado",
+    price: 49,
+    description: "Tu análisis mental completo, creado por IA específicamente para tu perfil de deportista.",
   },
 };

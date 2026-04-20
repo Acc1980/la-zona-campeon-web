@@ -192,10 +192,10 @@ function LoadingAnalisis() {
     <div className="text-center py-20">
       <div className="inline-block w-12 h-12 border-4 border-dark-600 border-t-gold-500 rounded-full animate-spin mb-8" />
       <p className="font-display font-bold text-gold-500 uppercase tracking-widest text-sm mb-4">
-        Generando tu análisis
+        Redirigiendo al pago...
       </p>
       <p className="text-dark-300 text-xs max-w-xs mx-auto mb-8">
-        Nuestro sistema especializado está analizando tu perfil. Tarda un par de minutos.
+        Te llevamos a MercadoPago para completar tu compra.
       </p>
       <div className="max-w-sm mx-auto bg-dark-800 border border-dark-600 rounded-xl px-6 py-4 min-h-[64px] flex items-center justify-center">
         <p className="text-dark-200 text-sm italic leading-relaxed transition-all duration-500">
@@ -233,24 +233,21 @@ export default function PersonalizadoPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  async function generar() {
+  async function comprar() {
+    if (!perfil.email) return
     setCargando(true)
     setError('')
-    setStep(6)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
     try {
-      const res = await fetch('/api/personalizado', {
+      const res = await fetch('/api/personalizado/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...perfil, deporteLabel, posicionLabel: posLabel }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Error desconocido')
-      setAnalisisIA(data.analisisIA)
-      setGenerado(true)
+      if (!res.ok) throw new Error(data.error || 'Error')
+      window.location.href = data.checkoutUrl
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Error generando el análisis')
-    } finally {
+      setError(e instanceof Error ? e.message : 'Error iniciando el pago')
       setCargando(false)
     }
   }
@@ -651,11 +648,11 @@ export default function PersonalizadoPage() {
               <BtnBack onClick={retroceder} />
               <button
                 type="button"
-                onClick={generar}
+                onClick={comprar}
                 disabled={!perfil.email}
                 className={`btn-primary text-sm px-8 py-3 ${!perfil.email ? 'opacity-40 cursor-not-allowed' : ''}`}
               >
-                Generar mi análisis →
+                Comprar y generar — $49 →
               </button>
             </div>
           </div>
@@ -671,7 +668,7 @@ export default function PersonalizadoPage() {
             {!cargando && error && (
               <div className="text-center py-16">
                 <p className="text-red-400 font-display font-bold uppercase tracking-wide text-sm mb-4">{error}</p>
-                <button onClick={generar} className="btn-primary text-sm px-8 py-3">
+                <button onClick={comprar} className="btn-primary text-sm px-8 py-3">
                   Intentar de nuevo
                 </button>
               </div>
