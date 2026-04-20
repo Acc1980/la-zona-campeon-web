@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { Resend } from 'resend'
+import fs from 'fs'
+import path from 'path'
+import crypto from 'crypto'
 
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzWQx2Jo-Zv-wWQewL6ni9ZvkN-azdI0R8KPb9htaBSiGCgHZzdLthtZLn9ASVaUPMD/exec'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lazonacampeon.com'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -225,143 +229,325 @@ Devuelve ÚNICAMENTE el JSON corregido con la misma estructura.`,
   return msg.content[0].type === 'text' ? msg.content[0].text : borrador
 }
 
-// ─── Email ───────────────────────────────────────────────────────────────────
+// ─── Generador HTML completo ─────────────────────────────────────────────────
 
-async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Record<string, unknown>) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
+function generarManualHTML(perfil: Record<string, unknown>, analisis: Record<string, unknown>): string {
   const nombre = perfil.nombre as string
-  const email = perfil.email as string
   const deporteLabel = perfil.deporteLabel as string
   const posicionLabel = perfil.posicionLabel as string
+  const categoria = (perfil.categoria as string) ?? ''
+  const edad = (perfil.edad as string) ?? ''
   const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+  const fechaExpira = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+
+  const fortalezas = (perfil.fortalezas as string[]) ?? []
+  const desafios = (perfil.desafios as string[]) ?? []
+  const fortalezasTexto = (perfil.fortalezasTexto as string) ?? ''
+  const desafiosTexto = (perfil.desafiosTexto as string) ?? ''
+  const situaciones = (perfil.situaciones as string) ?? ''
+  const incluyeTecnico = !!(perfil.incluyeTecnico && ((perfil.tecnicoFortalezas as string) || (perfil.tecnicoDesafios as string)))
+  const tecnicoNombre = (perfil.tecnicoNombre as string) ?? ''
+  const tecnicoFortalezas = (perfil.tecnicoFortalezas as string) ?? ''
+  const tecnicoDesafios = (perfil.tecnicoDesafios as string) ?? ''
+  const incluyePadres = !!(perfil.incluyePadres && ((perfil.padresObservaciones as string) || (perfil.padresPreocupaciones as string) || (perfil.padresEntrenadorDijo as string)))
+  const padresNombre = (perfil.padresNombre as string) ?? ''
+  const padresObservaciones = (perfil.padresObservaciones as string) ?? ''
+  const padresPreocupaciones = (perfil.padresPreocupaciones as string) ?? ''
+  const padresEntrenadorDijo = (perfil.padresEntrenadorDijo as string) ?? ''
+  const esJuvenil = ['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)', 'Juvenil (sub-16 / sub-18)'].includes(categoria)
 
   type Estrategia = { titulo: string; descripcion: string }
   type Semana = { semana: number; titulo: string; foco: string; ejercicios?: string[] }
   type Habito = { nombre: string; descripcion: string }
   type Pregunta = { area: string; pregunta: string }
 
-  const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
-  const estrategias = (analisis.estrategias as Estrategia[] | undefined) ?? []
-  const plan = (analisis.plan4semanas as Semana[] | undefined) ?? []
-  const habitos = (analisis.registroDiario as { habitos?: Habito[] } | undefined)?.habitos ?? []
-  const preguntas = (analisis.autoevaluacionSemanal as { preguntas?: Pregunta[] } | undefined)?.preguntas ?? []
-  const mensajeFinal = (analisis.mensajeFinal as string | undefined) ?? ''
+  const diagnostico = (analisis.diagnostico as string) ?? ''
+  const estrategias = (analisis.estrategias as Estrategia[]) ?? []
+  const plan = (analisis.plan4semanas as Semana[]) ?? []
+  const habitos = (analisis.registroDiario as { habitos?: Habito[] })?.habitos ?? []
+  const preguntas = (analisis.autoevaluacionSemanal as { preguntas?: Pregunta[] })?.preguntas ?? []
+  const mensajeFinal = (analisis.mensajeFinal as string) ?? ''
 
-  const section = (label: string, color = '#c8aa32') =>
-    `<p style="font-size:10px;font-weight:700;color:${color};text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;border-bottom:1px solid #e8e8e8;padding-bottom:8px;">${label}</p>`
+  const css = `
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--gold:#c8aa32;--dark:#1a1a2e;--cream:#f5f0e8;--red:#c85050;--green:#2e7d32;--blue:#3a7bd5}
+      body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--cream);color:#1a1a2e;line-height:1.7}
+      .brand-bar{background:var(--dark);color:var(--gold);text-align:center;padding:10px 20px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+      .cover{background:var(--dark);color:var(--cream);text-align:center;padding:56px 30px 48px}
+      .cover .badge{display:inline-block;background:var(--gold);color:var(--dark);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:22px}
+      .cover h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:10px}
+      .cover h1 span{color:var(--gold)}
+      .cover .sub{font-size:.95rem;color:rgba(245,240,232,.7);margin-bottom:6px}
+      .expiry-bar{background:#7b2f00;color:#fff;text-align:center;padding:14px 24px;font-size:13px;font-weight:600;border-bottom:2px solid #c8430a}
+      .expiry-bar strong{color:#ffa060}
+      .print-btn{position:fixed;bottom:24px;right:24px;background:var(--gold);color:var(--dark);border:none;border-radius:50px;padding:13px 26px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:999;text-decoration:none;display:inline-block}
+      .page{max-width:800px;margin:0 auto;padding:44px 24px 80px}
+      .section-label{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px}
+      .section-title{font-size:1.4rem;font-weight:800;color:var(--dark);margin-bottom:20px;border-bottom:2px solid var(--gold);padding-bottom:10px}
+      .block{margin-bottom:44px}
+      .card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:18px 20px;margin-bottom:10px}
+      .card.gold{border-left:4px solid var(--gold)}
+      .card.green{border-left:4px solid var(--green)}
+      .card.red{border-left:4px solid var(--red)}
+      .card.blue{border-left:4px solid var(--blue)}
+      .card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+      .card-text{font-size:.9rem;line-height:1.7;color:#333}
+      .italic{font-style:italic;color:#555;font-size:.88rem}
+      .uso-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;background:var(--dark);border-radius:10px;padding:28px 24px;margin-bottom:0}
+      .uso-item{text-align:center}
+      .uso-num{width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--dark);font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+      .uso-t{font-size:10px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+      .uso-d{font-size:10px;color:rgba(245,240,232,.6);line-height:1.5}
+      .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+      .week-card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:18px 20px}
+      .week-num{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+      .week-title{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+      .week-foco{font-size:.82rem;color:#555;font-style:italic;margin-bottom:10px}
+      .week-card ul{margin:0;padding-left:18px}
+      .week-card li{font-size:.85rem;color:#333;margin-bottom:4px;line-height:1.6}
+      .habit-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:8px}
+      .habit-table th{background:var(--dark);color:var(--gold);padding:10px 8px;text-align:center;font-size:.7rem;text-transform:uppercase;letter-spacing:1px}
+      .habit-table th:first-child{text-align:left;padding-left:14px}
+      .habit-table td{padding:12px 8px;text-align:center;border-bottom:1px solid #e8e8e8;color:#bbb}
+      .habit-table td:first-child{text-align:left;padding-left:14px;color:#1a1a2e}
+      .habit-table tr:nth-child(even) td{background:#faf8f3}
+      .habit-name{font-weight:700;font-size:.82rem;margin-bottom:2px}
+      .habit-desc{font-size:.76rem;color:#777;line-height:1.5}
+      .eval-card{background:#fff;border:1px solid #e0e0e0;border-left:4px solid var(--gold);border-radius:6px;padding:14px 16px;margin-bottom:10px}
+      .eval-area{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+      .eval-q{font-size:.88rem;color:var(--dark);line-height:1.7;margin-bottom:10px}
+      .eval-scale{display:flex;gap:4px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+      .eval-box{width:22px;height:22px;border:1px solid #ddd;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.62rem;color:#bbb}
+      .eval-line{border-top:1px dashed #e0e0e0;padding-top:8px;font-size:.75rem;color:#aaa}
+      .acomp-card{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:14px 16px;margin-bottom:10px}
+      .cierre{text-align:center;border-top:2px solid var(--gold);padding-top:36px;margin-top:20px}
+      .dark-block{background:var(--dark);border-radius:8px;padding:20px 22px}
+      @media print{.print-btn{display:none!important}.expiry-bar{display:none!important}body{background:#fff}}
+      @media(max-width:600px){.plan-grid{grid-template-columns:1fr}.habit-table{font-size:.7rem}}
+    </style>`
 
-  const esJuvenil = ['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)', 'Juvenil (sub-16 / sub-18)'].includes(perfil.categoria as string)
-  const fortalezas = (perfil.fortalezas as string[] | undefined) ?? []
-  const desafios = (perfil.desafios as string[] | undefined) ?? []
+  const usoItems = [
+    { n: '1', t: 'Lee el diagnóstico', d: 'Entiende tu perfil mental actual y tus áreas prioritarias.' },
+    { n: '2', t: 'Sigue el plan 4 semanas', d: 'Un paso concreto por semana. Sin saltar etapas.' },
+    { n: '3', t: 'Registro diario', d: 'Marca tus hábitos cada día. La constancia es la clave.' },
+    { n: '4', t: 'Autoevalúate cada domingo', d: 'Puntúa tu semana y ajusta lo que necesites.' },
+    ...(esJuvenil ? [{ n: '5', t: 'Guía para padres', d: 'Al final del manual encontrarás la sección para tu acompañante.' }] : []),
+  ]
 
-  const guiaUso = `
-    <div style="background:#1a1a2e;border-radius:8px;padding:22px 24px;margin-bottom:0;">
-      <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:3px;text-align:center;margin:0 0 18px;">Cómo usar este manual</p>
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          ${[
-            { n: '1', t: 'Lee el diagnóstico', d: 'Entiende tu perfil mental actual y tus áreas prioritarias.' },
-            { n: '2', t: 'Sigue el plan 4 semanas', d: 'Un paso concreto por semana. Sin saltar etapas.' },
-            { n: '3', t: 'Registro diario', d: 'Marca tus hábitos cada día. La constancia es la clave.' },
-            { n: '4', t: 'Autoevalúate cada domingo', d: 'Puntúa tu semana y ajusta lo que necesites.' },
-            ...(esJuvenil ? [{ n: '5', t: 'Guía para padres', d: 'Al final del manual encontrarás la sección para tu acompañante.' }] : []),
-          ].map(item => `<td style="text-align:center;padding:0 6px;vertical-align:top;width:${esJuvenil ? '20%' : '25%'};">
-            <div style="width:32px;height:32px;border-radius:50%;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:14px;line-height:32px;text-align:center;margin:0 auto 10px;">${item.n}</div>
-            <p style="font-size:10px;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 5px;">${item.t}</p>
-            <p style="font-size:10px;color:rgba(245,240,232,0.55);line-height:1.5;margin:0;">${item.d}</p>
-          </td>`).join('')}
-        </tr>
-      </table>
-    </div>`
+  const fortalezasSec = fortalezas.filter(id => ASPECTOS[id]).map(id => `
+    <div class="card green">
+      <div class="card-label" style="color:var(--green)">${ASPECTOS[id].label}</div>
+      <div class="card-text">${ASPECTOS[id].fortaleza}</div>
+    </div>`).join('') +
+    (fortalezasTexto ? `<div class="card gold"><div class="card-label">En sus propias palabras</div><div class="card-text italic">${fortalezasTexto}</div></div>` : '')
 
-  const fortalezasHtml = fortalezas.filter(id => ASPECTOS[id]).map(id => `
-    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #7ab870;border-radius:6px;padding:10px 16px;margin-bottom:6px;">
-      <p style="font-weight:700;color:#2e7d32;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0;">✓ ${ASPECTOS[id].label}</p>
-    </div>`).join('')
+  const desafiosSec = desafios.filter(id => ASPECTOS[id]).map((id, i) => `
+    <div class="card red">
+      <div class="card-label" style="color:var(--red)">Prioridad ${i + 1} — ${ASPECTOS[id].label}</div>
+      <div class="card-text">${ASPECTOS[id].desafio}</div>
+    </div>`).join('') +
+    (desafiosTexto ? `<div class="card gold"><div class="card-label">En sus propias palabras</div><div class="card-text italic">${desafiosTexto}</div></div>` : '') +
+    (situaciones ? `<div class="card" style="background:#fff0f0;border:1px solid #f0c0c0"><div class="card-label">Situaciones específicas mencionadas</div><div class="card-text">${situaciones}</div></div>` : '')
 
-  const fortalezasTexto = (perfil.fortalezasTexto as string | undefined) ?? ''
+  const tecnicoSec = incluyeTecnico ? `
+    <div class="block">
+      <div class="section-label">Sección 3</div>
+      <div class="section-title">Perspectiva del técnico${tecnicoNombre ? `: ${tecnicoNombre}` : ''}</div>
+      ${tecnicoFortalezas ? `<div class="card green"><div class="card-label" style="color:var(--green)">Lo que el técnico observa como fortaleza</div><div class="card-text italic">${tecnicoFortalezas}</div></div>` : ''}
+      ${tecnicoDesafios ? `<div class="card red"><div class="card-label" style="color:var(--red)">Lo que el técnico considera que debe trabajar</div><div class="card-text italic">${tecnicoDesafios}</div></div>` : ''}
+    </div>` : ''
 
-  const desafiosHtml = desafios.filter(id => ASPECTOS[id]).map((id, i) => `
-    <div style="background:#fff;border:1px solid #ddd;border-left:4px solid #c85050;border-radius:6px;padding:10px 16px;margin-bottom:6px;">
-      <p style="font-weight:700;color:#c85050;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0;">Prioridad ${i + 1} — ${ASPECTOS[id].label}</p>
-    </div>`).join('')
+  const padresSec = incluyePadres ? `
+    <div class="block">
+      <div class="section-label">Sección 4</div>
+      <div class="section-title">Perspectiva de los padres${padresNombre ? `: ${padresNombre}` : ''}</div>
+      ${padresObservaciones ? `<div class="card blue"><div class="card-label" style="color:var(--blue)">Lo que observan desde casa</div><div class="card-text italic">${padresObservaciones}</div></div>` : ''}
+      ${padresPreocupaciones ? `<div class="card" style="border-left:4px solid #e07b30"><div class="card-label" style="color:#e07b30">Situaciones que les generan preocupación</div><div class="card-text italic">${padresPreocupaciones}</div></div>` : ''}
+      ${padresEntrenadorDijo ? `<div class="card"><div class="card-label" style="color:#6b7280">Lo que el entrenador/a les ha dicho</div><div class="card-text italic">${padresEntrenadorDijo}</div></div>` : ''}
+    </div>` : ''
 
-  const desafiosTexto = (perfil.desafiosTexto as string | undefined) ?? ''
-  const situaciones = (perfil.situaciones as string | undefined) ?? ''
+  const planSec = plan.length ? `
+    <div class="block">
+      <div class="section-label">Plan de trabajo</div>
+      <div class="section-title">Tu plan — Próximas 4 semanas</div>
+      <div class="plan-grid">
+        ${plan.map(s => `
+          <div class="week-card">
+            <div class="week-num">Semana ${s.semana}</div>
+            <div class="week-title">${s.titulo}</div>
+            <div class="week-foco">${s.foco}</div>
+            ${s.ejercicios?.length ? `<ul>${s.ejercicios.map(e => `<li>${e}</li>`).join('')}</ul>` : ''}
+          </div>`).join('')}
+      </div>
+    </div>` : ''
 
-  const tecnicoNombre = (perfil.tecnicoNombre as string | undefined) ?? ''
-  const tecnicoFortalezas = (perfil.tecnicoFortalezas as string | undefined) ?? ''
-  const tecnicoDesafios = (perfil.tecnicoDesafios as string | undefined) ?? ''
-  const incluyeTecnico = !!(perfil.incluyeTecnico && (tecnicoFortalezas || tecnicoDesafios))
+  const dias = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
+  const habitosSec = habitos.length ? `
+    <div class="block" style="page-break-before:always">
+      <div class="section-label">Herramienta de seguimiento · 1</div>
+      <div class="section-title">Registro diario</div>
+      <p style="font-size:.88rem;color:#555;margin-bottom:16px">Marca cada hábito al finalizar el día. ✓ si lo hiciste, ✗ si no. Sin juicio — solo registro honesto.</p>
+      <div style="overflow-x:auto">
+        <table class="habit-table">
+          <thead><tr>
+            <th>Hábito mental</th>
+            ${dias.map(d => `<th>${d}</th>`).join('')}
+          </tr></thead>
+          <tbody>
+            ${habitos.map(h => `<tr>
+              <td><div class="habit-name">${h.nombre}</div><div class="habit-desc">${h.descripcion}</div></td>
+              ${dias.map(() => `<td>○</td>`).join('')}
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.76rem;color:#999;margin-top:10px;font-style:italic">Imprime una tabla por semana. Guárdalas para ver tu evolución.</p>
+    </div>` : ''
 
-  const padresNombre = (perfil.padresNombre as string | undefined) ?? ''
-  const padresObservaciones = (perfil.padresObservaciones as string | undefined) ?? ''
-  const padresPreocupaciones = (perfil.padresPreocupaciones as string | undefined) ?? ''
-  const padresEntrenadorDijo = (perfil.padresEntrenadorDijo as string | undefined) ?? ''
-  const incluyePadres = !!(perfil.incluyePadres && (padresObservaciones || padresPreocupaciones || padresEntrenadorDijo))
-
-  const estrategiasHtml = estrategias.map(e => `
-    <div style="background:#f9f5ee;border-left:3px solid #c8aa32;padding:12px 16px;margin-bottom:10px;border-radius:4px;">
-      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 4px;text-transform:uppercase;letter-spacing:1px;">${e.titulo}</p>
-      <p style="color:#444;font-size:13px;margin:0;line-height:1.6;">${e.descripcion}</p>
-    </div>`).join('')
-
-  const planHtml = plan.map(s => `
-    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:14px 16px;margin-bottom:8px;">
-      <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px;">Semana ${s.semana}</p>
-      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 4px;">${s.titulo}</p>
-      <p style="color:#555;font-size:12px;margin:0 0 ${s.ejercicios?.length ? '8px' : '0'};font-style:italic;">${s.foco}</p>
-      ${s.ejercicios?.length ? `<ul style="margin:0;padding-left:16px;">${s.ejercicios.map(ej => `<li style="color:#444;font-size:12px;margin-bottom:3px;">${ej}</li>`).join('')}</ul>` : ''}
-    </div>`).join('')
-
-  const habitosHtml = habitos.map((h, i) => `
-    <div style="background:${i % 2 === 0 ? '#f9f5ee' : '#fff'};border:1px solid #e8e8e8;border-radius:4px;padding:10px 14px;margin-bottom:6px;">
-      <p style="font-weight:700;color:#1a1a2e;font-size:13px;margin:0 0 2px;">${h.nombre}</p>
-      <p style="color:#555;font-size:12px;margin:0;line-height:1.5;">${h.descripcion}</p>
-    </div>`).join('')
-
-  const preguntasHtml = preguntas.map((p, i) => `
-    <div style="background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:12px 16px;margin-bottom:8px;">
-      <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;">${p.area}</p>
-      <p style="color:#1a1a2e;font-size:13px;margin:0 0 6px;line-height:1.6;">${i + 1}. ${p.pregunta}</p>
-      <p style="color:#aaa;font-size:11px;margin:0;font-style:italic;">Puntuación del 1 al 10: ___</p>
-    </div>`).join('')
-
-  const guiaAcompanante = esJuvenil ? `
-    <div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-      ${section(`Cómo acompañar a ${nombre} en este proceso`, '#3a7bd5')}
-      <p style="color:#555;font-size:13px;line-height:1.7;margin:0 0 16px;">El entrenamiento mental en deportistas jóvenes funciona mucho mejor cuando el entorno familiar acompaña sin presionar. Esta guía es para ti.</p>
-      ${[
-        { titulo: 'Antes del partido', color: '#3a7bd5', puntos: [
-          'Evita darle instrucciones técnicas justo antes de competir. Su mente ya está preparándose.',
-          'Una frase de confianza vale más que diez consejos. Ej: "Confío en ti. Disfrútalo."',
-          `Si ${nombre} tiene una rutina de preparación, respétala sin interrumpirla.`,
-          'No hables de resultados antes del partido. Habla de actitud y esfuerzo.',
-        ]},
-        { titulo: 'Durante el partido', color: '#e07b30', puntos: [
-          'Aplaudir los esfuerzos, no solo los goles o los aciertos.',
-          'Evitar gritar instrucciones desde la grada — genera confusión y presión adicional.',
-          'Si comete un error, tu gesto desde fuera importa. Mantén la calma visible.',
-          'No compares su rendimiento con el de otros jugadores en voz alta.',
-        ]},
-        { titulo: 'Después del partido', color: '#7ab870', puntos: [
-          'Primero pregunta cómo se sintió él/ella, antes de dar tu evaluación.',
-          'Dale al menos 20-30 minutos antes de hablar del partido si perdieron.',
-          'Evita el análisis exhaustivo inmediato. Un solo aprendizaje por partido es suficiente.',
-          `Refuerza el proceso, no el resultado: "Vi que seguiste intentando después del error. Eso es lo importante."`,
-        ]},
-        { titulo: 'En el día a día', color: '#c8aa32', puntos: [
-          `Apoya el registro diario de hábitos: pregunta "¿hiciste tu registro de hoy?" sin presionar.`,
-          'No conviertas cada conversación familiar en un análisis de su rendimiento deportivo.',
-          'Celebra el trabajo, no solo los resultados. La constancia es lo que construye campeones.',
-          `Si notas que ${nombre} está pasando por una racha difícil, escucha antes de aconsejar.`,
-        ]},
-      ].map(sec => `
-        <div style="background:#fff;border:1px solid #e0e0e0;border-left:4px solid ${sec.color};border-radius:6px;padding:14px 16px;margin-bottom:10px;">
-          <p style="font-weight:700;color:${sec.color};font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px;">${sec.titulo}</p>
-          <ul style="margin:0;padding-left:16px;">${sec.puntos.map(p => `<li style="color:#444;font-size:13px;margin-bottom:6px;line-height:1.6;">${p}</li>`).join('')}</ul>
+  const evalSec = preguntas.length ? `
+    <div class="block">
+      <div class="section-label">Herramienta de seguimiento · 2</div>
+      <div class="section-title">Autoevaluación semanal</div>
+      <p style="font-size:.88rem;color:#555;margin-bottom:16px">Cada domingo, dedica 10 minutos. Puntúa del 1 al 10 y escribe una frase de reflexión.</p>
+      ${preguntas.map((p, i) => `
+        <div class="eval-card">
+          <div class="eval-area">${p.area}</div>
+          <div class="eval-q">${i + 1}. ${p.pregunta}</div>
+          <div class="eval-scale">
+            <span style="font-size:.65rem;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-right:6px">Puntuación:</span>
+            ${[1,2,3,4,5,6,7,8,9,10].map(n => `<div class="eval-box">${n}</div>`).join('')}
+          </div>
+          <div class="eval-line">Reflexión: _______________________________________________</div>
         </div>`).join('')}
     </div>` : ''
+
+  const acompSec = esJuvenil ? `
+    <div class="block" style="page-break-before:always">
+      <div class="section-label" style="color:var(--blue)">Para el padre / madre / acompañante</div>
+      <div class="section-title" style="border-color:var(--blue)">Cómo acompañar a ${nombre} en este proceso</div>
+      <p style="font-size:.88rem;color:#555;margin-bottom:20px;line-height:1.8">El entrenamiento mental en deportistas jóvenes funciona mucho mejor cuando el entorno familiar acompaña sin presionar.</p>
+      ${[
+        { t: 'Antes del partido', c: 'var(--blue)', p: [`Evita darle instrucciones técnicas justo antes de competir.`, `Una frase de confianza vale más que diez consejos. Ej: "Confío en ti. Disfrútalo."`, `Si ${nombre} tiene una rutina de preparación, respétala.`, `No hables de resultados antes del partido. Habla de actitud y esfuerzo.`] },
+        { t: 'Durante el partido', c: '#e07b30', p: [`Aplaudir los esfuerzos, no solo los goles.`, `Evitar gritar instrucciones desde la grada.`, `Si comete un error, mantén la calma visible desde fuera.`, `No compares su rendimiento con el de otros jugadores.`] },
+        { t: 'Después del partido', c: 'var(--green)', p: [`Primero pregunta cómo se sintió, antes de dar tu evaluación.`, `Dale al menos 20-30 minutos antes de hablar del partido si perdieron.`, `Un solo aprendizaje por partido es suficiente.`, `Refuerza el proceso: "Vi que seguiste intentando después del error."`] },
+        { t: 'En el día a día', c: 'var(--gold)', p: [`Apoya el registro diario sin presionar.`, `No conviertas cada conversación en análisis de rendimiento.`, `Celebra el trabajo, no solo los resultados.`, `Si hay una racha difícil, escucha antes de aconsejar.`] },
+      ].map(s => `<div class="acomp-card" style="border-left:4px solid ${s.c}"><div class="card-label" style="color:${s.c}">${s.t}</div><ul style="margin:0;padding-left:18px">${s.p.map(pt => `<li style="font-size:.88rem;color:#333;margin-bottom:6px;line-height:1.6">${pt}</li>`).join('')}</ul></div>`).join('')}
+    </div>` : ''
+
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Manual Mental — ${nombre} · La Zona Campeón</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  ${css}
+</head>
+<body>
+  <div class="brand-bar">La Zona Campeón · Control Mental para Deportistas</div>
+
+  <div class="expiry-bar">
+    ⚠️ <strong>Descarga o imprime este manual antes del ${fechaExpira}</strong> — después de esa fecha el link dejará de funcionar.
+    <span style="margin-left:12px;opacity:.75">Usa el botón "Imprimir" para guardarlo como PDF.</span>
+  </div>
+
+  <div class="cover">
+    <div class="badge">Nivel 4 · Análisis de Perfil Mental</div>
+    <h1>${nombre}</h1>
+    <p class="sub">${deporteLabel} · ${posicionLabel} · ${categoria}${edad ? ` · ${edad} años` : ''}</p>
+    <p style="font-size:.82rem;color:rgba(245,240,232,.45)">Generado el ${fecha}</p>
+  </div>
+
+  <a class="print-btn" onclick="window.print();return false;" href="#">🖨 Imprimir / Guardar PDF</a>
+
+  <div class="page">
+
+    <!-- Guía de uso -->
+    <div class="block">
+      <div class="uso-grid">
+        ${usoItems.map(item => `<div class="uso-item"><div class="uso-num">${item.n}</div><div class="uso-t">${item.t}</div><div class="uso-d">${item.d}</div></div>`).join('')}
+      </div>
+    </div>
+
+    <!-- Diagnóstico -->
+    <div class="block">
+      <div class="section-label">Tu diagnóstico mental</div>
+      <div class="section-title">Diagnóstico mental personalizado</div>
+      <div class="card gold">
+        ${diagnostico.split('\n').filter(Boolean).map(p => `<p class="card-text" style="margin-bottom:10px">${p}</p>`).join('')}
+      </div>
+    </div>
+
+    <!-- Estrategias -->
+    ${estrategias.length ? `<div class="block">
+      <div class="section-label">Estrategias clave</div>
+      <div class="section-title">Estrategias específicas para ti</div>
+      ${estrategias.map(e => `<div class="card gold"><div class="card-label">${e.titulo}</div><div class="card-text">${e.descripcion}</div></div>`).join('')}
+    </div>` : ''}
+
+    <!-- Sección 1: Fortalezas -->
+    ${fortalezas.length ? `<div class="block">
+      <div class="section-label">Sección 1</div>
+      <div class="section-title">Fortalezas identificadas</div>
+      ${fortalezasSec}
+    </div>` : ''}
+
+    <!-- Sección 2: Desafíos -->
+    ${desafios.length ? `<div class="block">
+      <div class="section-label">Sección 2</div>
+      <div class="section-title">Áreas de trabajo prioritario</div>
+      ${desafiosSec}
+    </div>` : ''}
+
+    ${tecnicoSec}
+    ${padresSec}
+    ${planSec}
+    ${habitosSec}
+    ${evalSec}
+    ${acompSec}
+
+    <!-- Mensaje final -->
+    ${mensajeFinal ? `<div class="block">
+      <div class="dark-block">
+        <div class="section-label" style="text-align:center;margin-bottom:16px">Mensaje de tu equipo</div>
+        <p style="font-size:.95rem;color:rgba(245,240,232,.9);line-height:1.8;text-align:center;font-style:italic">"${mensajeFinal}"</p>
+      </div>
+    </div>` : ''}
+
+    <div class="cierre">
+      <p style="font-weight:800;font-size:1.1rem;color:var(--dark);margin-bottom:10px">El campeón se construye desde adentro.</p>
+      <p style="color:#666;font-size:.9rem">La Zona Campeón · lazonacampeon.com</p>
+    </div>
+
+  </div>
+</body>
+</html>`
+}
+
+function guardarManual(html: string): string {
+  const id = crypto.randomBytes(8).toString('hex')
+  const dir = path.join(process.cwd(), 'public', 'manuales')
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+  fs.writeFileSync(path.join(dir, `${id}.html`), html, 'utf8')
+  return id
+}
+
+// ─── Email ───────────────────────────────────────────────────────────────────
+
+async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Record<string, unknown>, manualUrl: string) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const nombre = perfil.nombre as string
+  const email = perfil.email as string
+  const deporteLabel = perfil.deporteLabel as string
+  const posicionLabel = perfil.posicionLabel as string
+  const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+  const fechaExpira = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+
+  const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
+  const diagnosticoResumen = diagnostico.split('\n').filter(Boolean).slice(0, 2).map(p =>
+    `<p style="color:#333;font-size:13px;line-height:1.8;margin:0 0 10px;">${p}</p>`
+  ).join('')
 
   await resend.emails.send({
     from: 'La Zona Campeón <info@lazonacampeon.com>',
@@ -380,84 +566,26 @@ async function enviarEmailManual(perfil: Record<string, unknown>, analisis: Reco
 
         <!-- Intro -->
         <div style="padding:24px 32px;background:#f5f0e8;border-bottom:1px solid #e8e0d0;">
-          <p style="color:#1a1a2e;font-size:14px;margin:0 0 6px;">Hola <strong>${nombre}</strong>,</p>
-          <p style="color:#555;font-size:13px;line-height:1.7;margin:0;">Este es tu manual mental completo. Guarda este email — aquí está todo: diagnóstico, fortalezas, áreas de trabajo, estrategias, plan de 4 semanas, hábitos diarios y autoevaluación semanal.</p>
+          <p style="color:#1a1a2e;font-size:14px;margin:0 0 8px;">Hola <strong>${nombre}</strong>,</p>
+          <p style="color:#555;font-size:13px;line-height:1.7;margin:0;">Tu manual mental personalizado está listo. Incluye tu diagnóstico, estrategias, plan de 4 semanas, registro diario y autoevaluación semanal.</p>
         </div>
 
-        <!-- Guía de uso -->
-        <div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${guiaUso}
+        <!-- Aviso descarga -->
+        <div style="background:#7b2f00;padding:16px 32px;text-align:center;">
+          <p style="color:#fff;font-size:13px;margin:0;line-height:1.6;">⚠️ <strong style="color:#ffa060">Descarga o imprime tu manual antes del ${fechaExpira}</strong><br/>Después de esa fecha el link dejará de funcionar.</p>
         </div>
 
-        <!-- Diagnóstico -->
-        <div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Tu diagnóstico mental')}
-          ${diagnostico.split('\n').filter(Boolean).map(p => `<p style="color:#333;font-size:13px;line-height:1.8;margin:0 0 10px;">${p}</p>`).join('')}
+        <!-- Botón principal -->
+        <div style="padding:36px 32px;text-align:center;border-bottom:1px solid #f0f0f0;">
+          <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:14px;letter-spacing:1px;text-transform:uppercase;padding:16px 40px;border-radius:8px;text-decoration:none;">Ver tu manual completo →</a>
+          <p style="color:#888;font-size:11px;margin:14px 0 0;">Desde el manual puedes imprimirlo o guardarlo como PDF</p>
         </div>
 
-        <!-- Estrategias -->
-        ${estrategias.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Tus estrategias clave')}
-          ${estrategiasHtml}
-        </div>` : ''}
-
-        <!-- Sección 1: Fortalezas -->
-        ${fortalezas.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Sección 1 — Fortalezas identificadas', '#7ab870')}
-          ${fortalezasHtml}
-          ${fortalezasTexto ? `<div style="background:#f9f5ee;border-radius:6px;padding:12px 16px;margin-top:8px;font-size:13px;font-style:italic;color:#444;"><strong style="font-style:normal;color:#1a1a2e;">En sus propias palabras: </strong>${fortalezasTexto}</div>` : ''}
-        </div>` : ''}
-
-        <!-- Sección 2: Desafíos -->
-        ${desafios.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Sección 2 — Áreas de trabajo prioritario', '#c85050')}
-          ${desafiosHtml}
-          ${desafiosTexto ? `<div style="background:#f9f5ee;border-radius:6px;padding:12px 16px;margin-top:8px;font-size:13px;font-style:italic;color:#444;"><strong style="font-style:normal;color:#1a1a2e;">En sus propias palabras: </strong>${desafiosTexto}</div>` : ''}
-          ${situaciones ? `<div style="background:#fff0f0;border:1px solid #f0c0c0;border-radius:6px;padding:12px 16px;margin-top:8px;font-size:13px;color:#444;"><strong style="color:#1a1a2e;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Situaciones específicas mencionadas:</strong>${situaciones}</div>` : ''}
-        </div>` : ''}
-
-        <!-- Sección 3: Perspectiva del técnico -->
-        ${incluyeTecnico ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section(`Sección 3 — Perspectiva del técnico${tecnicoNombre ? `: ${tecnicoNombre}` : ''}`)}
-          ${tecnicoFortalezas ? `<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 16px;margin-bottom:8px;"><p style="font-weight:700;color:#2e7d32;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Lo que el técnico observa como fortaleza</p><p style="color:#444;font-size:13px;margin:0;line-height:1.6;font-style:italic;">${tecnicoFortalezas}</p></div>` : ''}
-          ${tecnicoDesafios ? `<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 16px;"><p style="font-weight:700;color:#c85050;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Lo que el técnico considera que debe trabajar</p><p style="color:#444;font-size:13px;margin:0;line-height:1.6;font-style:italic;">${tecnicoDesafios}</p></div>` : ''}
-        </div>` : ''}
-
-        <!-- Sección 4: Perspectiva de los padres -->
-        ${incluyePadres ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section(`Sección 4 — Perspectiva de los padres${padresNombre ? `: ${padresNombre}` : ''}`, '#3a7bd5')}
-          ${padresObservaciones ? `<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 16px;margin-bottom:8px;"><p style="font-weight:700;color:#3a7bd5;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Lo que observan desde casa</p><p style="color:#444;font-size:13px;margin:0;line-height:1.6;font-style:italic;">${padresObservaciones}</p></div>` : ''}
-          ${padresPreocupaciones ? `<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 16px;margin-bottom:8px;"><p style="font-weight:700;color:#e07b30;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Situaciones que les generan preocupación</p><p style="color:#444;font-size:13px;margin:0;line-height:1.6;font-style:italic;">${padresPreocupaciones}</p></div>` : ''}
-          ${padresEntrenadorDijo ? `<div style="background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 16px;"><p style="font-weight:700;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px;">Lo que el entrenador/a les ha dicho</p><p style="color:#444;font-size:13px;margin:0;line-height:1.6;font-style:italic;">${padresEntrenadorDijo}</p></div>` : ''}
-        </div>` : ''}
-
-        <!-- Plan 4 semanas -->
-        ${plan.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Tu plan de 4 semanas')}
-          ${planHtml}
-        </div>` : ''}
-
-        <!-- Registro diario -->
-        ${habitos.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Hábitos de seguimiento diario')}
-          <p style="color:#555;font-size:12px;margin:0 0 12px;font-style:italic;">Marca cada día si cumpliste cada hábito (✓ / ✗). Revísalos cada noche antes de dormir.</p>
-          ${habitosHtml}
-        </div>` : ''}
-
-        <!-- Autoevaluación -->
-        ${preguntas.length ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
-          ${section('Autoevaluación semanal')}
-          <p style="color:#555;font-size:12px;margin:0 0 12px;font-style:italic;">Cada semana, puntúa del 1 al 10 y escribe una reflexión breve sobre cada pregunta.</p>
-          ${preguntasHtml}
-        </div>` : ''}
-
-        <!-- Guía para acompañante (juveniles) -->
-        ${guiaAcompanante}
-
-        <!-- Mensaje final -->
-        ${mensajeFinal ? `<div style="padding:28px 32px;background:#f5f0e8;border-bottom:1px solid #e8e0d0;">
-          ${section('Mensaje de tu equipo')}
-          <p style="color:#1a1a2e;font-size:13px;line-height:1.8;margin:0;font-style:italic;">"${mensajeFinal}"</p>
+        <!-- Diagnóstico (resumen) -->
+        ${diagnosticoResumen ? `<div style="padding:28px 32px;border-bottom:1px solid #f0f0f0;">
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 12px;">Extracto de tu diagnóstico</p>
+          ${diagnosticoResumen}
+          <p style="color:#888;font-size:12px;margin:10px 0 0;font-style:italic;">El diagnóstico completo y todas las secciones están en tu manual.</p>
         </div>` : ''}
 
         <!-- Footer -->
@@ -547,9 +675,13 @@ export async function POST(req: NextRequest) {
       throw new Error(`Pipeline falló tras 3 intentos. Último error: ${ultimoError}`)
     }
 
-    // Enviar email (sin bloquear la respuesta)
+    // Generar página HTML del manual y enviar email
+    const manualHtml = generarManualHTML(perfil, analisisIA)
+    const manualId = guardarManual(manualHtml)
+    const manualUrl = `${SITE_URL}/manuales/${manualId}.html`
+
     if (perfil.email) {
-      enviarEmailManual(perfil, analisisIA).catch(err =>
+      enviarEmailManual(perfil, analisisIA, manualUrl).catch(err =>
         console.error('[personalizado] Error enviando email:', err)
       )
     }
