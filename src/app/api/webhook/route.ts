@@ -251,7 +251,6 @@ export async function POST(req: NextRequest) {
     // ── N4: Manual Mental Personalizado ──────────────────────────────────────
     if (externalRef.startsWith('n4-personalizado|')) {
       const uuid = externalRef.split('|')[1]
-      // Run generation in background
       ;(async () => {
         try {
           const perfil = leerPerfilPendiente(uuid)
@@ -260,7 +259,107 @@ export async function POST(req: NextRequest) {
           const html = generarManualHTML(perfil, analisis)
           const manualId = guardarManual(html)
           const manualUrl = `${SITE_URL}/manual/${manualId}`
+          const email = perfil.email as string
+          const nombre = perfil.nombre as string
+
           await enviarEmailManual(perfil, analisis, manualUrl)
+
+          // Día 3
+          resend.emails.send({
+            from: FROM,
+            to: email,
+            subject: `${nombre}, ¿cómo va tu primera semana?`,
+            scheduledAt: daysFromNow(3),
+            html: `
+              <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
+                <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
+                  <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
+                  <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">¿Cómo va tu primera semana?</h1>
+                </div>
+                <div style="padding:32px;background:#f5f0e8;">
+                  <p style="color:#1a1a2e;font-size:14px;font-weight:700;margin:0 0 12px;">Hola ${nombre},</p>
+                  <p style="color:#555;font-size:13px;line-height:1.7;margin:0 0 20px;">Ya llevas 3 días con tu manual personalizado. La semana 1 del plan es la más importante — no porque sea la más difícil, sino porque es donde se decide si el entrenamiento mental se convierte en hábito o queda guardado.</p>
+                  <div style="background:#ffffff;border-left:4px solid #c8aa32;border-radius:4px;padding:18px 20px;margin-bottom:24px;">
+                    <p style="font-size:11px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 8px;">Consejo de esta semana</p>
+                    <p style="color:#1a1a2e;font-size:13px;line-height:1.7;margin:0;">Usa el registro diario aunque sean 2 minutos antes de dormir. No se trata de hacerlo perfecto — se trata de hacerlo consistente. El patrón aparece en los datos de la semana, no en el día suelto.</p>
+                  </div>
+                  <div style="text-align:center;">
+                    <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Continuar con mi manual →</a>
+                  </div>
+                </div>
+                <div style="padding:20px 32px;background:#1a1a2e;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.4);font-size:10px;margin:0;">¿Dudas? <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;text-decoration:none;">info@lazonacampeon.com</a></p>
+                </div>
+              </div>`,
+          }).catch(() => {})
+
+          // Día 14
+          resend.emails.send({
+            from: FROM,
+            to: email,
+            subject: `${nombre}, un tip extra para la semana 3`,
+            scheduledAt: daysFromNow(14),
+            html: `
+              <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
+                <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
+                  <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
+                  <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Un tip extra para ti</h1>
+                </div>
+                <div style="padding:32px;background:#f5f0e8;">
+                  <p style="color:#1a1a2e;font-size:14px;font-weight:700;margin:0 0 12px;">Ya van 2 semanas, ${nombre}.</p>
+                  <p style="color:#555;font-size:13px;line-height:1.7;margin:0 0 20px;">Los deportistas que llegan a la semana 3 de su plan son los que realmente convierten el entrenamiento mental en una ventaja competitiva real. Aquí va algo que no está en el manual — va más allá.</p>
+                  <div style="background:#ffffff;border-left:4px solid #c8aa32;border-radius:4px;padding:18px 20px;margin-bottom:24px;">
+                    <p style="font-size:11px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 8px;">El ritual de los 90 segundos post-error</p>
+                    <p style="color:#1a1a2e;font-size:13px;line-height:1.7;margin:0;">Cuando cometas un error en entrenamiento o partido, date exactamente 90 segundos para sentirlo — no lo evites. Luego di en voz baja una frase de cierre (la tuya, la que funcione: "siguiente", "ya fue", "foco"). Ese ritual comprime el tiempo de recuperación y entrena al cerebro a soltar. Con repetición, pasa solo.</p>
+                  </div>
+                  <div style="text-align:center;">
+                    <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Ver mi manual →</a>
+                  </div>
+                </div>
+                <div style="padding:20px 32px;background:#1a1a2e;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.4);font-size:10px;margin:0;">¿Dudas? <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;text-decoration:none;">info@lazonacampeon.com</a></p>
+                </div>
+              </div>`,
+          }).catch(() => {})
+
+          // Día 28 — 2 días antes del vencimiento
+          resend.emails.send({
+            from: FROM,
+            to: email,
+            subject: `${nombre}, tu manual cierra en 2 días`,
+            scheduledAt: daysFromNow(28),
+            html: `
+              <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
+                <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
+                  <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
+                  <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu manual cierra en 2 días</h1>
+                </div>
+                <div style="padding:32px;background:#f5f0e8;">
+                  <p style="color:#1a1a2e;font-size:14px;font-weight:700;margin:0 0 12px;">Hola ${nombre},</p>
+                  <div style="background:#7b2f00;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
+                    <p style="color:#fff;font-size:13px;line-height:1.6;margin:0;">⚠️ <strong style="color:#ffa060">En 2 días el link de tu manual dejará de funcionar.</strong> Si no lo has descargado aún, hazlo ahora — solo toma un minuto.</p>
+                  </div>
+                  <div style="text-align:center;margin-bottom:28px;">
+                    <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Descargar mi manual ahora →</a>
+                    <p style="color:#888;font-size:11px;margin:10px 0 0;">Desde el manual puedes imprimirlo o guardarlo como PDF</p>
+                  </div>
+                  <div style="background:#ffffff;border:1px solid #e8e0d0;border-radius:8px;padding:20px 22px;margin-bottom:20px;">
+                    <p style="font-size:11px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 10px;">¿Cómo va tu proceso?</p>
+                    <p style="color:#555;font-size:13px;line-height:1.7;margin:0 0 12px;">Llevas casi un mes trabajando tu mente. Nos gustaría saber cómo te ha ido — qué cambió, qué costó, qué aplicaste. Responde este correo con lo que quieras contarnos.</p>
+                    <p style="color:#555;font-size:13px;line-height:1.7;margin:0;">Tu experiencia nos ayuda a seguir mejorando los manuales para otros deportistas.</p>
+                  </div>
+                  <div style="background:#1a1a2e;border-radius:8px;padding:20px 22px;">
+                    <p style="font-size:11px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 10px;">¿Tienes un compañero que lo necesite?</p>
+                    <p style="color:rgba(245,240,232,0.7);font-size:13px;line-height:1.7;margin:0 0 14px;">Si conoces a otro deportista que esté batallando con su mente — concentración, errores, presión — compártele esto. Su manual personalizado también puede cambiar cómo compite.</p>
+                    <a href="${SITE_URL}/personalizado" style="display:inline-block;background:transparent;border:2px solid #c8aa32;color:#c8aa32;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border-radius:6px;text-decoration:none;">Compartir con un amigo →</a>
+                  </div>
+                </div>
+                <div style="padding:20px 32px;background:#1a1a2e;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.4);font-size:10px;margin:0;">¿Dudas? <a href="mailto:info@lazonacampeon.com" style="color:#c8aa32;text-decoration:none;">info@lazonacampeon.com</a></p>
+                </div>
+              </div>`,
+          }).catch(() => {})
+
           eliminarPerfilPendiente(uuid)
         } catch (e) {
           console.error('[webhook n4]', e)
