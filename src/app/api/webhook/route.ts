@@ -87,6 +87,26 @@ function guiaUsoN3(productoTitle: string, planUrl: string): string {
 
 function emailDia0(productoTitle: string, manualUrl: string, planUrl?: string): string {
   const guia = planUrl ? guiaUsoN3(productoTitle, planUrl) : guiaUsoN2N4();
+  const planTitulo = planUrl
+    ? productoTitle.replace('La Mente del ', 'Plan de 4 Semanas del ').replace('La Mente de la ', 'Plan de 4 Semanas de la ')
+    : null;
+
+  const botonesAcceso = planUrl
+    ? `
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Tu compra incluye</p>
+          <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td style="padding:0 6px 0 0;width:50%;">
+              <a href="${manualUrl}" style="display:block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:13px 10px;border-radius:6px;text-decoration:none;text-align:center;">Manual ${productoTitle} →</a>
+            </td>
+            <td style="padding:0 0 0 6px;width:50%;">
+              <a href="${planUrl}" style="display:block;background:#1a1a2e;border:2px solid #c8aa32;color:#c8aa32;font-weight:900;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:11px 10px;border-radius:6px;text-decoration:none;text-align:center;">${planTitulo} →</a>
+            </td>
+          </tr></table>`
+    : `
+          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Tu manual</p>
+          <p style="font-size:16px;font-weight:800;color:#1a1a2e;text-transform:uppercase;margin:0 0 20px;">${productoTitle}</p>
+          <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Abrir mi manual →</a>`;
+
   return `
     <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
       <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
@@ -95,9 +115,7 @@ function emailDia0(productoTitle: string, manualUrl: string, planUrl?: string): 
       </div>
       <div style="padding:32px;background:#f5f0e8;">
         <div style="background:#ffffff;border-left:4px solid #c8aa32;border-radius:4px;padding:20px 24px;margin-bottom:28px;text-align:center;">
-          <p style="font-size:10px;font-weight:700;color:#c8aa32;text-transform:uppercase;letter-spacing:2px;margin:0 0 6px;">Tu manual</p>
-          <p style="font-size:16px;font-weight:800;color:#1a1a2e;text-transform:uppercase;margin:0 0 20px;">${productoTitle}</p>
-          <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Abrir mi manual →</a>
+          ${botonesAcceso}
         </div>
         ${guia}
       </div>
