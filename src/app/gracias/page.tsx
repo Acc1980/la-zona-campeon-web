@@ -7,8 +7,10 @@ import { PRODUCTOS } from "@/lib/productos";
 
 function GraciasContent() {
   const params = useSearchParams();
-  const productoId = params.get("external_reference") ?? params.get("preference_id") ?? "";
-  const producto = PRODUCTOS[productoId];
+  const externalRef = params.get("external_reference") ?? params.get("preference_id") ?? "";
+  const esN4 = externalRef.startsWith("n4-personalizado");
+  const productoId = esN4 ? "" : externalRef.split("|")[0];
+  const producto = productoId ? PRODUCTOS[productoId] : null;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark-900 pt-20">
@@ -21,7 +23,25 @@ function GraciasContent() {
           Tu pago fue procesado correctamente.
         </p>
 
-        {producto ? (
+        {esN4 ? (
+          <div className="bg-dark-700 border border-gold-500/30 rounded-xl p-6 mb-8">
+            <p className="text-gold-500 text-xs font-display font-bold uppercase tracking-widest mb-3">Manual Mental Personalizado</p>
+            <p className="text-white font-bold text-base mb-4">
+              Tu manual está siendo generado ahora mismo.
+            </p>
+            <div className="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-4 text-left">
+              <p className="text-dark-200 text-sm leading-relaxed">
+                📧 <strong className="text-white">Revisa tu correo en los próximos minutos.</strong> Una vez que MercadoPago confirme el pago, generamos tu análisis y te lo enviamos automáticamente.
+              </p>
+              <p className="text-dark-400 text-xs mt-3 leading-relaxed">
+                Este proceso puede tomar <strong className="text-dark-200">hasta 1 hora</strong> dependiendo del tiempo de confirmación de MercadoPago. Si pasada una hora no recibes nada, escríbenos.
+              </p>
+            </div>
+            <p className="text-dark-400 text-xs">
+              ¿Dudas? <span className="text-gold-500">info@lazonacampeon.com</span>
+            </p>
+          </div>
+        ) : producto ? (
           <div className="bg-dark-700 border border-gold-500/30 rounded-xl p-6 mb-8">
             <p className="text-dark-400 text-xs font-display uppercase tracking-widest mb-2">Tu manual</p>
             <h2 className="font-display font-black text-white text-lg uppercase tracking-wide mb-4">

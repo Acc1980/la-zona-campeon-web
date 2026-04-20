@@ -637,6 +637,12 @@ export default function PersonalizadoPage() {
               <p className="text-dark-500 text-xs mt-1">Solo se usará para enviarte el documento. Sin spam.</p>
             </Campo>
 
+            <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 mb-4">
+              <p className="text-dark-200 text-xs leading-relaxed">
+                📧 <strong className="text-white">Recibirás tu manual por correo</strong> una vez que MercadoPago confirme el pago. Este proceso puede tomar <strong className="text-white">hasta 1 hora</strong>.
+              </p>
+            </div>
+
             <div className="bg-dark-700 border border-gold-500/20 rounded-xl p-4 mb-6">
               <p className="text-dark-300 text-xs leading-relaxed">
                 Al generar el análisis confirmas que la información proporcionada es real y aceptas los{' '}
