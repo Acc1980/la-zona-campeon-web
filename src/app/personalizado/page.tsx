@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import DocumentoGenerado, { type PerfilCompleto, type AnalisisIA } from '@/components/DocumentoGenerado'
 
@@ -164,6 +164,44 @@ function BtnBack({ onClick }: { onClick: () => void }) {
     <button type="button" onClick={onClick} className="text-dark-400 hover:text-gold-500 text-sm font-display uppercase tracking-wider transition-colors">
       ← Volver
     </button>
+  )
+}
+
+// ─── Loading ──────────────────────────────────────────────────────────────────
+
+const FRASES_CARGA = [
+  'Tu historial de juego está siendo analizado en detalle...',
+  'Identificando tus patrones mentales únicos...',
+  'Construyendo tu plan de trabajo personalizado...',
+  'Cada respuesta que diste está siendo procesada...',
+  'Tu hoja de ruta mental está tomando forma...',
+  'Analizando el cruce entre tus fortalezas y desafíos...',
+  'Los grandes campeones también trabajan su mente. Tú ya diste el primer paso.',
+]
+
+function LoadingAnalisis() {
+  const [idx, setIdx] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setIdx(i => (i + 1) % FRASES_CARGA.length), 3000)
+    return () => clearInterval(t)
+  }, [])
+
+  return (
+    <div className="text-center py-20">
+      <div className="inline-block w-12 h-12 border-4 border-dark-600 border-t-gold-500 rounded-full animate-spin mb-8" />
+      <p className="font-display font-bold text-gold-500 uppercase tracking-widest text-sm mb-4">
+        Generando tu análisis
+      </p>
+      <p className="text-dark-300 text-xs max-w-xs mx-auto mb-8">
+        Nuestro sistema especializado está analizando tu perfil. Tarda un par de minutos.
+      </p>
+      <div className="max-w-sm mx-auto bg-dark-800 border border-dark-600 rounded-xl px-6 py-4 min-h-[64px] flex items-center justify-center">
+        <p className="text-dark-200 text-sm italic leading-relaxed transition-all duration-500">
+          {FRASES_CARGA[idx]}
+        </p>
+      </div>
+    </div>
   )
 }
 
@@ -618,17 +656,7 @@ export default function PersonalizadoPage() {
         {step === 6 && (
           <div>
             {/* Estado: cargando */}
-            {cargando && (
-              <div className="text-center py-20">
-                <div className="inline-block w-12 h-12 border-4 border-dark-600 border-t-gold-500 rounded-full animate-spin mb-6" />
-                <p className="font-display font-bold text-gold-500 uppercase tracking-widest text-sm mb-2">
-                  Generando tu análisis
-                </p>
-                <p className="text-dark-400 text-xs max-w-xs mx-auto">
-                  Tres especialistas IA están analizando tu perfil. Tarda unos 20-30 segundos.
-                </p>
-              </div>
-            )}
+            {cargando && <LoadingAnalisis />}
 
             {/* Estado: error */}
             {!cargando && error && (

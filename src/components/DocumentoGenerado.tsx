@@ -226,10 +226,6 @@ function analisisCruzado(
 export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: PerfilCompleto; analisisIA?: AnalisisIA }) {
   const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
   const plan = generarPlan(perfil.desafios, perfil.fortalezas)
-  const manualN3 = NIVEL3_POSICION[perfil.deporte]?.[perfil.posicion]
-  const manualesN2 = perfil.desafios
-    .filter(d => NIVEL2_DESAFIO[d])
-    .map(d => NIVEL2_DESAFIO[d])
   const analisis = analisisCruzado(
     perfil.fortalezas,
     perfil.desafios,
@@ -270,6 +266,33 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
       </div>
 
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '44px 24px 80px' }}>
+
+        {/* Guía de uso */}
+        <div style={{ background: '#1a1a2e', borderRadius: 10, padding: '28px 32px', marginBottom: 44 }}>
+          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 12, textAlign: 'center' }}>
+            Cómo usar este manual
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 16 }}>
+            {[
+              { num: '1', titulo: 'Lee el diagnóstico', desc: 'Entiende tu perfil mental actual y tus áreas prioritarias.' },
+              { num: '2', titulo: 'Sigue el plan 4 semanas', desc: 'Un paso concreto por semana. Sin saltar etapas.' },
+              { num: '3', titulo: 'Registro diario', desc: 'Marca tus hábitos cada día. La constancia es la clave.' },
+              { num: '4', titulo: 'Autoevalúate cada domingo', desc: 'Puntúa tu semana y ajusta lo que necesites.' },
+            ].map(item => (
+              <div key={item.num} style={{ textAlign: 'center' }}>
+                <div style={{ width: 36, height: 36, borderRadius: '50%', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 10px' }}>
+                  {item.num}
+                </div>
+                <div style={{ fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: '0.8rem', color: '#fff', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                  {item.titulo}
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'rgba(245,240,232,0.65)', lineHeight: 1.5 }}>
+                  {item.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Resumen del diagnóstico */}
         <div style={{ background: '#fff', borderLeft: '5px solid #e8c84a', borderRadius: 6, padding: '26px 28px', marginBottom: 44 }}>
@@ -505,40 +528,6 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
           </div>
         )}
 
-        {/* Frases activadoras */}
-        <div style={{ background: '#fff', border: '2px solid #e8c84a', borderRadius: 10, padding: '28px 32px', marginBottom: 44, textAlign: 'center' }}>
-          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 10 }}>
-            Antes de tu próximo partido
-          </div>
-          <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.2rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 10 }}>
-            Tu frase activadora del día
-          </h3>
-          <p style={{ fontSize: '0.88rem', color: '#555', lineHeight: 1.7, marginBottom: 20, maxWidth: 440, margin: '0 auto 20px' }}>
-            Léela en voz alta antes de entrar al campo. Una frase distinta cada día para activar tu mente de campeón.
-          </p>
-          <a href="https://lazonacampeon.com/frases" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: '#1a1a2e', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '13px 28px', borderRadius: 6, textDecoration: 'none' }}>
-            Ver mi frase activadora →
-          </a>
-        </div>
-
-        {/* CTA siguiente paso */}
-        <div className="doc-dark-section" style={{ background: 'linear-gradient(135deg,#1a1a2e,#16213e)', borderRadius: 10, padding: '36px 32px', marginBottom: 44, textAlign: 'center' }}>
-          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 16 }}>
-            Próximo paso
-          </div>
-          <p style={{ color: 'rgba(245,240,232,0.85)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: 20, maxWidth: 480, margin: '0 auto 20px' }}>
-            En 4 semanas habrás trabajado tu plan. Vuelve a evaluar tu perfil — verás cuánto ha cambiado tu mente.
-          </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="https://lazonacampeon.com/personalizado" style={{ display: 'inline-block', background: '#e8c84a', color: '#1a1a2e', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '12px 24px', borderRadius: 6, textDecoration: 'none' }}>
-              Reevaluar en 4 semanas →
-            </a>
-            <a href="https://lazonacampeon.com/gratis" style={{ display: 'inline-block', background: 'transparent', color: '#e8c84a', border: '1px solid rgba(232,200,74,0.5)', fontFamily: "'Montserrat',sans-serif", fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '12px 24px', borderRadius: 6, textDecoration: 'none' }}>
-              Compartir con un compañero
-            </a>
-          </div>
-        </div>
-
         {/* Registro diario */}
         {(analisisIA?.registroDiario?.habitos?.length ?? 0) > 0 && (
           <div style={{ marginBottom: 44, pageBreakBefore: 'always' }}>
@@ -619,6 +608,22 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
             ))}
           </div>
         )}
+
+        {/* Frases activadoras */}
+        <div style={{ background: '#fff', border: '2px solid #e8c84a', borderRadius: 10, padding: '28px 32px', marginBottom: 44, textAlign: 'center' }}>
+          <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: '#e8c84a', marginBottom: 10 }}>
+            Antes de tu próximo partido
+          </div>
+          <h3 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: '1.2rem', fontWeight: 800, color: '#1a1a2e', marginBottom: 10 }}>
+            Tu frase activadora del día
+          </h3>
+          <p style={{ fontSize: '0.88rem', color: '#555', lineHeight: 1.7, maxWidth: 440, margin: '0 auto 20px' }}>
+            Léela en voz alta antes de entrar al campo. Una frase distinta cada día para activar tu mente de campeón.
+          </p>
+          <a href="https://lazonacampeon.com/frases" target="_blank" rel="noreferrer" style={{ display: 'inline-block', background: '#1a1a2e', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: 1, padding: '13px 28px', borderRadius: 6, textDecoration: 'none' }}>
+            Ver mi frase activadora →
+          </a>
+        </div>
 
         {/* Cierre */}
         <div style={{ textAlign: 'center', borderTop: '2px solid #e8c84a', paddingTop: 36 }}>
