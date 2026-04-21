@@ -96,6 +96,8 @@
   }
   .print-btn:hover { background: #b89a28; }
   @media print {
+    .week + .week { page-break-before: always; }
+    .ficha { page-break-before: always; }
     .print-btn { display: none !important; }
     body { padding: 12px; }
     .week-notes textarea, .ficha-notes textarea, input[type="text"], input[type="number"] { border-bottom: 1px solid #999 !important; background: transparent !important; color: #000 !important; }
