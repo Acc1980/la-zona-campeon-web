@@ -80,13 +80,13 @@ const productos: Producto[] = [
   },
   {
     nivel: "Nivel 4",
-    tag: "Próximamente",
-    tagColor: "bg-dark-600",
+    tag: "Disponible",
+    tagColor: "bg-gold-500 text-dark-900",
     titulo: "Manual 100% Personalizado",
     desc: "Generado según tu deporte, posición, fortalezas y áreas a mejorar.",
-    precio: "Próximamente",
-    cta: "Próximamente",
-    href: "/productos#nivel-4",
+    precio: "$29.99",
+    cta: "Generar Mi Manual",
+    href: "/personalizado",
     highlight: false,
   },
 ];
