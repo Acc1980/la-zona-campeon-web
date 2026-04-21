@@ -87,12 +87,12 @@ const DESAFIOS = [
 
 const NIVEL3: Record<string, Record<string, { titulo: string; subtitulo: string; precio: string; disponible: boolean }>> = {
   futbol: {
-    portero:         { titulo: 'La Mente del Portero',         subtitulo: 'Fútbol · Portero',         precio: '$19.99', disponible: true },
-    'defensa-central': { titulo: 'La Mente del Defensa Central', subtitulo: 'Fútbol · Defensa Central', precio: '$19.99', disponible: true },
-    lateral:         { titulo: 'La Mente del Lateral',          subtitulo: 'Fútbol · Lateral',          precio: '$19.99', disponible: true },
-    mediocampista:   { titulo: 'La Mente del Mediocampista',    subtitulo: 'Fútbol · Mediocampista',    precio: '$19.99', disponible: true },
-    extremo:         { titulo: 'La Mente del Extremo',          subtitulo: 'Fútbol · Extremo',          precio: '$19.99', disponible: true },
-    delantero:       { titulo: 'La Mente del Delantero Centro', subtitulo: 'Fútbol · Delantero Centro', precio: '$19.99', disponible: true },
+    portero:         { titulo: 'La Mente del Portero',         subtitulo: 'Fútbol · Portero',         precio: '$14.99', disponible: true },
+    'defensa-central': { titulo: 'La Mente del Defensa Central', subtitulo: 'Fútbol · Defensa Central', precio: '$14.99', disponible: true },
+    lateral:         { titulo: 'La Mente del Lateral',          subtitulo: 'Fútbol · Lateral',          precio: '$14.99', disponible: true },
+    mediocampista:   { titulo: 'La Mente del Mediocampista',    subtitulo: 'Fútbol · Mediocampista',    precio: '$14.99', disponible: true },
+    extremo:         { titulo: 'La Mente del Extremo',          subtitulo: 'Fútbol · Extremo',          precio: '$14.99', disponible: true },
+    delantero:       { titulo: 'La Mente del Delantero Centro', subtitulo: 'Fútbol · Delantero Centro', precio: '$14.99', disponible: true },
   },
 }
 

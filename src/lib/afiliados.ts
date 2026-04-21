@@ -10,6 +10,21 @@ export const AFILIADOS: Record<string, Afiliado> = {
     nombre: 'Coorfupre',
     activo: true,
   },
+  lamente10: {
+    codigo: 'lamente10',
+    nombre: 'LaMente10',
+    activo: true,
+  },
+  gustavomiraanda: {
+    codigo: 'gustavomiraanda',
+    nombre: 'Gustavo Miranda',
+    activo: true,
+  },
+  fabian_dynamif: {
+    codigo: 'fabian_dynamif',
+    nombre: 'Fabián Dynamif',
+    activo: true,
+  },
 }
 
 export const DESCUENTO_COMPRADOR = 0.10  // 10%

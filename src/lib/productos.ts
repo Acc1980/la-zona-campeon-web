@@ -44,45 +44,45 @@ export const PRODUCTOS: Record<string, Producto> = {
     planUrl: "/n2-rev-c3a8f1/liderazgo-4-semanas.html",
   },
 
-  // ── NIVEL 3 — $19.99 ─────────────────────────────────────────────────────
+  // ── NIVEL 3 — $14.99 ─────────────────────────────────────────────────────
   "mente-portero": {
     title: "La Mente del Portero",
-    price: 19.99,
+    price: 14.99,
     description: "Concentración extrema, liderazgo desde atrás, recuperación mental tras goles. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/01-portero.html",
     planUrl: "/n3-pos-f4c9d2/portero-4-semanas.html",
   },
   "mente-defensa-central": {
     title: "La Mente del Defensa Central",
-    price: 19.99,
+    price: 14.99,
     description: "Liderazgo defensivo, anticipación y calma en los momentos decisivos. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/02-defensa-central.html",
     planUrl: "/n3-pos-f4c9d2/defensa-central-4-semanas.html",
   },
   "mente-lateral": {
     title: "La Mente del Lateral",
-    price: 19.99,
+    price: 14.99,
     description: "Expansión ofensiva, identidad completa y proyección al ataque. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/03-lateral.html",
     planUrl: "/n3-pos-f4c9d2/lateral-4-semanas.html",
   },
   "mente-mediocampista": {
     title: "La Mente del Mediocampista",
-    price: 19.99,
+    price: 14.99,
     description: "Creatividad bajo presión, liderazgo técnico y toma de decisiones. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/04-mediocampista.html",
     planUrl: "/n3-pos-f4c9d2/mediocampista-4-semanas.html",
   },
   "mente-extremo": {
     title: "La Mente del Extremo",
-    price: 19.99,
+    price: 14.99,
     description: "Velocidad mental, desborde y decisión en el uno contra uno. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/05-extremo.html",
     planUrl: "/n3-pos-f4c9d2/extremo-4-semanas.html",
   },
   "mente-delantero-centro": {
     title: "La Mente del Delantero Centro",
-    price: 19.99,
+    price: 14.99,
     description: "Sequías de gol, presión del equipo e instinto anotador. Manual N3.",
     manualUrl: "/n3-pos-f4c9d2/06-delantero-centro.html",
     planUrl: "/n3-pos-f4c9d2/delantero-centro-4-semanas.html",
@@ -91,7 +91,7 @@ export const PRODUCTOS: Record<string, Producto> = {
   // ── NIVEL 4 — $49 ────────────────────────────────────────────────────────
   "n4-personalizado": {
     title: "Manual Mental Personalizado",
-    price: 39.9,
+    price: 29.99,
     description: "Tu análisis mental completo, creado por IA específicamente para tu perfil de deportista.",
   },
 };

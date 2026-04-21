@@ -69,11 +69,11 @@ const productos: Producto[] = [
   },
   {
     nivel: "Nivel 3",
-    tag: "$19.99",
+    tag: "$14.99",
     tagColor: "bg-gold-500",
     titulo: "Por Posición y Deporte",
     desc: "Lo que necesita un portero no es lo mismo que un base de baloncesto. Tu deporte, tu posición, tu manual.",
-    precio: "Desde $19.99",
+    precio: "Desde $14.99",
     cta: "Ver Manuales",
     href: "/productos#nivel-3",
     highlight: true,

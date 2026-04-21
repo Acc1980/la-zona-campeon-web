@@ -54,7 +54,7 @@ const SYSTEM_PROMPT = `Eres el equipo de soporte de La Zona Campeón, una plataf
 ## PRODUCTOS
 1. **Guía Gratis** — "5 Hábitos Mentales del Campeón" + Calendario 21 días → lazonacampeon.com/gratis
 2. **Nivel 2 — Manuales temáticos** ($9.99 c/u): Espiral Negativa · Concentración bajo presión · Confianza y Autoestima · Manejo de Errores · Liderazgo y Comunicación → lazonacampeon.com/productos
-3. **Nivel 3 — Manuales por posición en fútbol** ($19.99 c/u): Portero · Defensa Central · Lateral · Mediocampista · Extremo · Delantero Centro → lazonacampeon.com/productos
+3. **Nivel 3 — Manuales por posición en fútbol** ($14.99 c/u): Portero · Defensa Central · Lateral · Mediocampista · Extremo · Delantero Centro → lazonacampeon.com/productos
 4. **Nivel 4 — Análisis de Perfil Mental Personalizado** (precio en la web) — análisis hecho por 3 agentes IA en base al perfil del deportista → lazonacampeon.com/personalizado
 
 ## REGLAS ESTRICTAS
@@ -69,7 +69,6 @@ const SYSTEM_PROMPT = `Eres el equipo de soporte de La Zona Campeón, una plataf
 
 async function sendDM(recipientId: string, message: string) {
   const pageId = process.env.META_PAGE_ID
-  const token = process.env.META_SYSTEM_TOKEN
 
   const res = await fetch(`https://graph.facebook.com/v19.0/${pageId}/messages`, {
     method: 'POST',
@@ -126,7 +125,10 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    if (body.object !== 'instagram') {
+    console.log('[instagram-bot] POST recibido:', JSON.stringify(body).slice(0, 500))
+
+    if (body.object !== 'instagram' && body.object !== 'page') {
+      console.log('[instagram-bot] object ignorado:', body.object)
       return NextResponse.json({ ok: true })
     }
 

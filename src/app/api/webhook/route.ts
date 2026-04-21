@@ -210,13 +210,13 @@ function emailDia30(nivel: "n2" | "n3"): string {
         texto: "El siguiente paso es trabajar el entrenamiento mental específico para tu posición. Los manuales N3 van directamente a los desafíos de tu rol en el campo — lo que necesita un portero no es lo mismo que lo que necesita un delantero.",
         cta: "Ver manuales por posición →",
         href: `${SITE_URL}/productos#nivel-3`,
-        precio: "$19.99",
+        precio: "$14.99",
       }
     : {
         texto: "El siguiente nivel es tu manual 100% personalizado. Basado en tu perfil exacto: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar. Generado específicamente para ti con diagnóstico, estrategias y plan de 4 semanas.",
         cta: "Generar mi manual personalizado →",
         href: `${SITE_URL}/personalizado`,
-        precio: "$39.90",
+        precio: "$29.99",
       };
 
   return `
