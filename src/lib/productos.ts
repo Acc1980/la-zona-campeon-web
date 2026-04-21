@@ -91,7 +91,7 @@ export const PRODUCTOS: Record<string, Producto> = {
   // ── NIVEL 4 — $49 ────────────────────────────────────────────────────────
   "n4-personalizado": {
     title: "Manual Mental Personalizado",
-    price: 49,
+    price: 39.9,
     description: "Tu análisis mental completo, creado por IA específicamente para tu perfil de deportista.",
   },
 };

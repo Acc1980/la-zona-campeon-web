@@ -14,6 +14,23 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://lazonacampeon.com";
 const FROM = "La Zona Campeón <info@lazonacampeon.com>";
 
+function registrarVenta(data: {
+  nivel: string;
+  producto: string;
+  monto: number;
+  email: string;
+  afiliado?: string;
+  paymentId?: string;
+}) {
+  const url = process.env.GOOGLE_SCRIPT_VENTAS_URL;
+  if (!url) return;
+  fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  }).catch(() => {});
+}
+
 function daysFromNow(days: number): string {
   return new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
 }
@@ -199,7 +216,7 @@ function emailDia30(nivel: "n2" | "n3"): string {
         texto: "El siguiente nivel es tu manual 100% personalizado. Basado en tu perfil exacto: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar. Generado específicamente para ti con diagnóstico, estrategias y plan de 4 semanas.",
         cta: "Generar mi manual personalizado →",
         href: `${SITE_URL}/personalizado`,
-        precio: "$49",
+        precio: "$39.90",
       };
 
   return `
@@ -263,6 +280,14 @@ export async function POST(req: NextRequest) {
           const nombre = perfil.nombre as string
 
           await enviarEmailManual(perfil, analisis, manualUrl)
+
+          registrarVenta({
+            nivel: 'N4',
+            producto: 'Manual Mental Personalizado',
+            monto: paymentData.transaction_amount ?? 49,
+            email,
+            paymentId: String(paymentId),
+          })
 
           // Día 3
           resend.emails.send({
@@ -412,6 +437,15 @@ export async function POST(req: NextRequest) {
     const manualUrl = `${SITE_URL}${producto.manualUrl}`;
     const planUrl = producto.planUrl ? `${SITE_URL}${producto.planUrl}` : undefined;
     const nivel = getNivel(productoId);
+
+    registrarVenta({
+      nivel: getNivel(productoId).toUpperCase(),
+      producto: producto.title,
+      monto: paymentData.transaction_amount ?? 0,
+      email: payerEmail,
+      afiliado: codigoAfiliado ?? undefined,
+      paymentId: String(paymentId),
+    });
 
     // Día 0 — inmediato
     await resend.emails.send({

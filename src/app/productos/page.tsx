@@ -177,7 +177,7 @@ export default function ProductosPage() {
         <div className="section-container">
           <NivelHeader
             nivel="Nivel 4"
-            rango="$49"
+            rango="$39.90"
             titulo="Tu Manual 100% Personalizado"
             desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
           />
@@ -196,7 +196,7 @@ export default function ProductosPage() {
                 ))}
               </ul>
               <div className="flex items-center justify-between">
-                <span className="font-display font-black text-gold-500 text-2xl">$49</span>
+                <span className="font-display font-black text-gold-500 text-2xl">$39.90</span>
                 <Link href="/personalizado" className="btn-primary text-xs px-5 py-2.5">
                   Generar mi manual →
                 </Link>
