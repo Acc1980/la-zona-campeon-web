@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const habitos = [
   { num: "01", titulo: "Diálogo Interno Ganador", desc: "Cómo hablar contigo mismo antes, durante y después del partido." },
-  { num: "02", titulo: "Visualización Deportiva", desc: "La técnica que usan los olímpicos para preparar su mente antes de competir." },
+  { num: "02", titulo: "Visualización Deportiva", desc: "La técnica que usan los atletas olímpicos para preparar su mente antes de competir." },
   { num: "03", titulo: "Rutina Pre-Partido", desc: "El protocolo de 5 minutos para entrar en zona competitiva con confianza." },
   { num: "04", titulo: "Reset Mental Post-Error", desc: "La regla de los 10 segundos para olvidar los errores y seguir compitiendo." },
   { num: "05", titulo: "Anclaje de Confianza", desc: "Cómo activar tu mejor versión en cualquier momento del juego." },
@@ -56,7 +56,7 @@ export default function GratisPage() {
             </div>
             <div className="mt-6 flex flex-col gap-3">
               {[
-                "PDF descargable al instante",
+                "Descargable al instante",
                 "Aplicable a cualquier deporte",
                 "Basado en entrenamiento mental real",
               ].map((item) => (

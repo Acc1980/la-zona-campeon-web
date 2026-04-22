@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 600px;
+    height: 600px;
+    background: #1E1E2D;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .borde-top {
+    width: 100%;
+    height: 5px;
+    background: #C8AA32;
+  }
+
+  .wrap {
+    padding: 40px 44px;
+    height: 595px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .marca {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #C8AA32;
+  }
+
+  .nivel-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #C8AA32;
+    border: 1px solid rgba(200,170,50,0.5);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .centro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 0 10px;
+  }
+
+  .pre-titulo {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(200,170,50,0.6);
+    margin-bottom: 16px;
+  }
+
+  .titulo {
+    font-size: 42px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .titulo span {
+    color: #C8AA32;
+  }
+
+  .subtitulo {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+
+  .manuales {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 30px;
+  }
+
+  .manual-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .manual-num {
+    font-size: 9px;
+    font-weight: 700;
+    color: #C8AA32;
+    letter-spacing: 2px;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .manual-linea {
+    width: 1px;
+    height: 18px;
+    background: rgba(200,170,50,0.3);
+    flex-shrink: 0;
+  }
+
+  .manual-nombre {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid rgba(200,170,50,0.15);
+  }
+
+  .eslogan {
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+  }
+
+  .precios {
+    text-align: right;
+  }
+
+  .precio-tachado {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+
+  .precio-actual {
+    font-size: 30px;
+    font-weight: 900;
+    color: #C8AA32;
+    line-height: 1;
+  }
+
+  .precio-desc {
+    font-size: 9px;
+    color: rgba(200,170,50,0.5);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="borde-top"></div>
+  <div class="wrap">
+    <div class="top">
+      <div class="marca">La Zona Campeón</div>
+      <div class="nivel-badge">Nivel 2 · Pack 5 Manuales</div>
+    </div>
+
+    <div class="centro">
+      <div class="pre-titulo">Colección completa</div>
+      <div class="titulo">Entrena<br>tu <span>Mente</span></div>
+      <div class="subtitulo">Para deportistas · Técnicas reales · Plan 4 semanas</div>
+
+      <div class="manuales">
+        <div class="manual-fila">
+          <div class="manual-num">01</div>
+          <div class="manual-linea"></div>
+          <div class="manual-nombre">La Espiral Negativa</div>
+        </div>
+        <div class="manual-fila">
+          <div class="manual-num">02</div>
+          <div class="manual-linea"></div>
+          <div class="manual-nombre">Concentración Bajo Presión</div>
+        </div>
+        <div class="manual-fila">
+          <div class="manual-num">03</div>
+          <div class="manual-linea"></div>
+          <div class="manual-nombre">Confianza y Autoestima Deportiva</div>
+        </div>
+        <div class="manual-fila">
+          <div class="manual-num">04</div>
+          <div class="manual-linea"></div>
+          <div class="manual-nombre">Manejo de Errores y Fracasos</div>
+        </div>
+        <div class="manual-fila">
+          <div class="manual-num">05</div>
+          <div class="manual-linea"></div>
+          <div class="manual-nombre">Liderazgo y Comunicación en Equipo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="eslogan">Tu juego cambia cuando tu mente cambia.</div>
+      <div class="precios">
+        <div class="precio-tachado">$49.95</div>
+        <div class="precio-actual">$34.90</div>
+        <div class="precio-desc">Pack completo</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

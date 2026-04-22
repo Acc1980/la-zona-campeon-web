@@ -658,7 +658,7 @@ export default function PersonalizadoPage() {
                 disabled={!perfil.email}
                 className={`btn-primary text-sm px-8 py-3 ${!perfil.email ? 'opacity-40 cursor-not-allowed' : ''}`}
               >
-                Comprar y generar — $39.90 →
+                Comprar y generar — $29.99 →
               </button>
             </div>
           </div>
