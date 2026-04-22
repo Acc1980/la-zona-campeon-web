@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta — Transformación Digital UTL</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; color: #1a1a2e; background: white; }
+
+  /* PORTADA */
+  .portada { background: linear-gradient(160deg, #0f2540 0%, #1a3a5c 60%, #1e5276 100%);
+             color: white; min-height: 100vh; display: flex; flex-direction: column;
+             justify-content: center; padding: 80px 100px; page-break-after: always; }
+  .portada-tag { font-size: .8rem; letter-spacing: .15em; text-transform: uppercase;
+                 opacity: .6; margin-bottom: 40px; }
+  .portada h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+  .portada h2 { font-size: 1.2rem; font-weight: 300; opacity: .8; margin-bottom: 60px; }
+  .portada-meta { border-top: 1px solid rgba(255,255,255,.2); padding-top: 32px;
+                  display: flex; gap: 60px; }
+  .portada-meta div { display: flex; flex-direction: column; gap: 4px; }
+  .portada-meta .lbl { font-size: .75rem; opacity: .5; text-transform: uppercase; letter-spacing: .1em; }
+  .portada-meta .val { font-size: .95rem; font-weight: 500; }
+  .acento { color: #4fc3f7; }
+
+  /* SECCIONES */
+  .seccion { padding: 70px 100px; border-bottom: 1px solid #f0f0f0; }
+  .seccion:last-child { border-bottom: none; }
+  .sec-tag { font-size: .72rem; font-weight: 600; text-transform: uppercase;
+             letter-spacing: .15em; color: #4fc3f7; margin-bottom: 10px; }
+  .sec-titulo { font-size: 1.7rem; font-weight: 700; color: #0f2540; margin-bottom: 8px; }
+  .sec-sub { font-size: 1rem; color: #666; font-weight: 400; margin-bottom: 36px; }
+  p { font-size: .95rem; line-height: 1.75; color: #444; margin-bottom: 14px; }
+  strong { color: #0f2540; }
+
+  /* RESUMEN EJECUTIVO */
+  .cards-resumen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+  .card-r { background: #f7f9fc; border-radius: 10px; padding: 22px;
+            border-top: 3px solid #1a3a5c; }
+  .card-r .num { font-size: 2rem; font-weight: 700; color: #1a3a5c; }
+  .card-r .desc { font-size: .82rem; color: #666; margin-top: 4px; }
+
+  /* MÓDULOS */
+  .modulo { background: #f7f9fc; border-radius: 12px; padding: 32px;
+            margin-bottom: 28px; border-left: 4px solid #1a3a5c; }
+  .modulo-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .modulo-num { background: #1a3a5c; color: white; width: 36px; height: 36px;
+                border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                font-size: .85rem; font-weight: 700; flex-shrink: 0; }
+  .modulo-titulo { font-size: 1.1rem; font-weight: 700; color: #0f2540; margin-bottom: 4px; }
+  .modulo-sub { font-size: .83rem; color: #888; }
+  .modulo h4 { font-size: .8rem; font-weight: 600; text-transform: uppercase;
+               letter-spacing: .08em; color: #1a3a5c; margin: 18px 0 8px; }
+  .modulo p { font-size: .9rem; }
+  .pasos { counter-reset: paso; list-style: none; margin: 8px 0; }
+  .pasos li { counter-increment: paso; padding: 7px 0 7px 36px; position: relative;
+              font-size: .9rem; color: #444; border-bottom: 1px solid #eee; }
+  .pasos li:last-child { border-bottom: none; }
+  .pasos li::before { content: counter(paso); position: absolute; left: 0;
+                      background: #e8f0fe; color: #1a3a5c; width: 22px; height: 22px;
+                      border-radius: 50%; display: flex; align-items: center;
+                      justify-content: center; font-size: .75rem; font-weight: 700;
+                      top: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .chip { background: #e8f5e9; color: #2e7d32; padding: 4px 12px; border-radius: 20px;
+          font-size: .78rem; font-weight: 600; }
+  .chip-warn { background: #fff3e0; color: #e65100; }
+  .chip-blue { background: #e3f2fd; color: #0d47a1; }
+
+  /* ANILLOS */
+  .anillos-tabla { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88rem; }
+  .anillos-tabla th { background: #0f2540; color: white; padding: 10px 14px;
+                      text-align: left; font-weight: 500; }
+  .anillos-tabla td { padding: 10px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .anillos-tabla tr:last-child td { border-bottom: none; }
+  .anillos-tabla tr:nth-child(even) td { background: #fafafa; }
+
+  /* COMPETENCIA */
+  .comp-tabla { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: .88rem; }
+  .comp-tabla th { background: #f0f2f5; padding: 10px 14px; text-align: left;
+                   font-weight: 600; color: #333; border-bottom: 2px solid #ddd; }
+  .comp-tabla td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+  .check { color: #2e7d32; font-weight: 700; }
+  .cross { color: #c62828; }
+
+  /* PRECIOS */
+  .precio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+  .precio-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+  .precio-header { padding: 22px 26px; color: white; }
+  .ph-a { background: #1a3a5c; }
+  .ph-b { background: #0f2540; }
+  .precio-header .tag { font-size: .72rem; text-transform: uppercase;
+                        letter-spacing: .1em; opacity: .7; margin-bottom: 6px; }
+  .precio-header h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+  .precio-header .monto { font-size: 1.6rem; font-weight: 700; color: #4fc3f7; }
+  .precio-header .sub { font-size: .8rem; opacity: .7; margin-top: 4px; }
+  .precio-body { background: white; padding: 20px 26px;
+                 border: 1px solid #e9ecef; border-top: none; }
+  .precio-body ul { list-style: none; }
+  .precio-body li { padding: 6px 0; font-size: .88rem; color: #444;
+                    border-bottom: 1px solid #f5f5f5; }
+  .precio-body li:last-child { border-bottom: none; }
+  .precio-body li::before { content: "✓ "; color: #1a3a5c; font-weight: 700; }
+
+  .recomendado { background: #e8f5e9; border: 2px solid #2e7d32; border-radius: 12px;
+                 padding: 24px 28px; margin: 24px 0; }
+  .recomendado .rtag { font-size: .75rem; font-weight: 700; text-transform: uppercase;
+                       letter-spacing: .1em; color: #2e7d32; margin-bottom: 8px; }
+  .recomendado h3 { font-size: 1.15rem; font-weight: 700; color: #1b5e20; margin-bottom: 8px; }
+  .recomendado p { font-size: .9rem; color: #2e7d32; margin: 0; }
+
+  .justificacion { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+  .just-item { background: #f7f9fc; border-radius: 8px; padding: 18px;
+               text-align: center; border-top: 3px solid #e9ecef; }
+  .just-item .j-val { font-size: 1.1rem; font-weight: 700; color: #1a3a5c; margin-bottom: 4px; }
+  .just-item .j-desc { font-size: .78rem; color: #888; }
+
+  /* COSTOS WHATSAPP */
+  .wa-tabla { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88rem; }
+  .wa-tabla th { background: #25d366; color: white; padding: 10px 14px; text-align: left; }
+  .wa-tabla td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+
+  /* FASES */
+  .fases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
+  .fase { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,.07); }
+  .fase-header { padding: 14px 18px; color: white; font-weight: 600; font-size: .9rem; }
+  .f1 { background: #1a3a5c; }
+  .f2 { background: #1565c0; }
+  .f3 { background: #0277bd; }
+  .fase-body { padding: 16px 18px; background: white;
+               border: 1px solid #e9ecef; border-top: none; font-size: .85rem; }
+  .fase-body ul { list-style: none; }
+  .fase-body li { padding: 4px 0; color: #555; }
+  .fase-body li::before { content: "→ "; color: #1a3a5c; }
+
+  /* CIERRE */
+  .cierre { background: linear-gradient(160deg, #0f2540, #1a3a5c);
+            color: white; padding: 70px 100px; }
+  .cierre h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; }
+  .cierre p { font-size: 1rem; opacity: .8; max-width: 600px; margin-bottom: 32px; }
+  .cierre-contact { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,.15);
+                    padding-top: 28px; }
+  .cierre-contact div { display: flex; flex-direction: column; gap: 4px; }
+  .cierre-contact .lbl { font-size: .72rem; opacity: .5; text-transform: uppercase; }
+  .cierre-contact .val { font-size: .92rem; font-weight: 500; }
+
+  @media print {
+    .portada { min-height: auto; padding: 60px; }
+    .seccion { padding: 50px 60px; }
+    .cierre { padding: 50px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="portada">
+  <div class="portada-tag">Propuesta Comercial Confidencial</div>
+  <h1>Transformación Digital<br>de la <span class="acento">Gestión Senatorial</span></h1>
+  <h2>Automatización e Inteligencia Artificial al servicio<br>de la labor legislativa y la comunidad</h2>
+  <div class="portada-meta">
+    <div><span class="lbl">Presentada a</span><span class="val">H.S. Jose Macea — Senado de la República</span></div>
+    <div><span class="lbl">Fecha</span><span class="val">Abril 2026</span></div>
+    <div><span class="lbl">Versión</span><span class="val">Propuesta comercial</span></div>
+  </div>
+</div>
+
+<!-- RESUMEN EJECUTIVO -->
+<div class="seccion">
+  <div class="sec-tag">Resumen Ejecutivo</div>
+  <div class="sec-titulo">5 herramientas funcionando hoy.<br>Construidas para usted.</div>
+  <div class="sec-sub">Todo lo que se describe en este documento ya existe y está operando.</div>
+
+  <p>Esta propuesta presenta un sistema de inteligencia artificial y automatización diseñado específicamente para la Unidad de Trabajo Legislativo (UTL) del Senador Jose Macea. A diferencia de las soluciones genéricas disponibles en el mercado, este sistema está conectado en tiempo real a los datos del Senado colombiano, configurado para los temas de salud y seguridad, y adaptado al contexto político del Caribe colombiano.</p>
+  <p>En una sola tarde de trabajo se construyeron y probaron cinco módulos que ya están generando valor. Lo que sigue es una descripción de cada uno, la propuesta comercial y el plan de expansión.</p>
+
+  <div class="cards-resumen">
+    <div class="card-r">
+      <div class="num">736</div>
+      <div class="desc">Proyectos legislativos monitoreados en tiempo real en salud y seguridad</div>
+    </div>
+    <div class="card-r">
+      <div class="num">5×</div>
+      <div class="desc">Multiplicación de la capacidad de respuesta de la UTL sin contratar más personal</div>
+    </div>
+    <div class="card-r">
+      <div class="num">$0</div>
+      <div class="desc">Equivalentes en el mercado colombiano — no existe nada igual adaptado al Congreso de Colombia</div>
+    </div>
+  </div>
+</div>
+
+<!-- MÓDULO 1 -->
+<div class="seccion">
+  <div class="sec-tag">Módulo 1 de 5</div>
+  <div class="sec-titulo">Monitor Legislativo con IA</div>
+  <div class="sec-sub">El senador sabe lo que pasa en el Congreso antes que sus colegas.</div>
+
+  <div class="modulo">
+    <div class="modulo-header">
+      <div class="modulo-num">1</div>
+      <div><div class="modulo-titulo">Monitor Legislativo con IA</div>
+      <div class="modulo-sub">Monitoreo automatizado de la Gaceta del Congreso</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>El sistema consulta automáticamente el sitio oficial del Senado de la República, extrae todos los proyectos de ley relacionados con salud y seguridad, detecta cuáles son nuevos y cuáles cambiaron de estado desde el día anterior, y genera un resumen ejecutivo usando inteligencia artificial. El resumen llega al correo del senador cada mañana sin que nadie tenga que hacer nada manualmente.</p>
+
+    <h4>Qué resuelve</h4>
+    <p>Un equipo de UTL dedica entre <strong>10 y 15 horas semanales</strong> a revisar la Gaceta del Congreso y hacer seguimiento a proyectos. Este sistema lo hace en segundos, filtra lo relevante y entrega solo lo que requiere atención del senador.</p>
+
+    <h4>Cómo funciona</h4>
+    <ol class="pasos">
+      <li>Consulta en tiempo real la base de datos del Senado — hoy tiene 736 proyectos activos en salud y seguridad</li>
+      <li>Compara contra el estado del día anterior y detecta novedades</li>
+      <li>La IA analiza los proyectos relevantes y redacta un resumen ejecutivo con alertas de acción inmediata</li>
+      <li>El resumen llega por correo cada mañana de forma automática</li>
+    </ol>
+
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div class="seccion">
+  <div class="sec-tag">Módulo 2 de 5</div>
+  <div class="sec-titulo">Clasificador de Mensajes Ciudadanos</div>
+  <div class="sec-sub">Cada mensaje clasificado y respondido en segundos.</div>
+
+  <div class="modulo">
+    <div class="modulo-header">
+      <div class="modulo-num">2</div>
+      <div><div class="modulo-titulo">Clasificador de Mensajes Ciudadanos con IA</div>
+      <div class="modulo-sub">Gestión inteligente de la correspondencia entrante</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>El sistema recibe cualquier mensaje ciudadano, lo analiza con inteligencia artificial y en segundos entrega: el tipo de mensaje, nivel de urgencia, tema, región del remitente, y un borrador de respuesta profesional listo para que el equipo revise y firme.</p>
+
+    <h4>Qué resuelve</h4>
+    <p>Un senador recibe cientos de mensajes al mes por distintos canales. Sin sistema, el equipo los lee uno a uno, decide cómo responder y redacta desde cero. Este módulo hace ese trabajo en segundos y <strong>multiplica la capacidad de respuesta de la UTL entre 5 y 10 veces</strong> sin contratar más personal.</p>
+
+    <h4>Cómo funciona</h4>
+    <ol class="pasos">
+      <li>El equipo pega el mensaje en la herramienta</li>
+      <li>La IA lo clasifica por tipo, urgencia, tema y región</li>
+      <li>Genera un borrador de respuesta en nombre del senador</li>
+      <li>El equipo revisa, ajusta si es necesario y envía</li>
+    </ol>
+
+    <h4>Integración con canales</h4>
+    <p>Hoy funciona como herramienta de apoyo — el equipo copia el mensaje, lo pega y obtiene la respuesta. Eso ya ahorra el 80% del trabajo. La integración directa con WhatsApp, Instagram y correo — que el mensaje llegue y se procese automáticamente — es el siguiente paso de la Fase 2.</p>
+
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div class="seccion">
+  <div class="sec-tag">Módulo 3 de 5</div>
+  <div class="sec-titulo">Monitor de Noticias con IA</div>
+  <div class="sec-sub">El senador nunca llega tarde a un tema.</div>
+
+  <div class="modulo">
+    <div class="modulo-header">
+      <div class="modulo-num">3</div>
+      <div><div class="modulo-titulo">Monitor de Noticias con IA</div>
+      <div class="modulo-sub">Inteligencia de medios diaria sobre salud y seguridad</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>El sistema monitorea automáticamente los medios colombianos buscando noticias sobre salud y seguridad, filtra las que son nuevas, y genera un reporte ejecutivo con inteligencia artificial que le dice al senador cuál es el ambiente en medios ese día, cuáles son las tres noticias que requieren su atención, dónde puede posicionarse públicamente y si hay alguna crisis emergente que necesite reacción.</p>
+
+    <h4>Ejemplo real — 22 de abril de 2026</h4>
+    <p>El sistema detectó que el tema más urgente del día era el quinto caso de sarampión en Bogotá y la mora hospitalaria de las EPS por <strong>$25.7 billones</strong>. Le recomendó al senador hacer una declaración sobre vacunación y proponer un fondo de emergencia para hospitales — todo antes de que el equipo llegara a la oficina.</p>
+
+    <h4>Cómo funciona</h4>
+    <ol class="pasos">
+      <li>Consulta 6 búsquedas distintas en medios colombianos cada mañana</li>
+      <li>Filtra solo los artículos nuevos — no repite lo que ya vio</li>
+      <li>La IA analiza el conjunto y redacta el reporte ejecutivo</li>
+      <li>El reporte llega al correo del senador automáticamente</li>
+    </ol>
+
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div class="seccion">
+  <div class="sec-tag">Módulo 4 de 5</div>
+  <div class="sec-titulo">Generador de Briefing para Debates</div>
+  <div class="sec-sub">Preparado para cualquier debate en 20 segundos.</div>
+
+  <div class="modulo">
+    <div class="modulo-header">
+      <div class="modulo-num">4</div>
+      <div><div class="modulo-titulo">Generador de Briefing para Debates</div>
+      <div class="modulo-sub">Carpeta de preparación completa antes de cada sesión</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>El senador escribe el tema del debate, selecciona la comisión y la fecha, y el sistema genera en 20 segundos una carpeta de preparación completa con: resumen ejecutivo, contexto y antecedentes, actores clave, puntos críticos del debate, posición sugerida, cinco preguntas concretas para intervenir, datos y cifras de apoyo, y los riesgos que debe evitar.</p>
+
+    <h4>Cómo se conecta con los otros módulos</h4>
+    <p>El monitor de noticias detecta cada mañana los temas calientes en medios. Si ese día identifica que la mora hospitalaria de las EPS es el tema urgente, el senador abre el generador de briefing, escribe ese tema y en 20 segundos está listo para hablar de ello en cualquier escenario — debate, entrevista o declaración pública.</p>
+
+  </div>
+</div>
+
+<!-- MÓDULO 5 -->
+<div class="seccion">
+  <div class="sec-tag">Módulo 5 de 5</div>
+  <div class="sec-titulo">Sistema de Tres Anillos y Rendición de Cuentas</div>
+  <div class="sec-sub">La comunidad de Sucre sabe lo que hace el senador en Bogotá.</div>
+
+  <div class="modulo">
+    <div class="modulo-header">
+      <div class="modulo-num">5</div>
+      <div><div class="modulo-titulo">Sistema de Tres Anillos de Comunidad</div>
+      <div class="modulo-sub">Un evento, tres audiencias, contenido diferente y automático</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>El senador describe una acción legislativa — un voto, un proyecto radicado, una denuncia en el pleno — y el sistema genera automáticamente contenido diferente y adaptado para cada audiencia en menos de 30 segundos.</p>
+
+    <table class="anillos-tabla">
+      <tr>
+        <th>Círculo</th><th>Audiencia</th><th>Canal</th><th>Contenido</th>
+      </tr>
+      <tr>
+        <td><strong>Íntimo</strong></td>
+        <td>500 – 2.000 personas</td>
+        <td>WhatsApp / Telegram privado</td>
+        <td>Análisis político detallado, trasfondo real, coordinación</td>
+      </tr>
+      <tr>
+        <td><strong>Base activa</strong></td>
+        <td>10.000 – 50.000</td>
+        <td>WhatsApp Business segmentado</td>
+        <td>Mensaje cálido y personal explicando el impacto en su región</td>
+      </tr>
+      <tr>
+        <td><strong>Audiencia amplia</strong></td>
+        <td>Todos los seguidores</td>
+        <td>Instagram, X, TikTok, LinkedIn</td>
+        <td>Piezas cortas adaptadas al formato de cada red</td>
+      </tr>
+    </table>
+
+    <h4>Flujo de aprobación</h4>
+    <p>El sistema genera, un humano aprueba. Ningún mensaje sale sin revisión del equipo. Esto protege al senador de errores y mantiene el tono auténtico en cada comunicación.</p>
+
+    <h4>Costo de envío por WhatsApp</h4>
+    <p>Los mensajes iniciados por el senador (no en respuesta a un ciudadano) tienen un costo de Meta de aproximadamente $0.03 USD por mensaje (~120 pesos COP):</p>
+    <table class="wa-tabla">
+      <tr><th>Base de contactos</th><th>Costo por envío trimestral</th></tr>
+      <tr><td>1.000 contactos</td><td>~$36.000 COP</td></tr>
+      <tr><td>10.000 contactos</td><td>~$360.000 COP</td></tr>
+      <tr><td>50.000 contactos</td><td>~$1.800.000 COP</td></tr>
+    </table>
+    <p>El círculo íntimo se maneja por grupo privado de WhatsApp o Telegram <strong>sin costo</strong>.</p>
+  </div>
+
+  <div class="modulo" style="margin-top: 28px; border-left-color: #25d366;">
+    <div class="modulo-header">
+      <div class="modulo-num" style="background:#25d366;">+</div>
+      <div><div class="modulo-titulo">Rendición de Cuentas Personalizada</div>
+      <div class="modulo-sub">El mayor diferenciador político de la propuesta</div></div>
+    </div>
+
+    <h4>Qué hace</h4>
+    <p>Cada trimestre el sistema genera automáticamente un mensaje personalizado para cada contacto de la base. El mensaje menciona por nombre al ciudadano, habla de las acciones del senador relevantes para su municipio y sus temas de interés, e informa si el senador visitó su región. Cada persona recibe un mensaje diferente — no un comunicado masivo genérico.</p>
+
+    <h4>Ejemplo real del demo</h4>
+    <p><strong>María González</strong> de Corozal, lideresa comunal interesada en salud, recibe un mensaje sobre el proyecto de ley de hospitales del Caribe y la votación a favor de la reforma de salud.</p>
+    <p><strong>Carlos Pérez</strong> de San Marcos, agricultor interesado en seguridad, recibe un mensaje sobre el fondo de seguridad rural y la visita del senador a su municipio. El mismo senador, dos mensajes completamente distintos.</p>
+
+    <h4>De dónde vienen los datos</h4>
+    <ol class="pasos">
+      <li>Datos abiertos del Congreso — votaciones, proyectos y actas, automáticos</li>
+      <li>Registro mínimo de la UTL — 5 minutos al día en Google Sheets</li>
+      <li>El clasificador de mensajes — ya cuenta peticiones respondidas por región</li>
+    </ol>
+
+    <h4>Por qué es el mayor diferenciador político</h4>
+    <p>En Colombia un senador tiene circunscripción nacional y no puede estar en todos lados. Este módulo resuelve esa paradoja: el ciudadano siente que el senador lo conoce, sabe de dónde es y lo mantiene informado de lo que le importa. Eso construye fidelidad política que ninguna pauta publicitaria puede comprar.</p>
+
+    <div class="chips">
+      <span class="chip">Escala a miles de contactos sin costo adicional de operación</span>
+      <span class="chip">Compatible con WhatsApp, correo y SMS</span>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCIA -->
+<div class="seccion">
+  <div class="sec-tag">Diferenciación</div>
+  <div class="sec-titulo">¿Esto ya existe en el mercado?</div>
+  <div class="sec-sub">Sí — pero no para Colombia, y no integrado así.</div>
+
+  <p>Existen herramientas similares en el mercado internacional, pero ninguna está adaptada al Congreso colombiano:</p>
+
+  <table class="comp-tabla">
+    <tr>
+      <th>Herramienta</th><th>Qué hace</th><th>Precio</th><th>Datos Colombia</th><th>Todo integrado</th>
+    </tr>
+    <tr>
+      <td><strong>Quorum / FiscalNote</strong></td>
+      <td>Monitoreo legislativo y briefings</td>
+      <td>$15.000–$50.000 USD/año</td>
+      <td class="cross">✗ Solo EE.UU.</td>
+      <td class="cross">✗</td>
+    </tr>
+    <tr>
+      <td><strong>ChatGPT / Gemini</strong></td>
+      <td>Generación de texto genérico</td>
+      <td>$20–$200 USD/mes</td>
+      <td class="cross">✗ No tiempo real</td>
+      <td class="cross">✗</td>
+    </tr>
+    <tr>
+      <td><strong>Meltwater / Brandwatch</strong></td>
+      <td>Monitoreo de medios</td>
+      <td>$2–5M COP/mes</td>
+      <td class="check">✓ Parcial</td>
+      <td class="cross">✗ Solo medios</td>
+    </tr>
+    <tr>
+      <td><strong>Esta propuesta</strong></td>
+      <td>Los 5 módulos integrados</td>
+      <td>Ver propuesta</td>
+      <td class="check">✓ Senado real</td>
+      <td class="check">✓ Todo conectado</td>
+    </tr>
+  </table>
+
+  <p>Colombia tiene una ventana estratégica única: el Congreso no cuenta con un sistema institucional de IA, ni con plataformas comerciales contratadas. <strong>Un senador que implemente esto hoy se diferencia radicalmente de sus colegas</strong> y puede liderar la conversación sobre modernización legislativa.</p>
+</div>
+
+<!-- PROPUESTA COMERCIAL -->
+<div class="seccion">
+  <div class="sec-tag">Propuesta Comercial</div>
+  <div class="sec-titulo">Inversión y modelo de contratación</div>
+  <div class="sec-sub">Tres opciones según el nivel de compromiso inicial.</div>
+
+  <div class="precio-grid">
+    <div class="precio-card">
+      <div class="precio-header ph-a">
+        <div class="tag">Opción A</div>
+        <h3>Setup + Mensualidad</h3>
+        <div class="monto">$10M + $4M/mes</div>
+        <div class="sub">Pago inicial único + mensualidad fija</div>
+      </div>
+      <div class="precio-body">
+        <ul>
+          <li>Implementación inicial de los 5 módulos</li>
+          <li>Configuración para temas y región del senador</li>
+          <li>Capacitación del equipo UTL</li>
+          <li>Soporte y mantenimiento mensual</li>
+          <li>Actualizaciones y mejoras continuas</li>
+          <li><strong>Total año 1: $58M COP</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="precio-card">
+      <div class="precio-header ph-b">
+        <div class="tag">Opción B</div>
+        <h3>Todo incluido mensual</h3>
+        <div class="monto">$6M/mes</div>
+        <div class="sub">Sin pago inicial — todo incluido</div>
+      </div>
+      <div class="precio-body">
+        <ul>
+          <li>Los 5 módulos instalados y operando</li>
+          <li>Sin inversión inicial</li>
+          <li>Soporte prioritario incluido</li>
+          <li>Nuevas funciones sin costo adicional</li>
+          <li>Inversión recuperada en 2–3 meses</li>
+          <li><strong>Total año 1: $72M COP</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="recomendado">
+    <div class="rtag">Recomendación para este piloto</div>
+    <h3>Arrancar con $5M COP al mes — todo incluido</h3>
+    <p>Es fácil de vender, cabe en el presupuesto de UTL, y permite operar los 5 módulos desde el primer mes. Cuando se activen WhatsApp Business y la rendición de cuentas masiva, el valor sube a <strong>$8M COP/mes</strong>.</p>
+  </div>
+
+  <h4 style="margin: 28px 0 16px; font-size: .9rem; text-transform: uppercase; letter-spacing: .05em; color: #666;">Por qué se justifica este precio</h4>
+  <div class="justificacion">
+    <div class="just-item">
+      <div class="j-val">$2–5M COP/mes</div>
+      <div class="j-desc">Costo de una agencia de monitoreo de medios sola (Meltwater, Brandwatch)</div>
+    </div>
+    <div class="just-item">
+      <div class="j-val">$3–4M COP/mes</div>
+      <div class="j-desc">Costo de un analista legislativo medio tiempo</div>
+    </div>
+    <div class="just-item">
+      <div class="j-val">$5M COP/mes</div>
+      <div class="j-desc">Esta propuesta reemplaza ambos con mejor resultado y menor costo</div>
+    </div>
+  </div>
+</div>
+
+<!-- FASES -->
+<div class="seccion">
+  <div class="sec-tag">Hoja de Ruta</div>
+  <div class="sec-titulo">Plan de expansión</div>
+  <div class="sec-sub">Lo que viene después del piloto.</div>
+
+  <div class="fases">
+    <div class="fase">
+      <div class="fase-header f1">Fase 1 — Hoy (Piloto)</div>
+      <div class="fase-body">
+        <ul>
+          <li>Monitor legislativo diario por correo</li>
+          <li>Clasificador de mensajes ciudadanos</li>
+          <li>Monitor de noticias por correo</li>
+          <li>Generador de briefings</li>
+          <li>Sistema de tres anillos</li>
+          <li>Rendición de cuentas (demo)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="fase-header f2">Fase 2 — Meses 2–4</div>
+      <div class="fase-body">
+        <ul>
+          <li>Chatbot WhatsApp 24/7</li>
+          <li>Integración directa Instagram y correo</li>
+          <li>Envío masivo a base activa por WhatsApp</li>
+          <li>CRM político básico</li>
+          <li>Primer trimestre de rendición de cuentas real</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="fase-header f3">Fase 3 — Meses 5–12</div>
+      <div class="fase-body">
+        <ul>
+          <li>Inteligencia territorial con datos DANE</li>
+          <li>Monitor de menciones del senador en medios</li>
+          <li>Análisis de sentimiento por región</li>
+          <li>Dashboard unificado de gestión</li>
+          <li>Rendición de cuentas personalizada masiva</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CIERRE -->
+<div class="cierre">
+  <h2>El trabajo legislativo ocurre.<br>La pregunta es si la comunidad se entera.</h2>
+  <p>Este sistema garantiza que cada acción del senador en Bogotá llegue ese mismo día a las personas correctas, en el canal correcto y con el mensaje correcto. Eso no es tecnología — es política bien hecha.</p>
+  <div class="cierre-contact">
+    <div>
+      <span class="lbl">Presentado por</span>
+      <span class="val">Alexandra Cuartas</span>
+    </div>
+    <div>
+      <span class="lbl">Correo</span>
+      <span class="val">alexandracuartas@gmail.com</span>
+    </div>
+    <div>
+      <span class="lbl">Fecha</span>
+      <span class="val">Abril 2026</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
