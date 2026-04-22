@@ -505,7 +505,8 @@
       .pillar-card, .reflection, .sin-protocolo, .resultado,
       .intro, .closing { page-break-inside: avoid; break-inside: avoid; }
       .chapter { page-break-before: auto; }
-      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; }
+      .chapter-number, .chapter h2 { page-break-after: avoid; break-after: avoid; page-break-inside: avoid; break-inside: avoid; }
+      .chapter-number + h2 { page-break-before: avoid; break-before: avoid; }
       .tracking-section { page-break-before: always; break-before: always; }
       .tracking-section > div[style*="overflow"] { overflow: visible !important; }
       .tracking-table { font-size: 0.68rem; table-layout: fixed; width: 100%; }
