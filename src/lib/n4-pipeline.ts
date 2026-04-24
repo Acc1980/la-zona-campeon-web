@@ -285,7 +285,7 @@ export function generarManualHTML(perfil: Record<string, unknown>, analisis: Rec
   const padresObservaciones = (perfil.padresObservaciones as string) ?? ''
   const padresPreocupaciones = (perfil.padresPreocupaciones as string) ?? ''
   const padresEntrenadorDijo = (perfil.padresEntrenadorDijo as string) ?? ''
-  const esJuvenil = ['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)', 'Juvenil (sub-16 / sub-18)'].includes(categoria)
+  const esJuvenil = ['Infantil (sub-12)', 'Juvenil temprano (sub-13 / sub-15)'].includes(categoria)
 
   type Estrategia = { titulo: string; descripcion: string }
   type Semana = { semana: number; titulo: string; foco: string; ejercicios?: string[] }
