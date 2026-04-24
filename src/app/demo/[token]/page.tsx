@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'next/navigation'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -204,8 +205,9 @@ function LoadingGeneracion() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function DemoPage({ params }: { params: Promise<{ token: string }> }) {
-  const { token } = use(params)
+export default function DemoPage() {
+  const params = useParams()
+  const token = params.token as string
 
   const [tokenEstado, setTokenEstado] = useState<'cargando' | 'valido' | 'invalido' | 'usado'>('cargando')
   const [step, setStep]               = useState(1)
