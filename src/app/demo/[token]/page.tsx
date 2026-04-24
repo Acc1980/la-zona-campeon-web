@@ -319,7 +319,7 @@ export default function DemoPage() {
             Tu manual está en camino
           </h1>
           <p className="text-dark-300 text-sm mb-6 leading-relaxed">
-            Hemos enviado tu manual mental personalizado a <strong className="text-white">{perfil.email}</strong>. Revisa tu bandeja de entrada en los próximos minutos.
+            Hemos enviado tu manual mental personalizado a <strong className="text-white">{perfil.email}</strong>. Puede tardar hasta 1 hora en llegar — revisa también tu carpeta de spam.
           </p>
           {manualUrl && (
             <a
@@ -669,8 +669,16 @@ export default function DemoPage() {
             <Campo label="Correo electrónico donde recibirás el manual" required>
               <input className={inputCls} type="email" placeholder="tu@correo.com"
                 value={perfil.email} onChange={e => set('email', e.target.value)} />
-              <p className="text-dark-500 text-xs mt-1">El manual llegará a este correo en menos de 2 minutos.</p>
+              <p className="text-dark-500 text-xs mt-1">El manual puede tardar hasta 1 hora en llegar. Revisa también la carpeta de spam.</p>
             </Campo>
+
+            <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 mb-3 text-sm text-dark-200 leading-relaxed">
+              📧 <strong>Recibirás tu manual por correo.</strong> Este proceso puede tomar <strong>hasta 1 hora</strong>. Revisa también tu carpeta de spam.
+            </div>
+
+            <div className="bg-dark-800 border border-dark-600 rounded-xl p-4 mb-4 text-xs text-dark-400 leading-relaxed">
+              Al generar el análisis confirmas que la información proporcionada es real y aceptas los <a href="/privacidad" className="text-gold-500 underline" target="_blank">términos de uso</a> de La Zona Campeón.
+            </div>
 
             {error && (
               <div className="bg-red-900/30 border border-red-700/50 rounded-xl p-4 mb-4">
