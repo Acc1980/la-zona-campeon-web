@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Global Entertainment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ──────────────────────────────────────────
+       VARIABLES & RESET
+    ────────────────────────────────────────── */
+    :root {
+      --bg:        #1a1a1a;
+      --bg2:       #222222;
+      --bg3:       #2c2c2c;
+      --silver:    #c9c9c9;
+      --silver-lt: #e8e8e8;
+      --gold:      #b8a070;
+      --white:     #f5f5f5;
+      --border:    rgba(200,200,200,0.15);
+      --radius:    6px;
+      --transition: 0.35s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--silver);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ──────────────────────────────────────────
+       TYPOGRAPHY
+    ────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    /* ──────────────────────────────────────────
+       LAYOUT HELPERS
+    ────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section { padding: 100px 0; }
+
+    .text-center { text-align: center; }
+
+    /* ──────────────────────────────────────────
+       LANGUAGE TOGGLE
+    ────────────────────────────────────────── */
+    #lang-toggle {
+      position: fixed;
+      top: 22px;
+      right: 28px;
+      z-index: 1000;
+      display: flex;
+      gap: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    #lang-toggle button {
+      background: transparent;
+      border: none;
+      color: var(--silver);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    #lang-toggle button.active {
+      background: var(--gold);
+      color: #111;
+    }
+
+    /* ──────────────────────────────────────────
+       NAV
+    ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      background: linear-gradient(to bottom, rgba(26,26,26,0.95) 0%, transparent 100%);
+      transition: background var(--transition);
+    }
+
+    nav.scrolled {
+      background: rgba(26,26,26,0.97);
+      padding: 14px 28px;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin-left: auto;
+      margin-right: 80px;
+    }
+
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--silver);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ──────────────────────────────────────────
+       HERO
+    ────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 28px;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 40%, #2e2e2e 0%, #111 70%);
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('assets/page_1.png') center/cover no-repeat;
+      opacity: 0.18;
+      filter: grayscale(30%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 160px;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 0 30px rgba(200,200,200,0.2));
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: 0.15em;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: background var(--transition), color var(--transition);
+      border-radius: 2px;
+    }
+    .btn:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.4;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: var(--silver);
+    }
+
+    /* ──────────────────────────────────────────
+       MISSION / VISION
+    ────────────────────────────────────────── */
+    #mission {
+      background: var(--bg2);
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .mission-card {
+      background: var(--bg3);
+      padding: 40px 32px;
+      border-top: 2px solid var(--gold);
+      transition: transform var(--transition);
+    }
+    .mission-card:hover { transform: translateY(-4px); }
+
+    .mission-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .mission-card p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--silver);
+    }
+
+    /* ──────────────────────────────────────────
+       TEAM
+    ────────────────────────────────────────── */
+    #team { background: var(--bg); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .team-card {
+      background: var(--bg3);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(20%);
+      transition: filter var(--transition);
+    }
+    .team-card:hover .team-photo { filter: grayscale(0%); }
+
+    .team-info {
+      padding: 32px;
+    }
+
+    .team-name {
+      font-size: 1.8rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .team-facts {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .team-facts li {
+      padding-left: 16px;
+      border-left: 2px solid var(--gold);
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+
+    .team-facts li strong {
+      display: block;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .team-cta {
+      margin-top: 56px;
+      text-align: center;
+      padding: 28px;
+      border: 1px solid var(--border);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    /* ──────────────────────────────────────────
+       SERVICES
+    ────────────────────────────────────────── */
+    #services { background: var(--bg2); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .service-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: grayscale(30%) brightness(0.85);
+      transition: filter var(--transition), transform var(--transition);
+    }
+    .service-card:hover .service-img {
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.03);
+    }
+
+    .service-img-wrap {
+      overflow: hidden;
+    }
+
+    .service-body {
+      padding: 28px 28px 36px;
+    }
+
+    .service-num {
+      font-size: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .service-title {
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .service-list li {
+      font-size: 13px;
+      color: var(--silver);
+      padding-left: 14px;
+      position: relative;
+    }
+    .service-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    /* ──────────────────────────────────────────
+       MORE ABOUT
+    ────────────────────────────────────────── */
+    #more { background: var(--bg); }
+
+    .more-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .more-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .more-item {
+      border-left: 2px solid var(--gold);
+      padding-left: 20px;
+    }
+
+    .more-item h4 {
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .more-item p {
+      font-size: 13.5px;
+      color: var(--silver);
+      line-height: 1.7;
+    }
+
+    .more-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .more-gallery img {
+      width: 100%;
+      border-radius: 2px;
+      filter: grayscale(20%);
+      transition: filter var(--transition);
+    }
+    .more-gallery img:hover { filter: grayscale(0%); }
+
+    /* ──────────────────────────────────────────
+       CONTACT
+    ────────────────────────────────────────── */
+    #contact {
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-inner p {
+      font-size: 15px;
+      color: var(--silver);
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .contact-row .label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      width: 64px;
+      text-align: right;
+    }
+
+    .contact-row .value {
+      color: var(--silver-lt);
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .contact-row .value.placeholder {
+      color: rgba(200,200,200,0.3);
+      font-style: italic;
+    }
+
+    /* ──────────────────────────────────────────
+       FOOTER
+    ────────────────────────────────────────── */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 28px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: rgba(200,200,200,0.3);
+      text-transform: uppercase;
+    }
+
+    /* ──────────────────────────────────────────
+       RESPONSIVE
+    ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .mission-grid, .services-grid { grid-template-columns: 1fr; gap: 16px; }
+      .team-grid { grid-template-columns: 1fr; }
+      .more-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero-title { letter-spacing: 0.08em; }
+    }
+
+    /* ──────────────────────────────────────────
+       LANGUAGE SWITCHING
+    ────────────────────────────────────────── */
+    [data-lang="en"] { display: none; }
+    body.lang-en [data-lang="es"] { display: none; }
+    body.lang-en [data-lang="en"] { display: block; }
+    body.lang-en [data-lang="en"].inline { display: inline; }
+    [data-lang="es"].inline { display: inline; }
+
+    /* nav labels lang */
+    .nav-links [data-lang="en"] { display: none; }
+    body.lang-en .nav-links [data-lang="es"] { display: none; }
+    body.lang-en .nav-links [data-lang="en"] { display: block; }
+
+    /* Fix inline spans */
+    span[data-lang] { display: inline !important; }
+    body.lang-en span[data-lang="es"] { display: none !important; }
+    body.lang-en span[data-lang="en"] { display: inline !important; }
+
+    /* ──────────────────────────────────────────
+       FADE IN ANIMATIONS
+    ────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LANGUAGE TOGGLE -->
+  <div id="lang-toggle">
+    <button id="btn-es" class="active" onclick="setLang('es')">ES</button>
+    <button id="btn-en"               onclick="setLang('en')">EN</button>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">DIAMOND <span>·</span> GLOBAL ENTERTAINMENT</div>
+    <ul class="nav-links">
+      <li><a href="#mission"><span data-lang="es">Nosotros</span><span data-lang="en">About</span></a></li>
+      <li><a href="#team"><span data-lang="es">Equipo</span><span data-lang="en">Team</span></a></li>
+      <li><a href="#services"><span data-lang="es">Servicios</span><span data-lang="en">Services</span></a></li>
+      <li><a href="#more"><span data-lang="es">Más</span><span data-lang="en">More</span></a></li>
+      <li><a href="#contact"><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ─────────────── HERO ─────────────── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="assets/logo.png" alt="Diamond Global Entertainment" class="hero-logo" />
+      <p class="hero-eyebrow">
+        <span data-lang="es">Entretenimiento Artístico de Alto Impacto</span>
+        <span data-lang="en">High-Impact Artistic Entertainment</span>
+      </p>
+      <h1 class="hero-title">DIAMOND</h1>
+      <p class="hero-subtitle">GLOBAL ENTERTAINMENT</p>
+      <a href="#mission" class="btn">
+        <span data-lang="es">Descubrir</span>
+        <span data-lang="en">Discover</span>
+      </a>
+    </div>
+    <div class="scroll-hint">
+      <span data-lang="es">Scroll</span>
+      <span data-lang="en">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ─────────────── MISSION ─────────────── -->
+  <section id="mission">
+    <div class="container">
+      <div class="text-center fade-in">
+        <span class="section-label">
+          <span data-lang="es">Quiénes Somos</span>
+          <span data-lang="en">Who We Are</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="es">Nuestra Esencia</span>
+          <span data-lang="en">Our Essence</span>
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="mission-grid">
+        <!-- MISIÓN -->
+        <div class="mission-card fade-in">
+          <h3>
+            <span data-lang="es">Misión de Impacto</span>
+            <span data-lang="en">Impact Mission</span>
+          </h3>
+          <p data-lang="es">
+            Nuestra misión es crear experiencias artísticas de alto impacto que transformen eventos empresariales, comunitarios y religiosos en momentos memorables de conexión, inspiración y propósito.
+          </p>
+          <p data-lang="en">
+            Our mission is to create high-impact artistic experiences that transform corporate, community, and religious events into memorable moments of connection, inspiration, and purpose.
+          </p>
+        </div>
+
+        <!-- PROPUESTA DE VALOR -->
+        <div class="mission-card fade-in">
+          <h3>
+            <span data-lang="es">Propuesta de Valor</span>
+            <span data-lang="en">Value Proposition</span>
+          </h3>
+          <p data-lang="es">
+            A través de producciones creativas que integran música, escena y talento multicultural, elevamos cada evento con excelencia y sensibilidad humana.
+          </p>
+          <p data-lang="en">
+            Through creative productions that integrate music, theater, and multicultural talent, we elevate every event with excellence and human sensitivity.
+          </p>
+        </div>
+
+        <!-- VISIÓN GLOBAL -->
+        <div class="mission-card fade-in">
+          <h3>
+            <span data-lang="es">Visión Global</span>
+            <span data-lang="en">Global Vision</span>
+          </h3>
+          <p data-lang="es">
+            Aspiramos a ser líderes internacionales en entretenimiento artístico, reconocidos por nuestra capacidad de unir personas a través del arte y la innovación.
+          </p>
+          <p data-lang="en">
+            We aspire to be international leaders in artistic entertainment, recognized for our ability to bring people together through art and innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── TEAM ─────────────── -->
+  <section id="team">
+    <div class="container">
+      <div class="text-center fade-in">
+        <span class="section-label">
+          <span data-lang="es">Los Creadores</span>
+          <span data-lang="en">The Creators</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="es">Equipo Creativo</span>
+          <span data-lang="en">Creative Team</span>
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- LINA BAYONA -->
+        <div class="team-card fade-in">
+          <img class="team-photo" src="assets/lina_photo.png" alt="Lina Bayona" />
+          <div class="team-info">
+            <h3 class="team-name">LINA BAYONA</h3>
+            <span class="team-role">
+              <span data-lang="es">Directora de Eventos · Creative Director · Performing Arts Producer</span>
+              <span data-lang="en">Event Director · Creative Director · Performing Arts Producer</span>
+            </span>
+            <ul class="team-facts">
+              <li>
+                <strong data-lang="es">Trayectoria</strong>
+                <strong data-lang="en">Career</strong>
+                <span data-lang="es">Actriz, cantante y directora con más de veinte años de carrera en escenarios nacionales e internacionales.</span>
+                <span data-lang="en">Actress, singer, and director with more than twenty years of experience on national and international stages.</span>
+              </li>
+              <li>
+                <strong data-lang="es">Experiencia</strong>
+                <strong data-lang="en">Experience</strong>
+                <span data-lang="es">Perfil consolidado en cine, televisión y teatro, incluyendo producciones Off-Broadway en Nueva York y proyectos en Latinoamérica.</span>
+                <span data-lang="en">Established profile in film, television, and theater, including Off-Broadway productions in New York and projects across Latin America.</span>
+              </li>
+              <li>
+                <strong data-lang="es">Rol Clave</strong>
+                <strong data-lang="en">Key Role</strong>
+                <span data-lang="es">Aporta curaduría artística de alto nivel y una visión estratégica orientada a conectar culturas diversas.</span>
+                <span data-lang="en">Provides high-level artistic curation and a strategic vision aimed at connecting diverse cultures.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- JORDAN CASAÑAS -->
+        <div class="team-card fade-in">
+          <img class="team-photo" src="assets/jordan_photo.png" alt="Jordan Casañas" />
+          <div class="team-info">
+            <h3 class="team-name">JORDAN CASAÑAS</h3>
+            <span class="team-role">
+              <span data-lang="es">Actor · DJ · Productor · Narrador Oral · Creador de Eventos</span>
+              <span data-lang="en">Actor · DJ · Producer · Storyteller · Event Planner</span>
+            </span>
+            <ul class="team-facts">
+              <li>
+                <strong data-lang="es">Perfil Multidisciplinario</strong>
+                <strong data-lang="en">Multidisciplinary Profile</strong>
+                <span data-lang="es">Actor, DJ y narrador oral con formación en Cali, Cuba y Bogotá.</span>
+                <span data-lang="en">Actor, DJ, and storyteller trained in Cali, Cuba, and Bogotá.</span>
+              </li>
+              <li>
+                <strong data-lang="es">Alcance Internacional</strong>
+                <strong data-lang="en">International Reach</strong>
+                <span data-lang="es">Colaborador en producciones para Netflix, Univisión y Nickelodeon.</span>
+                <span data-lang="en">Contributor to productions for Netflix, Univision, and Nickelodeon.</span>
+              </li>
+              <li>
+                <strong data-lang="es">Innovación</strong>
+                <strong data-lang="en">Innovation</strong>
+                <span data-lang="es">Creador de experiencias que convergen la música (con presencia en Spotify y Apple Music) con el teatro y el stand-up comedy.</span>
+                <span data-lang="en">Creator of experiences that combine music (available on Spotify and Apple Music) with theater and stand-up comedy.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="team-cta fade-in">
+        <span data-lang="es">¡Trabajemos juntos!</span>
+        <span data-lang="en">Let's work together!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── SERVICES ─────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="text-center fade-in">
+        <span class="section-label">
+          <span data-lang="es">Lo Que Hacemos</span>
+          <span data-lang="en">What We Do</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="es">Servicios Artísticos &amp; Experiencias Escénicas</span>
+          <span data-lang="en">Artistic Services &amp; Performing Arts Experiences</span>
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1 -->
+        <div class="service-card fade-in">
+          <div class="service-img-wrap">
+            <img class="service-img" src="assets/svc_shows.png" alt="Shows en Vivo" />
+          </div>
+          <div class="service-body">
+            <div class="service-num">01</div>
+            <h3 class="service-title">
+              <span data-lang="es">Producción de Shows en Vivo</span>
+              <span data-lang="en">Live Show Production</span>
+            </h3>
+            <ul class="service-list">
+              <li><span data-lang="es">Eventos corporativos</span><span data-lang="en">Corporate events</span></li>
+              <li><span data-lang="es">Galas empresariales</span><span data-lang="en">Business galas</span></li>
+              <li><span data-lang="es">Lanzamientos de marca</span><span data-lang="en">Brand launches</span></li>
+              <li><span data-lang="es">Restaurantes &amp; venues premium</span><span data-lang="en">Premium restaurants &amp; venues</span></li>
+              <li><span data-lang="es">Eventos privados &amp; celebraciones culturales</span><span data-lang="en">Private events &amp; cultural celebrations</span></li>
+              <li><span data-lang="es">Dirección artística profesional</span><span data-lang="en">Professional artistic direction</span></li>
+              <li><span data-lang="es">Coreografía y montaje escénico</span><span data-lang="en">Choreography and stage design</span></li>
+              <li><span data-lang="es">Producción ejecutiva y logística</span><span data-lang="en">Executive production and logistics</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="service-card fade-in">
+          <div class="service-img-wrap">
+            <img class="service-img" src="assets/svc_artistic.png" alt="Servicios Artísticos" />
+          </div>
+          <div class="service-body">
+            <div class="service-num">02</div>
+            <h3 class="service-title">
+              <span data-lang="es">Servicios Artísticos Especializados</span>
+              <span data-lang="en">Specialized Artistic Services</span>
+            </h3>
+            <ul class="service-list">
+              <li><span data-lang="es">Cantantes profesionales (solistas o banda)</span><span data-lang="en">Professional singers (soloists or bands)</span></li>
+              <li><span data-lang="es">Músicos en vivo</span><span data-lang="en">Live musicians</span></li>
+              <li><span data-lang="es">Actores para intervenciones escénicas</span><span data-lang="en">Actors for stage performances</span></li>
+              <li><span data-lang="es">Maestros de ceremonia (MC)</span><span data-lang="en">Masters of ceremony (MC)</span></li>
+              <li><span data-lang="es">Performers temáticos &amp; dúos musicales</span><span data-lang="en">Themed performers &amp; musical duos</span></li>
+              <li><span data-lang="es">Shows estilo cabaret / Broadway</span><span data-lang="en">Cabaret / Broadway-style shows</span></li>
+              <li><span data-lang="es">Presentaciones multiculturales (latino &amp; anglo)</span><span data-lang="en">Multicultural performances (Latin &amp; Anglo)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="service-card fade-in">
+          <div class="service-img-wrap">
+            <img class="service-img" src="assets/svc_culture.png" alt="Cultura y Artes Escénicas" />
+          </div>
+          <div class="service-body">
+            <div class="service-num">03</div>
+            <h3 class="service-title">
+              <span data-lang="es">Cultura &amp; Artes Escénicas</span>
+              <span data-lang="en">Culture &amp; Performing Arts</span>
+            </h3>
+            <ul class="service-list">
+              <li><span data-lang="es">Obras de teatro</span><span data-lang="en">Plays</span></li>
+              <li><span data-lang="es">Teatro infantil &amp; teatro musical</span><span data-lang="en">Children's theater &amp; musical theater</span></li>
+              <li><span data-lang="es">Títeres</span><span data-lang="en">Puppetry</span></li>
+              <li><span data-lang="es">Improvisación teatral &amp; micro teatro</span><span data-lang="en">Theatrical improvisation &amp; micro theater</span></li>
+              <li><span data-lang="es">Storytelling escénico</span><span data-lang="en">Scenic storytelling</span></li>
+              <li><span data-lang="es">Festivales culturales</span><span data-lang="en">Cultural festivals</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── MORE ─────────────── -->
+  <section id="more">
+    <div class="container">
+      <div class="text-center fade-in">
+        <span class="section-label">
+          <span data-lang="es">Más Acerca de Diamond</span>
+          <span data-lang="en">More About Diamond</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="es">Más Allá del Escenario</span>
+          <span data-lang="en">Beyond the Stage</span>
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="more-grid">
+        <div class="more-items">
+
+          <div class="more-item fade-in">
+            <h4 data-lang="es">Desarrollo Personal y Corporativo</h4>
+            <h4 data-lang="en">Personal and Corporate Development</h4>
+            <p data-lang="es">Talleres de Team Building artístico para empresas.</p>
+            <p data-lang="en">Artistic team-building workshops for companies.</p>
+          </div>
+
+          <div class="more-item fade-in">
+            <h4 data-lang="es">Charlas Motivacionales</h4>
+            <h4 data-lang="en">Motivational Talks</h4>
+            <p data-lang="es">Sobre liderazgo y el arte como herramienta de transformación.</p>
+            <p data-lang="en">On leadership and art as a tool for transformation.</p>
+          </div>
+
+          <div class="more-item fade-in">
+            <h4 data-lang="es">Workshops</h4>
+            <h4 data-lang="en">Workshops</h4>
+            <p data-lang="es">De oratoria y expresión corporal.</p>
+            <p data-lang="en">On public speaking and body language.</p>
+          </div>
+
+          <div class="more-item fade-in">
+            <h4 data-lang="es">Producción Audiovisual (Media)</h4>
+            <h4 data-lang="en">Audiovisual Production (Media)</h4>
+            <p data-lang="es">Dirección creativa de contenido para redes sociales y cápsulas promocionales.</p>
+            <p data-lang="en">Creative direction of content for social media and promotional videos.</p>
+          </div>
+
+          <div class="more-item fade-in">
+            <h4 data-lang="es">Grabación Profesional</h4>
+            <h4 data-lang="en">Professional Recording</h4>
+            <p data-lang="es">Videos "highlight" de cada evento para conservar y compartir cada experiencia.</p>
+            <p data-lang="en">Highlight videos of each event to preserve and share every experience.</p>
+          </div>
+
+        </div>
+
+        <div class="more-gallery fade-in">
+          <img src="assets/events_gallery.png" alt="Eventos Diamond" />
+          <img src="assets/event_strip.png" alt="Diamond en Acción" style="margin-top:4px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── CONTACT ─────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner fade-in">
+        <span class="section-label">
+          <span data-lang="es">Hablemos</span>
+          <span data-lang="en">Get in Touch</span>
+        </span>
+        <h2 class="section-title">
+          <span data-lang="es">Contacto</span>
+          <span data-lang="en">Contact</span>
+        </h2>
+        <div class="divider"></div>
+        <p data-lang="es">
+          ¿Tienes un evento, proyecto o idea? Estamos listos para transformarlo en una experiencia inolvidable.
+        </p>
+        <p data-lang="en">
+          Do you have an event, project, or idea? We are ready to transform it into an unforgettable experience.
+        </p>
+
+        <div class="contact-links">
+          <div class="contact-row">
+            <span class="label">Email</span>
+            <span class="value placeholder" id="contact-email">— por agregar —</span>
+          </div>
+          <div class="contact-row">
+            <span class="label">Web</span>
+            <span class="value placeholder" id="contact-web">— por agregar —</span>
+          </div>
+          <div class="contact-row">
+            <span class="label">Instagram</span>
+            <span class="value placeholder" id="contact-instagram">— por agregar —</span>
+          </div>
+        </div>
+
+        <a href="mailto:" class="btn">
+          <span data-lang="es">Escribir Ahora</span>
+          <span data-lang="en">Write Now</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Diamond Global Entertainment · All Rights Reserved</p>
+  </footer>
+
+  <!-- ─────────────── SCRIPTS ─────────────── -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Language toggle
+    function setLang(lang) {
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      localStorage.setItem('diamond-lang', lang);
+    }
+
+    // Restore saved language
+    const savedLang = localStorage.getItem('diamond-lang');
+    if (savedLang === 'en') setLang('en');
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
