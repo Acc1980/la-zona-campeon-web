@@ -115,9 +115,12 @@ function generatePDF(
     }
 
     function campo(etiqueta: string, valor: string) {
+      const y = doc.y
       doc.fillColor(hexColor(GRIS)).fontSize(9.5).font('Helvetica-Bold')
-        .text(etiqueta + ': ', M, doc.y, { continued: true, width: 130 })
-      doc.fillColor(hexColor(NEGRO)).font('Helvetica').text(valor, { width: W - M * 2 - 130 })
+        .text(etiqueta + ':', M, y, { width: 130 })
+      doc.fillColor(hexColor(NEGRO)).fontSize(9.5).font('Helvetica')
+        .text(valor, M + 130, y, { width: W - M * 2 - 130 })
+      doc.y = Math.max(doc.y, y + 16)
     }
 
     function parrafo(texto: string, size = 10) {
