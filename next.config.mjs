@@ -2,7 +2,9 @@
 const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  serverExternalPackages: ['pdfkit'],
+  experimental: {
+    serverComponentsExternalPackages: ['pdfkit'],
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
