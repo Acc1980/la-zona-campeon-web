@@ -238,10 +238,16 @@ export default function PersonalizadoPage() {
     setCargando(true)
     setError('')
     try {
+      const codigoAfiliado = document.cookie
+        .split(';')
+        .map(c => c.trim())
+        .find(c => c.startsWith('afiliado='))
+        ?.split('=')[1] || null
+
       const res = await fetch('/api/personalizado/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...perfil, deporteLabel, posicionLabel: posLabel }),
+        body: JSON.stringify({ ...perfil, deporteLabel, posicionLabel: posLabel, codigoAfiliado }),
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Error')

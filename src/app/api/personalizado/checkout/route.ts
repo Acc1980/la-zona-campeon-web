@@ -1,40 +1,47 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { MercadoPagoConfig, Preference } from 'mercadopago'
 import { guardarPerfilPendiente } from '@/lib/n4-pipeline'
+import { getAfiliado, DESCUENTO_COMPRADOR } from '@/lib/afiliados'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lazonacampeon.com'
+const PRECIO_BASE = 29.99
 
 export async function POST(req: NextRequest) {
   try {
-    const perfil = await req.json()
+    const body = await req.json()
+    const { codigoAfiliado, ...perfil } = body
 
     if (!perfil.nombre || !perfil.email) {
       return NextResponse.json({ error: 'Faltan datos requeridos' }, { status: 400 })
     }
 
-    // Capitalize name
     perfil.nombre = (perfil.nombre as string).trim().replace(/\b\w/g, (c: string) => c.toUpperCase())
 
-    // Save pending profile and get UUID
+    const afiliado = codigoAfiliado ? getAfiliado(codigoAfiliado) : null
+    const precioFinal = afiliado
+      ? Math.round(PRECIO_BASE * (1 - DESCUENTO_COMPRADOR) * 100) / 100
+      : PRECIO_BASE
+
     const uuid = guardarPerfilPendiente(perfil)
 
-    const mp = new MercadoPagoConfig({
-      accessToken: process.env.MP_ACCESS_TOKEN!,
-    })
-
+    const mp = new MercadoPagoConfig({ accessToken: process.env.MP_ACCESS_TOKEN! })
     const preference = new Preference(mp)
     const result = await preference.create({
       body: {
         items: [
           {
             id: 'n4-personalizado',
-            title: 'Manual Mental Personalizado — La Zona Campeón',
+            title: afiliado
+              ? 'Manual Mental Personalizado — La Zona Campeón (10% dto)'
+              : 'Manual Mental Personalizado — La Zona Campeón',
             quantity: 1,
-            unit_price: 29.99,
+            unit_price: precioFinal,
             currency_id: 'USD',
           },
         ],
-        external_reference: `n4-personalizado|${uuid}`,
+        external_reference: afiliado
+          ? `n4-personalizado|${uuid}|${afiliado.codigo}`
+          : `n4-personalizado|${uuid}`,
         back_urls: {
           success: `${SITE_URL}/gracias`,
           failure: `${SITE_URL}/personalizado`,

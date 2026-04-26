@@ -268,7 +268,9 @@ export async function POST(req: NextRequest) {
 
     // ── N4: Manual Mental Personalizado ──────────────────────────────────────
     if (externalRef.startsWith('n4-personalizado|')) {
-      const uuid = externalRef.split('|')[1]
+      const partes = externalRef.split('|')
+      const uuid = partes[1]
+      const codigoAfiliadoN4 = partes[2] || null
       ;(async () => {
         try {
           const perfil = leerPerfilPendiente(uuid)
@@ -282,13 +284,46 @@ export async function POST(req: NextRequest) {
 
           await enviarEmailManual(perfil, analisis, manualUrl)
 
+          const montoN4 = paymentData.transaction_amount ?? 29.99
           registrarVenta({
             nivel: 'N4',
             producto: 'Manual Mental Personalizado',
-            monto: paymentData.transaction_amount ?? 49,
+            monto: montoN4,
             email,
+            afiliado: codigoAfiliadoN4 ?? undefined,
             paymentId: String(paymentId),
           })
+
+          if (codigoAfiliadoN4) {
+            const afiliadoN4 = getAfiliado(codigoAfiliadoN4)
+            if (afiliadoN4) {
+              const fecha = new Date().toISOString().split('T')[0]
+              const comisionN4 = Math.round(montoN4 * COMISION_AFILIADO * 100) / 100
+              const scripUrl = process.env.GOOGLE_SCRIPT_AFILIADOS_URL
+              if (scripUrl) {
+                fetch(scripUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    fecha,
+                    afiliado: afiliadoN4.nombre,
+                    codigo: afiliadoN4.codigo,
+                    producto: 'Manual Mental Personalizado',
+                    monto: montoN4,
+                    comision: comisionN4,
+                    email,
+                  }),
+                }).catch(() => {})
+              }
+              registrarVentaAfiliado({
+                handle: afiliadoN4.codigo,
+                fecha,
+                producto: 'Manual Mental Personalizado',
+                montoUSD: montoN4,
+                comision: comisionN4,
+              }).catch(() => {})
+            }
+          }
 
           // Día 3
           resend.emails.send({
