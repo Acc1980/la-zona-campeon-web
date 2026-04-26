@@ -10,6 +10,7 @@ module.exports = {
         PORT: 3001,
         TIKTOK_CLIENT_KEY: "sbaw6h4cvqjd2map27",
         TIKTOK_CLIENT_SECRET: "G4wD85zz1fNuozNFryD4qGIv5nMuDIkQ",
+        ADMIN_SECRET: "lazonacampeon-admin-2026",
       },
       instances: 1,
       autorestart: true,
