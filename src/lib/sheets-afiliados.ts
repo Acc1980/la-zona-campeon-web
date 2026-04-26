@@ -30,7 +30,7 @@ export async function registrarVentaAfiliado(params: {
   try {
     const token = await getAccessToken()
     const tab = encodeURIComponent(`Afiliado - ${params.handle}`)
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${tab}!A:F:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${tab}!A1:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
 
     await fetch(url, {
       method: 'POST',
