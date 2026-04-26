@@ -3,6 +3,7 @@ import { MercadoPagoConfig, Payment } from "mercadopago";
 import { Resend } from "resend";
 import { PRODUCTOS } from "@/lib/productos";
 import { getAfiliado, COMISION_AFILIADO } from "@/lib/afiliados";
+import { registrarVentaAfiliado } from "@/lib/sheets-afiliados";
 import { runPipeline, generarManualHTML, guardarManual, enviarEmailManual, leerPerfilPendiente, eliminarPerfilPendiente } from "@/lib/n4-pipeline";
 
 const mp = new MercadoPagoConfig({
@@ -431,6 +432,15 @@ export async function POST(req: NextRequest) {
             }),
           }).catch(() => {});
         }
+
+        // Registrar en pestaña del afiliado en el sheet
+        registrarVentaAfiliado({
+          handle: afiliado.codigo,
+          fecha,
+          producto: producto.title,
+          montoUSD: montoTotal,
+          comision,
+        }).catch(() => {});
       }
     }
 
