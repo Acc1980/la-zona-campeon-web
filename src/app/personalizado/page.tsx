@@ -215,6 +215,12 @@ export default function PersonalizadoPage() {
   const [cargando, setCargando] = useState(false)
   const [error, setError]       = useState('')
   const [analisisIA, setAnalisisIA] = useState<AnalisisIA | undefined>(undefined)
+  const [tieneAfiliado, setTieneAfiliado] = useState(false)
+
+  useEffect(() => {
+    const codigo = document.cookie.split('; ').find(r => r.startsWith('afiliado='))?.split('=')[1]
+    if (codigo) setTieneAfiliado(true)
+  }, [])
   const docRef = useRef<HTMLDivElement>(null)
 
   const totalSteps = 5
@@ -664,7 +670,7 @@ export default function PersonalizadoPage() {
                 disabled={!perfil.email}
                 className={`btn-primary text-sm px-8 py-3 ${!perfil.email ? 'opacity-40 cursor-not-allowed' : ''}`}
               >
-                Comprar y generar — $29.99 →
+                {tieneAfiliado ? 'Comprar y generar — $26.99 (10% dto) →' : 'Comprar y generar — $29.99 →'}
               </button>
             </div>
           </div>
