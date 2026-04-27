@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ManualesPosicion from "@/components/ManualesPosicion";
 import ManualesGenerales from "@/components/ManualesGenerales";
+import PersonalizadoCard from "@/components/PersonalizadoCard";
 
 export const metadata: Metadata = {
   title: "Productos",
@@ -182,26 +183,7 @@ export default function ProductosPage() {
             desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
           />
           <div className="max-w-2xl">
-            <div className="card-dark border border-gold-500/30">
-              <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-              <h3 className="font-display font-bold text-white text-lg uppercase tracking-wide mt-4 mb-3">
-                Manual 100% Personalizado
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed mb-6">
-                Respondes un perfil completo — deporte, posición, fortalezas y desafíos mentales — y nuestro sistema especializado genera un manual único para ti con diagnóstico, estrategias, plan de 4 semanas y herramientas de seguimiento.
-              </p>
-              <ul className="space-y-2 text-sm text-dark-300 mb-6">
-                {["Tu nombre, deporte, posición y categoría", "Tu autoevaluación mental (fortalezas + desafíos)", "La perspectiva de tu técnico (opcional)", "La perspectiva de tus padres (opcional)", "Diagnóstico + estrategias + plan de 4 semanas", "Registro diario y autoevaluación semanal"].map(item => (
-                  <li key={item} className="flex gap-2"><span className="text-gold-500">→</span>{item}</li>
-                ))}
-              </ul>
-              <div className="flex items-center justify-between">
-                <span className="font-display font-black text-gold-500 text-2xl">$29.99</span>
-                <Link href="/personalizado" className="btn-primary text-xs px-5 py-2.5">
-                  Generar mi manual →
-                </Link>
-              </div>
-            </div>
+            <PersonalizadoCard />
           </div>
         </div>
       </section>
