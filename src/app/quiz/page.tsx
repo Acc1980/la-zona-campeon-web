@@ -87,21 +87,21 @@ const DESAFIOS = [
 
 const NIVEL3: Record<string, Record<string, { titulo: string; subtitulo: string; precio: string; disponible: boolean }>> = {
   futbol: {
-    portero:         { titulo: 'La Mente del Portero',         subtitulo: 'Fútbol · Portero',         precio: '$14.99', disponible: true },
-    'defensa-central': { titulo: 'La Mente del Defensa Central', subtitulo: 'Fútbol · Defensa Central', precio: '$14.99', disponible: true },
-    lateral:         { titulo: 'La Mente del Lateral',          subtitulo: 'Fútbol · Lateral',          precio: '$14.99', disponible: true },
-    mediocampista:   { titulo: 'La Mente del Mediocampista',    subtitulo: 'Fútbol · Mediocampista',    precio: '$14.99', disponible: true },
-    extremo:         { titulo: 'La Mente del Extremo',          subtitulo: 'Fútbol · Extremo',          precio: '$14.99', disponible: true },
-    delantero:       { titulo: 'La Mente del Delantero Centro', subtitulo: 'Fútbol · Delantero Centro', precio: '$14.99', disponible: true },
+    portero:         { titulo: 'La Mente del Portero',         subtitulo: 'Fútbol · Portero',         precio: '$17.99', disponible: true },
+    'defensa-central': { titulo: 'La Mente del Defensa Central', subtitulo: 'Fútbol · Defensa Central', precio: '$17.99', disponible: true },
+    lateral:         { titulo: 'La Mente del Lateral',          subtitulo: 'Fútbol · Lateral',          precio: '$17.99', disponible: true },
+    mediocampista:   { titulo: 'La Mente del Mediocampista',    subtitulo: 'Fútbol · Mediocampista',    precio: '$17.99', disponible: true },
+    extremo:         { titulo: 'La Mente del Extremo',          subtitulo: 'Fútbol · Extremo',          precio: '$17.99', disponible: true },
+    delantero:       { titulo: 'La Mente del Delantero Centro', subtitulo: 'Fútbol · Delantero Centro', precio: '$17.99', disponible: true },
   },
 }
 
 const NIVEL2: Record<string, { titulo: string; precio: string }> = {
-  espiral:        { titulo: 'La Espiral Negativa',              precio: '$9.99' },
-  concentracion:  { titulo: 'Concentración Bajo Presión',       precio: '$9.99' },
-  confianza:      { titulo: 'Confianza y Autoestima Deportiva', precio: '$9.99' },
-  errores:        { titulo: 'Manejo de Errores y Fracasos',     precio: '$9.99' },
-  liderazgo:      { titulo: 'Liderazgo y Comunicación en Equipo', precio: '$9.99' },
+  espiral:        { titulo: 'La Espiral Negativa',              precio: '$12.99' },
+  concentracion:  { titulo: 'Concentración Bajo Presión',       precio: '$12.99' },
+  confianza:      { titulo: 'Confianza y Autoestima Deportiva', precio: '$12.99' },
+  errores:        { titulo: 'Manejo de Errores y Fracasos',     precio: '$12.99' },
+  liderazgo:      { titulo: 'Liderazgo y Comunicación en Equipo', precio: '$12.99' },
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -374,7 +374,7 @@ export default function QuizPage() {
                   </div>
                   <div className="flex items-start justify-between gap-4 flex-wrap mt-2">
                     <div>
-                      <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-1">Nivel 3 · {manualN3.subtitulo}</p>
+                      <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-1">Nivel 2 · {manualN3.subtitulo}</p>
                       <h3 className="font-display font-black text-xl text-white uppercase tracking-wide">
                         {manualN3.titulo}
                       </h3>
@@ -384,13 +384,13 @@ export default function QuizPage() {
                   <p className="text-dark-300 text-sm mt-3 mb-5 leading-relaxed">
                     Un manual diseñado específicamente para los desafíos mentales de tu posición: los momentos que solo tú vives, los errores que solo tú cometes y las herramientas que realmente aplican a tu juego.
                   </p>
-                  <Link href="/productos#nivel-3" className="btn-primary text-sm px-6 py-3">
+                  <Link href="/productos#nivel-2" className="btn-primary text-sm px-6 py-3">
                     Ver manual →
                   </Link>
                 </div>
               ) : (
                 <div className="bg-dark-800 border border-dark-600 rounded-xl p-6 opacity-70">
-                  <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-1">Nivel 3 · {deporteLabel} · {posicionLabel}</p>
+                  <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-1">Nivel 2 · {deporteLabel} · {posicionLabel}</p>
                   <h3 className="font-display font-black text-lg text-white uppercase tracking-wide mb-2">
                     Manual de posición — Próximamente
                   </h3>
@@ -414,12 +414,12 @@ export default function QuizPage() {
                   {manualesN2.map(m => (
                     <div key={m.id} className="bg-dark-800 border border-dark-600 rounded-xl p-5 flex items-center justify-between gap-4 flex-wrap">
                       <div>
-                        <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-0.5">Nivel 2</p>
+                        <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-0.5">Nivel 1</p>
                         <h4 className="font-display font-bold text-white text-sm uppercase tracking-wide">{m.titulo}</h4>
                       </div>
                       <div className="flex items-center gap-4">
                         <span className="font-display font-black text-gold-500 text-lg">{m.precio}</span>
-                        <Link href="/productos#nivel-2" className="btn-secondary text-xs px-5 py-2.5">
+                        <Link href="/productos#nivel-1" className="btn-secondary text-xs px-5 py-2.5">
                           Ver manual
                         </Link>
                       </div>
@@ -445,6 +445,28 @@ export default function QuizPage() {
                 </div>
               </div>
             )}
+
+            {/* N4 Personalizado — siempre visible */}
+            <div className="mb-8 bg-dark-800 border border-gold-500/40 rounded-xl p-6">
+              <p className="font-display font-bold text-xs text-gold-500 uppercase tracking-widest mb-3">
+                ✦ La opción más completa
+              </p>
+              <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
+                <div>
+                  <p className="text-dark-400 text-xs font-display uppercase tracking-wider mb-1">Nivel 3 · 100% Personalizado</p>
+                  <h3 className="font-display font-black text-xl text-white uppercase tracking-wide">
+                    Manual para ti, no para tu posición
+                  </h3>
+                </div>
+                <span className="font-display font-black text-2xl text-gold-500 shrink-0">$29.99</span>
+              </div>
+              <p className="text-dark-300 text-sm leading-relaxed mb-5">
+                El quiz recomendó manuales para tu deporte y posición. El N4 va un paso más allá: se genera según tus fortalezas, tus desafíos específicos y las situaciones reales que vives tú. Es el único manual que nadie más tiene igual.
+              </p>
+              <Link href="/personalizado" className="btn-primary text-sm px-6 py-3 inline-block">
+                Generar Mi Manual Personalizado →
+              </Link>
+            </div>
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-between pt-4 border-t border-dark-700">

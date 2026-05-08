@@ -286,7 +286,7 @@ export default function PersonalizadoPage() {
       <section className="py-12 bg-dark-900 text-center">
         <div className="section-container">
           <div className="gold-line mx-auto mb-5" />
-          <p className="font-display font-bold text-xs text-gold-500 uppercase tracking-widest mb-2">Nivel 4</p>
+          <p className="font-display font-bold text-xs text-gold-500 uppercase tracking-widest mb-2">Nivel 3</p>
           <h1 className="font-display font-black text-3xl md:text-4xl text-white uppercase tracking-wide mb-3">
             Tu Manual Personalizado
           </h1>
@@ -708,7 +708,7 @@ export default function PersonalizadoPage() {
                   <button onClick={() => window.print()} className="btn-primary text-sm px-6 py-3 flex-1 justify-center">
                     Imprimir / Guardar PDF
                   </button>
-                  <Link href="/productos#nivel-3" className="btn-secondary text-sm px-6 py-3 flex-1 justify-center">
+                  <Link href="/productos#nivel-2" className="btn-secondary text-sm px-6 py-3 flex-1 justify-center">
                     Ver manuales recomendados
                   </Link>
                 </div>

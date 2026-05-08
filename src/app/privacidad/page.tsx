@@ -27,7 +27,7 @@ export default function PrivacidadPage() {
             <ul className="list-disc list-inside space-y-2">
               <li><strong className="text-white">Datos de registro:</strong> nombre y correo electrónico cuando descargas nuestra guía gratuita o completas el formulario de perfil mental.</li>
               <li><strong className="text-white">Datos de compra:</strong> procesados por MercadoPago. No almacenamos datos de tarjetas de crédito.</li>
-              <li><strong className="text-white">Datos del perfil deportivo:</strong> deporte, posición, categoría y respuestas del formulario Nivel 4, usados únicamente para generar tu manual personalizado.</li>
+              <li><strong className="text-white">Datos del perfil deportivo:</strong> deporte, posición, categoría y respuestas del formulario Nivel 3, usados únicamente para generar tu manual personalizado.</li>
               <li><strong className="text-white">Mensajes de Instagram:</strong> cuando interactúas con nuestra cuenta vía mensaje directo, procesamos el contenido del mensaje para darte una respuesta automatizada. No almacenamos estos mensajes de forma permanente.</li>
               <li><strong className="text-white">Datos de navegación:</strong> recopilamos datos de uso anónimos a través de Google Analytics.</li>
             </ul>

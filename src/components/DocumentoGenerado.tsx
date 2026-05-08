@@ -251,7 +251,7 @@ export default function DocumentoGenerado({ perfil, analisisIA }: { perfil: Perf
       {/* Cover */}
       <div style={{ background: '#fff', color: '#1a1a2e', textAlign: 'center', padding: '60px 30px 50px', borderBottom: '1px solid #e8e8e8' }}>
         <div style={{ display: 'inline-block', background: '#1a1a2e', color: '#e8c84a', fontFamily: "'Montserrat',sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 18px', borderRadius: 20, marginBottom: 28 }}>
-          Nivel 4 · Análisis de Perfil Mental
+          Nivel 3 · Análisis de Perfil Mental
         </div>
         <div style={{ width: 60, height: 4, background: '#e8c84a', margin: '0 auto 28px' }} />
         <h1 style={{ fontFamily: "'Montserrat',sans-serif", fontSize: 'clamp(1.8rem,5vw,2.8rem)', fontWeight: 800, lineHeight: 1.15, margin: '0 0 16px', color: '#1a1a2e' }}>

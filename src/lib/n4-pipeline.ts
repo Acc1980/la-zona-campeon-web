@@ -269,7 +269,7 @@ export function generarManualHTML(perfil: Record<string, unknown>, analisis: Rec
   const categoria = (perfil.categoria as string) ?? ''
   const edad = (perfil.edad as string) ?? ''
   const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
-  const fechaExpira = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+  const fechaExpira = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
 
   const fortalezas = (perfil.fortalezas as string[]) ?? []
   const desafios = (perfil.desafios as string[]) ?? []
@@ -479,12 +479,12 @@ export function generarManualHTML(perfil: Record<string, unknown>, analisis: Rec
   <div class="brand-bar">La Zona Campeón · Control Mental para Deportistas</div>
 
   <div class="expiry-bar">
-    ⚠️ <strong>Descarga o imprime este manual antes del ${fechaExpira}</strong> — después de esa fecha el link dejará de funcionar.
-    <span style="margin-left:12px;opacity:.75">Usa el botón "Imprimir" para guardarlo como PDF.</span>
+    Tu acceso es válido hasta el ${fechaExpira} — puedes consultarlo cuando quieras durante ese período.
+    <span style="margin-left:12px;opacity:.75">Usa el botón "Imprimir" para guardarlo como PDF en cualquier momento.</span>
   </div>
 
   <div class="cover">
-    <div class="badge">Nivel 4 · Análisis de Perfil Mental</div>
+    <div class="badge">Nivel 3 · Análisis de Perfil Mental</div>
     <h1>${nombre}</h1>
     <p class="sub">${deporteLabel} · ${posicionLabel} · ${categoria}${edad ? ` · ${edad} años` : ''}</p>
     <p style="font-size:.82rem;color:rgba(245,240,232,.45)">Generado el ${fecha}</p>
@@ -598,7 +598,7 @@ export async function enviarEmailManual(perfil: Record<string, unknown>, analisi
   const deporteLabel = perfil.deporteLabel as string
   const posicionLabel = perfil.posicionLabel as string
   const fecha = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
-  const fechaExpira = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
+  const fechaExpira = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })
 
   const diagnostico = (analisis.diagnostico as string | undefined) ?? ''
   const diagnosticoResumen = diagnostico.split('\n').filter(Boolean).slice(0, 2).map(p =>
@@ -614,7 +614,7 @@ export async function enviarEmailManual(perfil: Record<string, unknown>, analisi
 
         <!-- Header -->
         <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
-          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón · Nivel 4</p>
+          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón · Nivel 3</p>
           <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0 0 8px;">Manual Mental Personalizado</h1>
           <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:0;">${nombre} · ${deporteLabel} · ${posicionLabel}</p>
           <p style="color:rgba(255,255,255,0.4);font-size:11px;margin:6px 0 0;">Generado el ${fecha}</p>
@@ -628,7 +628,7 @@ export async function enviarEmailManual(perfil: Record<string, unknown>, analisi
 
         <!-- Aviso descarga -->
         <div style="background:#7b2f00;padding:16px 32px;text-align:center;">
-          <p style="color:#fff;font-size:13px;margin:0;line-height:1.6;">⚠️ <strong style="color:#ffa060">Descarga o imprime tu manual antes del ${fechaExpira}</strong><br/>Después de esa fecha el link dejará de funcionar.</p>
+          <p style="color:#fff;font-size:13px;margin:0;line-height:1.6;">Tu acceso es válido hasta el <strong style="color:#ffa060">${fechaExpira}</strong> — puedes consultarlo cuando quieras durante ese período.</p>
         </div>
 
         <!-- Botón principal -->

@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 
 const manualesGenerales = [
-  { titulo: "La Espiral Negativa", desc: "Cómo detener el ciclo de errores, frustración y más errores. El problema mental más común en deportistas.", precio: 9.99, productoId: "n2-espiral-negativa" },
-  { titulo: "Concentración Bajo Presión", desc: "Técnicas para mantener el foco cuando el partido está en juego y el ambiente se pone difícil.", precio: 9.99, productoId: "n2-concentracion" },
-  { titulo: "Confianza y Autoestima Deportiva", desc: "Construye una confianza que no depende de los resultados. Para deportistas que dudan de sí mismos.", precio: 9.99, productoId: "n2-confianza" },
-  { titulo: "Manejo de Errores y Fracasos", desc: "Aprende a procesar los errores rápido y volver al juego sin que te destruyan por dentro.", precio: 9.99, productoId: "n2-errores" },
-  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener la banda de campeón.", precio: 9.99, productoId: "n2-liderazgo" },
+  { titulo: "La Espiral Negativa", desc: "Cómo detener el ciclo de errores, frustración y más errores. El problema mental más común en deportistas.", precio: 12.99, productoId: "n2-espiral-negativa" },
+  { titulo: "Concentración Bajo Presión", desc: "Técnicas para mantener el foco cuando el partido está en juego y el ambiente se pone difícil.", precio: 12.99, productoId: "n2-concentracion" },
+  { titulo: "Confianza y Autoestima Deportiva", desc: "Construye una confianza que no depende de los resultados. Para deportistas que dudan de sí mismos.", precio: 12.99, productoId: "n2-confianza" },
+  { titulo: "Manejo de Errores y Fracasos", desc: "Aprende a procesar los errores rápido y volver al juego sin que te destruyan por dentro.", precio: 12.99, productoId: "n2-errores" },
+  { titulo: "Liderazgo y Comunicación en Equipo", desc: "Para deportistas que quieren influir positivamente en su equipo sin tener la banda de campeón.", precio: 12.99, productoId: "n2-liderazgo" },
 ];
 
 const DESCUENTO = 0.10

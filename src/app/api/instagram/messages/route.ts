@@ -53,9 +53,9 @@ const SYSTEM_PROMPT = `Eres el equipo de soporte de La Zona Campeón, una plataf
 
 ## PRODUCTOS
 1. **Guía Gratis** — "5 Hábitos Mentales del Campeón" + Calendario 21 días → lazonacampeon.com/gratis
-2. **Nivel 2 — Manuales temáticos** ($9.99 c/u): Espiral Negativa · Concentración bajo presión · Confianza y Autoestima · Manejo de Errores · Liderazgo y Comunicación → lazonacampeon.com/productos
-3. **Nivel 3 — Manuales por posición en fútbol** ($14.99 c/u): Portero · Defensa Central · Lateral · Mediocampista · Extremo · Delantero Centro → lazonacampeon.com/productos
-4. **Nivel 4 — Análisis de Perfil Mental Personalizado** (precio en la web) — análisis hecho por 3 agentes IA en base al perfil del deportista → lazonacampeon.com/personalizado
+2. **Nivel 1 — Manuales temáticos** ($12.99 c/u): Espiral Negativa · Concentración bajo presión · Confianza y Autoestima · Manejo de Errores · Liderazgo y Comunicación → lazonacampeon.com/productos
+3. **Nivel 2 — Manuales por posición en fútbol** ($17.99 c/u): Portero · Defensa Central · Lateral · Mediocampista · Extremo · Delantero Centro → lazonacampeon.com/productos
+4. **Nivel 3 — Análisis de Perfil Mental Personalizado** (precio en la web) — análisis hecho por 3 agentes IA en base al perfil del deportista → lazonacampeon.com/personalizado
 
 ## REGLAS ESTRICTAS
 - Respuestas cortas: máximo 3-4 frases. Directo y cálido.

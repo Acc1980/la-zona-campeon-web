@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function GraciasPage() {
   return (
-    <div className="min-h-screen bg-dark-900 flex items-center justify-center px-6 py-24">
-      <div className="max-w-lg w-full text-center">
+    <div className="min-h-screen bg-dark-900 px-6 py-24">
+      <div className="max-w-lg w-full text-center mx-auto">
 
         {/* Ícono */}
         <div className="w-20 h-20 rounded-full bg-gold-500/20 border-2 border-gold-500/40 flex items-center justify-center mx-auto mb-8">
@@ -29,7 +29,7 @@ export default function GraciasPage() {
           Descarga tu guía y el calendario de seguimiento. Tienes todo lo que necesitas para empezar hoy.
         </p>
 
-        <div className="flex flex-col gap-4 w-full mb-10">
+        <div className="flex flex-col gap-4 w-full mb-16">
           <a
             href="/guia-5-habitos.html"
             download="Guia-5-Habitos-Mentales-del-Campeon.html"
@@ -43,22 +43,44 @@ export default function GraciasPage() {
             Descargar Guía 5 Hábitos
           </a>
 
-          <a
-            href="/calendario-21-dias.html"
-            download="Calendario-21-Dias-La-Zona-Campeon.html"
-            className="btn-secondary text-base px-8 py-4 font-display font-black uppercase tracking-wider inline-flex items-center justify-center gap-3"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            Descargar Calendario 21 Días
-          </a>
         </div>
 
-        <div className="pt-8 border-t border-dark-700">
+        {/* Upsell — Manual N4 */}
+        <div className="border border-gold-500/40 rounded-2xl p-8 bg-dark-800 text-left mb-10">
+          <p className="font-display font-bold text-xs tracking-widest uppercase text-gold-500 mb-3">
+            ¿Quieres ir más profundo?
+          </p>
+          <h2 className="font-display font-black text-white text-xl uppercase tracking-wide leading-tight mb-3">
+            Manual 100% Personalizado<br />para tu deporte y posición
+          </h2>
+          <p className="text-dark-300 text-sm leading-relaxed mb-6">
+            La guía que descargaste es el primer paso. El manual personalizado va al detalle de tu deporte, tu posición, tus fortalezas y las áreas donde más necesitas trabajar la mente. Exactamente lo que necesitas tú, no uno genérico.
+          </p>
+          <ul className="space-y-2 mb-8">
+            {[
+              "Generado específicamente para tu deporte y posición",
+              "Situaciones reales que vives en competencia",
+              "Protocolos para antes, durante y después del partido",
+              "Te llega al correo en menos de 1 hora",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2 text-dark-200 text-sm">
+                <span className="text-gold-500 font-bold shrink-0">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <p className="font-display font-black text-gold-500 text-2xl">$29.99 USD</p>
+            <Link
+              href="/personalizado"
+              className="btn-primary text-sm px-6 py-3 font-display font-black uppercase tracking-wider"
+            >
+              Generar Mi Manual →
+            </Link>
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-dark-700">
           <p className="text-dark-400 text-sm mb-4">Activa tu mente antes del partido:</p>
           <Link
             href="/frases"

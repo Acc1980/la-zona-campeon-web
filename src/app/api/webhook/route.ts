@@ -210,8 +210,8 @@ function emailDia30(nivel: "n2" | "n3"): string {
     ? {
         texto: "El siguiente paso es trabajar el entrenamiento mental específico para tu posición. Los manuales N3 van directamente a los desafíos de tu rol en el campo — lo que necesita un portero no es lo mismo que lo que necesita un delantero.",
         cta: "Ver manuales por posición →",
-        href: `${SITE_URL}/productos#nivel-3`,
-        precio: "$14.99",
+        href: `${SITE_URL}/productos#nivel-2`,
+        precio: "$17.99",
       }
     : {
         texto: "El siguiente nivel es tu manual 100% personalizado. Basado en tu perfil exacto: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar. Generado específicamente para ti con diagnóstico, estrategias y plan de 4 semanas.",
@@ -383,22 +383,22 @@ export async function POST(req: NextRequest) {
               </div>`,
           }).catch(() => {})
 
-          // Día 28 — 2 días antes del vencimiento
+          // Día 350 — 15 días antes del vencimiento anual
           resend.emails.send({
             from: FROM,
             to: email,
-            subject: `${nombre}, tu manual cierra en 2 días`,
-            scheduledAt: daysFromNow(28),
+            subject: `${nombre}, tu manual expira en 15 días`,
+            scheduledAt: daysFromNow(350),
             html: `
               <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#ffffff;">
                 <div style="background:#1a1a2e;padding:28px 32px;text-align:center;">
                   <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c8aa32;margin:0 0 6px;">La Zona Campeón</p>
-                  <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu manual cierra en 2 días</h1>
+                  <h1 style="font-size:20px;font-weight:900;text-transform:uppercase;color:#ffffff;margin:0;">Tu manual expira en 15 días</h1>
                 </div>
                 <div style="padding:32px;background:#f5f0e8;">
                   <p style="color:#1a1a2e;font-size:14px;font-weight:700;margin:0 0 12px;">Hola ${nombre},</p>
                   <div style="background:#7b2f00;border-radius:8px;padding:16px 20px;margin-bottom:20px;">
-                    <p style="color:#fff;font-size:13px;line-height:1.6;margin:0;">⚠️ <strong style="color:#ffa060">En 2 días el link de tu manual dejará de funcionar.</strong> Si no lo has descargado aún, hazlo ahora — solo toma un minuto.</p>
+                    <p style="color:#fff;font-size:13px;line-height:1.6;margin:0;">⚠️ <strong style="color:#ffa060">En 15 días el link de tu manual dejará de funcionar.</strong> Si no lo has descargado aún, hazlo ahora — solo toma un minuto.</p>
                   </div>
                   <div style="text-align:center;margin-bottom:28px;">
                     <a href="${manualUrl}" style="display:inline-block;background:#c8aa32;color:#1a1a2e;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border-radius:6px;text-decoration:none;">Descargar mi manual ahora →</a>

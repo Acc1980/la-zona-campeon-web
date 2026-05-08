@@ -4,35 +4,12 @@ import Image from "next/image";
 import ManualesPosicion from "@/components/ManualesPosicion";
 import ManualesGenerales from "@/components/ManualesGenerales";
 import PersonalizadoCard from "@/components/PersonalizadoCard";
+import NivelAccordion from "@/components/NivelAccordion";
 
 export const metadata: Metadata = {
   title: "Productos",
   description: "Manuales de entrenamiento mental por posición, deporte y perfil. Todo en español.",
 };
-
-
-function Badge({ text, color }: { text: string; color: string }) {
-  return (
-    <span className={`inline-block text-xs font-display font-bold uppercase tracking-widest px-3 py-1 rounded-full ${color}`}>
-      {text}
-    </span>
-  );
-}
-
-function NivelHeader({ nivel, rango, titulo, desc }: { nivel: string; rango: string; titulo: string; desc: string }) {
-  return (
-    <div className="mb-10">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="font-display font-black text-xs uppercase tracking-widest text-gold-500 border border-gold-500/40 px-3 py-1 rounded-full">
-          {nivel}
-        </span>
-        <span className="text-dark-300 text-sm font-display">{rango}</span>
-      </div>
-      <h2 className="heading-2">{titulo}</h2>
-      <p className="text-dark-300 mt-3 max-w-xl">{desc}</p>
-    </div>
-  );
-}
 
 export default function ProductosPage() {
   return (
@@ -51,9 +28,9 @@ export default function ProductosPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-dark-900/90 via-dark-900/80 to-dark-900/95" />
         <div className="relative section-container">
           <div className="gold-line mx-auto mb-6" />
-          <h1 className="heading-1 max-w-3xl mx-auto mb-4">Empieza Gratis. Avanza a tu Ritmo.</h1>
+          <h1 className="heading-1 max-w-3xl mx-auto mb-4">Entrena tu mente. Gana cuando más importa.</h1>
           <p className="text-dark-300 text-lg max-w-xl mx-auto">
-            Cuatro niveles de entrenamiento mental. Desde recursos gratuitos hasta tu manual 100% personalizado.
+            Manuales de entrenamiento mental para deportistas, entrenadores y padres. Elige el nivel que necesitas.
           </p>
         </div>
       </section>
@@ -80,123 +57,59 @@ export default function ProductosPage() {
         </div>
       </section>
 
-      {/* NIVEL 1 - GRATIS */}
-      <section id="nivel-1" className="section-padding bg-dark-800">
-        <div className="section-container">
-          <NivelHeader
-            nivel="Nivel 1"
-            rango="Gratis"
-            titulo="Recursos Gratuitos"
-            desc="El mejor punto de partida. Sin costo, sin excusas. Empieza a entrenar tu mente hoy."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* 1. Guía */}
-            <div className="card-dark flex flex-col border border-gold-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">01</span>
-                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-              </div>
-              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
-                Guía — Los 5 Hábitos Mentales del Campeón
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
-                Los 5 hábitos que separan a los deportistas que ganan de los que solo participan.
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
-                <Link href="/gratis" className="btn-primary text-xs px-5 py-2.5">Descargar</Link>
-              </div>
-            </div>
-
-            {/* 2. Calendario 21 días */}
-            <div className="card-dark flex flex-col border border-gold-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">02</span>
-                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-              </div>
-              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
-                Calendario — 21 Días de Implementación
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
-                Un reto mental de 3 semanas. Una acción diaria concreta para construir el hábito de entrenar tu mente.
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
-                <a href="/calendario-21-dias.html" target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-5 py-2.5">Ver calendario</a>
-              </div>
-            </div>
-
-            {/* 3. Frases activadoras */}
-            <div className="card-dark flex flex-col border border-gold-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-display font-black text-gold-500 text-xs uppercase tracking-widest">03</span>
-                <Badge text="Disponible" color="bg-gold-500/20 text-gold-400" />
-              </div>
-              <h3 className="font-display font-bold text-white text-sm uppercase tracking-wide mb-2">
-                Frases Activadoras del Día
-              </h3>
-              <p className="text-dark-300 text-sm leading-relaxed flex-1 mb-4">
-                Una frase nueva cada día para encender tu mente antes de competir. Compártela en redes.
-              </p>
-              <div className="flex items-center justify-between mt-auto">
-                <span className="font-display font-black text-gold-500 text-xl">Gratis</span>
-                <Link href="/frases" className="btn-primary text-xs px-5 py-2.5">Ver frases</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* NIVEL 2 - MANUALES GENERALES */}
-      <section id="nivel-2" className="section-padding bg-dark-900">
-        <div className="section-container">
-          <NivelHeader
-            nivel="Nivel 2"
-            rango="$9.99"
-            titulo="Manuales de Temas Generales"
-            desc="Problemas mentales que afectan a todos los deportistas sin importar el deporte o la posición."
-          />
+      {/* NIVELES — acordeón */}
+      <div>
+        <NivelAccordion
+          id="nivel-1"
+          nivel="Nivel 1"
+          titulo="Manuales de Temas Generales"
+          rango="$12.99 USD"
+          bgClass="bg-dark-900"
+        >
+          <p className="text-dark-300 mb-8 max-w-xl">
+            Problemas mentales que afectan a todos los deportistas sin importar el deporte o la posición.
+          </p>
           <ManualesGenerales />
-        </div>
-      </section>
+        </NivelAccordion>
 
-      {/* NIVEL 3 - MANUALES POR POSICIÓN */}
-      <section id="nivel-3" className="section-padding bg-dark-800">
-        <div className="section-container">
-          <NivelHeader
-            nivel="Nivel 3"
-            rango="$14.99"
-            titulo="Manuales por Posición y Deporte"
-            desc="Entrenamiento mental específico para tu posición. Lo que un delantero necesita no es lo mismo que un portero."
-          />
+        <NivelAccordion
+          id="nivel-2"
+          nivel="Nivel 2"
+          titulo="Manuales por Posición y Deporte"
+          rango="$17.99 USD"
+          bgClass="bg-dark-800"
+        >
+          <p className="text-dark-300 mb-8 max-w-xl">
+            Entrenamiento mental específico para tu posición. Lo que un delantero necesita no es lo mismo que un portero.
+          </p>
           <ManualesPosicion />
-        </div>
-      </section>
+        </NivelAccordion>
 
-      {/* NIVEL 4 - MANUAL PERSONALIZADO */}
-      <section id="nivel-4" className="section-padding bg-dark-900">
-        <div className="section-container">
-          <NivelHeader
-            nivel="Nivel 4"
-            rango="$29.99"
-            titulo="Tu Manual 100% Personalizado"
-            desc="El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar."
-          />
+        <NivelAccordion
+          id="nivel-3"
+          nivel="Nivel 3"
+          titulo="Tu Manual 100% Personalizado"
+          rango="$29.99 USD"
+          bgClass="bg-dark-900"
+        >
+          <p className="text-dark-300 mb-8 max-w-xl">
+            El nivel más avanzado. Un manual generado específicamente para ti: tu deporte, tu posición, tus fortalezas y los aspectos que quieres mejorar.
+          </p>
           <div className="max-w-2xl">
             <PersonalizadoCard />
           </div>
-        </div>
-      </section>
+        </NivelAccordion>
+      </div>
 
       {/* CTA */}
       <section className="py-16 bg-gold-500 text-center">
         <div className="section-container">
           <h2 className="font-display font-black text-2xl md:text-3xl text-dark-800 uppercase tracking-wide mb-4">
-            Empieza gratis hoy
+            El manual que nadie más tiene igual al tuyo
           </h2>
-          <p className="text-dark-700 mb-6">Descarga la guía de los 5 hábitos mentales y empieza ahora.</p>
-          <Link href="/gratis" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-dark-800 text-gold-500 font-display font-black text-sm uppercase tracking-wider hover:bg-dark-700 transition-colors">
-            Descargar Gratis
+          <p className="text-dark-700 mb-6">Generado para tu deporte, tu posición y tus desafíos reales. Te llega al correo en menos de 1 hora.</p>
+          <Link href="/personalizado" className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-dark-800 text-gold-500 font-display font-black text-sm uppercase tracking-wider hover:bg-dark-700 transition-colors">
+            Generar Mi Manual — $29.99
           </Link>
         </div>
       </section>

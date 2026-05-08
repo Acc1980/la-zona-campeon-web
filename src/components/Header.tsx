@@ -44,9 +44,6 @@ export default function Header() {
             <Link href="/frases" className="text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               Frase del Día
             </Link>
-            <Link href="/gratis" className="btn-primary text-sm px-6 py-2.5">
-              Guía Gratis
-            </Link>
           </nav>
 
           <button
@@ -70,11 +67,6 @@ export default function Header() {
             <Link href="/quiz" onClick={() => setMenuOpen(false)} className="px-4 text-sm font-display font-semibold uppercase tracking-wider text-dark-200 hover:text-gold-500 transition-colors">
               ¿Qué manual necesito?
             </Link>
-            <div className="px-4">
-              <Link href="/gratis" onClick={() => setMenuOpen(false)} className="btn-primary text-sm w-full justify-center">
-                Guía Gratis
-              </Link>
-            </div>
           </div>
         )}
       </div>

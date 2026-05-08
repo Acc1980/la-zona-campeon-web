@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import LeadMagnetForm from "@/components/LeadMagnetForm";
 
 const testimonios = [
   {
@@ -46,40 +45,28 @@ type Producto = {
 const productos: Producto[] = [
   {
     nivel: "Nivel 1",
-    tag: "GRATIS",
-    tagColor: "bg-green-600",
-    titulo: "Recursos Gratuitos",
-    desc: "",
-    items: ["Guía — Los 5 Hábitos Mentales del Campeón", "Calendario — 21 Días de Implementación", "Frases Activadoras del Día"],
-    precio: "GRATIS",
-    cta: "Ver recursos",
+    tag: "$12.99",
+    tagColor: "bg-gold-600",
+    titulo: "Manuales Generales",
+    desc: "Espiral negativa, concentración bajo presión, manejo de errores y más.",
+    precio: "Desde $12.99",
+    cta: "Ver Manuales",
     href: "/productos#nivel-1",
     highlight: false,
   },
   {
-    nivel: "Nivel 2",
-    tag: "$9.99",
-    tagColor: "bg-gold-600",
-    titulo: "Manuales Generales",
-    desc: "Espiral negativa, concentración bajo presión, manejo de errores y más.",
-    precio: "Desde $9.99",
-    cta: "Ver Manuales",
-    href: "/productos#nivel-2",
-    highlight: false,
-  },
-  {
-    nivel: "Nivel 3",
-    tag: "$14.99",
+    nivel: "Nivel 1",
+    tag: "$17.99",
     tagColor: "bg-gold-500",
     titulo: "Por Posición y Deporte",
     desc: "Lo que necesita un portero no es lo mismo que un base de baloncesto. Tu deporte, tu posición, tu manual.",
-    precio: "Desde $14.99",
+    precio: "Desde $17.99",
     cta: "Ver Manuales",
-    href: "/productos#nivel-3",
+    href: "/productos#nivel-2",
     highlight: true,
   },
   {
-    nivel: "Nivel 4",
+    nivel: "Nivel 3",
     tag: "Disponible",
     tagColor: "bg-gold-500 text-dark-900",
     titulo: "Manual 100% Personalizado",
@@ -123,10 +110,7 @@ export default function HomePage() {
               Manuales y programas de entrenamiento mental en español. Herramientas prácticas para deportistas, entrenadores y padres que quieren resultados reales.
             </p>
             <div className="relative z-10 flex flex-col sm:flex-row gap-4">
-              <Link href="/gratis" className="btn-primary text-base">
-                Descarga la Guía Gratis
-              </Link>
-              <Link href="/productos" className="btn-secondary text-base">
+              <Link href="/productos" className="btn-primary text-base">
                 Ver Productos
               </Link>
             </div>
@@ -138,6 +122,86 @@ export default function HomePage() {
           <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-12 md:h-16" fill="#0a0f1a">
             <polygon points="0,60 1440,0 1440,60" />
           </svg>
+        </div>
+      </section>
+
+      {/* ── PRODUCTOS ──────────────────────────────────────────── */}
+      <section id="productos" className="relative section-padding bg-dark-900">
+        <div className="section-container">
+          {/* BANNER OFERTA — activar cuando empiece la campaña Meta (hasta 14 may 2026)
+          <div className="mb-10 bg-gold-500/10 border border-gold-500/60 rounded-xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <span className="font-display font-black text-xs uppercase tracking-widest text-gold-500">⚡ Oferta por tiempo limitado</span>
+              <p className="font-display font-bold text-white text-base mt-1 uppercase tracking-wide">
+                Manual por Posición — <span className="text-gold-500">$17.99</span>{" "}
+                <span className="line-through text-dark-400 font-normal text-sm">$17.99</span>{" "}hoy solo $14.99
+              </p>
+              <p className="text-dark-400 text-xs mt-0.5">Precio sube el 15 de mayo</p>
+            </div>
+            <Link href="/productos#nivel-2" className="btn-primary text-xs px-6 py-2.5 shrink-0">
+              Ver manuales →
+            </Link>
+          </div>
+          */}
+          <div className="text-center mb-14">
+            <p className="heading-3 mb-3">Catálogo</p>
+            <div className="gold-line mx-auto mb-6" />
+            <h2 className="heading-2">Elige tu nivel de transformación</h2>
+            <p className="text-dark-300 mt-4 max-w-xl mx-auto">
+              Desde recursos gratuitos hasta programas completos. Empieza donde estás y sube cuando estés listo.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {productos.map((p) => (
+              <div
+                key={p.titulo}
+                className={`relative flex flex-col rounded-xl p-6 border transition-all duration-300 ${
+                  p.highlight
+                    ? "bg-dark-700 border-gold-500 shadow-xl shadow-gold-500/10"
+                    : "bg-dark-800 border-dark-600 hover:border-gold-500/50"
+                }`}
+              >
+                {p.highlight && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-dark-800 text-xs font-display font-black uppercase tracking-widest px-4 py-1 rounded-full whitespace-nowrap">
+                    Más popular
+                  </div>
+                )}
+                <div className="mb-4">
+                  <span className={`text-xs font-display font-bold uppercase tracking-widest px-3 py-1 rounded-full text-white ${p.tagColor}`}>
+                    {p.tag}
+                  </span>
+                  <p className="text-dark-400 text-xs uppercase tracking-wider mt-2">{p.nivel}</p>
+                </div>
+                <h3 className="font-display font-bold text-white text-base uppercase tracking-wide mb-3">
+                  {p.titulo}
+                </h3>
+                {p.items ? (
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {p.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-dark-300 text-sm">
+                        <span className="text-gold-500 font-bold shrink-0">{i + 1}.</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-dark-300 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
+                )}
+                <div className="mt-auto">
+                  <p className={`font-display font-black text-xl mb-4 ${p.cta === "Próximamente" ? "text-dark-400" : "text-gold-500"}`}>{p.precio}</p>
+                  {p.cta === "Próximamente" ? (
+                    <span className="flex w-full justify-center text-sm px-5 py-2.5 rounded-lg border border-dark-600 text-dark-400 font-display font-bold uppercase tracking-wider cursor-not-allowed">
+                      Próximamente
+                    </span>
+                  ) : (
+                    <Link href={p.href} className={p.highlight ? "btn-primary w-full justify-center text-sm" : "btn-secondary w-full justify-center text-sm"}>
+                      {p.cta}
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -248,7 +312,6 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonios.map((t) => (
               <div key={t.nombre} className="bg-dark-700 border border-dark-600 hover:border-gold-500/30 rounded-xl p-7 transition-all duration-300 flex flex-col">
-                {/* Comillas */}
                 <div className="text-gold-500 text-5xl font-serif leading-none mb-4">&ldquo;</div>
                 <p className="text-dark-200 text-sm leading-relaxed flex-1 mb-6">{t.texto}</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-dark-600">
@@ -264,81 +327,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        {/* Separador hacia productos (dark-900) */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none pointer-events-none">
-          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="w-full h-12 md:h-16" fill="#16171e">
-            <polygon points="1440,60 0,0 0,60" />
-          </svg>
-        </div>
       </section>
 
-      {/* ── PRODUCTOS ──────────────────────────────────────────── */}
-      <section id="productos" className="relative section-padding bg-dark-900">
-        <div className="section-container">
-          <div className="text-center mb-14">
-            <p className="heading-3 mb-3">Catálogo</p>
-            <div className="gold-line mx-auto mb-6" />
-            <h2 className="heading-2">Elige tu nivel de transformación</h2>
-            <p className="text-dark-300 mt-4 max-w-xl mx-auto">
-              Desde recursos gratuitos hasta programas completos. Empieza donde estás y sube cuando estés listo.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {productos.map((p) => (
-              <div
-                key={p.titulo}
-                className={`relative flex flex-col rounded-xl p-6 border transition-all duration-300 ${
-                  p.highlight
-                    ? "bg-dark-700 border-gold-500 shadow-xl shadow-gold-500/10"
-                    : "bg-dark-800 border-dark-600 hover:border-gold-500/50"
-                }`}
-              >
-                {p.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-dark-800 text-xs font-display font-black uppercase tracking-widest px-4 py-1 rounded-full whitespace-nowrap">
-                    Más popular
-                  </div>
-                )}
-                <div className="mb-4">
-                  <span className={`text-xs font-display font-bold uppercase tracking-widest px-3 py-1 rounded-full text-white ${p.tagColor}`}>
-                    {p.tag}
-                  </span>
-                  <p className="text-dark-400 text-xs uppercase tracking-wider mt-2">{p.nivel}</p>
-                </div>
-                <h3 className="font-display font-bold text-white text-base uppercase tracking-wide mb-3">
-                  {p.titulo}
-                </h3>
-                {p.items ? (
-                  <ul className="space-y-2 mb-6 flex-1">
-                    {p.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-dark-300 text-sm">
-                        <span className="text-gold-500 font-bold shrink-0">{i + 1}.</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-dark-300 text-sm leading-relaxed mb-6 flex-1">{p.desc}</p>
-                )}
-                <div className="mt-auto">
-                  <p className={`font-display font-black text-xl mb-4 ${p.cta === "Próximamente" ? "text-dark-400" : "text-gold-500"}`}>{p.precio}</p>
-                  {p.cta === "Próximamente" ? (
-                    <span className="flex w-full justify-center text-sm px-5 py-2.5 rounded-lg border border-dark-600 text-dark-400 font-display font-bold uppercase tracking-wider cursor-not-allowed">
-                      Próximamente
-                    </span>
-                  ) : (
-                    <Link href={p.href} className={p.highlight ? "btn-primary w-full justify-center text-sm" : "btn-secondary w-full justify-center text-sm"}>
-                      {p.cta}
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── LEAD MAGNET ────────────────────────────────────────── */}
-      <section className="relative section-padding overflow-hidden ">
+      {/* ── CTA FINAL ──────────────────────────────────────────── */}
+      <section className="relative section-padding overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=1920&q=80&fit=crop"
           alt="Atleta concentrado"
@@ -349,16 +341,21 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-dark-900/90" />
         <div className="relative section-container">
           <div className="max-w-xl mx-auto text-center">
-            <p className="heading-3 mb-3">100% Gratis</p>
+            <p className="heading-3 mb-3">¿Listo para empezar?</p>
             <div className="gold-line mx-auto mb-6" />
             <h2 className="heading-2 mb-4">
-              Los 5 Hábitos Mentales del Campeón
+              El manual personalizado para tu deporte y posición
             </h2>
             <p className="text-dark-300 mb-8 leading-relaxed">
-              Descarga la guía gratuita y empieza a entrenar tu mente como los atletas de élite. Sin excusas.
+              Generado con inteligencia artificial en base a tu perfil real como atleta. Te llega al correo en menos de 1 hora.
             </p>
-            <div className="bg-dark-800/80 backdrop-blur-sm border border-dark-600 rounded-xl p-8">
-              <LeadMagnetForm fuente="home-section" />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/personalizado" className="btn-primary text-base px-8 py-4">
+                Generar Mi Manual — $29.99
+              </Link>
+              <Link href="/productos" className="btn-secondary text-base px-8 py-4">
+                Ver todos los productos
+              </Link>
             </div>
           </div>
         </div>

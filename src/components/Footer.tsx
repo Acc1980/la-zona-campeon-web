@@ -8,6 +8,26 @@ export default function Footer() {
   if (pathname === "/links") return null;
   return (
     <footer className="bg-dark-900 border-t border-dark-700">
+      {/* Guía gratis — para quien scrolleó todo y aún no se decidió */}
+      <div className="border-b border-dark-700 bg-dark-800/60">
+        <div className="section-container py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="font-display font-black text-xs uppercase tracking-widest text-gold-500 mb-1">
+              ¿Prefieres empezar gratis?
+            </p>
+            <p className="font-display font-bold text-white text-base uppercase tracking-wide">
+              Descarga la Guía — Los 5 Hábitos Mentales del Campeón
+            </p>
+          </div>
+          <Link
+            href="/gratis"
+            className="btn-secondary text-xs px-6 py-2.5 shrink-0"
+          >
+            Descargar gratis →
+          </Link>
+        </div>
+      </div>
+
       <div className="section-container py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>

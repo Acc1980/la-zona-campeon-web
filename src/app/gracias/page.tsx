@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { PRODUCTOS } from "@/lib/productos";
 
 function GraciasContent() {
@@ -82,10 +82,44 @@ function GraciasContent() {
   );
 }
 
+function PurchasePixel() {
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const status = p.get("status") ?? p.get("collection_status") ?? "";
+    if (status !== "approved") return;
+
+    const ref = p.get("external_reference") ?? p.get("preference_id") ?? "";
+    const isN4 = ref.startsWith("n4-personalizado");
+    const id = isN4 ? "" : ref.split("|")[0];
+    const price = isN4 ? 29.99 : (PRODUCTOS[id]?.price ?? 9.99);
+
+    // Facebook Pixel
+    const script = document.createElement("script");
+    script.textContent = `(function fire(){if(window.fbq){fbq('track','Purchase',{value:${price},currency:'USD'});}else{setTimeout(fire,300);}})();`;
+    document.head.appendChild(script);
+
+    // GA4
+    const productoNombre = isN4 ? "Manual N4 Personalizado" : (PRODUCTOS[id]?.title ?? "Manual");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof (window as any).gtag === "function") {
+      (window as any).gtag("event", "purchase", {
+        transaction_id: ref,
+        value: price,
+        currency: "USD",
+        items: [{ item_id: id || "n4-personalizado", item_name: productoNombre, price, quantity: 1 }],
+      });
+    }
+  }, []);
+  return null;
+}
+
 export default function GraciasPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-dark-900" />}>
-      <GraciasContent />
-    </Suspense>
+    <>
+      <PurchasePixel />
+      <Suspense fallback={<div className="min-h-screen bg-dark-900" />}>
+        <GraciasContent />
+      </Suspense>
+    </>
   );
 }

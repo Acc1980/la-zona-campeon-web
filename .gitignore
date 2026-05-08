@@ -3,3 +3,8 @@
 .next/
 node_modules/
 out/
+
+# Archivos generados en runtime (no subir a git)
+public/manuales/
+data/
+
